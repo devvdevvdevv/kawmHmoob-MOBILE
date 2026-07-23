@@ -1,5 +1,6 @@
 // app/_layout.jsx
 import { Stack } from 'expo-router'
+import { Slot } from 'expo-router';
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { AuthProvider } from '../src/context/AuthContext.jsx'
@@ -16,9 +17,10 @@ export default function RootLayout() {
         <SubscriptionProvider>
           <ProgressProvider>
             <NotebookProvider>
-              <Stack screenOptions={{ headerShown: false }}>
+              {/* <Stack screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="(tabs)" />
-              </Stack>
+              </Stack> */}
+              <Slot />
             </NotebookProvider>
           </ProgressProvider>
         </SubscriptionProvider>

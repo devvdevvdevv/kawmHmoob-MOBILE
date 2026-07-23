@@ -88,7 +88,7 @@ const SECTIONS = [
   { id: 'index', label: 'Home', icon: HomeIcon, ind: 'stone', pill: 'cream' },
   { id: 'learn', label: 'Learn', icon: BookIcon, ind: 'seafoam', pill: 'seafoam' },
   { id: 'speak', label: 'Speak', icon: MicIcon, ind: 'clay', pill: 'clay' },
-  { id: 'words', label: 'Words', icon: CardsIcon, ind: 'blush', pill: 'blush' },
+  { id: 'vocabulary', label: 'Vocabulary', icon: CardsIcon, ind: 'blush', pill: 'blush' },
   { id: 'reference', label: 'Reference', icon: AlphabetIcon, ind: 'creamTint', pill: 'creamTint' },
 ];
 
