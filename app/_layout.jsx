@@ -1,11 +1,11 @@
-import { Slot } from 'expo-router'
+// app/_layout.jsx
+import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { AuthProvider } from '../src/context/AuthContext.jsx'
 import { SubscriptionProvider } from '../src/context/SubscriptionContext.jsx'
 import { ProgressProvider } from '../src/context/ProgressContext.jsx'
 import { NotebookProvider } from '../src/context/NotebookContext.jsx'
-import Layout from '../src/components/Layout.jsx'
 import '../global.css'
 
 export default function RootLayout() {
@@ -16,9 +16,9 @@ export default function RootLayout() {
         <SubscriptionProvider>
           <ProgressProvider>
             <NotebookProvider>
-              <Layout>
-                <Slot />
-              </Layout>
+              <Stack screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="(tabs)" />
+              </Stack>
             </NotebookProvider>
           </ProgressProvider>
         </SubscriptionProvider>
