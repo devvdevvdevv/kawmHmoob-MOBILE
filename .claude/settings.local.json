@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"http://localhost:8137/node_modules/expo-router/entry.bundle?platform=web&dev=true&minify=false\" -o \"C:/Users/DEVANC~1/AppData/Local/Temp/claude/c--Users-Devan-Chuyen-Lee-Documents-KawmHmoob-rn/f9d579b9-ca5b-4fbd-9be8-05e2f4226300/scratchpad/bundle4.out\" -w \"HTTP %{http_code}  size=%{size_download}\\\\n\")",
+      "Bash(curl -s \"http://localhost:8137/\" -w \"HTTP %{http_code} size=%{size_download}\\\\n\" -o \"C:/Users/DEVANC~1/AppData/Local/Temp/claude/c--Users-Devan-Chuyen-Lee-Documents-KawmHmoob-rn/f9d579b9-ca5b-4fbd-9be8-05e2f4226300/scratchpad/index.html\")",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const p=require\\('./node_modules/expo-router/package.json'\\);console.log\\('expo-router',p.version\\);console.log\\('peer expo-font:',p.peerDependencies&&p.peerDependencies['expo-font']\\)\")",
+      "Bash(node -e \"console.log\\('expo-font now:', require\\('./node_modules/expo-font/package.json'\\).version\\)\")"
+    ]
+  }
+}
