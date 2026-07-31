@@ -4,6 +4,7 @@ import { Link } from 'expo-router'
 import { consonants, vowels, tones } from '../src/data/alphabet.js'
 import { categories } from '../src/data/vocabulary.js'
 import { grammar, everyday, readings } from '../src/data/course.js'
+import TabScreen from '../src/components/TabScreen.jsx'
 
 function normalize(s) {
   return (s || '').toLowerCase().trim()
@@ -74,7 +75,7 @@ export default function Search() {
   }, [q])
 
   return (
-    <View>
+    <TabScreen>
       <Text className="font-serif text-4xl text-stone-900 mb-5">Search</Text>
       <TextInput
         value={q}
@@ -109,6 +110,6 @@ export default function Search() {
             </View>
           </View>
         ))}
-    </View>
+    </TabScreen>
   )
 }

@@ -1,6 +1,7 @@
 import { View, Text } from 'react-native'
 import Svg, { Circle, Text as SvgText } from 'react-native-svg'
 import Button from '../ui/Button.jsx'
+import Confetti from '../common/Confetti.jsx'
 
 export default function QuizResults({
   config,
@@ -15,11 +16,20 @@ export default function QuizResults({
 }) {
   const accuracy = questions.length > 0 ? Math.round((score / questions.length) * 100) : 0
   const missed = answers.filter((a) => !a.isCorrect)
+  // Perfect score — a real achievement worth celebrating (not while reviewing).
+  const perfect = accuracy === 100 && questions.length > 0 && !reviewing
 
   return (
     <View className="rounded-md bg-cream-50 border border-cream-200 p-6">
+      {perfect && <Confetti />}
       <Text className="font-serif text-3xl text-stone-900 mb-1">{config.title}</Text>
       <Text className="text-sm text-stone-600 mb-6">Time: {elapsed}s</Text>
+
+      {perfect && (
+        <View className="rounded-md bg-emerald-100 p-4 mb-6 items-center">
+          <Text className="font-serif text-2xl text-emerald-900">Perfect score! 🎉</Text>
+        </View>
+      )}
 
       <View className="flex-row items-center gap-6 mb-6">
         <CircularProgress percent={accuracy} />

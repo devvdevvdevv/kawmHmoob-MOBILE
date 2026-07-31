@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { View, Text, Pressable } from 'react-native'
 import { Link } from 'expo-router'
 import { useAuth } from '../src/context/AuthContext.jsx'
+import TabScreen from '../src/components/TabScreen.jsx'
 import Picker from '../src/components/ui/Picker.jsx'
 import Button from '../src/components/ui/Button.jsx'
 
@@ -16,10 +17,10 @@ export default function Settings() {
   const [audioOn, setAudioOn] = useState(false)
 
   return (
-    <View>
+    <TabScreen>
       <Text className="font-serif text-4xl text-stone-900 mb-6">Settings</Text>
 
-      <View className="gap-4 max-w-xl">
+      <View className="gap-4">
         <Field label="Dialect" hint="Choose which Hmong dialect to study.">
           <Picker
             value={user.dialectPreference}
@@ -53,7 +54,7 @@ export default function Settings() {
           )}
         </View>
       </View>
-    </View>
+    </TabScreen>
   )
 }
 

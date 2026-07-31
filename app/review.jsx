@@ -6,6 +6,7 @@ import { useProgress } from '../src/hooks/useProgress.js'
 import { selectDueWords } from '../src/context/ProgressContext.jsx'
 import Flashcard from '../src/components/vocabulary/Flashcard.jsx'
 import Button from '../src/components/ui/Button.jsx'
+import TabScreen from '../src/components/TabScreen.jsx'
 
 export default function Review() {
   const { vocabSchedule } = useProgress()
@@ -20,29 +21,33 @@ export default function Review() {
 
   if (dueWords.length === 0) {
     return (
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-10 items-center">
-        <Text className="font-serif text-3xl text-stone-900 mb-2">All caught up.</Text>
-        <Text className="text-stone-700 mb-6 text-center">
-          No words due for review right now. Browse vocabulary to add new ones, or come back later.
-        </Text>
-        <Link href="/vocabulary" asChild>
-          <Button>Browse Vocabulary</Button>
-        </Link>
-      </View>
+      <TabScreen>
+        <View className="rounded-md bg-cream-50 border border-cream-200 p-10 items-center">
+          <Text className="font-serif text-3xl text-stone-900 mb-2">All caught up.</Text>
+          <Text className="text-stone-700 mb-6 text-center">
+            No words due for review right now. Browse vocabulary to add new ones, or come back later.
+          </Text>
+          <Link href="/vocabulary" asChild>
+            <Button>Browse Vocabulary</Button>
+          </Link>
+        </View>
+      </TabScreen>
     )
   }
 
   if (idx >= dueWords.length) {
     return (
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-10 items-center">
-        <Text className="font-serif text-3xl text-stone-900 mb-2">Done.</Text>
-        <Text className="text-stone-700 mb-6 text-center">
-          You reviewed {dueWords.length} word{dueWords.length === 1 ? '' : 's'}.
-        </Text>
-        <Link href="/" asChild>
-          <Button>Home</Button>
-        </Link>
-      </View>
+      <TabScreen>
+        <View className="rounded-md bg-cream-50 border border-cream-200 p-10 items-center">
+          <Text className="font-serif text-3xl text-stone-900 mb-2">Done.</Text>
+          <Text className="text-stone-700 mb-6 text-center">
+            You reviewed {dueWords.length} word{dueWords.length === 1 ? '' : 's'}.
+          </Text>
+          <Link href="/" asChild>
+            <Button>Home</Button>
+          </Link>
+        </View>
+      </TabScreen>
     )
   }
 
@@ -50,7 +55,7 @@ export default function Review() {
   const advance = () => setIdx((i) => i + 1)
 
   return (
-    <View>
+    <TabScreen>
       <View className="mb-5 flex-row justify-between items-end">
         <View>
           <Text className="font-serif text-4xl text-stone-900 mb-1">Review</Text>
@@ -67,6 +72,6 @@ export default function Review() {
       <View className="mt-4 items-center">
         <Button onPress={advance} variant="ghost" size="sm">Skip →</Button>
       </View>
-    </View>
+    </TabScreen>
   )
 }

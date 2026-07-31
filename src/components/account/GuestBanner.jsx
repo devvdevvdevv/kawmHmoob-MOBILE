@@ -6,11 +6,11 @@ export default function GuestBanner() {
   const { user } = useAuth()
   if (!user.isGuest) return null
   return (
-    <View className="bg-cream-100/80 border-b border-cream-300/60 px-6 py-2 flex-row flex-wrap gap-3 justify-between items-center">
+    <View className="rounded-md bg-cream-100 border border-cream-300/60 px-4 py-3 gap-2 mb-6">
       <Text className="text-sm text-stone-700">
         You're using a guest account — progress saves on this device only.
       </Text>
-      <View className="flex-row gap-3">
+      <View className="flex-row gap-4">
         <Link href="/login" asChild>
           <Pressable><Text className="text-sm text-clay-700 underline">Log in</Text></Pressable>
         </Link>

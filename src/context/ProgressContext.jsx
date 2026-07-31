@@ -169,3 +169,28 @@ export function selectDueWords(words, schedule) {
     return !sched || sched.dueDate <= today
   })
 }
+
+// Session selection, ported from the web app so the Words hub/session can split
+// the queue into due REVIEWS (studied before, dueDate reached) and a capped set
+// of NEW words. Uncapped, day one asked for every word at once — the cap keeps
+// a session short. Schedule shape matches nextSchedule() above.
+export const DAILY_NEW_LIMIT = 10
+
+export function selectReviewWords(words, schedule) {
+  const today = todayISO()
+  return words.filter((w) => {
+    const sched = schedule[w.id]
+    return sched && sched.dueDate <= today
+  })
+}
+
+export function selectNewWords(words, schedule, limit = DAILY_NEW_LIMIT) {
+  const fresh = words.filter((w) => !schedule[w.id])
+  return limit == null ? fresh : fresh.slice(0, limit)
+}
+
+export function selectSession(words, schedule, limit = DAILY_NEW_LIMIT) {
+  const reviews = selectReviewWords(words, schedule)
+  const fresh = selectNewWords(words, schedule, limit)
+  return { reviews, fresh, queue: [...reviews, ...fresh] }
+}

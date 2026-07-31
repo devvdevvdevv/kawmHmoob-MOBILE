@@ -1,30 +1,98 @@
 // app/_layout.jsx
+import { View } from 'react-native'
 import { Stack } from 'expo-router'
-import { Slot } from 'expo-router';
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import {
+  useFonts,
+  Nunito_600SemiBold,
+  Nunito_700Bold,
+  Nunito_800ExtraBold,
+} from '@expo-google-fonts/nunito'
+import {
+  NunitoSans_400Regular,
+  NunitoSans_600SemiBold,
+  NunitoSans_700Bold,
+} from '@expo-google-fonts/nunito-sans'
 import { AuthProvider } from '../src/context/AuthContext.jsx'
+// Drawer
+import { DrawerProvider } from '../src/components/Drawer/DrawerContext.jsx'
 import { SubscriptionProvider } from '../src/context/SubscriptionContext.jsx'
 import { ProgressProvider } from '../src/context/ProgressContext.jsx'
 import { NotebookProvider } from '../src/context/NotebookContext.jsx'
+import { ThemeProvider, useTheme } from '../src/context/ThemeContext.jsx'
+import { THEME_VARS, THEME_BG } from '../src/lib/themes.js'
+import GlobalTabBar from '../src/components/GlobalTabBar.jsx'
+import GlobalHeader from '../src/components/GlobalHeader.jsx'
+import DrawerHost from '../src/components/Drawer/DrawerHost.jsx'
 import '../global.css'
 
 export default function RootLayout() {
+  // Match the web app's typefaces: Nunito (headings, mapped to font-serif/
+  // font-display) + Nunito Sans (body, font-sans). Render nothing until ready so
+  // text doesn't flash in the system font first; never hang on a load error.
+  const [fontsLoaded, fontError] = useFonts({
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+    Nunito_800ExtraBold,
+    NunitoSans_400Regular,
+    NunitoSans_600SemiBold,
+    NunitoSans_700Bold,
+  })
+
+  if (!fontsLoaded && !fontError) {
+    return <View style={{ flex: 1, backgroundColor: THEME_BG.light }} />
+  }
+
   return (
     <SafeAreaProvider>
-      <StatusBar style="dark" />
-      <AuthProvider>
-        <SubscriptionProvider>
-          <ProgressProvider>
-            <NotebookProvider>
-              {/* <Stack screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="(tabs)" />
-              </Stack> */}
-              <Slot />
-            </NotebookProvider>
-          </ProgressProvider>
-        </SubscriptionProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <SubscriptionProvider>
+            <ProgressProvider>
+              <DrawerProvider>
+                <NotebookProvider>
+                  <ThemedShell />
+                </NotebookProvider>
+              </DrawerProvider>
+            </ProgressProvider>
+          </SubscriptionProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </SafeAreaProvider>
+  )
+}
+
+// The app SHELL, mirroring the web <Layout>: one themed background + a header
+// (top) and tab bar (bottom) that float over every screen.
+//
+//   <View vars>          -> applies the active theme's CSS variables; every
+//                           className color below restyles when the theme flips
+//     <Stack>            -> the screens (contentStyle = themed page bg)
+//     <GlobalHeader />   -> status/utilities, top
+//     <GlobalTabBar />   -> primary section nav, bottom
+//
+// Applying THEME_VARS on this root View is the RN equivalent of the web setting
+// CSS variables on <html>: NativeWind cascades the vars down the React tree, so
+// nothing needs `dark:` variants. contentStyle needs a concrete color (react-
+// navigation paints its own grey theme otherwise), so it uses THEME_BG.
+function ThemedShell() {
+  const { theme } = useTheme()
+  const bg = THEME_BG[theme] || THEME_BG.light
+
+  return (
+    <View style={[{ flex: 1, overflow: 'hidden' }, THEME_VARS[theme]]}>
+      <StatusBar style={theme === 'light' ? 'dark' : 'light'} />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: bg },
+          animation: 'fade',
+        }}
+      />
+      <GlobalHeader />
+      <GlobalTabBar />
+      <DrawerHost/>
+    </View>
   )
 }

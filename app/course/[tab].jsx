@@ -1,6 +1,7 @@
 import { View, Text } from 'react-native'
 import { Link, useLocalSearchParams } from 'expo-router'
 import Tabs from '../../src/components/Tabs.jsx'
+import TabScreen from '../../src/components/TabScreen.jsx'
 import { grammar, everyday, readings } from '../../src/data/course.js'
 import { useProgress } from '../../src/hooks/useProgress.js'
 import Button from '../../src/components/ui/Button.jsx'
@@ -31,7 +32,7 @@ export default function Course() {
   const completed = lessonId && completedLessons.includes(lessonId)
 
   return (
-    <View>
+    <TabScreen>
       <View className="mb-6">
         <Text className="font-serif text-4xl text-stone-900 mb-2">Course</Text>
         <Text className="text-stone-700">Grammar, everyday speech, and reading practice.</Text>
@@ -60,7 +61,7 @@ export default function Course() {
           )}
         </View>
       )}
-    </View>
+    </TabScreen>
   )
 }
 

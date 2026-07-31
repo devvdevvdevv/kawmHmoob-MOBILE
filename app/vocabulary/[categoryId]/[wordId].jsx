@@ -1,2 +1,10 @@
+import TabScreen from '../../../src/components/TabScreen.jsx'
 import WordDetail from '../../../src/components/vocabulary/WordDetail.jsx'
-export default WordDetail
+
+export default function WordDetailScreen() {
+  return (
+    <TabScreen>
+      <WordDetail />
+    </TabScreen>
+  )
+}

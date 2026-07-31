@@ -1,4 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+
+// Every brand color resolves through a CSS variable (defined per theme in
+// src/lib/themes.js and applied as a NativeWind vars() style on the root
+// wrapper). So `bg-cream-50` / `text-stone-900` automatically restyle when the
+// theme flips light → dark → neon — no `dark:` variants in components. This
+// mirrors the web app's tailwind.config.js + index.css exactly.
+// The `<alpha-value>` slot keeps opacity modifiers (bg-cream-50/80) working.
+const v = (name) => `rgb(var(--c-${name}) / <alpha-value>)`
+
 module.exports = {
   content: [
     './app/**/*.{js,jsx,ts,tsx}',
@@ -7,69 +16,55 @@ module.exports = {
   presets: [require('nativewind/preset')],
   theme: {
     extend: {
+      // See notes: font-serif is kept pointing at Nunito so the existing
+      // font-serif heading usages need no rename (Nunito is a rounded sans).
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Fraunces', 'Lora', 'Georgia', 'serif'],
+        sans: ['NunitoSans_400Regular', 'system-ui', 'sans-serif'],
+        serif: ['Nunito_700Bold', 'system-ui', 'sans-serif'],
+        display: ['Nunito_700Bold', 'system-ui', 'sans-serif'],
       },
       colors: {
+        // ── Themed (flip with light/dark/neon via CSS vars) ──────────────────
         cream: {
-          50: '#FBF6EC',
-          100: '#F5EBD9',
-          200: '#ECDCC0',
-          300: '#E0C8A0',
-          400: '#D9B38C',
-          500: '#C99A6F',
-          600: '#A87A52',
+          50: v('cream-50'), 100: v('cream-100'), 200: v('cream-200'),
+          300: v('cream-300'), 400: v('cream-400'), 500: v('cream-500'), 600: v('cream-600'),
         },
-        clay: {
-          100: '#F1DAD0',
-          300: '#D88E72',
-          500: '#B25E3D',
-          600: '#9C4F33',
-          700: '#7E3F28',
-          800: '#5C2D1C',
-        },
+        clay: { 500: v('clay-500'), 600: v('clay-600'), 700: v('clay-700') },
         blush: {
-          50: '#FCEEEB',
-          100: '#F8DBD5',
-          200: '#B0E0E6',
-          300: '#E8A39B',
-          400: '#D88278',
-          500: '#C26358',
+          50: v('blush-50'), 100: v('blush-100'), 200: v('blush-200'),
+          300: v('blush-300'), 400: v('blush-400'), 500: v('blush-500'),
+        },
+        seafoam: {
+          50: v('seafoam-50'), 100: v('seafoam-100'), 200: v('seafoam-200'),
+          300: v('seafoam-300'), 400: v('seafoam-400'), 500: v('seafoam-500'),
+        },
+        ocean: {
+          50: v('ocean-50'), 100: v('ocean-100'), 200: v('ocean-200'), 300: v('ocean-300'),
+          400: v('ocean-400'), 500: v('ocean-500'), 600: v('ocean-600'), 700: v('ocean-700'),
         },
         stone: {
-          50: '#FAFAF9',
-          100: '#F5F5F4',
-          200: '#E7E5E4',
-          300: '#D6D3D1',
-          400: '#A8A29E',
-          500: '#78716C',
-          600: '#57534E',
-          700: '#44403C',
-          800: '#292524',
-          900: '#1C1917',
+          50: v('stone-50'), 100: v('stone-100'), 200: v('stone-200'), 300: v('stone-300'),
+          400: v('stone-400'), 500: v('stone-500'), 600: v('stone-600'), 700: v('stone-700'),
+          800: v('stone-800'), 900: v('stone-900'),
         },
+        // Named for MEANING, not hue (they invert in dark/neon) — matches web.
+        success: { 50: v('success-50'), 200: v('success-200'), 500: v('success-500'), 700: v('success-700'), 900: v('success-900') },
+        danger: { 50: v('danger-50'), 200: v('danger-200'), 500: v('danger-500'), 700: v('danger-700'), 900: v('danger-900') },
+
+        // Existing screens use `emerald`/`red` by literal name (quiz right/wrong,
+        // flashcard, practice feedback). Alias them onto the THEMED success/danger
+        // tokens so they invert in dark/neon like everything else. The shades
+        // emerald/red use but success/danger don't (100, 800) map to the nearest
+        // themed step. `orange` (streak/BetaRibbon) now has its own themed tokens.
         emerald: {
-          50: '#ECFDF5',
-          100: '#D1FAE5',
-          200: '#A7F3D0',
-          500: '#10B981',
-          700: '#047857',
-          800: '#065F46',
-          900: '#064E3B',
+          50: v('success-50'), 100: v('success-200'), 200: v('success-200'),
+          500: v('success-500'), 700: v('success-700'), 800: v('success-900'), 900: v('success-900'),
         },
         red: {
-          50: '#FEF2F2',
-          100: '#FEE2E2',
-          200: '#FECACA',
-          500: '#EF4444',
-          700: '#B91C1C',
-          900: '#7F1D1D',
+          50: v('danger-50'), 100: v('danger-200'), 200: v('danger-200'),
+          500: v('danger-500'), 700: v('danger-700'), 900: v('danger-900'),
         },
-        orange: {
-          200: '#FED7AA',
-          900: '#7C2D12',
-        },
+        orange: { 200: v('orange-200'), 900: v('orange-900') },
       },
       boxShadow: {
         warm: '0 4px 14px -2px rgba(120, 80, 40, 0.12), 0 2px 4px -2px rgba(120, 80, 40, 0.08)',

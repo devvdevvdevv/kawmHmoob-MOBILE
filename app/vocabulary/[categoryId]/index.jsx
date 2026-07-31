@@ -1,2 +1,10 @@
+import TabScreen from '../../../src/components/TabScreen.jsx'
 import VocabList from '../../../src/components/vocabulary/VocabList.jsx'
-export default VocabList
+
+export default function VocabListScreen() {
+  return (
+    <TabScreen>
+      <VocabList />
+    </TabScreen>
+  )
+}

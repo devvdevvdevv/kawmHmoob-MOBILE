@@ -205,9 +205,7 @@ export default function QuizEngine() {
         )}
 
         <View className="mt-6">
-          <Pressable onPress={handleQuit}>
-            <Text className="text-sm text-stone-700 underline">Quit quiz</Text>
-          </Pressable>
+          <Button variant="secondary" onPress={handleQuit}>QUIT QUIZ</Button>
         </View>
       </View>
     </PaywallGate>

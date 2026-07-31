@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { View, Text, TextInput, Pressable, Alert } from 'react-native'
 import { Link, useLocalSearchParams, useRouter } from 'expo-router'
 import Tabs from '../../src/components/Tabs.jsx'
+import TabScreen from '../../src/components/TabScreen.jsx'
 import { useNotebook } from '../../src/context/NotebookContext.jsx'
 import { categories } from '../../src/data/vocabulary.js'
 import Button from '../../src/components/ui/Button.jsx'
@@ -14,7 +15,7 @@ const tabs = [
 export default function Notebook() {
   const { tab } = useLocalSearchParams()
   return (
-    <View>
+    <TabScreen>
       <View className="mb-6">
         <Text className="font-serif text-4xl text-stone-900 mb-2">Notebook</Text>
         <Text className="text-stone-700">
@@ -24,7 +25,7 @@ export default function Notebook() {
       <Tabs basePath="/notebook" tabs={tabs} />
       {tab === 'saved' && <SavedWords />}
       {tab === 'notes' && <Notes />}
-    </View>
+    </TabScreen>
   )
 }
 

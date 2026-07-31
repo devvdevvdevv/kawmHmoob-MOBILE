@@ -1,12 +1,40 @@
 import { useState } from 'react'
 import { View, Text, Pressable } from 'react-native'
 import { Link, useLocalSearchParams, useRouter } from 'expo-router'
+import Svg, { Path } from 'react-native-svg'
 import { getCategory } from '../../data/vocabulary.js'
 import { useProgress } from '../../hooks/useProgress.js'
+import { useTheme } from '../../context/ThemeContext.jsx'
+import { THEME_TOKENS } from '../../lib/themes.js'
 import AudioButton from '../common/AudioButton.jsx'
 import Breadcrumbs from '../common/Breadcrumbs.jsx'
 import Flashcard from './Flashcard.jsx'
 import Button from '../ui/Button.jsx'
+
+// Deck-nav icons ported path-for-path from the web icon set (Arrow/Refresh):
+// 24x24, stroke currentColor @ 2px, round caps/joins. RN SVG has no
+// currentColor, so the color is passed in from the active theme.
+function ArrowLeftIcon({ color, size = 20 }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <Path d="M20 12H5" /><Path d="M11 6l-6 6 6 6" />
+    </Svg>
+  )
+}
+function ArrowRightIcon({ color, size = 20 }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <Path d="M4 12h15" /><Path d="M13 6l6 6-6 6" />
+    </Svg>
+  )
+}
+function RefreshIcon({ color, size = 20 }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <Path d="M20 12a8 8 0 1 1-2.3-5.7" /><Path d="M20 3v4h-4" />
+    </Svg>
+  )
+}
 
 export default function VocabList() {
   const { categoryId } = useLocalSearchParams()
@@ -15,6 +43,11 @@ export default function VocabList() {
   const [mode, setMode] = useState('list')
   const [cardIdx, setCardIdx] = useState(0)
   const { vocabProgress } = useProgress()
+  const { theme } = useTheme()
+
+  const tk = THEME_TOKENS[theme] || THEME_TOKENS.light
+  const inkColor = `rgb(${tk['--c-stone-800']})`
+  const creamColor = `rgb(${tk['--c-cream-50']})`
 
   if (!cat) {
     return (
@@ -48,21 +81,28 @@ export default function VocabList() {
           <Text className="text-stone-700 mt-1">{cat.description}</Text>
         </View>
         {!empty && (
-          <View className="flex-row gap-1 rounded bg-cream-100 border border-cream-200 p-1">
-            <Pressable
-              onPress={() => setMode('list')}
-              className={`px-3 py-1.5 rounded-sm ${mode === 'list' ? 'bg-cream-50 shadow-warm' : ''}`}
-            >
-              <Text className={`text-sm ${mode === 'list' ? 'text-clay-700 font-semibold' : 'text-stone-600'}`}>List</Text>
-            </Pressable>
-            <Pressable
-              onPress={() => { setMode('flashcard'); setCardIdx(0) }}
-              className={`px-3 py-1.5 rounded-sm ${mode === 'flashcard' ? 'bg-cream-50 shadow-warm' : ''}`}
-            >
-              <Text className={`text-sm ${mode === 'flashcard' ? 'text-clay-700 font-semibold' : 'text-stone-600'}`}>
-                Study Mode
-              </Text>
-            </Pressable>
+          // Quiz is reachable from the header at all times (mirrors the web);
+          // the List / Study Mode toggle sits beneath it.
+          <View className="items-end gap-2">
+            <Link href={`/quiz/vocab-${cat.id}`} asChild>
+              <Button size="sm">Take the quiz →</Button>
+            </Link>
+            <View className="flex-row gap-1 rounded bg-cream-100 border border-cream-200 p-1">
+              <Pressable
+                onPress={() => setMode('list')}
+                className={`px-3 py-1.5 rounded-sm ${mode === 'list' ? 'bg-cream-50 shadow-warm' : ''}`}
+              >
+                <Text className={`text-sm ${mode === 'list' ? 'text-clay-700 font-semibold' : 'text-stone-600'}`}>List</Text>
+              </Pressable>
+              <Pressable
+                onPress={() => { setMode('flashcard'); setCardIdx(0) }}
+                className={`px-3 py-1.5 rounded-sm ${mode === 'flashcard' ? 'bg-cream-50 shadow-warm' : ''}`}
+              >
+                <Text className={`text-sm ${mode === 'flashcard' ? 'text-clay-700 font-semibold' : 'text-stone-600'}`}>
+                  Study Mode
+                </Text>
+              </Pressable>
+            </View>
           </View>
         )}
       </View>
@@ -98,24 +138,44 @@ export default function VocabList() {
       {!empty && mode === 'flashcard' && word && (
         <View>
           <Flashcard word={word} />
-          <View className="flex-row justify-between mt-4">
-            <Button
+
+          {/* Prev / next as large round targets flanking the counter — ported
+              from the web study mode. Prev is a neutral cream circle; next is the
+              primary clay circle. At the end of the deck, next is swapped for a
+              refresh (restart) + a link into the category quiz. */}
+          <View className="flex-row justify-between items-center mt-4 gap-3">
+            <Pressable
               onPress={() => setCardIdx((i) => Math.max(0, i - 1))}
               disabled={cardIdx === 0}
-              variant="ghost"
+              className={`h-12 w-12 rounded-full bg-cream-200 items-center justify-center active:bg-cream-300 ${cardIdx === 0 ? 'opacity-40' : ''}`}
             >
-              ← Prev
-            </Button>
-            <Text className="text-sm text-stone-700 self-center">
+              <ArrowLeftIcon color={inkColor} />
+            </Pressable>
+
+            <Text className="text-sm font-medium text-stone-700">
               {cardIdx + 1} / {cat.words.length}
             </Text>
-            <Button
-              onPress={() => setCardIdx((i) => Math.min(cat.words.length - 1, i + 1))}
-              disabled={cardIdx === cat.words.length - 1}
-              variant="ghost"
-            >
-              Next →
-            </Button>
+
+            {cardIdx === cat.words.length - 1 ? (
+              <View className="flex-row gap-2">
+                <Pressable
+                  onPress={() => setCardIdx(0)}
+                  className="h-12 w-12 rounded-full bg-cream-200 items-center justify-center active:bg-cream-300"
+                >
+                  <RefreshIcon color={inkColor} />
+                </Pressable>
+                <Link href={`/quiz/vocab-${cat.id}`} asChild>
+                  <Button size="sm">Take the quiz</Button>
+                </Link>
+              </View>
+            ) : (
+              <Pressable
+                onPress={() => setCardIdx((i) => Math.min(cat.words.length - 1, i + 1))}
+                className="h-12 w-12 rounded-full bg-clay-600 items-center justify-center active:bg-clay-700"
+              >
+                <ArrowRightIcon color={creamColor} />
+              </Pressable>
+            )}
           </View>
         </View>
       )}
