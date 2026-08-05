@@ -69,6 +69,17 @@ module.exports = {
       boxShadow: {
         warm: '0 4px 14px -2px rgba(120, 80, 40, 0.12), 0 2px 4px -2px rgba(120, 80, 40, 0.08)',
       },
+      // Softer, consistent roundrects on all the cards/boxes (rounded-md is the
+      // shared box radius across the app) — gentler than the old 6px, but not
+      // pill-round. Plus a bolder default border so boxes read as defined.
+      borderRadius: {
+        md: '0.625rem',   // ~10px (was 6px) — the app-wide card corner
+        lg: '0.875rem',   // ~14px
+        xl: '1.125rem',   // ~18px
+      },
+      borderWidth: {
+        DEFAULT: '2px',   // bolder borders everywhere `border` is used
+      },
     },
   },
   plugins: [],

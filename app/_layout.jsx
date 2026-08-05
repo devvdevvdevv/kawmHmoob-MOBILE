@@ -1,6 +1,7 @@
 // app/_layout.jsx
+import { useEffect } from 'react'
 import { View } from 'react-native'
-import { Stack } from 'expo-router'
+import { Stack, usePathname, useRouter, useRootNavigationState } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import {
@@ -14,17 +15,20 @@ import {
   NunitoSans_600SemiBold,
   NunitoSans_700Bold,
 } from '@expo-google-fonts/nunito-sans'
-import { AuthProvider } from '../src/context/AuthContext.jsx'
+import { AuthProvider, useAuth } from '../src/context/AuthContext.jsx'
 // Drawer
 import { DrawerProvider } from '../src/components/Drawer/DrawerContext.jsx'
 import { SubscriptionProvider } from '../src/context/SubscriptionContext.jsx'
 import { ProgressProvider } from '../src/context/ProgressContext.jsx'
 import { NotebookProvider } from '../src/context/NotebookContext.jsx'
 import { ThemeProvider, useTheme } from '../src/context/ThemeContext.jsx'
+import { CelebrationProvider } from '../src/context/CelebrationContext.jsx'
 import { THEME_VARS, THEME_BG } from '../src/lib/themes.js'
 import GlobalTabBar from '../src/components/GlobalTabBar.jsx'
 import GlobalHeader from '../src/components/GlobalHeader.jsx'
 import DrawerHost from '../src/components/Drawer/DrawerHost.jsx'
+import WelcomeTour from '../src/components/onboarding/WelcomeTour.jsx'
+import CelebrationOverlay from '../src/components/common/CelebrationOverlay.jsx'
 import '../global.css'
 
 export default function RootLayout() {
@@ -52,7 +56,9 @@ export default function RootLayout() {
             <ProgressProvider>
               <DrawerProvider>
                 <NotebookProvider>
-                  <ThemedShell />
+                  <CelebrationProvider>
+                    <ThemedShell />
+                  </CelebrationProvider>
                 </NotebookProvider>
               </DrawerProvider>
             </ProgressProvider>
@@ -93,6 +99,36 @@ function ThemedShell() {
       <GlobalHeader />
       <GlobalTabBar />
       <DrawerHost/>
+      {/* First-run tour — shows once, over everything, then never again */}
+      <WelcomeTour />
+      {/* Celebration (confetti + "complete!") — LAST so it's above the bars */}
+      <CelebrationOverlay />
+      {/* Forces new (un-onboarded) accounts through onboarding */}
+      <OnboardingGate />
     </View>
   )
+}
+
+// A signed-in user whose profile has no `onboardedAt` is bounced to /onboarding and
+// kept there: navigating anywhere else just redirects back, so the only way out is
+// Save or Skip (both stamp onboardedAt). Guests are exempt.
+function OnboardingGate() {
+  const { user, loading } = useAuth()
+  const router = useRouter()
+  const pathname = usePathname() || ''
+  // Root navigator readiness. Calling router.replace() before the navigator has
+  // mounted throws "Couldn't find a navigation context / Attempted to navigate
+  // before mounting the Root Layout" — which on device red-boxes the whole shell
+  // (so the drawer looks dead too). navState.key is set only once it's ready.
+  const navState = useRootNavigationState()
+
+  useEffect(() => {
+    if (!navState?.key) return
+    if (loading || !user || user.isGuest || user.onboardedAt) return
+    const exempt = ['/onboarding', '/login', '/register']
+    if (exempt.some((r) => pathname.startsWith(r))) return
+    router.replace('/onboarding')
+  }, [navState?.key, user, loading, pathname, router])
+
+  return null
 }

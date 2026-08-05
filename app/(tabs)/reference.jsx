@@ -46,6 +46,7 @@ import Tabs from '../../src/components/Tabs.jsx'
 import { consonantGroups, vowelGroups, tones, grammar } from '../../src/data/reference.js'
 import LetterGrid from '../../src/components/reference/LetterGrid.jsx'
 import ToneRows from '../../src/components/reference/ToneRows.jsx'
+import GlobalSearch from '../../src/components/common/GlobalSearch.jsx'   // the Search tab (mirrors the drawer)
 import Svg, { Path } from 'react-native-svg'                        // for the "Learn this" arrow
 import { useTheme } from '../../src/context/ThemeContext.jsx'       // to color the arrow per theme
 import { THEME_TOKENS } from '../../src/lib/themes.js'
@@ -56,6 +57,7 @@ const TABS = [
   { id: 'vowels', label: 'Vowels' },
   { id: 'tones', label: 'Tones' },
   { id: 'grammar', label: 'Grammar' },
+  { id: 'search', label: 'Search' },
 ]
 
 
@@ -79,21 +81,11 @@ export default function Reference() {
 
   return (
     <TabScreen>
-      {/* TODO: header — title + one-line subtitle (edit the copy if you want) */}
-      <View>
-        <Text>
-            {tab}
-        </Text>
-      </View>
-
       <View className="mb-6">
         <Text className="font-serif text-3xl text-stone-900 mb-2">Reference</Text>
-        <Text className="text-base text-stone-700">Letters, tones, and grammar at a glance.</Text>
+        <Text className="text-base text-stone-700">Letters, tones, and grammar at a glance — or search it all.</Text>
       </View>
 
-      {/* TODO: Tabs must be given CONTROLLED mode (active + onChange).
-          Right now Tabs.jsx is route-based and won't highlight here — add the
-          controlled branch from the guide §6 before this works. */}
       <Tabs tabs={TABS} active={tab} onChange={setTab} />
 
       {/* One section per tab. consonants + vowels share GroupedLetters. */}
@@ -101,6 +93,7 @@ export default function Reference() {
       {tab === 'vowels' && <GroupedLetters groups={vowelGroups} />}
       {tab === 'tones' && <ToneRows items={tones} />}
       {tab === 'grammar' && <GrammarTables sections={grammar} />}
+      {tab === 'search' && <GlobalSearch />}
     </TabScreen>
   )
 }
@@ -176,5 +169,8 @@ function GrammarTables({ sections }) {
     </View>
   )
 }
+
+// (Search is now the shared <GlobalSearch/> — rendered by the Search tab above and
+// the drawer's /search route, so they mirror.)
 
 

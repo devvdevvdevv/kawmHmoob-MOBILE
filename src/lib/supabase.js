@@ -9,6 +9,7 @@
 // of the app can run with no env file (every call errors gracefully).
 
 import 'react-native-url-polyfill/auto'
+import { Platform } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createClient } from '@supabase/supabase-js'
 
@@ -48,7 +49,12 @@ const stubClient = {
 export const supabase = isSupabaseConfigured()
   ? createClient(url, anonKey, {
       auth: {
-        storage: AsyncStorage,
+        // AsyncStorage touches `window`, which doesn't exist during the web STATIC
+        // prerender (Node) — using it there throws "window is not defined". So use
+        // AsyncStorage only on native; on web, leave storage undefined and let
+        // supabase-js pick its own adapter (localStorage in the browser, an
+        // in-memory no-op during SSR/prerender).
+        storage: Platform.OS === 'web' ? undefined : AsyncStorage,
         autoRefreshToken: true,
         persistSession: true,
         detectSessionInUrl: false,

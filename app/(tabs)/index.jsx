@@ -2,7 +2,6 @@ import { View, Text, Pressable } from 'react-native'
 import { Link } from 'expo-router'
 import TabScreen from '../../src/components/TabScreen.jsx'
 import TodayCard from '../../src/components/home/TodayCard.jsx'
-import GuestBanner from '../../src/components/account/GuestBanner.jsx'
 import Footer from '../../src/components/Footer.jsx'
 import { useAuth } from '../../src/context/AuthContext.jsx'
 import { useProgress } from '../../src/hooks/useProgress.js'
@@ -47,14 +46,23 @@ export default function Home() {
 
   return (
     <TabScreen>
-      <GuestBanner />
-
       {/* Hero */}
       <View className="mb-8 mt-2">
         <Text className="text-sm uppercase tracking-[3px] text-clay-600 mb-3 font-semibold">
           {user.isGuest ? 'Welcome' : `Welcome back, ${user.username}`}
         </Text>
+        
         <Text className="font-serif text-4xl text-stone-900 mb-3">Nyob zoo.</Text>
+        {/* Button */}
+
+        <Pressable className="rounded-md">
+          <Text>
+
+          </Text>
+        </Pressable>
+        
+        
+        
         <Text className="text-base text-stone-700 leading-relaxed">
           Learn to read, speak, and understand Hmong.
         </Text>

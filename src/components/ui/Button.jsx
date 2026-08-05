@@ -3,22 +3,28 @@ import { Pressable, Text } from 'react-native'
 import { useTheme } from '../../context/ThemeContext.jsx'
 import { THEME_TOKENS } from '../../lib/themes.js'
 
-// Shared button presets that mirror the web's .btn-primary / .btn-secondary
-// / .btn-ghost classes. Variant picks the color treatment; size adjusts padding.
+// Shared button presets mirroring the web's .btn-primary / -secondary / -ghost.
 //
-// The label COLOR is set inline from the active theme token, NOT via a `text-*`
-// className. NativeWind's text-color classes are unreliable in this project
-// (they silently no-op on some elements — the flashcard, the drawer, and these
-// button labels all hit it), which left labels rendering default black. Inline
-// rgb() from THEME_TOKENS is the reliable path and still themes correctly.
+// BACKGROUND/border come from `className` (works fine anywhere this shared Button
+// is used — it's only ever rendered inside the themed root, NEVER inside a RN
+// <Modal>; modals use raw inline Pressables instead, because a Modal is a separate
+// native root the theme CSS vars don't reach). TEXT color is set INLINE from the
+// theme token, because NativeWind's `text-*` classes are unreliable here (they
+// silently no-op — the "hny nkh" black-label bug). See notes + memory
+// [[nativewind-text-color-inline]].
 //
-// forwardRef so `<Link asChild><Button/></Link>` (expo-router) can pass its
-// press ref through.
+// IMPORTANT: do NOT move the background into the `style` FUNCTION — NativeWind
+// ignores a `style` function when `className` is present, which made every button
+// transparent/invisible. Background stays in className; the style function is only
+// for the pressed-opacity flash.
+//
+// forwardRef so `<Link asChild><Button/></Link>` can pass its press ref through.
 
 const VARIANTS = {
-  primary:   { base: 'rounded bg-clay-600 shadow-warm', textToken: '--c-cream-50' },
-  secondary: { base: 'rounded bg-stone-900',            textToken: '--c-cream-50' },
-  ghost:     { base: 'rounded border border-cream-300', textToken: '--c-stone-800' },
+  primary:   { base: 'rounded shadow-warm bg-clay-600',  textToken: '--c-cream-50' },
+  secondary: { base: 'rounded bg-stone-900',             textToken: '--c-cream-50' },
+  ghost:     { base: 'rounded border border-cream-300',  textToken: '--c-stone-800' },
+  danger:    { base: 'rounded bg-red-600',               textToken: '--c-cream-50' },
 }
 
 const SIZES = {
@@ -26,9 +32,6 @@ const SIZES = {
   md: 'px-5 py-2.5',
   lg: 'px-6 py-3.5',
 }
-
-// Accessibility: every button is at least 44px tall (Apple HIG / WCAG target size).
-const MIN_TAP = 44
 
 const Button = forwardRef(function Button({
   children,
@@ -43,10 +46,7 @@ const Button = forwardRef(function Button({
   const { theme } = useTheme()
   const v = VARIANTS[variant] || VARIANTS.primary
   const s = SIZES[size] || SIZES.md
-
   const tok = THEME_TOKENS[theme] || THEME_TOKENS.light
-  // Tokens are stored as space-separated "R G B"; use comma form so it's a valid
-  // color on BOTH native and web.
   const textColor = `rgb(${(tok[v.textToken] || '0 0 0').split(' ').join(', ')})`
 
   // Wrap text-like children (string, number, or an array of them like `← {word}`)
@@ -61,8 +61,10 @@ const Button = forwardRef(function Button({
       ref={ref}
       onPress={disabled ? undefined : onPress}
       disabled={disabled}
-      className={`flex-row items-center justify-center ${s} ${v.base} ${disabled ? 'opacity-50' : ''} ${className}`}
-      style={({ pressed }) => [{ minHeight: MIN_TAP }, pressed && !disabled ? { opacity: 0.7 } : null]}
+      // min-h-[44px] via className (a static value — applies reliably); bg via
+      // className (v.base). The style function is opacity-only on purpose.
+      className={`flex-row items-center justify-center min-h-[44px] ${s} ${v.base} ${disabled ? 'opacity-50' : ''} ${className}`}
+      style={({ pressed }) => (pressed && !disabled ? { opacity: 0.7 } : undefined)}
       {...rest}
     >
       {isTextLike ? (

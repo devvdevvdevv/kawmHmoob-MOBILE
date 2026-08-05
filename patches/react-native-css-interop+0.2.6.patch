@@ -1,0 +1,44 @@
+diff --git a/node_modules/react-native-css-interop/dist/runtime/native/render-component.js b/node_modules/react-native-css-interop/dist/runtime/native/render-component.js
+index eba25ec..2e0fc2e 100644
+--- a/node_modules/react-native-css-interop/dist/runtime/native/render-component.js
++++ b/node_modules/react-native-css-interop/dist/runtime/native/render-component.js
+@@ -118,7 +118,14 @@ function createAnimatedComponent(Component) {
+     return AnimatedComponent;
+ }
+ function printUpgradeWarning(warning, originalProps) {
+-    console.log(`CssInterop upgrade warning.\n\n${warning}.\n\nThis warning was caused by a component with the props:\n${stringify(originalProps)}\n\nIf adding or removing sibling components caused this warning you should add a unique "key" prop to your components. https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key\n`);
++    // PATCHED: do NOT stringify originalProps. In this app the props reach into
++    // React element internals / the navigation context, so serializing them
++    // either threw "Couldn't find a navigation context" (older behavior) or, once
++    // guarded, logged a multi-MB object that froze the JS thread. This is a
++    // dev-only warning about a View→Pressable upgrade caused by a className that
++    // toggles a pseudo-class (e.g. `active:`) between renders — the text alone is
++    // enough of a signal; the props dump is not worth crashing/freezing the app.
++    console.log(`CssInterop upgrade warning.\n\n${warning}.\n\nIf adding or removing sibling components caused this warning add a unique "key" prop.\n`);
+ }
+ function stringify(object) {
+     const seen = new WeakSet();
+@@ -131,8 +138,21 @@ function stringify(object) {
+         }
+         seen.add(value);
+         const newValue = Array.isArray(value) ? [] : {};
+-        for (const entry of Object.entries(value)) {
+-            newValue[entry[0]] = replace(entry[0], entry[1]);
++        // Object.keys (not Object.entries) so we DON'T invoke getters while
++        // enumerating; then read each value in a try/catch. Some props (e.g. the
++        // navigation object expo-router's <Link asChild> injects) have getters
++        // that THROW when read outside a navigator, which used to crash this
++        // dev-only warning with a misleading "Couldn't find a navigation
++        // context" error. Guard so serialization can never take down the app.
++        for (const key of Object.keys(value)) {
++            let entryValue;
++            try {
++                entryValue = value[key];
++            } catch {
++                newValue[key] = "[Unserializable]";
++                continue;
++            }
++            newValue[key] = replace(key, entryValue);
+         }
+         seen.delete(value);
+         return newValue;

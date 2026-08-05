@@ -73,76 +73,89 @@ export default function Onboarding() {
 
   return (
     <TabScreen>
-      <Text className="text-sm uppercase tracking-[2px] text-clay-600 mb-2">
-        Welcome{user.displayName && user.displayName !== 'Guest' ? `, ${user.displayName}` : ''}
-      </Text>
-      <Text className="font-serif text-5xl text-stone-900 mb-3">Tell us about you</Text>
+      {/* One card, app color scheme (cream surface + bold border). TabScreen
+          already scrolls, so no nested ScrollView. */}
+      <View className="rounded-lg bg-cream-50 border-2 border-cream-200 p-6">
+        {/* Header */}
+            <Text className="text-xs uppercase tracking-[2.5px] text-clay-600 mb-2">
+              Welcome{user.displayName && user.displayName !== 'Guest' ? `, ${user.displayName}` : ''}
+            </Text>
+            <Text className="font-serif text-4xl text-stone-900 mb-3">
+              Tell us about you
+            </Text>
 
-      <Text className="text-stone-700 leading-relaxed mb-2">
-        A few optional questions. Honest answers tailor your lessons — and, because Hmong is
-        under-recorded, they also help label an <Text className="font-semibold">open Hmong voice dataset</Text>{' '}
-        built to improve pronunciation tools for everyone.
-      </Text>
-      <Text className="text-sm text-stone-600 mb-8">
-        Every question is optional. Skip any of them, or the whole thing — you can fill it in
-        later from Settings.
-      </Text>
+            <Text className="text-stone-700 leading-relaxed mb-2">
+              A few optional questions. Honest answers tailor your lessons — and, because Hmong is
+              under-recorded, they also help label an{' '}
+              <Text className="font-semibold text-stone-900">open Hmong voice dataset</Text>{' '}
+              built to improve pronunciation tools for everyone.
+            </Text>
+            <Text className="text-sm text-stone-600 mb-6">
+              Every question is optional. Skip any of them, or the whole thing — you can fill it in
+              later from Settings.
+            </Text>
 
-      <View className="gap-8">
-        <Choice label="Age range" options={AGE_RANGES} value={form.ageRange} onChange={(v) => set('ageRange', v)} />
-        <Choice label="Gender" options={GENDERS} value={form.gender} onChange={(v) => set('gender', v)} />
+            {/* Form */}
+            <View className="gap-7">
+              <Choice label="Age range" options={AGE_RANGES} value={form.ageRange} onChange={(v) => set('ageRange', v)} />
+              <Choice label="Gender" options={GENDERS} value={form.gender} onChange={(v) => set('gender', v)} />
 
-        <View>
-          <Label>Dialect you're learning</Label>
-          <View className="flex-row flex-wrap gap-2">
-            {DIALECTS.map((d) => (
-              <Pill key={d.value} active={form.dialectPreference === d.value} onPress={() => set('dialectPreference', d.value)}>
-                {d.label}
-              </Pill>
-            ))}
-          </View>
-          <Text className="text-xs text-stone-600 mt-2">
-            Only White Hmong content exists today — the rest saves for later.
-          </Text>
-        </View>
+              <View>
+                <Label>Dialect you're learning</Label>
+                <View className="flex-row flex-wrap gap-2">
+                  {DIALECTS.map((d) => (
+                    <Pill key={d.value} active={form.dialectPreference === d.value} onPress={() => set('dialectPreference', d.value)}>
+                      {d.label}
+                    </Pill>
+                  ))}
+                </View>
+                <Text className="text-xs text-stone-600 mt-2">
+                  Only White Hmong content exists today — the rest saves for later.
+                </Text>
+              </View>
 
-        <Choice label="Your relationship to Hmong" options={HMONG_RELATIONSHIP} value={form.hmongRelationship} onChange={(v) => set('hmongRelationship', v)} />
-        <Choice
-          label="Ethnicity"
-          hint="Optional and never shared publicly. Helps make the dataset representative."
-          options={ETHNICITIES}
-          value={form.ethnicity}
-          onChange={(v) => set('ethnicity', v)}
-        />
+              <Choice label="Your relationship to Hmong" options={HMONG_RELATIONSHIP} value={form.hmongRelationship} onChange={(v) => set('hmongRelationship', v)} />
+              <Choice
+                label="Ethnicity"
+                hint="Optional and never shared publicly. Helps make the dataset representative."
+                options={ETHNICITIES}
+                value={form.ethnicity}
+                onChange={(v) => set('ethnicity', v)}
+              />
 
-        <View>
-          <Label hint="e.g. a state, country, or region your family is from">
-            Where are you / your family from?
-          </Label>
-          <TextInput
-            value={form.region}
-            onChangeText={(v) => set('region', v)}
-            placeholder="Optional"
-            placeholderTextColor="#A8A29E"
-            className="w-full rounded-lg border border-cream-300 bg-cream-50 px-4 py-3 text-base text-stone-900"
-          />
-        </View>
+              <View>
+                <Label hint="e.g. a state, country, or region your family is from">
+                  Where are you / your family from?
+                </Label>
+                <TextInput
+                  value={form.region}
+                  onChangeText={(v) => set('region', v)}
+                  placeholder="Optional"
+                  placeholderTextColor="#A8A29E"
+                  className="w-full rounded-lg border-2 border-cream-300 bg-cream-50 px-4 py-3.5 text-base text-stone-900"
+                />
+              </View>
 
-        {error && (
-          <View className="rounded-lg bg-red-100 px-3 py-2.5">
-            <Text className="text-sm text-red-900">{error}</Text>
-          </View>
-        )}
+              {error && (
+                <View className="rounded-lg bg-red-50 border border-red-200 px-4 py-3">
+                  <Text className="text-sm text-red-900">{error}</Text>
+                </View>
+              )}
 
-        <View className="flex-row flex-wrap items-center gap-4 pt-2">
-          <Button onPress={submit} disabled={saving}>
-            {saving ? 'Saving…' : '✓ Save & continue'}
-          </Button>
-          <Pressable onPress={saving ? undefined : skip} disabled={saving}>
-            <Text className="text-sm text-stone-600 underline">Skip for now</Text>
-          </Pressable>
-        </View>
+              {/* Actions */}
+              <View className="flex-row flex-wrap items-center gap-4 pt-2">
+                <Button onPress={submit} disabled={saving}>
+                  {saving ? 'Saving…' : '✓ Save & continue'}
+                </Button>
+                <Pressable onPress={saving ? undefined : skip} disabled={saving}>
+                  <Text className="text-sm text-stone-600 underline">Skip for now</Text>
+                </Pressable>
+              </View>
+            </View>
       </View>
+
+      {/* Extra bottom spacing */}
+      <View className="h-6" />
     </TabScreen>
   )
 }
@@ -176,14 +189,15 @@ function Choice({ label, hint, options, value, onChange }) {
 }
 
 function Pill({ active, onPress, children, muted }) {
+  const base = 'rounded-full px-4 py-2 border transition'
   const cls = active
-    ? 'bg-clay-600'
+    ? 'bg-clay-600 border-clay-600'
     : muted
-    ? 'bg-cream-100'
-    : 'bg-cream-200'
+      ? 'bg-cream-100 border-cream-200'
+      : 'bg-cream-100 border-cream-200'
   const textCls = active ? 'text-cream-50' : muted ? 'text-stone-600' : 'text-stone-800'
   return (
-    <Pressable onPress={onPress} className={`rounded-full px-4 py-2 ${cls}`}>
+    <Pressable onPress={onPress} className={`${base} ${cls}`}>
       <Text className={`text-sm font-medium ${textCls}`}>{children}</Text>
     </Pressable>
   )

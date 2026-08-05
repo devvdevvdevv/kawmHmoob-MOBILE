@@ -18,7 +18,7 @@ import { useDrawer } from './Drawer/DrawerContext.jsx'
 // Icons are the SAME line icons the web uses (ported path-for-path). Colors are
 // theme-driven; navigation is router.navigate() on Pressables (a <Link> style
 // array crashes react-native-web — see notes).
-const HIDE_ON = ['/login', '/register', '/onboarding']
+const HIDE_ON = ['/login', '/onboarding']
 
 export const HEADER_CONTENT_HEIGHT = 64
 

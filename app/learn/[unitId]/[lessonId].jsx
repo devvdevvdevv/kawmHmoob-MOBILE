@@ -8,6 +8,7 @@ import { useProgress } from '../../../src/hooks/useProgress.js'
 import Breadcrumbs from '../../../src/components/common/Breadcrumbs.jsx'
 import PaywallGate from '../../../src/components/common/PaywallGate.jsx'
 import AudioButton from '../../../src/components/common/AudioButton.jsx'
+import { useCelebration } from '../../../src/context/CelebrationContext.jsx'
 import Button from '../../../src/components/ui/Button.jsx'
 import TabScreen from '../../../src/components/TabScreen.jsx'
 
@@ -20,6 +21,7 @@ export default function Lesson() {
   const unit = getUnit(unitId)
   const lesson = getLesson(unitId, lessonId)
   const { completedSteps, quizScores, markStepComplete } = useProgress()
+  const { celebrate } = useCelebration()
   const [index, setIndex] = useState(0)
 
   // Auto-mark a quiz step complete once a score for its quiz exists — even if
@@ -61,7 +63,9 @@ export default function Lesson() {
       const remaining = ids.filter((id) => id !== step.id && !completedSteps.includes(id))
       markStepComplete(step.id, { lessonId: lesson.id, lessonComplete: remaining.length === 0 })
     }
-    if (isLast) router.push('/learn')
+    // Finishing the last step = lesson done → fire the global celebration (confetti
+    // + card, rendered at the root above everything); its button returns to the unit.
+    if (isLast) celebrate(lesson.title, () => router.push(`/learn/${unit.id}`))
     else setIndex((i) => i + 1)
   }
 

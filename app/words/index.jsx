@@ -83,6 +83,7 @@ export default function Words() {
         <DrillTile to="/quiz" emoji="⚡" title="Quizzes" blurb="Multiple choice drills, by topic." />
         <DrillTile to="/quiz/tone-drill" emoji="🎵" title="Tone drill" blurb="Hear the difference the last letter makes." />
         <DrillTile to="/notebook" emoji="📓" title="Notebook" blurb="The words you saved for later." />
+        <DrillTile to="/reading" emoji="📖" title="Reading & comprehension" blurb="Coming soon — longer passages with questions to test understanding." />
         <DrillTile to="/words/sentences" emoji="🧩" title="Sentence builder" blurb="Coming soon — assemble and label sentence parts." />
       </View>
     </TabScreen>

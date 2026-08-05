@@ -1,22 +1,23 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Audio } from 'expo-av'
+import { createAudioPlayer } from 'expo-audio'
 import { resolveAudioSrc } from '../lib/audioBase.js'
 
-// Cross-platform audio playback via expo-av. Works on iOS, Android, and web.
-// `src` can be a require()'d local asset or a remote URI string.
+// Cross-platform audio playback via expo-audio (SDK 54; replaced the removed
+// expo-av). `src` can be a require()'d local asset or a remote URI string.
 //
 // String paths (the web `/assets/audio/…` form) are run through resolveAudioSrc,
-// which prefixes the configured remote host (EXPO_PUBLIC_AUDIO_BASE_URL). Until
-// that host is set, playback is a graceful no-op.
+// which checks the bundled AUDIO_MAP first, then prefixes the configured remote
+// host (EXPO_PUBLIC_AUDIO_BASE_URL). Until a source resolves, playback no-ops.
 export function useAudio() {
   const [playing, setPlaying] = useState(null)
-  const soundRef = useRef(null)
+  const playerRef = useRef(null)
 
+  // Release the native player on unmount.
   useEffect(() => {
     return () => {
-      if (soundRef.current) {
-        soundRef.current.unloadAsync().catch(() => {})
-        soundRef.current = null
+      if (playerRef.current) {
+        try { playerRef.current.remove() } catch {}
+        playerRef.current = null
       }
     }
   }, [])
@@ -29,17 +30,20 @@ export function useAudio() {
       return
     }
     try {
-      if (soundRef.current) {
-        await soundRef.current.unloadAsync().catch(() => {})
-        soundRef.current = null
+      // Tear down the previous one-shot player before starting the next.
+      if (playerRef.current) {
+        try { playerRef.current.remove() } catch {}
+        playerRef.current = null
       }
       const source = typeof resolved === 'string' ? { uri: resolved } : resolved
-      const { sound } = await Audio.Sound.createAsync(source, { shouldPlay: true })
-      soundRef.current = sound
+      // createAudioPlayer is synchronous in expo-audio (no more createAsync).
+      const player = createAudioPlayer(source)
+      playerRef.current = player
       setPlaying(wordId || src)
-      sound.setOnPlaybackStatusUpdate((status) => {
-        if (status.didJustFinish) setPlaying(null)
+      player.addListener('playbackStatusUpdate', (status) => {
+        if (status?.didJustFinish) setPlaying(null)
       })
+      player.play()
     } catch (e) {
       if (__DEV__) console.warn('[audio] play failed', e)
       setPlaying(null)

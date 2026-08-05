@@ -6,8 +6,9 @@ module.exports = function (api) {
       'nativewind/babel',
     ],
     plugins: [
-      // 'expo-router/babel',
-      'react-native-reanimated/plugin',
+      // Reanimated 4 (SDK 54) moved its worklet transform into react-native-worklets.
+      // This must stay LAST in the plugins list.
+      'react-native-worklets/plugin',
     ],
   };
 };

@@ -9,6 +9,7 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { useProgress } from "../../hooks/useProgress.js";
 import { levelFromPoints } from "../../lib/leveling.js";
 import { HEADER_CONTENT_HEIGHT } from "../GlobalHeader.jsx";
+import KawmHmoobLogo from "../common/KawmHmoobLogo.jsx";
 
 
 
@@ -193,7 +194,7 @@ export default function DrawerHost(){
             
         })}
 
-          <Pressable 
+          <Pressable
           onPress={cycle}
           className="flex-row items-center gap-3 rounded-lg px-4 py-3 active:bg-cream-100"
           >
@@ -201,7 +202,13 @@ export default function DrawerHost(){
 
           </Pressable>
 
-            
+            {/* KawmHmoob wordmark — a few spaces under the theme row, brand-colored */}
+            <View className="items-center mt-12 mb-4 opacity-90">
+              <KawmHmoobLogo
+                color={`rgb(${(THEME_TOKENS[theme] || THEME_TOKENS.light)['--c-clay-600']})`}
+                width={150}
+              />
+            </View>
 
 
 

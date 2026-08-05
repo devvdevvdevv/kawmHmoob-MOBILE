@@ -12,15 +12,28 @@
       "bundleIdentifier": "com.kawmhmoob.app"
     },
     "android": {
-      "package": "com.kawmhmoob.app"
+      "package": "com.kawmhmoob.app",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ]
     },
     "web": {
       "bundler": "metro",
-      "output": "static"
+      "output": "single"
     },
     "plugins": [
       "expo-router",
-      "expo-font"
-    ]
+      "expo-font",
+      "expo-audio",
+      "expo-asset"
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "6ca4171e-b347-43e1-bf3e-4ab143c877a8"
+      }
+    },
+    "owner": "veddveddvedd"
   }
 }

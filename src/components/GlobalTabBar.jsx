@@ -72,12 +72,12 @@ const SECTIONS = [
   { id: 'speak', to: '/speak', label: 'Speak', icon: MicIcon, ind: '--c-clay-600', match: (p) => p.startsWith('/speak') },
   // Tab opens the Words hub (the richer daily-practice page); the category grid
   // stays at /vocabulary, reached from the hub's "Browse words" tile.
-  { id: 'vocabulary', to: '/words', label: 'Words', icon: CardsIcon, ind: '--c-blush-500', match: (p) => ['/vocabulary', '/words', '/quiz', '/notebook', '/review', '/search'].some((r) => p.startsWith(r)) },
+  { id: 'vocabulary', to: '/words', label: 'Words', icon: CardsIcon, ind: '--c-blush-500', match: (p) => ['/vocabulary', '/words', '/quiz', '/notebook', '/review', '/search', '/reading'].some((r) => p.startsWith(r)) },
   { id: 'reference', to: '/reference', label: 'Reference', icon: AlphabetIcon, ind: '--c-cream-600', match: (p) => ['/reference', '/alphabet', '/course'].some((r) => p.startsWith(r)) },
 ]
 
 // Screens where the nav bar should be hidden (full-screen flows).
-const HIDE_ON = ['/login', '/register', '/onboarding']
+const HIDE_ON = ['/login', '/onboarding']
 
 // The persistent bottom navigation. Rendered ONCE by the root layout (see
 // app/_layout.jsx), so it floats over every screen in the app rather than

@@ -23,7 +23,16 @@ export function resolveAudioSrc(src) {
   if (!src) return null
   if (typeof src !== 'string') return src
   if (/^https?:\/\//i.test(src)) return src
-  if (AUDIO_MAP[src] != null) return AUDIO_MAP[src] // bundled local asset
+  // Lesson data mixes two path styles: full '/assets/audio/…' AND relative
+  // 'grammar/action-verbs/x.mp3' (no prefix). Normalize both to the '/assets/audio/…'
+  // form the AUDIO_MAP is keyed by — matches the web resolver. Without this, the
+  // relative-path lessons (most of the grammar/vocab set) silently no-op.
+  const key = src.startsWith('/assets/audio/')
+    ? src
+    : src.startsWith('/')
+      ? src
+      : `/assets/audio/${src}`
+  if (AUDIO_MAP[key] != null) return AUDIO_MAP[key] // bundled local asset
   if (!AUDIO_BASE_URL) return null
-  return AUDIO_BASE_URL + (src.startsWith('/') ? src : '/' + src)
+  return AUDIO_BASE_URL + key
 }

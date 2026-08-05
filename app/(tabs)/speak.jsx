@@ -1,7 +1,8 @@
 import { View, Text, Pressable } from 'react-native'
 import { Link } from 'expo-router'
 import TabScreen from '../../src/components/TabScreen.jsx'
-import BetaRibbon from '../../src/components/common/BetaRibbon.jsx'
+import InfoModal from '../../src/components/common/InfoModal.jsx'
+import { useOnce } from '../../src/lib/useOnce.js'
 import { speakGroups, allPhrases, speakStepId } from '../../src/data/speak.js'
 import { wordFamilies } from '../../src/data/wordFamilies.js'
 import { pickOfTheDay } from '../../src/lib/daily.js'
@@ -17,6 +18,7 @@ export default function Speak() {
   const { completedSteps } = useProgress()
   const { user } = useAuth()
   const { isPro } = useSubscription()
+  const beta = useOnce('speak-beta') // the experimental-scoring notice, shown once
 
   const phrases = allPhrases()
   const total = phrases.length
@@ -27,11 +29,15 @@ export default function Speak() {
 
   return (
     <TabScreen>
-      <BetaRibbon>
-        Tone scoring is experimental. Your pitch is compared against a native recording, but
-        the scoring is still being tuned — treat the curve as the real feedback and the number
-        as a rough guide. Only groups with a native recording can be scored.
-      </BetaRibbon>
+      {/* Was a persistent ribbon; now a one-time notice on first visit to Speak. */}
+      <InfoModal
+        visible={beta.ready && !beta.seen}
+        emoji="🎤"
+        title="Tone scoring is experimental"
+        body="Your pitch is compared against a native recording, but the scoring is still being tuned — treat the curve as the real feedback and the number as a rough guide. Only groups with a native recording can be scored."
+        primaryLabel="Got it"
+        onPrimary={beta.markSeen}
+      />
 
       <View className="mb-10">
         <View className="flex-row items-center gap-2 mb-2">

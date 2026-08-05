@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
-import { View, Text, Pressable, Alert } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { getQuizConfig, getQuizDataset } from '../../data/quizzes.js'
+import { quizUnlock } from '../../lib/access.js'
 import { useQuizState } from '../../hooks/useQuizState.js'
 import { useProgress } from '../../hooks/useProgress.js'
 import AudioButton from '../common/AudioButton.jsx'
 import Breadcrumbs from '../common/Breadcrumbs.jsx'
 import PaywallGate from '../common/PaywallGate.jsx'
+import ConfirmModal from '../common/ConfirmModal.jsx'
 import QuizResults from './QuizResults.jsx'
 import Button from '../ui/Button.jsx'
 
@@ -36,8 +38,14 @@ function buildQuestions(config, dataset) {
         answer: pairs.map((p) => `${p.prompt}=${p.answer}`).join('|'),
       }
     }
-    const distractors = shuffle(dataset.filter((d) => d.answer !== item.answer)).slice(0, 3)
-    const options = shuffle([item, ...distractors]).map((d) => d.answer)
+    // Distractors are DISTINCT wrong answers. Deduping matters when many items
+    // share an answer (e.g. tone-drill: dozens of words map to the same 8 tones) —
+    // without it the options could show the same tone twice ("Low / Low / High"),
+    // which looks broken. options are answer STRINGS, guaranteed unique + include
+    // the correct one exactly once.
+    const distinctWrong = [...new Set(dataset.map((d) => d.answer))].filter((a) => a !== item.answer)
+    const distractors = shuffle(distinctWrong).slice(0, 3)
+    const options = shuffle([item.answer, ...distractors])
     return { type: 'multiple-choice', prompt: item.prompt, answer: item.answer, options }
   })
 }
@@ -48,16 +56,20 @@ export default function QuizEngine() {
   const config = getQuizConfig(topicId)
   const dataset = getQuizDataset(topicId)
   const { state, start, answer, next, review, reset } = useQuizState()
-  const { recordQuizScore } = useProgress()
+  const { recordQuizScore, vocabProgress } = useProgress()
+  const unlock = quizUnlock(topicId, vocabProgress)
   const [feedback, setFeedback] = useState(null)
   const [elapsed, setElapsed] = useState(0)
   const [savedThisRun, setSavedThisRun] = useState(false)
+  const [showQuitConfirm, setShowQuitConfirm] = useState(false)
 
   const questions = useMemo(() => (config ? buildQuestions(config, dataset) : []), [config, dataset])
 
+  const locked = unlock.gated && !unlock.unlocked
+
   useEffect(() => {
-    if (config && questions.length > 0 && state.status === 'idle') start(questions)
-  }, [config, questions, start, state.status])
+    if (config && !locked && questions.length > 0 && state.status === 'idle') start(questions)
+  }, [config, locked, questions, start, state.status])
 
   useEffect(() => {
     if (state.status !== 'active') return
@@ -102,15 +114,57 @@ export default function QuizEngine() {
     )
   }
 
-  const handleQuit = () => {
-    Alert.alert(
-      'Quit this quiz?',
-      'Progress for this attempt will be lost.',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Quit', style: 'destructive', onPress: () => { reset(); router.push('/quiz') } },
-      ]
+  // Study-before-quiz gate. The menu already hides locked quizzes behind a
+  // "Study first" card, but THIS guard is what actually enforces it — a direct
+  // link to /quiz/vocab-<cat> would otherwise walk straight past the menu.
+  if (locked) {
+    const pct = unlock.needed > 0 ? Math.min(100, (unlock.studied / unlock.needed) * 100) : 0
+    return (
+      <View className="items-center">
+        <Breadcrumbs
+          items={[
+            { label: 'Home', to: '/' },
+            { label: 'Quizzes', to: '/quiz' },
+            { label: config.title },
+          ]}
+        />
+        <View className="w-full max-w-md items-center rounded-md bg-cream-50 border border-cream-200 p-8">
+          <View className="h-14 w-14 items-center justify-center rounded-full bg-cream-100 mb-4">
+            <Text className="text-2xl">🔒</Text>
+          </View>
+          <Text className="font-serif text-3xl text-stone-900 text-center mb-3">
+            Study the words first
+          </Text>
+          <Text className="text-stone-700 text-center leading-relaxed mb-4">
+            Testing words you haven't seen is guessing, not practice. Learn the{' '}
+            {unlock.category.title} words, then come back to test yourself.
+          </Text>
+
+          {/* Progress toward unlock — a bar makes "how close am I" instant. */}
+          <View className="w-full max-w-xs mb-6">
+            <View className="h-2 rounded-full bg-cream-200 overflow-hidden">
+              <View className="h-full rounded-full bg-clay-600" style={{ width: `${pct}%` }} />
+            </View>
+            <Text className="text-sm text-stone-600 text-center mt-2">
+              {unlock.studied} of {unlock.needed} studied · {unlock.remaining} to go
+            </Text>
+          </View>
+
+          <Button onPress={() => router.push(`/vocabulary/${unlock.category.id}`)}>
+            📖 Study the {unlock.category.title} words
+          </Button>
+          <Pressable onPress={() => router.push('/quiz')} className="mt-4">
+            <Text className="text-sm text-stone-600 underline">Back to Quizzes</Text>
+          </Pressable>
+        </View>
+      </View>
     )
+  }
+
+  const confirmQuit = () => {
+    setShowQuitConfirm(false)
+    reset()
+    router.push('/quiz')
   }
 
   if (state.status === 'finished' || state.status === 'reviewing') {
@@ -205,8 +259,19 @@ export default function QuizEngine() {
         )}
 
         <View className="mt-6">
-          <Button variant="secondary" onPress={handleQuit}>QUIT QUIZ</Button>
+          <Button variant="secondary" onPress={() => setShowQuitConfirm(true)}>QUIT QUIZ</Button>
         </View>
+
+        <ConfirmModal
+          visible={showQuitConfirm}
+          title="Quit this quiz?"
+          message="Progress for this attempt will be lost."
+          confirmLabel="Quit"
+          cancelLabel="Keep going"
+          destructive
+          onConfirm={confirmQuit}
+          onCancel={() => setShowQuitConfirm(false)}
+        />
       </View>
     </PaywallGate>
   )

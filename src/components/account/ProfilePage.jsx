@@ -54,7 +54,7 @@ export default function ProfilePage() {
         </Text>
       </View>
 
-      <View className="flex-row flex-wrap gap-3">
+      <View className="flex flex-wrap gap-3">
         <Stat label="XP" value={xp} />
         <Stat label="Streak" value={`${streakData.currentStreak}d`} />
         <Stat label="Quizzes" value={quizScores.length} />

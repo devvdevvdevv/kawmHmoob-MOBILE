@@ -4020,6 +4020,60 @@ words: [
       { id: 'yog-to-be-located', hmongRPA: 'nyob', english: 'to be located at', category: 'yog-to-be', tags: ['verb', 'location'], audioFile: null, exampleSentence: { hmong: 'Kuv nyob hauv tsev.', english: 'I am at home.' } },
     ],
   },
+  // ── Function-word & phrase sections, promoted to their own vocab categories so
+  // they're browsable AND searchable (mirrors the retired /course grammar+everyday
+  // content). Audio pending. See notes/2026-08-04-phrase-vocab-sections.
+  {
+    id: 'question-words',
+    title: 'Question Words',
+    description: 'The words that turn a sentence into a question — often at the END in Hmong.',
+    emoji: '❓',
+    words: [
+      { id: 'question-words-what', hmongRPA: 'dab tsi?', english: 'what?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null },
+      { id: 'question-words-who', hmongRPA: 'leej twg?', english: 'who?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null },
+      { id: 'question-words-where', hmongRPA: 'qhov twg?', english: 'where?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null },
+      { id: 'question-words-when', hmongRPA: 'thaum twg?', english: 'when?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null },
+      { id: 'question-words-why', hmongRPA: 'vim li cas?', english: 'why?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null },
+      { id: 'question-words-how', hmongRPA: 'li cas?', english: 'how?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null },
+      { id: 'question-words-how-many', hmongRPA: 'pes tsawg?', english: 'how much / how many?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null },
+    ],
+  },
+  {
+    id: 'politeness',
+    title: 'Politeness',
+    description: 'Thank you, sorry, please — everyday courtesies.',
+    emoji: '🙏',
+    words: [
+      { id: 'politeness-thank-you', hmongRPA: 'ua tsaug', english: 'thank you', category: 'politeness', tags: ['courtesy', 'phrase'], audioFile: null },
+      { id: 'politeness-sorry', hmongRPA: 'thov txim', english: 'sorry / excuse me', category: 'politeness', tags: ['courtesy', 'phrase'], audioFile: null },
+      { id: 'politeness-please', hmongRPA: 'thov', english: 'please', category: 'politeness', tags: ['courtesy', 'phrase'], audioFile: null },
+      { id: 'politeness-youre-welcome', hmongRPA: 'tsis ua li cas', english: "you're welcome / no worries", category: 'politeness', tags: ['courtesy', 'phrase'], audioFile: null },
+    ],
+  },
+  {
+    id: 'introductions',
+    title: 'Introductions',
+    description: "Ask someone's name, say yours, and the basics.",
+    emoji: '🤝',
+    words: [
+      { id: 'introductions-your-name', hmongRPA: 'koj lub npe hu li cas?', english: 'what is your name?', category: 'introductions', tags: ['introduction', 'question', 'phrase'], audioFile: null },
+      { id: 'introductions-my-name', hmongRPA: 'kuv lub npe hu ua…', english: 'my name is…', category: 'introductions', tags: ['introduction', 'phrase'], audioFile: null },
+      { id: 'introductions-where-live', hmongRPA: 'koj nyob qhov twg?', english: 'where do you live?', category: 'introductions', tags: ['introduction', 'question', 'phrase'], audioFile: null },
+      { id: 'introductions-how-old', hmongRPA: 'koj muaj pes tsawg xyoo?', english: 'how old are you?', category: 'introductions', tags: ['introduction', 'question', 'phrase'], audioFile: null },
+    ],
+  },
+  {
+    id: 'daily-life',
+    title: 'Daily Life',
+    description: 'Everyday things you say — hungry, thirsty, tired.',
+    emoji: '🌤️',
+    words: [
+      { id: 'daily-life-eaten', hmongRPA: 'koj noj mov tau?', english: 'have you eaten?', category: 'daily-life', tags: ['daily', 'question', 'phrase'], audioFile: null },
+      { id: 'daily-life-hungry', hmongRPA: 'kuv tshaib plab', english: "I'm hungry", category: 'daily-life', tags: ['daily', 'phrase'], audioFile: null },
+      { id: 'daily-life-thirsty', hmongRPA: 'kuv nqhis dej', english: "I'm thirsty", category: 'daily-life', tags: ['daily', 'phrase'], audioFile: null },
+      { id: 'daily-life-tired', hmongRPA: 'kuv tsaug zog', english: "I'm tired / sleepy", category: 'daily-life', tags: ['daily', 'phrase'], audioFile: null },
+    ],
+  },
 ]
 
 // ── Category grouping ───────────────────────────────────────────────────────
@@ -4079,14 +4133,14 @@ const CATEGORY_THEMES = [
     blurb: 'The small words that hold sentences together. Each has a lesson.',
     ids: [
       'pronouns', 'demonstratives', 'classifiers', 'verbs',
-      'tense-markers', 'reciprocals', 'yog-to-be', 'grammar',
+      'tense-markers', 'question-words', 'reciprocals', 'yog-to-be', 'grammar',
     ],
   },
   {
     id: 'everyday',
     title: 'Everyday Speech',
-    blurb: 'Phrases you say out loud — greetings, thanks, goodbyes.',
-    ids: ['greetings', 'discourse-particles', 'conjunctions'],
+    blurb: 'Phrases you say out loud — greetings, thanks, introductions.',
+    ids: ['greetings', 'politeness', 'introductions', 'daily-life', 'discourse-particles', 'conjunctions'],
   },
 ]
 

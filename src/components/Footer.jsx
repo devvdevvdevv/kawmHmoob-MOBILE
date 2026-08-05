@@ -4,8 +4,7 @@ import { Link } from 'expo-router'
 const links = [
   { to: '/', label: 'Home' },
   { to: '/learn', label: 'Learn' },
-  { to: '/alphabet', label: 'Alphabet' },
-  { to: '/course', label: 'Course' },
+  { to: '/reference', label: 'Reference' },
   { to: '/vocabulary', label: 'Vocabulary' },
   { to: '/notebook', label: 'Notebook' },
   { to: '/quiz', label: 'Quiz' },

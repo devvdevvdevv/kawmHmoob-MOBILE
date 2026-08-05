@@ -1,3 +1,14 @@
+import { Redirect } from 'expo-router'
+
+// The /course section is RETIRED — redundant now that its content lives in Learn
+// (grammar + conversational lessons, readings) and the Reference grammar cheat
+// sheet. This route redirects so old /course/* links don't 404. The original page
+// is preserved (commented) below per request. See notes/2026-08-04-course-retired.
+export default function CourseTab() {
+  return <Redirect href="/learn" />
+}
+
+/* ─── ORIGINAL /course/[tab] PAGE — retired, kept for reference ────────────────
 import { View, Text } from 'react-native'
 import { Link, useLocalSearchParams } from 'expo-router'
 import Tabs from '../../src/components/Tabs.jsx'
@@ -121,3 +132,4 @@ function ReadingList({ items }) {
     </View>
   )
 }
+─────────────────────────────────────────────────────────────────────────────── */

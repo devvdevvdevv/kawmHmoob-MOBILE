@@ -18,6 +18,11 @@ import { possessivePronouns } from './lessons/possessive-pronouns'
 import { yogToBe } from './lessons/yog-to-be'
 import { adjectives } from './lessons/adjectives'
 import { conjunctions } from './lessons/conjunctions'
+import { questionWords } from './lessons/question-words'
+// Conversational starters migrated from the retired /course "Everyday" tab.
+import { politeness } from './lessons/politeness'
+import { introductions } from './lessons/introductions'
+import { dailyLife } from './lessons/daily-life'
 import { tenseMarkers } from './lessons/tense-markers'
 import { numbers } from './lessons/numbers'
 import { howMuch } from './lessons/how-much'
@@ -151,6 +156,7 @@ const grammarUnit = {
     pronouns,
     actionVerbs,
     tenseMarkers,
+    questionWords,
     nounClassifiers,
     pronounsDemonstratives,
     possessivePronouns,
@@ -172,6 +178,9 @@ const conversational = {
   description: 'Everyday words and phrases — greetings, reciprocals, and more.',
   lessons: [
     greetingsFarewells,
+    politeness,
+    introductions,
+    dailyLife,
     sibReciprocals,
     // Drop new Conversational lessons here, in the order you want them shown.
   ],
