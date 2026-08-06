@@ -24,7 +24,12 @@ export default function Settings() {
         <Field label="Dialect" hint="Choose which Hmong dialect to study.">
           <Picker
             value={user.dialectPreference}
-            onChange={(v) => updateProfile({ dialectPreference: v })}
+           onChange={(v) => {
+              updateProfile({ dialectPreference: v }).catch((e) =>
+                console.warn('[profile] could not save dialect', e)
+              )
+            }}
+
             options={dialectOptions}
           />
         </Field>

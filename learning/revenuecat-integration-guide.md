@@ -47,7 +47,37 @@ answer comes from.
 
 ---
 
-## 2. Store setup (the slow, out-of-code part)
+## 1.5. FASTEST START: the RevenueCat Test Store (skip §2/§3 at first)
+
+New RC projects come with a built-in **Test Store** — a virtual store that lets
+you test your integration with **NO App Store Connect / Play Console setup at
+all**. Its API key is prefixed **`test_...`** (not `goog_`/`appl_`). If that's the
+only key you see, it's because you haven't added a real Google/Apple app yet —
+that's expected, not a bug.
+
+What it does:
+- `getOfferings()` returns **test products** you define in the RC dashboard.
+- `purchasePackage()` runs a **simulated** purchase (no real money, no store
+  account), and the `pro` entitlement flips just like production.
+- Because it goes through RevenueCat's servers, NOT native Play Billing/StoreKit,
+  it should run **right in the Expo dev client** — no release AAB, no internal
+  testing track, no license tester needed for this phase.
+
+What it does NOT do: exercise real Play Billing/StoreKit, real receipts, or real
+money. It validates your **code + UX**, not the actual store transaction.
+
+**Recommended flow:** wire and validate the ENTIRE integration
+(`SubscriptionContext`, paywall UI, buy button, entitlement flip) against the
+`test_` key in the dev client first. Only then do the real store setup below
+(§2/§3) and the release-AAB/internal-track testing (§8) for actual purchases —
+that's when you add the Google/Apple apps to RC and get the `goog_`/`appl_` keys.
+
+For now: `EXPO_PUBLIC_RC_ANDROID_KEY=test_...` (point the android slot at the test
+key).
+
+---
+
+## 2. Store setup (the slow, out-of-code part — defer via §1.5 while learning)
 
 1. **App Store Connect** (iOS): create the app, then create **auto-renewable
    subscription** products (a subscription group + e.g. monthly/yearly). Fill in
@@ -200,6 +230,42 @@ Now entitlements are attached to the account, not just the device.
   track.
 - RevenueCat's **dashboard → Customer history** shows every sandbox event — the
   fastest way to confirm the entitlement flipped.
+
+### ⚠️ Which build tests purchases? (the part everyone gets wrong)
+
+**A real purchase CANNOT be tested on the dev-client build.** Two separate builds
+do two separate jobs:
+
+| Job | Build | EAS profile |
+|---|---|---|
+| Daily JS/code iteration (Metro hot reload) | dev client (debug APK) | `development` |
+| Actually clicking **Buy** | release **AAB**, upload-key signed | `production` |
+
+Why the dev client can't buy: it's **debug-signed**, and Google Play Billing only
+talks to an app Play **recognizes** — i.e. signed with your **upload key** (Play
+App Signing) **and** distributed through a Play **track**. A debug APK fails both.
+(iOS StoreKit is similar: sandbox purchases need a real device + a build Apple
+recognizes, not the simulator.)
+
+**"Internal testing track" ≠ "final public launch."** This is the confusing part:
+the build you upload to internal testing must be **release-*type*** (AAB,
+upload-key signed), but it is **NOT** your public release. Internal testing exists
+exactly so you can iterate **release-signed** builds privately — upload as many as
+you want, only your added **license testers** see them, nothing goes public. The
+same AAB later promotes internal → closed → production when you truly launch.
+
+**Android purchase-test loop:**
+1. `eas build --profile production --platform android` → produces the AAB.
+2. Upload that AAB to the **internal testing** track (Play Console).
+3. Add your Google account as a **license tester** (Play Console → Setup → License
+   testing) AND a tester on the internal track.
+4. Install the app **from the Play internal-testing link** (not sideloaded).
+5. Buy. Watch it flip in RevenueCat → Customer history.
+
+You only rebuild that AAB when native/config changes — **JS-only tweaks still
+iterate in the dev client.** Note: the `preview` profile (`buildType: apk`,
+`distribution: internal`) is for handing someone a direct-install APK, NOT a Play
+track upload — use `production` for Billing testing.
 
 ---
 

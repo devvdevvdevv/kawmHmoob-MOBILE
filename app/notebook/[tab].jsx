@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { View, Text, TextInput, Pressable, Alert } from 'react-native'
+import { View, Text, TextInput, Pressable } from 'react-native'
 import { Link, useLocalSearchParams, useRouter } from 'expo-router'
 import Tabs from '../../src/components/Tabs.jsx'
 import TabScreen from '../../src/components/TabScreen.jsx'
 import { useNotebook } from '../../src/context/NotebookContext.jsx'
 import { categories } from '../../src/data/vocabulary.js'
 import Button from '../../src/components/ui/Button.jsx'
+import ConfirmModal from '../../src/components/common/ConfirmModal.jsx'
 
 const tabs = [
   { id: 'saved', label: 'Saved Words' },
@@ -134,15 +135,9 @@ function NoteItem({ note }) {
   const [editing, setEditing] = useState(false)
   const [title, setTitle] = useState(note.title)
   const [body, setBody] = useState(note.body)
+  const [showDelete, setShowDelete] = useState(false)
 
   const save = () => { updateNote(note.id, { title, body }); setEditing(false) }
-
-  const confirmDelete = () => {
-    Alert.alert('Delete this note?', '', [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Delete', style: 'destructive', onPress: () => deleteNote(note.id) },
-    ])
-  }
 
   if (!editing) {
     return (
@@ -178,10 +173,22 @@ function NoteItem({ note }) {
         <Button onPress={() => { setTitle(note.title); setBody(note.body); setEditing(false) }} size="sm" variant="ghost">
           Cancel
         </Button>
-        <Pressable onPress={confirmDelete} className="ml-auto self-center">
+        <Pressable onPress={() => setShowDelete(true)} className="ml-auto self-center">
           <Text className="text-xs text-stone-500">Delete</Text>
         </Pressable>
       </View>
+
+      {/* Web-safe confirm (Alert.alert doesn't render on web) */}
+      <ConfirmModal
+        visible={showDelete}
+        title="Delete this note?"
+        message="This can't be undone."
+        confirmLabel="Delete"
+        cancelLabel="Cancel"
+        destructive
+        onConfirm={() => { deleteNote(note.id); setShowDelete(false) }}
+        onCancel={() => setShowDelete(false)}
+      />
     </View>
   )
 }

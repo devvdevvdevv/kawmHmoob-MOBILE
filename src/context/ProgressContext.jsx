@@ -41,6 +41,9 @@ function todayISO() {
   return new Date().toISOString().slice(0, 10)
 }
 
+
+
+
 function nextStreak(prev, today) {
   const last = prev.lastActiveDate
   if (last === today) return prev
@@ -72,12 +75,20 @@ export function ProgressProvider({ children }) {
       setState(next)
       setHydrated(true)
     })
+    .catch((e) => {
+      if (!active) return
+      console.warn('[progress] load failed', e)
+      setHydrated(true) // mitigate an infinite loading screen.  
+    })
     return () => { active = false }
   }, [userId])
 
   useEffect(() => {
     if (!hydrated) return
-    const t = setTimeout(() => saveProgress(userId, state), 500)
+    const t = setTimeout(() => {
+      saveProgress(userId, state).catch((e) => console.warn('[progress] save failed', e))
+    }, 500)
+
     return () => clearTimeout(t)
   }, [userId, state, hydrated])
 

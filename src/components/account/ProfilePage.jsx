@@ -65,7 +65,11 @@ export default function ProfilePage() {
         <Text className="font-serif text-xl text-stone-900 mb-3">Dialect Preference</Text>
         <Picker
           value={user.dialectPreference}
-          onChange={(v) => updateProfile({ dialectPreference: v })}
+          onChange={(v) => {
+              updateProfile({ dialectPreference: v }).catch((e) =>
+                console.warn('[profile] could not save dialect', e)
+              )
+            }}
           options={dialectOptions}
         />
       </View>
