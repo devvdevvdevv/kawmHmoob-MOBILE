@@ -20,7 +20,7 @@ function UpgradeCard({ contentLabel }) {
         Upgrade to unlock extended quizzes, full reading library, dialogues, and advanced units. Your free progress stays exactly where it is.
       </Text>
       <View className="flex-row flex-wrap gap-3 justify-center">
-        <Link href="/account" asChild>
+        <Link href="/paywall" asChild>
           <Button variant="primary">See plans</Button>
         </Link>
         <Link href="/learn" asChild>

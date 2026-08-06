@@ -3,6 +3,7 @@ import { View, Text, TextInput, Pressable } from 'react-native'
 import { Link, useLocalSearchParams, useRouter } from 'expo-router'
 import Tabs from '../../src/components/Tabs.jsx'
 import TabScreen from '../../src/components/TabScreen.jsx'
+import PaywallGate from '../../src/components/common/PaywallGate.jsx'
 import { useNotebook } from '../../src/context/NotebookContext.jsx'
 import { categories } from '../../src/data/vocabulary.js'
 import Button from '../../src/components/ui/Button.jsx'
@@ -23,9 +24,11 @@ export default function Notebook() {
           A place for words you want to remember and notes from your reading.
         </Text>
       </View>
-      <Tabs basePath="/notebook" tabs={tabs} />
-      {tab === 'saved' && <SavedWords />}
-      {tab === 'notes' && <Notes />}
+      <PaywallGate tier="pro" contentLabel="Your notebook is part of Kawm Hmoob Pro">
+        <Tabs basePath="/notebook" tabs={tabs} />
+        {tab === 'saved' && <SavedWords />}
+        {tab === 'notes' && <Notes />}
+      </PaywallGate>
     </TabScreen>
   )
 }

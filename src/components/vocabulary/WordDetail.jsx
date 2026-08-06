@@ -5,6 +5,7 @@ import AudioButton from '../common/AudioButton.jsx'
 import Breadcrumbs from '../common/Breadcrumbs.jsx'
 import { useProgress } from '../../hooks/useProgress.js'
 import { useNotebook } from '../../context/NotebookContext.jsx'
+import { useSubscription } from '../../context/SubscriptionContext.jsx'
 import Button from '../ui/Button.jsx'
 
 export default function WordDetail() {
@@ -14,6 +15,7 @@ export default function WordDetail() {
   const word = getWord(categoryId, wordId)
   const { vocabProgress, setVocabStatus } = useProgress()
   const { savedWords, saveWord, unsaveWord } = useNotebook()
+  const { isPro } = useSubscription()
 
   if (!cat || !word) {
     return (
@@ -50,13 +52,16 @@ export default function WordDetail() {
             </View>
           </View>
           <Pressable
-            onPress={() => (isSaved ? unsaveWord(word.id) : saveWord(word.id))}
+            onPress={() => {
+              if (!isPro) { router.push('/paywall'); return } // saving words is Pro
+              isSaved ? unsaveWord(word.id) : saveWord(word.id)
+            }}
             className={`px-3 py-1.5 rounded border ${
               isSaved ? 'bg-clay-600/15 border-clay-600/40' : 'bg-cream-100 border-cream-300'
             }`}
           >
             <Text className={`text-xs font-semibold ${isSaved ? 'text-clay-700' : 'text-stone-700'}`}>
-              {isSaved ? '✓ Saved' : '+ Save'}
+              {isSaved ? '✓ Saved' : isPro ? '+ Save' : '◆ Save'}
             </Text>
           </Pressable>
         </View>

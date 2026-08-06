@@ -33,6 +33,10 @@ import { tones } from './reference.js'
 const toneSpeakGroup = {
   id: 'speak-tones',
   title: 'The Eight Tones',
+  // `free: true` — the tones are the foundational hook and are ALWAYS free:
+  // never Pro-locked, and EXEMPT from the daily speak-practice quota. Every
+  // quota/lock check must skip a group with this flag.
+  free: true,
   description:
     'Tone carries meaning in Hmong. Hear each one, say it back, and watch your pitch line up against the native curve.',
   phrases: tones.map((t) => ({
@@ -206,6 +210,11 @@ export function allPhrases() {
 
 export function getPhrase(phraseId) {
   return allPhrases().find((p) => p.id === phraseId) || null
+}
+
+// A whole module (group) by id — for the module drill screen.
+export function getSpeakGroup(groupId) {
+  return speakGroups.find((g) => g.id === groupId) || null
 }
 
 // Neighbors in display order, for prev/next navigation on the practice screen.

@@ -1,6 +1,7 @@
 import { View, Text } from 'react-native'
 import { Link, useRouter } from 'expo-router'
 import { useAuth } from '../../context/AuthContext.jsx'
+import { useSubscription } from '../../context/SubscriptionContext.jsx'
 import { useProgress } from '../../hooks/useProgress.js'
 import { categories } from '../../data/vocabulary.js'
 import ProgressBar from '../progress/ProgressBar.jsx'
@@ -18,6 +19,7 @@ const dialectOptions = [
 export default function ProfilePage() {
   const router = useRouter()
   const { user, logout, updateProfile } = useAuth()
+  const { isPro, manageSubscription, devProOverride, devSetPro } = useSubscription()
   const { xp, streakData, quizScores, vocabProgress, completedLessons, exportData } = useProgress()
 
   const wordsKnown = Object.values(vocabProgress).filter((s) => s === 'known').length
@@ -53,6 +55,39 @@ export default function ProfilePage() {
           @{user.username} · joined {user.joinedAt?.slice(0, 10)}
         </Text>
       </View>
+
+      <View className="rounded-md bg-cream-50 border border-cream-200 p-6">
+        <Text className="text-xs uppercase tracking-[3px] text-clay-600 mb-2">Subscription</Text>
+        {isPro ? (
+          <>
+            <Text className="font-serif text-2xl text-stone-900 mb-3">Kawm Hmoob Pro</Text>
+            <Text className="text-stone-700 mb-4">You have full access to every lesson, quiz, and reading.</Text>
+            <Button variant="ghost" onPress={manageSubscription}>Manage subscription</Button>
+          </>
+        ) : (
+          <>
+            <Text className="font-serif text-2xl text-stone-900 mb-3">Free plan</Text>
+            <Text className="text-stone-700 mb-4">Upgrade to unlock extended quizzes, the full reading library, and advanced units.</Text>
+            <Link href="/paywall" asChild>
+              <Button variant="primary">Upgrade to Pro</Button>
+            </Link>
+          </>
+        )}
+      </View>
+
+      {__DEV__ && (
+        <View className="rounded-md bg-cream-50 border border-dashed border-clay-400 p-4">
+          <Text className="text-[10px] uppercase tracking-wider text-clay-600 mb-2">Dev · Pro override</Text>
+          <Text className="text-xs text-stone-600 mb-3">
+            Force isPro for testing. Override: {devProOverride === null ? 'off (real)' : devProOverride ? 'Pro' : 'Free'}
+          </Text>
+          <View className="flex-row gap-2">
+            <Button size="sm" variant={devProOverride === true ? 'primary' : 'ghost'} onPress={() => devSetPro(true)}>Force Pro</Button>
+            <Button size="sm" variant={devProOverride === false ? 'primary' : 'ghost'} onPress={() => devSetPro(false)}>Force Free</Button>
+            <Button size="sm" variant="ghost" onPress={() => devSetPro(null)}>Clear</Button>
+          </View>
+        </View>
+      )}
 
       <View className="flex flex-wrap gap-3">
         <Stat label="XP" value={xp} />

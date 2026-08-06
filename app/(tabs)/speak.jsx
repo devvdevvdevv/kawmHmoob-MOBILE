@@ -6,18 +6,19 @@ import { useOnce } from '../../src/lib/useOnce.js'
 import { speakGroups, allPhrases, speakStepId } from '../../src/data/speak.js'
 import { wordFamilies } from '../../src/data/wordFamilies.js'
 import { pickOfTheDay } from '../../src/lib/daily.js'
-import { isPhraseGuestAllowed } from '../../src/lib/access.js'
 import { useProgress } from '../../src/hooks/useProgress.js'
-import { useAuth } from '../../src/context/AuthContext.jsx'
 import { useSubscription } from '../../src/context/SubscriptionContext.jsx'
+import { useDailyQuota } from '../../src/hooks/useDailyQuota.js'
+import QuotaBadge from '../../src/components/common/QuotaBadge.jsx'
 
-// Speak hub — lists every pronounceable phrase grouped by topic, with per-phrase
-// practice state and Pro locks. Ported from the web Speak page; the live tone
-// scoring (mic + pitch) is a separate screen (see /speak/[phraseId]).
+// Speak hub — a Natulang-style list of LESSON cards (one per group), each with a
+// mini progress bar and Pro lock. Tapping a card opens the module drill
+// (/speak/group/[groupId]) which steps through that lesson's phrases one at a
+// time. The live mic + pitch scoring lives in PronounceStep on the drill screens.
 export default function Speak() {
   const { completedSteps } = useProgress()
-  const { user } = useAuth()
   const { isPro } = useSubscription()
+  const speakQuota = useDailyQuota('speak', 3, { enabled: !isPro }) // 3 free practices/day
   const beta = useOnce('speak-beta') // the experimental-scoring notice, shown once
 
   const phrases = allPhrases()
@@ -100,49 +101,57 @@ export default function Speak() {
         </View>
       )}
 
-      <View className="gap-10">
-        {speakGroups.map((group) => (
-          <View key={group.id}>
-            <Text className="font-serif text-2xl text-stone-900 mb-1">{group.title}</Text>
-            <Text className="text-sm text-stone-600 mb-4">{group.description}</Text>
-            <View className="gap-3">
-              {group.phrases.map((phrase) => {
-                const done = completedSteps.includes(speakStepId(phrase.id))
-                const locked = phrase.tier === 'pro' && !isPro
-                const needsAccount = user.isGuest && !isPhraseGuestAllowed(phrase.id)
-                return (
-                  <Link key={phrase.id} href={`/speak/${phrase.id}`} asChild>
-                    <Pressable className="rounded-md bg-cream-50 border border-cream-200 flex-row items-center justify-between gap-3 p-4 active:bg-cream-100">
-                      <View className="flex-1">
-                        <Text className="font-serif text-lg text-stone-900">{phrase.hmong}</Text>
-                        <Text className="text-sm text-stone-600">{phrase.english}</Text>
-                      </View>
-                      <View className="flex-row items-center gap-2">
-                        {needsAccount && phrase.tier !== 'pro' && (
-                          <View className="rounded-full bg-cream-200 px-2 py-0.5">
-                            <Text className="text-[10px] uppercase tracking-wider font-medium text-stone-600">Account</Text>
-                          </View>
-                        )}
-                        {phrase.tier === 'pro' && (
-                          <View className={`rounded-full px-2 py-0.5 ${locked ? 'bg-cream-200' : 'bg-clay-500'}`}>
-                            <Text className={`text-[10px] uppercase tracking-wider font-medium ${locked ? 'text-stone-600' : 'text-cream-50'}`}>
-                              {locked ? '◆ Pro' : 'Pro'}
-                            </Text>
-                          </View>
-                        )}
-                        {done && (
-                          <View className="h-6 w-6 rounded-full bg-emerald-100 items-center justify-center">
-                            <Text className="text-emerald-800 text-xs">✓</Text>
-                          </View>
-                        )}
-                      </View>
-                    </Pressable>
-                  </Link>
-                )
-              })}
-            </View>
-          </View>
-        ))}
+      <View className="mb-4">
+        <View className="flex-row items-center justify-between gap-3 mb-1">
+          <Text className="font-serif text-2xl text-stone-900">Lessons</Text>
+          <QuotaBadge {...speakQuota} label="practices left today" />
+        </View>
+        <Text className="text-sm text-stone-600">
+          Each lesson steps you through its phrases one at a time — listen, record, compare.
+        </Text>
+      </View>
+      <View className="gap-3">
+        {speakGroups.map((group) => {
+          const count = group.phrases.length
+          const practicedInGroup = group.phrases.filter((p) =>
+            completedSteps.includes(speakStepId(p.id))
+          ).length
+          const complete = count > 0 && practicedInGroup === count
+          const hasPro = group.phrases.some((p) => p.tier === 'pro')
+          const locked = hasPro && !isPro
+          return (
+            <Link key={group.id} href={`/speak/group/${group.id}`} asChild>
+              <Pressable className="rounded-md bg-cream-50 border border-cream-200 shadow-warm flex-row items-center justify-between gap-3 p-5 active:bg-cream-100">
+                <View className="flex-1">
+                  <Text className="font-serif text-lg text-stone-900">{group.title}</Text>
+                  <Text className="text-sm text-stone-600 mt-0.5" numberOfLines={1}>
+                    {group.description}
+                  </Text>
+                  <View className="flex-row items-center gap-3 mt-2">
+                    <View className="h-1.5 w-24 bg-cream-200 rounded-full overflow-hidden">
+                      <View className="h-full bg-clay-600" style={{ width: `${count ? (practicedInGroup / count) * 100 : 0}%` }} />
+                    </View>
+                    <Text className="text-xs text-stone-500">{practicedInGroup}/{count}</Text>
+                  </View>
+                </View>
+                <View className="flex-row items-center gap-2">
+                  {locked && (
+                    <View className="rounded-full bg-cream-200 px-2 py-0.5">
+                      <Text className="text-[10px] uppercase tracking-wider font-medium text-stone-600">◆ Pro</Text>
+                    </View>
+                  )}
+                  {complete ? (
+                    <View className="h-6 w-6 rounded-full bg-emerald-100 items-center justify-center">
+                      <Text className="text-emerald-800 text-xs">✓</Text>
+                    </View>
+                  ) : (
+                    <Text className="text-sm font-medium text-clay-700">Start →</Text>
+                  )}
+                </View>
+              </Pressable>
+            </Link>
+          )
+        })}
       </View>
     </TabScreen>
   )

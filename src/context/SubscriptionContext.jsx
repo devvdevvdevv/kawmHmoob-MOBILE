@@ -23,8 +23,13 @@ export function SubscriptionProvider({ children }) {
   const [sub, setSub] = useState(FREE)
   const [hydrated, setHydrated] = useState(false)
   // RC Answer
-  
+
   const [rcPro, setRcPro] = useState(false)
+
+  // DEV-only override: null = follow the real source of truth; true/false = force
+  // isPro for testing the free vs Pro UI. Beats RC/mock so you can flip states
+  // even while the Test Store key is set. Never set outside __DEV__.
+  const [devProOverride, setDevProOverride] = useState(null)
 
 
 
@@ -68,12 +73,15 @@ export function SubscriptionProvider({ children }) {
   
   
 
-  function proFromInfo(info){
+  // function proFromInfo(info){
 
-    return typeof info?.entitlements?.active?.[PRO_ENTITLEMENT] !== 'undefined'
+  //   return typeof info?.entitlements?.active?.[PRO_ENTITLEMENT] !== 'undefined'
 
-  }
+  // }
 
+function proFromInfo(info) {
+  return Boolean(info?.entitlements?.active?.[PRO_ENTITLEMENT])
+}
 
 
 
@@ -90,6 +98,8 @@ export function SubscriptionProvider({ children }) {
 
 
   // Revenue Cat configuration end
+
+  // Stub purchase logic / non revenue cat
 
   useEffect(() => {
     let active = true
@@ -115,13 +125,60 @@ export function SubscriptionProvider({ children }) {
   const mockDowngrade = useCallback(() => setSub({ ...FREE }), [])
 
 
+  // Purchased logic for actual revenuecat
+
+  const purchase = useCallback( async (pkg) => {
+
+    try{
+
+      const {customerInfo} = await Purchases.purchasePackage(pkg)
+      setRcPro(proFromInfo(customerInfo))
+
+
+    } catch (e) {
+
+      if (!e.userCancelled) throw e
+
+
+
+    }
+    
+
+  },[])
+
+
+
+  const restore = useCallback(async() => {
+
+    const info = await Purchases.restorePurchases()
+    setRcPro(proFromInfo(info))
+
+  },[])
+
+  // Apps CANNOT cancel a subscription in-code — Apple/Google own that. The
+  // store-compliant move is to open the OS subscription-management screen where
+  // the user cancels. No-ops gracefully when RC isn't configured (mock/guest).
+  const manageSubscription = useCallback(async () => {
+    try {
+      await Purchases.showManageSubscriptions()
+    } catch (e) {
+      console.warn('[rc] manage subscription failed', e)
+    }
+  }, [])
+
+  // DEV toggle — force Pro on/off, or pass null to clear and follow the real
+  // source of truth again. Wired to the __DEV__ panel in ProfilePage.
+  const devSetPro = useCallback((v) => setDevProOverride(v), [])
+
 
   // STEP 4 — pick the source of truth for isPro.
   // RevenueCat when it's configured (the real answer); otherwise fall back to the
   // mock so Pro UI stays testable without RC. tier is DERIVED from isPro so the
   // two can never disagree. canAccess/PaywallGate are untouched — they read these.
   const rcConfigured = Boolean(process.env.EXPO_PUBLIC_RC_TEST_KEY)
-  const isPro = rcConfigured ? rcPro : sub.tier === 'pro'
+  const realPro = rcConfigured ? rcPro : sub.tier === 'pro'
+  // Dev override wins when set; otherwise the real source of truth.
+  const isPro = devProOverride !== null ? devProOverride : realPro
 
   const value = useMemo(
     () => ({
@@ -131,10 +188,19 @@ export function SubscriptionProvider({ children }) {
       purchase,
       mockUpgrade,
       mockDowngrade,
-      restore
+      restore,
+      manageSubscription,
+      // dev-only: current override state + setter for the ProfilePage panel
+      devProOverride,
+      devSetPro,
     }),
-    [isPro,purchase, restore, sub.expiresAt, mockUpgrade, mockDowngrade]
+    [isPro, purchase, restore, sub.expiresAt, mockUpgrade, mockDowngrade, manageSubscription, devProOverride, devSetPro]
   )
+
+
+
+
+
 
   return <SubscriptionContext.Provider value={value}>{children}</SubscriptionContext.Provider>
 }

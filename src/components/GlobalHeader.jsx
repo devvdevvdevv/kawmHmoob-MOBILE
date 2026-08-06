@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { usePathname, useRouter } from 'expo-router'
@@ -7,6 +8,8 @@ import { useTheme } from '../context/ThemeContext.jsx'
 import { THEME_TOKENS } from '../lib/themes.js'
 import LevelBadge from './progress/LevelBadge.jsx'
 import StreakBadge from './progress/StreakBadge.jsx'
+import PageInfoModal from './common/PageInfoModal.jsx'
+import { getPageInfo } from '../data/pageInfo.js'
 
 import { useDrawer } from './Drawer/DrawerContext.jsx'
 
@@ -35,32 +38,50 @@ export default function GlobalHeader() {
   const { user } = useAuth()
   const { theme, cycle } = useTheme()
   const { toggle } = useDrawer()          // hamburger → toggles the drawer open
+  const [infoOpen, setInfoOpen] = useState(false)
 
   if (HIDE_ON.some((r) => pathname.startsWith(r))) return null
 
   const ink = tok(theme, '--c-stone-800')      // inactive icon
   const accent = tok(theme, '--c-clay-600')     // active icon
   const ThemeIcon = theme === 'neon' ? SparkIcon : theme === 'dark' ? MoonIcon : SunIcon
+  const pageInfo = getPageInfo(pathname)        // help content for this route (or null)
 
   const nav = (to) => () => router.navigate(to)
   const on = (prefix) => pathname.startsWith(prefix)
 
   return (
-    <View className="bg-ocean-200 border-b border-ocean-400/40" style={[styles.container, { paddingTop: insets.top }]}>
-      <View style={styles.bar}>
-        {/* Left — hamburger + status */}
-        <View style={styles.leftCluster}>
-          <IconBtn onPress={toggle}><MenuIcon color={ink} /></IconBtn>
-          <LevelBadge />
-          <StreakBadge />
-        </View>
+    <>
+      <View className="bg-ocean-200 border-b border-ocean-400/40" style={[styles.container, { paddingTop: insets.top }]}>
+        <View style={styles.bar}>
+          {/* Left — hamburger + status */}
+          <View style={styles.leftCluster}>
+            <IconBtn onPress={toggle}><MenuIcon color={ink} /></IconBtn>
+            <LevelBadge />
+            <StreakBadge />
+          </View>
 
-        {/* Right — theme toggle (Sun/Moon/Spark by current theme; cycles light→dark→neon) */}
-        <View style={styles.cluster}>
-          <IconBtn onPress={cycle}><ThemeIcon color={ink} /></IconBtn>
+          {/* Right — page info (if any) + theme toggle (cycles light→dark→neon) */}
+          <View style={styles.cluster}>
+            {pageInfo && (
+              <IconBtn onPress={() => setInfoOpen(true)}><InfoIcon color={ink} /></IconBtn>
+            )}
+            <IconBtn onPress={cycle}><ThemeIcon color={ink} /></IconBtn>
+          </View>
         </View>
       </View>
-    </View>
+
+      {/* On-demand page help — separate from the one-time onboarding notices.
+          A hub page provides `slides` (swipeable); a simple page provides one
+          {emoji,title,body} which we normalize to a single slide. */}
+      {pageInfo && (
+        <PageInfoModal
+          visible={infoOpen}
+          slides={pageInfo.slides || [pageInfo]}
+          onClose={() => setInfoOpen(false)}
+        />
+      )}
+    </>
   )
 }
 
@@ -100,6 +121,15 @@ function SparkIcon({ color }) {
   return (
     <Svg width={S} height={S} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
       <Path d="M12 2l1.9 5.7L20 9.6l-5.4 3.2L15.8 19 12 15.4 8.2 19l1.2-6.2L4 9.6l6.1-1.9L12 2z" />
+    </Svg>
+  )
+}
+function InfoIcon({ color }) {   // circled "i" — opens this page's help modal
+  return (
+    <Svg width={S} height={S} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <Circle cx="12" cy="12" r="9" />
+      <Line x1="12" y1="11" x2="12" y2="16" />
+      <Line x1="12" y1="8" x2="12" y2="8" />
     </Svg>
   )
 }
