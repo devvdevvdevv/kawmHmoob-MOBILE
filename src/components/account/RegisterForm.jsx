@@ -4,6 +4,7 @@ import { Link, useRouter } from 'expo-router'
 import { useAuth } from '../../context/AuthContext.jsx'
 import Button from '../ui/Button.jsx'
 import Picker from '../ui/Picker.jsx'
+import PasswordField from '../ui/PasswordField.jsx'
 
 const dialectOptions = [
   { value: 'white', label: 'White Hmong (Hmoob Dawb)' },
@@ -18,6 +19,7 @@ export default function RegisterForm() {
     displayName: '',
     email: '',
     password: '',
+    confirmPassword: '',
     dialectPreference: 'white',
   })
   const [submitting, setSubmitting] = useState(false)
@@ -26,8 +28,15 @@ export default function RegisterForm() {
 
   const update = (k, v) => setForm((f) => ({ ...f, [k]: v }))
 
+  // Live mismatch hint: only once they've started typing the confirmation.
+  const mismatch = form.confirmPassword.length > 0 && form.password !== form.confirmPassword
+
   const submit = async () => {
     if (submitting) return
+    if (form.password !== form.confirmPassword) {
+      setError('Passwords do not match.')
+      return
+    }
     setSubmitting(true)
     setError(null)
     try {
@@ -59,10 +68,23 @@ export default function RegisterForm() {
     <View className="max-w-md w-full self-center">
       <Text className="font-serif text-4xl text-stone-900 mb-6 text-center">Create an account</Text>
       <View className="rounded-md bg-cream-50 border border-cream-200 p-6 gap-4">
-        <Field label="Username" value={form.username} onChange={(v) => update('username', v)} />
+        {/* Usernames can't contain spaces — strip them as they type. */}
+        <Field label="Username" value={form.username} onChange={(v) => update('username', v.replace(/\s/g, ''))} autoCapitalize="none" />
         <Field label="Display Name" value={form.displayName} onChange={(v) => update('displayName', v)} />
         <Field label="Email" value={form.email} onChange={(v) => update('email', v)} keyboardType="email-address" autoCapitalize="none" />
-        <Field label="Password" value={form.password} onChange={(v) => update('password', v)} secureTextEntry />
+
+        <PasswordField
+          label="Password"
+          value={form.password}
+          onChange={(v) => update('password', v)}
+        />
+        <PasswordField
+          label="Confirm Password"
+          value={form.confirmPassword}
+          onChange={(v) => update('confirmPassword', v)}
+          hint={mismatch ? 'Passwords don’t match' : null}
+        />
+
         <View>
           <Text className="text-sm font-semibold text-stone-800 mb-1.5">Default Dialect</Text>
           <Picker
@@ -76,7 +98,7 @@ export default function RegisterForm() {
             <Text className="text-sm text-red-900">{error}</Text>
           </View>
         )}
-        <Button onPress={submit} disabled={submitting} className="w-full">
+        <Button onPress={submit} disabled={submitting || mismatch} className="w-full">
           {submitting ? 'Creating account…' : 'Create Account'}
         </Button>
         <View className="flex-row justify-center gap-1">

@@ -170,8 +170,30 @@ export function AuthProvider({ children }) {
     return next
   }, [])
 
+  // Permanently delete the signed-in user's account + data. Client SDKs can't
+  // delete an auth user directly (needs the service role), so this calls a
+  // server-side RPC you create ONCE in Supabase (SQL Editor):
+  //
+  //   create or replace function public.delete_user() returns void
+  //   language sql security definer set search_path = '' as $$
+  //     delete from auth.users where id = auth.uid();
+  //   $$;
+  //   grant execute on function public.delete_user() to authenticated;
+  //
+  // `profiles`/`progress` have `on delete cascade` on auth.users, so they clean up.
+  // After it succeeds we sign out and fall back to guest.
+  const deleteAccount = useCallback(async () => {
+    const { data: sessData } = await supabase.auth.getSession()
+    const uid = sessData?.session?.user?.id
+    if (!uid) { setUser(guestUser); return } // guest / no session → nothing to delete
+    const { error } = await supabase.rpc('delete_user')
+    if (error) throw error
+    try { await supabase.auth.signOut() } catch {}
+    setUser(guestUser)
+  }, [])
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout, updateProfile }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout, updateProfile, deleteAccount }}>
       {children}
     </AuthContext.Provider>
   )

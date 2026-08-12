@@ -3,6 +3,7 @@ import { View, Text, TextInput, Pressable } from 'react-native'
 import { Link, useRouter } from 'expo-router'
 import { useAuth } from '../../context/AuthContext.jsx'
 import Button from '../ui/Button.jsx'
+import PasswordField from '../ui/PasswordField.jsx'
 
 export default function LoginForm() {
   const router = useRouter()
@@ -31,7 +32,7 @@ export default function LoginForm() {
       <Text className="font-serif text-4xl text-stone-900 mb-6 text-center">Welcome back</Text>
       <View className="rounded-md bg-cream-50 border border-cream-200 p-6 gap-4">
         <Field label="Email" value={email} onChange={setEmail} keyboardType="email-address" autoCapitalize="none" />
-        <Field label="Password" value={password} onChange={setPassword} secureTextEntry />
+        <PasswordField label="Password" value={password} onChange={setPassword} />
         {error && (
           <View className="rounded bg-red-100 px-3 py-2">
             <Text className="text-sm text-red-900">{error}</Text>

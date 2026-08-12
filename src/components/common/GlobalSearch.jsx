@@ -16,14 +16,16 @@ function normalize(s) { return (s || '').toLowerCase().trim() }
 
 function buildIndex() {
   const items = []
+  // Alphabet stays its OWN search group (kind: 'alphabet'), but links into the real
+  // Reference page's matching tab — not the placeholder /alphabet route.
   for (const c of consonants) {
-    items.push({ kind: 'alphabet', label: c.letter, hint: c.sound, to: '/alphabet/consonants', haystack: `${c.letter} ${c.sound}` })
+    items.push({ kind: 'alphabet', label: c.letter, hint: c.sound, to: '/reference?tab=consonants', haystack: `${c.letter} ${c.sound}` })
   }
   for (const v of vowels) {
-    items.push({ kind: 'alphabet', label: v.letter, hint: v.sound, to: '/alphabet/vowels', haystack: `${v.letter} ${v.sound}` })
+    items.push({ kind: 'alphabet', label: v.letter, hint: v.sound, to: '/reference?tab=vowels', haystack: `${v.letter} ${v.sound}` })
   }
   for (const tn of tones) {
-    items.push({ kind: 'alphabet', label: tn.marker || '(no marker)', hint: tn.name, to: '/alphabet/tones', haystack: `${tn.marker} ${tn.name} ${tn.description}` })
+    items.push({ kind: 'alphabet', label: tn.marker || '(no marker)', hint: tn.name, to: '/reference?tab=tones', haystack: `${tn.marker} ${tn.name} ${tn.description}` })
   }
   for (const cat of categories) {
     for (const w of cat.words) {
@@ -31,9 +33,12 @@ function buildIndex() {
     }
   }
   // Grammar & everyday phrases are now their own VOCAB categories (indexed above),
-  // so they're not re-indexed here — avoids duplicate hits. Readings stay.
-  for (const r of readings) {
-    items.push({ kind: 'reading', label: r.title, hint: r.english.slice(0, 80), to: '/learn/readings', haystack: `${r.title} ${r.hmong} ${r.english}` })
+  // so they're not re-indexed here — avoids duplicate hits.
+  // Readings are hidden in release builds (still WIP) → only indexed for dev.
+  if (__DEV__) {
+    for (const r of readings) {
+      items.push({ kind: 'reading', label: r.title, hint: r.english.slice(0, 80), to: '/learn/readings', haystack: `${r.title} ${r.hmong} ${r.english}` })
+    }
   }
   return items.map((i) => ({ ...i, haystack: normalize(i.haystack) }))
 }

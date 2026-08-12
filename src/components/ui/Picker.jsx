@@ -52,13 +52,13 @@ export default function Picker({ value, onChange, options }) {
                 return (
                   <Pressable
                     onPress={() => { onChange(item.value); setOpen(false) }}
-                    style={({ pressed }) => ({
+                    style={{
                       paddingHorizontal: 16,
                       paddingVertical: 14,
                       borderBottomWidth: 1,
                       borderBottomColor: rowBorder,
-                      backgroundColor: isSel || pressed ? rowSelectedBg : 'transparent',
-                    })}
+                      backgroundColor: isSel ? rowSelectedBg : 'transparent',
+                    }}
                   >
                     <Text style={{ fontSize: 16, color: textColor, fontWeight: isSel ? '700' : '400' }}>
                       {item.label}

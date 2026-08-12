@@ -14,18 +14,45 @@ opens page-specific help. Separate from the one-time onboarding `InfoModal` noti
   the `InfoIcon` button (hidden when a page has no entry) + the modal. Because the
   header renders once globally, this covers every screen with zero per-page code.
 
-## Swipeable multi-slide modal
+## Multi-slide modal (one slide at a time + Back/Next)
 
-- **`src/components/common/PageInfoModal.jsx`** — one slide = a plain notice;
-  multiple slides = a horizontally swipeable pager with dots + Back/Next (works by
-  touch AND on web without swipe). An always-visible "×" in the top-right corner
-  closes from any slide (plus onRequestClose for Android-back/web-Esc). Colors
-  inlined from theme tokens (same reason as
-  `InfoModal` — theme vars don't cascade into a native `<Modal>`). Slide width is
-  seeded from `Dimensions` then corrected via onLayout to avoid a first-frame flash.
+- **`src/components/common/PageInfoModal.jsx`** — renders ONE slide at a time;
+  multiple slides = dots + Back/Next; single slide = just "Got it". Colors inlined
+  from theme tokens (theme vars don't cascade into a native `<Modal>`, and the
+  shared `<Button>` is unreliable there — same rule as InfoModal).
 - Header normalizes single-page info to `[pageInfo]`, so both cases use this one
   component. (The old single-notice `InfoModal` is still used for onboarding ribbons
   elsewhere — unchanged.)
+
+### ⚠️ Why NOT a horizontal-swipe pager (native bug we hit)
+
+First version used a horizontal `<ScrollView pagingEnabled>` for touch-swipe. On the
+DEV BUILD (native) the footer buttons vanished — no "Got it", nothing. Cause: **a
+horizontal ScrollView grows to fill its parent's height on native**, so it ate all
+the card's vertical space and pushed the footer past the card's `overflow:hidden`
+edge → clipped/invisible. Web flexbox sized it to content, so it looked fine there —
+a web-vs-native divergence.
+
+Fix: dropped the horizontal ScrollView. Now it mirrors the InfoModal layout —
+a VERTICAL ScrollView for the slide body + a footer sibling with `marginTop`.
+Navigation is Back/Next + dots instead of touch-swipe. If real swipe is wanted
+later, use `react-native-gesture-handler` (already a dep), NOT a raw ScrollView.
+
+### ⚠️⚠️ The REAL root cause (round 2): flexShrink default differs web vs native
+
+Even after the vertical rewrite, buttons were STILL invisible on the dev build but
+fine on web. Cause: **`flexShrink` defaults to `1` on web (CSS) but `0` in React
+Native / Yoga.** In a `maxHeight` modal card (column) holding a `<ScrollView>` +
+footer, with flexShrink 0 the ScrollView refuses to give up height, so it fills the
+card and shoves the footer off the bottom edge → invisible. Web's default of 1 let
+the ScrollView shrink, so the footer fit — which is why it only broke on mobile.
+
+**Fix: `style={{ flexShrink: 1 }}` on the ScrollView** (+ `flexShrink: 0` on the
+footer). Applied to BOTH `PageInfoModal` and `InfoModal` (same structure, same bug).
+
+RULE (write this on your heart): **any RN modal with a scroll body + a footer in a
+maxHeight card MUST put `flexShrink: 1` on the scroll body, or the footer vanishes
+on device.** This is the #1 "works on web, broken on the build" modal trap.
 
 ## Hub pages use slides (real sub-sections, not generic copy)
 

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Modal, View, Text, Pressable } from 'react-native'
+import { View, Text, Pressable, StyleSheet } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { usePathname, useRouter } from 'expo-router'
 import { useTheme } from '../../context/ThemeContext.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -66,6 +67,7 @@ const ACCOUNT_STEP = {
 
 export default function WelcomeTour() {
   const { seen, ready, markSeen } = useOnce('welcome-tour')
+  const insets = useSafeAreaInsets()
   const { user } = useAuth()
   const { theme } = useTheme()
   const router = useRouter()
@@ -103,8 +105,7 @@ export default function WelcomeTour() {
   const createAccount = () => { markSeen(); router.push('/register') }
 
   return (
-    <Modal visible transparent animationType="fade" onRequestClose={finish} statusBarTranslucent>
-      <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.6)', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+    <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0,0,0,0.6)', alignItems: 'center', justifyContent: 'center', paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24, paddingHorizontal: 24, zIndex: 9999, elevation: 9999 }]}>
         <View style={{ width: '100%', maxWidth: 440, backgroundColor: cardBg, borderColor: border, borderWidth: 1, borderRadius: 20, padding: 28 }}>
           {/* Skip — always available, top-right */}
           {!s.account && (
@@ -132,13 +133,13 @@ export default function WelcomeTour() {
             <View style={{ flexDirection: 'row', gap: 12 }}>
               <Pressable
                 onPress={finish}
-                style={({ pressed }) => ({ flex: 1, minHeight: 52, borderRadius: 10, borderWidth: 1, borderColor: border, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.7 : 1 })}
+                style={{ flex: 1, minHeight: 52, borderRadius: 10, borderWidth: 1, borderColor: border, alignItems: 'center', justifyContent: 'center' }}
               >
                 <Text style={{ color: ghostText, fontSize: 16, fontWeight: '600' }}>Maybe later</Text>
               </Pressable>
               <Pressable
                 onPress={createAccount}
-                style={({ pressed }) => ({ flex: 1, minHeight: 52, borderRadius: 10, backgroundColor: primaryBg, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.85 : 1 })}
+                style={{ flex: 1, minHeight: 52, borderRadius: 10, backgroundColor: primaryBg, alignItems: 'center', justifyContent: 'center' }}
               >
                 <Text style={{ color: primaryText, fontSize: 16, fontWeight: '700' }}>Create free account</Text>
               </Pressable>
@@ -148,7 +149,7 @@ export default function WelcomeTour() {
               {!isFirst && (
                 <Pressable
                   onPress={back}
-                  style={({ pressed }) => ({ minHeight: 52, borderRadius: 10, borderWidth: 1, borderColor: border, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24, opacity: pressed ? 0.7 : 1 })}
+                  style={{ minHeight: 52, borderRadius: 10, borderWidth: 1, borderColor: border, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}
                 >
                   <Text style={{ color: ghostText, fontSize: 16, fontWeight: '600' }}>Back</Text>
                 </Pressable>
@@ -156,7 +157,7 @@ export default function WelcomeTour() {
               {/* The big obvious brown CTA */}
               <Pressable
                 onPress={next}
-                style={({ pressed }) => ({ flex: 1, minHeight: 52, borderRadius: 10, backgroundColor: primaryBg, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24, opacity: pressed ? 0.85 : 1 })}
+                style={{ flex: 1, minHeight: 52, borderRadius: 10, backgroundColor: primaryBg, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}
               >
                 <Text style={{ color: primaryText, fontSize: 17, fontWeight: '700' }}>
                   {isLast ? 'Start learning →' : 'Next →'}
@@ -166,6 +167,5 @@ export default function WelcomeTour() {
           )}
         </View>
       </View>
-    </Modal>
   )
 }

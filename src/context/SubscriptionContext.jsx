@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react'
 import { useAuth } from './AuthContext.jsx'
 import { loadJSON, saveJSON } from '../lib/storage.js'
+import { MONETIZATION_ENABLED } from '../lib/launch.js'
 // RevenueCat integration
 
 
@@ -65,7 +66,48 @@ export function SubscriptionProvider({ children }) {
 
 
 
-  // Subscription authentication  End
+
+  
+
+
+
+
+  // Subscription authentication  Ends
+
+  // ── Account binding: tie the RevenueCat identity to the Supabase user ───────
+  // Runs whenever auth changes. Identifies real accounts (so Pro follows the
+  // account across devices/reinstalls) and returns guests to anonymous.
+  useEffect(() => {
+    // Read the env directly — the outer `rcConfigured` is declared LOWER in this
+    // component, so it can't go in the deps array (TDZ). This effect fires after
+    // the configure effect above (defined first = runs first on mount).
+    if (!process.env.EXPO_PUBLIC_RC_TEST_KEY) return
+    let active = true
+
+    const bind = async () => {
+      try {
+        if (user && !user.isGuest) {
+          // Real account → identify. RC merges any anonymous purchases onto them.
+          const { customerInfo } = await Purchases.logIn(user.id)
+          if (active) setRcPro(proFromInfo(customerInfo))
+        } else if (!(await Purchases.isAnonymous())) {
+          // Was identified, now guest/signed-out → go anonymous. Only call logOut
+          // when currently identified — it THROWS if already anonymous.
+          const info = await Purchases.logOut()
+          if (active) setRcPro(proFromInfo(info))
+        }
+      } catch (e) {
+        console.warn('[rc] account binding failed', e)
+      }
+    }
+
+    bind()
+    return () => { active = false }
+  }, [user])
+
+
+
+
 
   // Revenue Cat Configuration start 
 
@@ -178,7 +220,11 @@ function proFromInfo(info) {
   const rcConfigured = Boolean(process.env.EXPO_PUBLIC_RC_TEST_KEY)
   const realPro = rcConfigured ? rcPro : sub.tier === 'pro'
   // Dev override wins when set; otherwise the real source of truth.
-  const isPro = devProOverride !== null ? devProOverride : realPro
+  const derivedPro = devProOverride !== null ? devProOverride : realPro
+  // v1 LAUNCH: monetization off → everyone is Pro (everything free/unlocked, all
+  // quotas disabled via enabled:!isPro, no paywall walls). Flip MONETIZATION_ENABLED
+  // in src/lib/launch.js when real billing is ready.
+  const isPro = MONETIZATION_ENABLED ? derivedPro : true
 
   const value = useMemo(
     () => ({

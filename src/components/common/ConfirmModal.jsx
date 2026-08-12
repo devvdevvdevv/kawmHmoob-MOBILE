@@ -54,13 +54,13 @@ export default function ConfirmModal({
           <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 12 }}>
             <Pressable
               onPress={onCancel}
-              style={({ pressed }) => ({ minHeight: 48, paddingHorizontal: 20, borderRadius: 10, borderWidth: 2, borderColor: border, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.7 : 1 })}
+              style={{ minHeight: 48, paddingHorizontal: 20, borderRadius: 10, borderWidth: 2, borderColor: border, alignItems: 'center', justifyContent: 'center' }}
             >
               <Text style={{ color: ghostText, fontSize: 16, fontWeight: '600' }}>{cancelLabel}</Text>
             </Pressable>
             <Pressable
               onPress={onConfirm}
-              style={({ pressed }) => ({ minHeight: 48, paddingHorizontal: 24, borderRadius: 10, backgroundColor: confirmBg, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.85 : 1 })}
+              style={{ minHeight: 48, paddingHorizontal: 24, borderRadius: 10, backgroundColor: confirmBg, alignItems: 'center', justifyContent: 'center' }}
             >
               <Text style={{ color: cream, fontSize: 16, fontWeight: '700' }}>{confirmLabel}</Text>
             </Pressable>

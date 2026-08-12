@@ -7,18 +7,30 @@ import { speakGroups, allPhrases, speakStepId } from '../../src/data/speak.js'
 import { wordFamilies } from '../../src/data/wordFamilies.js'
 import { pickOfTheDay } from '../../src/lib/daily.js'
 import { useProgress } from '../../src/hooks/useProgress.js'
+import { useAuth } from '../../src/context/AuthContext.jsx'
 import { useSubscription } from '../../src/context/SubscriptionContext.jsx'
 import { useDailyQuota } from '../../src/hooks/useDailyQuota.js'
+import { quotaLimit } from '../../src/lib/quotaLimits.js'
 import QuotaBadge from '../../src/components/common/QuotaBadge.jsx'
+import Icon from '../../src/components/ui/Icon.jsx'
+import { SPEAK_ENABLED } from '../../src/lib/launch.js'
+import SpeakComingSoon from '../../src/components/speak/SpeakComingSoon.jsx'
 
 // Speak hub — a Natulang-style list of LESSON cards (one per group), each with a
 // mini progress bar and Pro lock. Tapping a card opens the module drill
 // (/speak/group/[groupId]) which steps through that lesson's phrases one at a
 // time. The live mic + pitch scoring lives in PronounceStep on the drill screens.
 export default function Speak() {
+  // v1 launch: Speak scoring isn't built yet → the whole section is "coming soon".
+  if (!SPEAK_ENABLED) return <SpeakComingSoon />
+
   const { completedSteps } = useProgress()
+  const { user } = useAuth()
   const { isPro } = useSubscription()
-  const speakQuota = useDailyQuota('speak', 3, { enabled: !isPro }) // 3 free practices/day
+  const speakQuota = useDailyQuota('speak', quotaLimit('speak', user.isGuest), {
+    enabled: !isPro,
+    scope: user?.id || 'guest',
+  })
   const beta = useOnce('speak-beta') // the experimental-scoring notice, shown once
 
   const phrases = allPhrases()
@@ -121,7 +133,10 @@ export default function Speak() {
           const locked = hasPro && !isPro
           return (
             <Link key={group.id} href={`/speak/group/${group.id}`} asChild>
-              <Pressable className="rounded-md bg-cream-50 border border-cream-200 shadow-warm flex-row items-center justify-between gap-3 p-5 active:bg-cream-100">
+              <Pressable className="rounded-md bg-cream-50 border border-cream-200 shadow-warm flex-row items-center gap-4 p-5 active:bg-cream-100">
+                <View className="h-11 w-11 rounded-full bg-clay-600/12 items-center justify-center">
+                  <Icon name="mic" size={22} tone="accent" />
+                </View>
                 <View className="flex-1">
                   <Text className="font-serif text-lg text-stone-900">{group.title}</Text>
                   <Text className="text-sm text-stone-600 mt-0.5" numberOfLines={1}>
@@ -145,7 +160,7 @@ export default function Speak() {
                       <Text className="text-emerald-800 text-xs">✓</Text>
                     </View>
                   ) : (
-                    <Text className="text-sm font-medium text-clay-700">Start →</Text>
+                    <Icon name="arrowRight" size={18} tone="muted" />
                   )}
                 </View>
               </Pressable>

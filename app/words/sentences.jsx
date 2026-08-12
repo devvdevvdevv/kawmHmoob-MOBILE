@@ -6,6 +6,14 @@ import Breadcrumbs from '../../src/components/common/Breadcrumbs.jsx'
 // Sentence Builder — PLACEHOLDER, no data. Holds the route and shows the
 // intended SHAPE; there is deliberately no exercise data and no fake
 // interaction (the same honesty rule the rest of the app follows).
+//
+// TODO(quota): once the builder is real, gate like quiz/speak —
+//   const { user } = useAuth(); const { isPro } = useSubscription()
+//   const quota = useDailyQuota('sentence-builder',
+//                 quotaLimit('sentence-builder', user.isGuest),
+//                 { enabled: !isPro, scope: user?.id || 'guest' })
+//   consume() when a SESSION starts (gate on quota.ready); block the Start button
+//   or `return <QuotaWall/>` when quota.exhausted. Limit lives in quotaLimits.js.
 const PARTS = [
   { label: 'Classifier', hint: 'tus, lub, daim…', lesson: '/learn/grammar/foundations-noun-classifiers' },
   { label: 'Noun', hint: 'tsev, dev, ntawv…', lesson: '/vocabulary' },

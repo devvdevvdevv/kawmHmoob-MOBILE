@@ -70,7 +70,8 @@ export default function WordDetail() {
           <Field label="Category">{cat.title}</Field>
           <Field label="Tags">{word.tags?.join(', ') || '—'}</Field>
           <Field label="Status">{status}</Field>
-          <Field label="Audio file">{word.audioFile || '—'}</Field>
+          {/* Raw audio path is internal/debug info — dev builds only, hidden in release. */}
+          {__DEV__ && <Field label="Audio file">{word.audioFile || '—'}</Field>}
         </View>
 
         {word.exampleSentence && (

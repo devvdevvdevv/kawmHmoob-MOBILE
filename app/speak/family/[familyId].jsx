@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { View, Text } from 'react-native'
-import { Link, useLocalSearchParams, useRouter } from 'expo-router'
+import { Link, Redirect, useLocalSearchParams, useRouter } from 'expo-router'
 import TabScreen from '../../../src/components/TabScreen.jsx'
+import { SPEAK_ENABLED } from '../../../src/lib/launch.js'
 import Breadcrumbs from '../../../src/components/common/Breadcrumbs.jsx'
 import Button from '../../../src/components/ui/Button.jsx'
 import PronounceStep from '../../../src/components/speak/PronounceStep.jsx'
@@ -12,6 +13,7 @@ import { useProgress } from '../../../src/hooks/useProgress.js'
 // hands each to PronounceStep, the same loop as phrase practice. Progress uses
 // the WORD id as the key.
 export default function SpeakFamily() {
+  if (!SPEAK_ENABLED) return <Redirect href="/speak" />   // v1: Speak coming soon
   const { familyId } = useLocalSearchParams()
   const router = useRouter()
   const family = getWordFamily(familyId)

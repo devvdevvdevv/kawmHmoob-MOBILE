@@ -12,6 +12,21 @@ import ConfirmModal from '../common/ConfirmModal.jsx'
 import QuizResults from './QuizResults.jsx'
 import Button from '../ui/Button.jsx'
 
+// Quote
+
+import { useDailyQuota } from '../../hooks/useDailyQuota.js'
+import { quotaLimit } from '../../lib/quotaLimits.js'
+import QuotaBadge from '../../components/common/QuotaBadge.jsx'
+import { useAuth } from '../../context/AuthContext.jsx'
+import QuotaWall from '../../components/common/QuotaWall.jsx'
+import { useSubscription } from '../../context/SubscriptionContext.jsx'
+
+
+
+// Quota Tracker
+
+
+
 function shuffle(arr) {
   const copy = arr.slice()
   for (let i = copy.length - 1; i > 0; i--) {
@@ -58,6 +73,19 @@ export default function QuizEngine() {
   const { state, start, answer, next, review, reset } = useQuizState()
   const { recordQuizScore, vocabProgress } = useProgress()
   const unlock = quizUnlock(topicId, vocabProgress)
+// Daily Quota Tracking
+
+  const {user} = useAuth()
+
+  const {isPro} = useSubscription()
+
+
+
+
+
+
+
+
   const [feedback, setFeedback] = useState(null)
   const [elapsed, setElapsed] = useState(0)
   const [savedThisRun, setSavedThisRun] = useState(false)
@@ -67,9 +95,16 @@ export default function QuizEngine() {
 
   const locked = unlock.gated && !unlock.unlocked
 
+
+  const quota = useDailyQuota('quiz', quotaLimit('quiz', user.isGuest), {enabled: !isPro, scope: user?.id || 'guest'})
+
   useEffect(() => {
-    if (config && !locked && questions.length > 0 && state.status === 'idle') start(questions)
-  }, [config, locked, questions, start, state.status])
+    if (config && !locked && questions.length > 0 && state.status === 'idle' && !quota.exhausted && quota.ready){
+      
+      start(questions)
+      quota.consume()
+    }
+  }, [config, locked, questions, start, state.status, quota.ready, quota.exhausted])
 
   useEffect(() => {
     if (state.status !== 'active') return
@@ -159,6 +194,13 @@ export default function QuizEngine() {
         </View>
       </View>
     )
+  }
+
+  if (quota.exhausted){
+    return(
+      <QuotaWall/>
+    );
+
   }
 
   const confirmQuit = () => {

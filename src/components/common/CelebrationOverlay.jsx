@@ -21,6 +21,7 @@ export default function CelebrationOverlay() {
   const bodyColor = `rgb(${t['--c-stone-700']})`
   const primaryBg = `rgb(${t['--c-clay-600']})`
   const primaryText = `rgb(${t['--c-cream-50']})`
+  const ghostText = `rgb(${t['--c-stone-800']})`
 
   const done = () => {
     const cb = celebration.onDone
@@ -39,6 +40,15 @@ export default function CelebrationOverlay() {
       <Confetti />
 
       <View style={{ width: '100%', maxWidth: 420, backgroundColor: cardBg, borderColor: border, borderWidth: 2, borderRadius: 18, padding: 28, alignItems: 'center' }}>
+        {/* Close — dismisses WITHOUT running onDone (stay put instead of navigating). */}
+        <Pressable
+          onPress={dismiss}
+          hitSlop={12}
+          style={{ position: 'absolute', top: 12, right: 12, zIndex: 10, width: 32, height: 32, alignItems: 'center', justifyContent: 'center' }}
+        >
+          <Text style={{ color: ghostText, fontSize: 24, fontWeight: '600', lineHeight: 24 }}>×</Text>
+        </Pressable>
+
         <Text style={{ fontSize: 56, marginBottom: 8 }}>🎉</Text>
         <Text className="font-serif" style={{ color: titleColor, fontSize: 26, fontWeight: '700', marginBottom: 10, textAlign: 'center' }}>
           Lesson complete!
@@ -48,7 +58,7 @@ export default function CelebrationOverlay() {
         </Text>
         <Pressable
           onPress={done}
-          style={({ pressed }) => ({ minHeight: 50, paddingHorizontal: 28, borderRadius: 10, backgroundColor: primaryBg, alignItems: 'center', justifyContent: 'center', alignSelf: 'stretch', opacity: pressed ? 0.85 : 1 })}
+          style={{ minHeight: 50, paddingHorizontal: 28, borderRadius: 10, backgroundColor: primaryBg, alignItems: 'center', justifyContent: 'center', alignSelf: 'stretch' }}
         >
           <Text style={{ color: primaryText, fontSize: 16, fontWeight: '700' }}>Back to lessons</Text>
         </Pressable>

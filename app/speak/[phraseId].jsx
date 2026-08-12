@@ -1,6 +1,7 @@
 import { View, Text } from 'react-native'
-import { Link, useLocalSearchParams, useRouter } from 'expo-router'
+import { Link, Redirect, useLocalSearchParams, useRouter } from 'expo-router'
 import TabScreen from '../../src/components/TabScreen.jsx'
+import { SPEAK_ENABLED } from '../../src/lib/launch.js'
 import Breadcrumbs from '../../src/components/common/Breadcrumbs.jsx'
 import PaywallGate from '../../src/components/common/PaywallGate.jsx'
 import Button from '../../src/components/ui/Button.jsx'
@@ -12,6 +13,7 @@ import { useProgress } from '../../src/hooks/useProgress.js'
 // page owns routing, the paywall, progress, and prev/next flow. (The web
 // AccountGate for guests isn't ported — RN has no access gating wired up.)
 export default function SpeakPhrase() {
+  if (!SPEAK_ENABLED) return <Redirect href="/speak" />   // v1: Speak coming soon
   const { phraseId } = useLocalSearchParams()
   const router = useRouter()
   const phrase = getPhrase(phraseId)

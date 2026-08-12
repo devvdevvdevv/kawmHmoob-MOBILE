@@ -119,7 +119,7 @@ export default function Paywall() {
       {/* Restore + legal — always visible when not already Pro (App Store requires). */}
       {!isPro && (
         <View className="mt-8 items-center gap-4">
-          <Button variant="ghost" onPress={onRestore} disabled={restoring}>
+          <Button variant="secondary" size="lg" onPress={onRestore} disabled={restoring}>
             {restoring ? 'Restoring…' : 'Restore Purchases'}
           </Button>
 
@@ -142,12 +142,15 @@ export default function Paywall() {
 function PlanRow({ pkg, busy, disabled, onBuy }) {
   const period = PERIOD_LABEL[pkg.packageType] || pkg.packageType
   const price = pkg.product?.priceString ?? '' // localized, show as-is
+  // Lifetime is a one-time non-consumable — it does NOT auto-renew.
+  const isLifetime = pkg.packageType === 'LIFETIME'
+  const terms = isLifetime ? 'one-time · lifetime access' : 'auto-renews until cancelled'
   return (
     <View className="rounded-md bg-cream-50 border border-cream-200 p-5 flex-row items-center justify-between">
       <View className="flex-1 pr-4">
         <Text className="font-serif text-2xl text-stone-900">{period}</Text>
         <Text className="text-stone-600 text-sm mt-1">
-          {price} · auto-renews until cancelled
+          {price} · {terms}
         </Text>
       </View>
       <Button variant="primary" onPress={onBuy} disabled={disabled}>

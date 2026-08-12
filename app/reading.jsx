@@ -1,4 +1,5 @@
 import { View, Text } from 'react-native'
+import { Redirect } from 'expo-router'
 import TabScreen from '../src/components/TabScreen.jsx'
 import Breadcrumbs from '../src/components/common/Breadcrumbs.jsx'
 
@@ -11,7 +12,15 @@ import Breadcrumbs from '../src/components/common/Breadcrumbs.jsx'
 // To make it real later: add a passages dataset ({ title, level, hmong, english?,
 // questions: [{ prompt, options, answer, explanation? }] }), render the passage,
 // then a QuizEngine-style comprehension flow with scoring.
+//
+// TODO(quota): once passages are real, gate like quiz/speak —
+//   const { user } = useAuth(); const { isPro } = useSubscription()
+//   const quota = useDailyQuota('reading', quotaLimit('reading', user.isGuest),
+//                               { enabled: !isPro, scope: user?.id || 'guest' })
+//   consume() when the user OPENS a passage (gate on quota.ready first);
+//   `if (quota.exhausted) return <QuotaWall/>`. Limit lives in quotaLimits.js.
 export default function Reading() {
+  if (!__DEV__) return <Redirect href="/words" />   // WIP — hidden in release builds
   return (
     <TabScreen>
       <Breadcrumbs

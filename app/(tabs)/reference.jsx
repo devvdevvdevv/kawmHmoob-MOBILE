@@ -38,8 +38,8 @@
 // Above contains the original Reference.jsx - Please do NOT delete it. 
 
 import { View, Text, Pressable } from 'react-native'   // Pressable: for the grammar "Learn this" link
-import { useState } from 'react'
-import { Link } from 'expo-router'                       // Link: for the grammar "Learn this" link
+import { useState, useEffect } from 'react'
+import { Link, useLocalSearchParams } from 'expo-router'  // Link + deep-link tab param
 import TabScreen from '../../src/components/TabScreen.jsx'
 import Tabs from '../../src/components/Tabs.jsx'
 // Data — the grouped/tone/grammar exports from reference.js
@@ -75,9 +75,21 @@ const TABS = [
 
 
 
+// Valid tab ids, so a bad ?tab= can't break the page.
+const TAB_IDS = TABS.map((t) => t.id)
+const validTab = (v) => (typeof v === 'string' && TAB_IDS.includes(v) ? v : null)
+
 export default function Reference() {
-  // Which tab is showing. Default to the first.
-  const [tab, setTab] = useState('consonants')
+  // A `?tab=` param (e.g. from search deep-links) picks the starting tab.
+  const { tab: tabParam } = useLocalSearchParams()
+  const [tab, setTab] = useState(validTab(tabParam) || 'consonants')
+
+  // If the param changes while this screen is already mounted (e.g. tapping an
+  // alphabet result while on the Reference → Search tab), follow it.
+  useEffect(() => {
+    const next = validTab(tabParam)
+    if (next) setTab(next)
+  }, [tabParam])
 
   return (
     <TabScreen>

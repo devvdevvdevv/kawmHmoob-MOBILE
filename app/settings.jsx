@@ -5,6 +5,7 @@ import { useAuth } from '../src/context/AuthContext.jsx'
 import TabScreen from '../src/components/TabScreen.jsx'
 import Picker from '../src/components/ui/Picker.jsx'
 import Button from '../src/components/ui/Button.jsx'
+import { isAdmin } from '../src/lib/admin.js'
 
 const dialectOptions = [
   { value: 'white', label: 'White Hmong (Hmoob Dawb)' },
@@ -58,6 +59,19 @@ export default function Settings() {
             <Link href="/account" asChild><Button variant="secondary">Manage Account</Button></Link>
           )}
         </View>
+
+        {/* Admin-only entry to the dev tools. This is just the DOORWAY — /dev and
+            /spike are guarded by AdminGate themselves, because a deep link walks
+            straight past a hidden menu item. */}
+        {isAdmin(user) && (
+          <View className="rounded-md bg-cream-50 border border-cream-200 p-5">
+            <Text className="text-sm font-semibold text-stone-800 mb-1">Dev tools</Text>
+            <Text className="text-xs text-stone-600 mb-3">
+              QA harnesses and throwaway spikes. Not visible to normal accounts.
+            </Text>
+            <Link href="/dev" asChild><Button variant="ghost">🛠️ Open dev tools</Button></Link>
+          </View>
+        )}
       </View>
     </TabScreen>
   )

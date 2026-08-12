@@ -15,7 +15,8 @@ export default function Learn() {
       </View>
 
       <View className="gap-8">
-        {units.map((unit) => (
+        {/* Readings unit is hidden in release builds (still WIP) — dev-only. */}
+        {units.filter((u) => __DEV__ || u.id !== 'readings').map((unit) => (
           <View key={unit.id}>
             <Link href={`/learn/${unit.id}`} asChild>
               <Pressable className="mb-3">

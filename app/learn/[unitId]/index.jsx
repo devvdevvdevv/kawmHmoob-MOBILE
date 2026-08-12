@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import { useLocalSearchParams, useRouter } from 'expo-router'
+import { useLocalSearchParams, useRouter, Redirect } from 'expo-router'
 import TabScreen from '../../../src/components/TabScreen.jsx'
 import Breadcrumbs from '../../../src/components/common/Breadcrumbs.jsx'
 import LessonCard from '../../../src/components/learn/LessonCard.jsx'
@@ -13,6 +13,8 @@ import { useProgress } from '../../../src/hooks/useProgress.js'
 export default function Unit() {
   const { unitId } = useLocalSearchParams()
   const router = useRouter()
+  // Readings unit is WIP → hidden in release builds (dev-only).
+  if (unitId === 'readings' && !__DEV__) return <Redirect href="/learn" />
   const unit = getUnit(unitId)
   const { completedSteps } = useProgress()
 
