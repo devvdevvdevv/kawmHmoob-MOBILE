@@ -111,6 +111,11 @@ export default function ProfilePage() {
             <Button>Create Account</Button>
           </Link>
         </View>
+        <Link href="/privacy" asChild>
+          <Pressable className="self-start mt-4" hitSlop={6}>
+            <Text className="text-xs text-stone-500 underline">Privacy Policy</Text>
+          </Pressable>
+        </Link>
       </View>
     )
   }
@@ -250,6 +255,12 @@ export default function ProfilePage() {
             <Text className="text-sm font-semibold text-red-700">Delete my account</Text>
           </Pressable>
         </View>
+
+        <Link href="/privacy" asChild>
+          <Pressable className="self-center py-1" hitSlop={6}>
+            <Text className="text-xs text-stone-500 underline">Privacy Policy</Text>
+          </Pressable>
+        </Link>
       </View>
 
       {/* Log out: confirm → success → actually log out on dismiss */}

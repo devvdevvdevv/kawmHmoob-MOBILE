@@ -101,6 +101,10 @@ export default function RegisterForm() {
         <Button onPress={submit} disabled={submitting || mismatch} className="w-full">
           {submitting ? 'Creating account…' : 'Create Account'}
         </Button>
+        <Text className="text-xs text-stone-500 text-center">
+          By creating an account you agree to our{' '}
+          <Link href="/privacy" className="underline text-clay-700">Privacy Policy</Link>.
+        </Text>
         <View className="flex-row justify-center gap-1">
           <Text className="text-sm text-stone-600">Already have an account?</Text>
           <Link href="/login" asChild>
