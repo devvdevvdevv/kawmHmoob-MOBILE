@@ -2,7 +2,7 @@
   "expo": {
     "name": "Kawm Hmoob",
     "slug": "kawm-hmoob",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "orientation": "portrait",
     "scheme": "kawmhmoob",
     "userInterfaceStyle": "light",
@@ -37,6 +37,15 @@
         }
       ],
       "expo-asset",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/adaptive-icon.png",
+          "imageWidth": 320,
+          "resizeMode": "contain",
+          "backgroundColor": "#B0E0E6"
+        }
+      ],
       "@siteed/audio-studio"
     ],
     "extra": {

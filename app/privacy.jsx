@@ -11,7 +11,7 @@ import Breadcrumbs from '../src/components/common/Breadcrumbs.jsx'
 // ⚠️ Fill in [CONTACT EMAIL] and, if you host this text at a URL, keep the two in
 // sync. Update "Last updated" whenever the policy changes.
 
-const CONTACT_EMAIL = '[your-support-email@example.com]'
+const CONTACT_EMAIL = 'techkage@proton.me'
 const LAST_UPDATED = 'August 12, 2026'
 
 export default function Privacy() {

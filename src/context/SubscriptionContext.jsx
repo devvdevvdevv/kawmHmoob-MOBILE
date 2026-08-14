@@ -39,7 +39,7 @@ export function SubscriptionProvider({ children }) {
 
   useEffect(() => {
     // Gate: no key → stay on the mock (guest / RC not configured), no crash.
-    const key = process.env.EXPO_PUBLIC_RC_TEST_KEY
+    const key = process.env.EXPO_PUBLIC_RC_API_KEY
     if (!key) return
 
     if (__DEV__) Purchases.setLogLevel(LOG_LEVEL.VERBOSE)
@@ -81,7 +81,7 @@ export function SubscriptionProvider({ children }) {
     // Read the env directly — the outer `rcConfigured` is declared LOWER in this
     // component, so it can't go in the deps array (TDZ). This effect fires after
     // the configure effect above (defined first = runs first on mount).
-    if (!process.env.EXPO_PUBLIC_RC_TEST_KEY) return
+    if (!process.env.EXPO_PUBLIC_RC_API_KEY) return
     let active = true
 
     const bind = async () => {
@@ -217,7 +217,7 @@ function proFromInfo(info) {
   // RevenueCat when it's configured (the real answer); otherwise fall back to the
   // mock so Pro UI stays testable without RC. tier is DERIVED from isPro so the
   // two can never disagree. canAccess/PaywallGate are untouched — they read these.
-  const rcConfigured = Boolean(process.env.EXPO_PUBLIC_RC_TEST_KEY)
+  const rcConfigured = Boolean(process.env.EXPO_PUBLIC_RC_API_KEY)
   const realPro = rcConfigured ? rcPro : sub.tier === 'pro'
   // Dev override wins when set; otherwise the real source of truth.
   const derivedPro = devProOverride !== null ? devProOverride : realPro

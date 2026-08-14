@@ -29,7 +29,14 @@ import GlobalHeader from '../src/components/GlobalHeader.jsx'
 import DrawerHost from '../src/components/Drawer/DrawerHost.jsx'
 import WelcomeTour from '../src/components/onboarding/WelcomeTour.jsx'
 import CelebrationOverlay from '../src/components/common/CelebrationOverlay.jsx'
+import * as SplashScreen from 'expo-splash-screen'
 import '../global.css'
+
+// Hold the native splash (icon on seafoam, configured in app.json) on screen from
+// the instant of launch until our fonts are ready, then fade it out — so the app
+// never flashes a blank or unstyled frame during startup.
+SplashScreen.preventAutoHideAsync()
+SplashScreen.setOptions?.({ duration: 250, fade: true })
 
 export default function RootLayout() {
   // Match the web app's typefaces: Nunito (headings, mapped to font-serif/
@@ -44,8 +51,14 @@ export default function RootLayout() {
     NunitoSans_700Bold,
   })
 
+  // Once fonts are in (or errored — never hang), drop the splash to reveal the app.
+  useEffect(() => {
+    if (fontsLoaded || fontError) SplashScreen.hideAsync()
+  }, [fontsLoaded, fontError])
+
   if (!fontsLoaded && !fontError) {
-    return <View style={{ flex: 1, backgroundColor: THEME_BG.light }} />
+    // The native splash still covers the screen here, so render nothing under it.
+    return null
   }
 
   return (

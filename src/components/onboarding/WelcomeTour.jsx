@@ -135,13 +135,13 @@ export default function WelcomeTour() {
                 onPress={finish}
                 style={{ flex: 1, minHeight: 52, borderRadius: 10, borderWidth: 1, borderColor: border, alignItems: 'center', justifyContent: 'center' }}
               >
-                <Text style={{ color: ghostText, fontSize: 16, fontWeight: '600' }}>Maybe later</Text>
+                <Text style={{ color: ghostText, fontSize: 16, fontWeight: '600', textAlign: 'center' }}>Maybe later</Text>
               </Pressable>
               <Pressable
                 onPress={createAccount}
                 style={{ flex: 1, minHeight: 52, borderRadius: 10, backgroundColor: primaryBg, alignItems: 'center', justifyContent: 'center' }}
               >
-                <Text style={{ color: primaryText, fontSize: 16, fontWeight: '700' }}>Create free account</Text>
+                <Text style={{ color: primaryText, fontSize: 16, fontWeight: '700', textAlign: 'center' }}>Create free account</Text>
               </Pressable>
             </View>
           ) : (
@@ -151,7 +151,7 @@ export default function WelcomeTour() {
                   onPress={back}
                   style={{ minHeight: 52, borderRadius: 10, borderWidth: 1, borderColor: border, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}
                 >
-                  <Text style={{ color: ghostText, fontSize: 16, fontWeight: '600' }}>Back</Text>
+                  <Text style={{ color: ghostText, fontSize: 16, fontWeight: '600', textAlign: 'center' }}>Back</Text>
                 </Pressable>
               )}
               {/* The big obvious brown CTA */}
@@ -159,7 +159,7 @@ export default function WelcomeTour() {
                 onPress={next}
                 style={{ flex: 1, minHeight: 52, borderRadius: 10, backgroundColor: primaryBg, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}
               >
-                <Text style={{ color: primaryText, fontSize: 17, fontWeight: '700' }}>
+                <Text style={{ color: primaryText, fontSize: 17, fontWeight: '700', textAlign: 'center' }}>
                   {isLast ? 'Start learning →' : 'Next →'}
                 </Text>
               </Pressable>
