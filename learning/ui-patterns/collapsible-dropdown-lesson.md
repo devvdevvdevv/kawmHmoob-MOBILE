@@ -105,6 +105,29 @@ In the `user.isGuest` branch of `ProfilePage`, place the header + body **between
 guest sees: intro → *(tap) Why create an account? ▶* → the two buttons. Optionally add
 a thin divider (`border-t border-cream-200`) above/below to set it apart.
 
+### Spacing: put the margin on a WRAPPER, not on the panel
+
+Wrap the header + body in one `<View className="mb-5">` and give the panel no bottom
+margin of its own:
+
+```jsx
+<View className="mb-5">          {/* owns the spacing */}
+  <Pressable ...>...</Pressable>
+  {open && <View className="gap-2 pb-3 pl-1">...</View>}
+</View>
+```
+
+`mb-5` ON the panel only exists while the panel does — so closed, the buttons sit
+tight under the header; open, they gain a gap. Everything below jumps ~20px on every
+tap, on top of the panel's own height change. On the wrapper the gap is constant and
+only the panel height changes.
+
+**General rule: spacing BETWEEN two siblings belongs to something that's always
+rendered.** A margin on a conditionally-rendered element disappears along with it.
+
+Matches the card's rhythm: `mb-5` after the intro text, `mb-5` after the dropdown,
+buttons last.
+
 ---
 
 ## 6. Make it reusable (recommended)
@@ -157,19 +180,35 @@ reanimated` instead — not worth blocking v1 over.)
 ---
 
 ## Checklist
-- [ ] `REASONS` array at module level.
-- [ ] `open` state, default false.
-- [ ] Header Pressable toggles with `setOpen(o => !o)`; chevron rotates via a static
+- [X] `REASONS` array at module level.
+- [X] `open` state, default false.
+- [X] Header Pressable toggles with `setOpen(o => !o)`; chevron rotates via a static
       transform.
-- [ ] Body is `{open && (...)}` mapping `REASONS` to bullet rows.
-- [ ] Placed in the `user.isGuest` branch of ProfilePage.
-- [ ] (Optional) extracted to a reusable `<Collapsible>`.
-- [ ] Styles are className / static objects — never a `style` FUNCTION.
+- [X] Body is `{open && (...)}` mapping `REASONS` to bullet rows.
+- [x] Bottom spacing sits on a WRAPPER around header + body, not on the panel.
+- [x] Placed in the `user.isGuest` branch of ProfilePage.
+- [~] `<Collapsible>` component EXISTS and compiles (src/components/common/Collapsible.jsx),
+      but ProfilePage still runs its own inline copy — not actually swapped over yet.
+- [x] Styles are className / static objects — never a `style` FUNCTION.
 
 ## Gotchas
+- **`.map` must RETURN the row.** `REASONS.map((r, i) => { <View/> })` renders
+  nothing at all — `{` starts a function body, so the JSX is a dead statement and
+  every item comes back `undefined`. Use `=> (` (implicit return) or add `return`.
+  No error is thrown; the list is just silently blank. See
+  [[arrow-function-bodies-and-handlers]].
+- **`onPress={() => setOpen(...)}`, never `onPress={setOpen(...)}`.** Without the
+  `() =>` wrapper it fires during render and loops → "Too many re-renders."
 - **Functional setState** (`o => !o`) — flips reliably even if taps come fast.
 - **Static styles only** — the chevron transform is a static object from state, good.
   A `style={({pressed}) => ...}` here would render invisible on device (the bug you
   already fought).
 - **Accessibility** — `accessibilityRole="button"` + `accessibilityState={{ expanded }}`
-  so screen readers announce it as a collapsible.
+  so screen readers announce it as a collapsible. It's the non-visual twin of the
+  chevron: a rotated arrow tells a blind user nothing. Other state keys (`disabled`,
+  `checked`, `selected`, `busy`) work the same way — see
+  [[accessibility-role-and-state]].
+- **"Static style" means an OBJECT, not a function** — `style={{ transform: ... }}` is
+  static even though it changes with `open`, because the value is finished by the time
+  React sees it. `style={({ pressed }) => ({...})}` is the function form NativeWind
+  drops on native → invisible element. See [[nativewind-function-style-invisible]].

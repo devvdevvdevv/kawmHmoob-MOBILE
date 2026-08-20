@@ -4074,6 +4074,102 @@ words: [
       { id: 'daily-life-tired', hmongRPA: 'kuv tsaug zog', english: "I'm tired / sleepy", category: 'daily-life', tags: ['daily', 'phrase'], audioFile: null },
     ],
   },
+
+  // New Words
+  //
+  // ⚠️ NEEDS NATIVE REVIEW — the exampleSentence lines below were drafted, not
+  // sourced. Verify wording and classifiers before this ships. See the content
+  // quality pipeline in notes/2026-08-18-content-implementation-plan.md.
+{
+  id: "human-anatomy-face",
+  title: "Head & Face",
+  description: "Parts of the head and face. Several are compounds: qhov ('opening') and plaub ('hair') each build three of these.",
+  emoji: "👤",
+  words: [
+    { id: "human-anatomy-face-head", hmongRPA: "taub hau", english: "head", category: "human-anatomy-face", tags: ["anatomy", "body", "head"], audioFile: null, exampleSentence: { hmong: 'Kuv lub taub hau mob.', english: 'My head hurts.' } },
+    { id: "human-anatomy-face-hair", hmongRPA: "plaub hau", english: "hair", category: "human-anatomy-face", tags: ["anatomy", "body", "head", "plaub-compound"], audioFile: null, exampleSentence: { hmong: 'Nws cov plaub hau ntev.', english: 'Her hair is long.' } },
+    { id: "human-anatomy-face-forehead", hmongRPA: "hauv pliaj", english: "forehead", category: "human-anatomy-face", tags: ["anatomy", "body", "face"], audioFile: null, exampleSentence: { hmong: 'Kuv lub hauv pliaj mob.', english: 'My forehead hurts.' } },
+    { id: "human-anatomy-face-face", hmongRPA: "ntsej muag", english: "face", category: "human-anatomy-face", tags: ["anatomy", "body", "face", "compound"], audioFile: null, exampleSentence: { hmong: 'Nws lub ntsej muag zoo nkauj.', english: 'Her face is beautiful.' } },
+    { id: "human-anatomy-face-eye", hmongRPA: "qhov muag", english: "eye", category: "human-anatomy-face", tags: ["anatomy", "body", "face", "qhov-compound"], audioFile: null, exampleSentence: { hmong: 'Kuv lub qhov muag mob.', english: 'My eye hurts.' } },
+    // NOTE: 'plaub muag' covers BOTH eyebrow and eyelash. Kept as ONE entry with a
+    // single primary gloss so quizzes have one right answer — splitting it would
+    // create two entries with the same hmongRPA, which is worse. Confirm with a
+    // native speaker whether eyelash has a distinct form (e.g. 'plaub qhov muag').
+    { id: "human-anatomy-face-eyebrow", hmongRPA: "plaub muag", english: "eyebrow", category: "human-anatomy-face", tags: ["anatomy", "body", "face", "plaub-compound", "needs-review"], audioFile: null, exampleSentence: { hmong: 'Nws cov plaub muag dub.', english: 'Her eyebrows are black.' } },
+    { id: "human-anatomy-face-ear", hmongRPA: "pob ntseg", english: "ear", category: "human-anatomy-face", tags: ["anatomy", "body", "face"], audioFile: null, exampleSentence: { hmong: 'Kuv lub pob ntseg mob.', english: 'My ear hurts.' } },
+    { id: "human-anatomy-face-nose", hmongRPA: "qhov ntswg", english: "nose", category: "human-anatomy-face", tags: ["anatomy", "body", "face", "qhov-compound"], audioFile: null, exampleSentence: { hmong: 'Kuv lub qhov ntswg mob.', english: 'My nose hurts.' } },
+    { id: "human-anatomy-face-cheek", hmongRPA: "plhu", english: "cheek", category: "human-anatomy-face", tags: ["anatomy", "body", "face"], audioFile: null, exampleSentence: { hmong: 'Nws lub plhu liab.', english: 'Her cheek is red.' } },
+    { id: "human-anatomy-face-mouth", hmongRPA: "qhov ncauj", english: "mouth", category: "human-anatomy-face", tags: ["anatomy", "body", "face", "qhov-compound"], audioFile: null, exampleSentence: { hmong: 'Qhib koj lub qhov ncauj.', english: 'Open your mouth.' } },
+    { id: "human-anatomy-face-lip", hmongRPA: "di ncauj", english: "lip", category: "human-anatomy-face", tags: ["anatomy", "body", "face"], audioFile: null, exampleSentence: { hmong: 'Nws di ncauj liab.', english: 'Her lips are red.' } },
+    { id: "human-anatomy-face-tongue", hmongRPA: "nplaig", english: "tongue", category: "human-anatomy-face", tags: ["anatomy", "body", "face"], audioFile: null, exampleSentence: { hmong: 'Kuv nplaig mob.', english: 'My tongue hurts.' } },
+    { id: "human-anatomy-face-teeth", hmongRPA: "hniav", english: "teeth", category: "human-anatomy-face", tags: ["anatomy", "body", "face"], audioFile: null, exampleSentence: { hmong: 'Kuv cov hniav dawb.', english: 'My teeth are white.' } },
+    { id: "human-anatomy-face-chin", hmongRPA: "puab tsaig", english: "chin", category: "human-anatomy-face", tags: ["anatomy", "body", "face", "needs-review"], audioFile: null, exampleSentence: { hmong: 'Kuv lub puab tsaig mob.', english: 'My chin hurts.' } },
+    { id: "human-anatomy-face-neck", hmongRPA: "caj dab", english: "neck", category: "human-anatomy-face", tags: ["anatomy", "body", "head"], audioFile: null, exampleSentence: { hmong: 'Kuv lub caj dab mob.', english: 'My neck hurts.' } },
+  ],
+},
+
+
+{
+  id: "human-anatomy-upper-body",
+  title: "Human Anatomy Upper Body",
+  description: "Hmong words for Human Anatomy for the Upper Body",
+  emoji: "💪",
+  words: [
+    { id: "human-anatomy-upper-body-shoulder", hmongRPA: "xub pwg", english: "shoulder", category: "human-anatomy-upper-body", tags: ["anatomy", "body", "upper"], audioFile: null },
+    { id: "human-anatomy-upper-body-arm", hmongRPA: "caj npab", english: "arm", category: "human-anatomy-upper-body", tags: ["anatomy", "body", "upper"], audioFile: null },
+    { id: "human-anatomy-upper-body-elbow", hmongRPA: "luj tshib", english: "elbow", category: "human-anatomy-upper-body", tags: ["anatomy", "body", "upper"], audioFile: null },
+    { id: "human-anatomy-upper-body-hand", hmongRPA: "tes", english: "hand", category: "human-anatomy-upper-body", tags: ["anatomy", "body", "upper"], audioFile: null },
+    { id: "human-anatomy-upper-body-finger", hmongRPA: "ntiv tes", english: "finger", category: "human-anatomy-upper-body", tags: ["anatomy", "body", "upper"], audioFile: null },
+    { id: "human-anatomy-upper-body-thumb", hmongRPA: "ntiv tes xoo", english: "thumb", category: "human-anatomy-upper-body", tags: ["anatomy", "body", "upper"], audioFile: null },
+    { id: "human-anatomy-upper-body-chest", hmongRPA: "hauv siab", english: "chest", category: "human-anatomy-upper-body", tags: ["anatomy", "body", "upper"], audioFile: null },
+    { id: "human-anatomy-upper-body-breast", hmongRPA: "mis", english: "breast", category: "human-anatomy-upper-body", tags: ["anatomy", "body", "upper"], audioFile: null },
+    { id: "human-anatomy-upper-body-nipple", hmongRPA: "txiv mis", english: "nipple", category: "human-anatomy-upper-body", tags: ["anatomy", "body", "upper"], audioFile: null },
+    { id: "human-anatomy-upper-body-back", hmongRPA: "nrob qaum", english: "back", category: "human-anatomy-upper-body", tags: ["anatomy", "body", "upper"], audioFile: null },
+  ],
+},
+
+{
+  id: "human-anatomy-lower-body",
+  title: "Human Anatomy Lower Body",
+  description: "Hmong words for Human Anatomy for the Lower Body",
+  emoji: "🦵",
+  words: [
+    { id: "human-anatomy-lower-body-belly", hmongRPA: "plab", english: "belly / stomach", category: "human-anatomy-lower-body", tags: ["anatomy", "body", "lower"], audioFile: null },
+    { id: "human-anatomy-lower-body-navel", hmongRPA: "ntaws", english: "navel / belly button", category: "human-anatomy-lower-body", tags: ["anatomy", "body", "lower"], audioFile: null },
+    { id: "human-anatomy-lower-body-hip", hmongRPA: "ntsag", english: "hip", category: "human-anatomy-lower-body", tags: ["anatomy", "body", "lower"], audioFile: null },
+    { id: "human-anatomy-lower-body-thigh", hmongRPA: "ncej puab", english: "thigh", category: "human-anatomy-lower-body", tags: ["anatomy", "body", "lower"], audioFile: null },
+    { id: "human-anatomy-lower-body-knee", hmongRPA: "hauv caug", english: "knee", category: "human-anatomy-lower-body", tags: ["anatomy", "body", "lower"], audioFile: null },
+    { id: "human-anatomy-lower-body-shin", hmongRPA: "caj hlaub", english: "shin / lower leg", category: "human-anatomy-lower-body", tags: ["anatomy", "body", "lower"], audioFile: null },
+    { id: "human-anatomy-lower-body-calf", hmongRPA: "plab hlaub", english: "calf", category: "human-anatomy-lower-body", tags: ["anatomy", "body", "lower"], audioFile: null },
+    { id: "human-anatomy-lower-body-leg", hmongRPA: "ceg", english: "leg", category: "human-anatomy-lower-body", tags: ["anatomy", "body", "lower"], audioFile: null },
+    { id: "human-anatomy-lower-body-ankle", hmongRPA: "pob taws", english: "ankle", category: "human-anatomy-lower-body", tags: ["anatomy", "body", "lower"], audioFile: null },
+    { id: "human-anatomy-lower-body-foot", hmongRPA: "ko taw", english: "foot", category: "human-anatomy-lower-body", tags: ["anatomy", "body", "lower"], audioFile: null },
+    { id: "human-anatomy-lower-body-toe", hmongRPA: "ntiv taw", english: "toe", category: "human-anatomy-lower-body", tags: ["anatomy", "body", "lower"], audioFile: null },
+  ],
+},
+
+{
+  id: "human-anatomy-internal-organs",
+  title: "Human Anatomy Internal Organs",
+  description: "Hmong words for Human Anatomy for the Internal Organs",
+  emoji: "🫀",
+  words: [
+    { id: "human-anatomy-internal-organs-heart", hmongRPA: "plawv", english: "heart", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+    { id: "human-anatomy-internal-organs-liver", hmongRPA: "siab", english: "liver", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+    { id: "human-anatomy-internal-organs-lung", hmongRPA: "ntsws", english: "lung", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+    { id: "human-anatomy-internal-organs-kidney", hmongRPA: "raum", english: "kidney", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+    { id: "human-anatomy-internal-organs-stomach", hmongRPA: "plab", english: "stomach", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+    { id: "human-anatomy-internal-organs-intestine", hmongRPA: "hnyuv", english: "intestine", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+    { id: "human-anatomy-internal-organs-gallbladder", hmongRPA: "tsib", english: "gall bladder", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+    { id: "human-anatomy-internal-organs-brain", hmongRPA: "hlwb", english: "brain", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+    { id: "human-anatomy-internal-organs-blood", hmongRPA: "ntshav", english: "blood", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+    { id: "human-anatomy-internal-organs-bone", hmongRPA: "pob txha", english: "bone", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+    { id: "human-anatomy-internal-organs-skin", hmongRPA: "tawv nqaij", english: "skin", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+    { id: "human-anatomy-internal-organs-rib", hmongRPA: "tav", english: "rib", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null },
+  ],
+},
+
+
 ]
 
 // ── Category grouping ───────────────────────────────────────────────────────
@@ -4096,7 +4192,7 @@ const CATEGORY_THEMES = [
     title: 'Home & Places',
     blurb: 'The house, what is in it, and where things are.',
     ids: [
-      'household', 'household-rooms', 'housing', 'buildings',
+      'household-rooms', 'housing', 'buildings',
       'tools-household', 'places', 'locations-prepositions',
     ],
   },
@@ -4117,7 +4213,7 @@ const CATEGORY_THEMES = [
     title: 'Time, Numbers & Money',
     blurb: 'Counting, the calendar, and buying things.',
     ids: [
-      'numbers', 'quantifiers', 'timeframes', 'timeframes-days',
+      'numbers', 'quantifiers', 'timeframes', 'timeframes-days', 'time-context',
       'days-of-week', 'months', 'calendar', 'money',
     ],
   },
@@ -4141,6 +4237,12 @@ const CATEGORY_THEMES = [
     title: 'Everyday Speech',
     blurb: 'Phrases you say out loud — greetings, thanks, introductions.',
     ids: ['greetings', 'politeness', 'introductions', 'daily-life', 'discourse-particles', 'conjunctions'],
+  },
+  {
+    id: 'body',
+    title: 'The Body',
+    blurb: 'Head, face, and the compounds Hmong builds them from.',
+    ids: ['human-anatomy-face'],
   },
 ]
 

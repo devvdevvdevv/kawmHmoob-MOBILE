@@ -14,6 +14,16 @@ import AdminGate from '../src/components/common/AdminGate.jsx'
 
 const TOOLS = [
   {
+    href: '/wav-spike',
+    title: '🎙️ WAV spike 2 (siteed)',
+    blurb: 'Does @siteed/audio-studio give real PCM on Android? Records, decodes, and runs pitch extraction on-device. Green = tone scoring works here.',
+  },
+  {
+    href: '/speak-lab',
+    title: '🧪 Speak lab',
+    blurb: 'Sandbox for the Natulang-style lesson flow: a script of typed steps. Reads src/data/speakLab.js. Touches nothing in the real Speak module.',
+  },
+  {
     href: '/spike',
     title: '🎙️ WAV spike',
     blurb: 'Record 2s, read the file header, prove whether this platform gives real uncompressed PCM. Results show on screen.',

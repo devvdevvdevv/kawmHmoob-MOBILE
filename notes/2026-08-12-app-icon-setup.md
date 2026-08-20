@@ -42,3 +42,32 @@ not clipped**. If they're clipped, `adaptive-icon.png` needs the mark scaled sma
 
 Related: [2026-08-06-launch-prep-account-readings-quiz-eas] (the rest of the launch
 checklist).
+
+---
+
+## Fix: foreground was oversized (2026-08-18)
+
+**Symptom:** on the home screen the icon looked "way too big" — the outer petals ran
+to the edge of the circular mask and got clipped.
+
+**Measured cause.** The foreground art's content diameter was **72.5% of the canvas**
+against a **66% safe zone**. The trap is that the adaptive canvas is 108dp but only
+~72dp survives the mask — a **1.5x visual zoom**. So 72.5% x 1.5 ~= 108% of the
+visible tile: the art was mathematically guaranteed to overflow.
+
+Bounding box alone is misleading; the number that matters is the **radius of the
+farthest opaque pixel from center**, since the mask is a circle.
+
+**Fix.** Scaled the art to 0.828x and re-centered on the same 1024x1024 transparent
+canvas → content diameter now **60.2%**, comfortably inside the safe zone.
+
+- `assets/adaptive-icon.png` — corrected (60.2%).
+- `assets/adaptive-icon-oversized-backup.png` — the previous 72.5% version, kept in
+  case the smaller mark reads as too timid on device.
+
+`icon.png` was NOT touched: full-bleed and fully opaque is CORRECT for iOS (iOS
+applies its own rounded mask and forbids transparency). Only the Android adaptive
+foreground needs the safe-zone padding.
+
+⚠️ Still needs `npx expo prebuild --clean` + a fresh build — icons bake in at BUILD
+time, a JS reload will not show this.

@@ -15,6 +15,9 @@ import InfoModal from '../common/InfoModal.jsx'
 import DeleteAccountModal from './DeleteAccountModal.jsx'
 import { MONETIZATION_ENABLED } from '../../lib/launch.js'
 
+// Smoothin collapsible animation
+import { LayoutAnimation, Platform, UIManager } from 'react-native'
+
 // You can change your username at most once every 2 weeks.
 const USERNAME_COOLDOWN_DAYS = 14
 
@@ -25,6 +28,21 @@ const dialectOptions = [
   { value: 'white', label: 'White Hmong (Hmoob Dawb)' },
   { value: 'green', label: 'Green Hmong (Moob Leeg)' },
 ]
+
+// Reasons
+
+const REASONS = [
+  'Sync your streak, XP, and saved words across devices',
+  'Never lose your progress if you reinstall',
+  'Compete on the leaderboard',
+  'Unlock Kawm Hmoob Pro when you’re ready',
+]
+
+// Animation configuration
+
+if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true)
+}
 
 export default function ProfilePage() {
   const router = useRouter()
@@ -56,6 +74,10 @@ export default function ProfilePage() {
   const [modal, setModal] = useState(null)
   const [deleteBusy, setDeleteBusy] = useState(false)
   const [deleteErr, setDeleteErr] = useState(null)
+
+  // Guest Dropdown
+
+  const [open, setOpen] = useState(false)
 
   const handleExport = () => {
     console.log('[export]', JSON.stringify(exportData(), null, 2))
@@ -100,9 +122,79 @@ export default function ProfilePage() {
     return (
       <View className="rounded-md bg-cream-50 border border-cream-200 p-8 max-w-xl">
         <Text className="font-serif text-3xl text-stone-900 mb-2">Guest Account</Text>
-        <Text className="text-stone-700 mb-6">
+        <Text className="text-stone-700 mb-5">
           You're learning as a guest. Progress is saved on this device only. Create an account to sync your work.
         </Text>
+
+        {/* Dropdown Logic */}
+        {/* The WRAPPER owns the bottom spacing, not the panel — so the gap above
+            the buttons is identical whether the dropdown is open or closed. */}
+        <View className="mb-5">
+
+        <Pressable
+        onPress={() => {
+          // Arms the animation for the NEXT layout change — must be called right
+          // before the state update, every time. It is not a one-time setup.
+          // NOTE: no-op on react-native-web; only visible on a native build.
+          LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+          setOpen((o) => !o)
+        }}
+        className="flex-row items-center justify-between py-3 border-t border-cream-200 "
+        accessibilityRole='button'
+        accessibilityState={{expanded: open}}
+        
+        >
+          {/* flex-1 + mr-3: on a narrow phone the label WRAPS instead of pushing
+              the chevron off the row. Without it the Text sizes to its content and
+              overflows — a wide-screen-only bug you won't see in the browser. */}
+          <Text className="flex-1 mr-3 text-lg font-semibold text-clay-700">
+            Why create an account?
+          </Text>
+          <View style={{transform:[{rotate: open? "90deg" : "0deg"}]}}>
+            <Icon name="arrowRight" size={18} tone="accent" />
+          </View>
+          
+
+
+
+        </Pressable>
+
+        {/* Opening */}
+
+        {open && (
+          <View className="gap-2 pb-3 pl-1">
+            {REASONS.map((reason, i) => {
+              return(
+
+                <View key={i} className="flex-row items-start gap-2">
+                  <Text className="text-clay-600">-</Text>
+                  <Text className="flex-1 text-sm text-stone-700">{reason}</Text>
+
+
+                </View> 
+
+                
+              )
+        
+
+            })}
+            
+          </View>
+
+
+        )}
+
+
+
+
+
+
+
+
+
+
+        </View>
+
         <View className="flex-row gap-2">
           <Link href="/login" asChild>
             <Button variant="ghost">Log In</Button>
