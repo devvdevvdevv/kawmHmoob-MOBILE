@@ -16,8 +16,13 @@ export function CelebrationProvider({ children }) {
   // ⚠️ `extra` IS OPTIONAL AND BACKWARDS-COMPATIBLE. Every existing caller passes
   // (title, onDone) and gets the lesson-completion copy it always got. A caller
   // that is celebrating something other than finishing a lesson — a purchase,
-  // say — can override the body and the button without a second overlay
-  // component, which is how two celebration surfaces would start to drift apart.
+  // say — can override the heading, the body and the button without a second
+  // overlay component, which is how two celebration surfaces start to drift.
+  //
+  // extra: { heading, body, cta }
+  //   heading — defaults to 'Lesson complete!'. Added 2026-09-30, because that
+  //             default was the only part a caller COULD NOT change, and the Pro
+  //             purchase was therefore congratulated for completing a lesson.
   const celebrate = useCallback((title, onDone, extra = {}) => {
     setCelebration({ title, onDone: onDone || null, ...extra })
   }, [])

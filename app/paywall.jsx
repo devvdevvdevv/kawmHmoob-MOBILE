@@ -399,7 +399,11 @@ export default function Paywall() {
       //
       // `purchase` resolves on success and swallows a user cancellation
       // without throwing, so this line is reached on a genuine purchase.
+      // `heading` overrides the overlay's 'Lesson complete!' default — buying a
+      // subscription is not finishing a lesson, and until 2026-09-30 that was
+      // the one line a caller could not change.
       celebrate('KawmHmong Pro', () => router.push('/'), {
+        heading: 'You’re on Pro!',
         body: 'You’re in. Every lesson, every story, and the whole word list are unlocked — and your progress carries over exactly as it was.',
         cta: 'Start learning',
       })

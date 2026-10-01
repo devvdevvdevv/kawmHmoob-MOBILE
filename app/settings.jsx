@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { View, Text, Pressable } from 'react-native'
 import { Link } from 'expo-router'
+import Constants from 'expo-constants'
 import { useAuth } from '../src/context/AuthContext.jsx'
 import TabScreen from '../src/components/TabScreen.jsx'
 import Picker from '../src/components/ui/Picker.jsx'
@@ -111,6 +112,15 @@ export default function Settings() {
           <Link href="/about" asChild>
             <Button variant="ghost">About KawmHmong</Button>
           </Link>
+          {/* ⚠️ READ FROM THE CONFIG, NOT TYPED. A hardcoded "1.0" is true for
+              exactly one release and then quietly lies — and a version stamp
+              that lies is worse than none, because it is the first thing a bug
+              report quotes. `version` comes from app.json.
+              KawmHmoob is the official name (KawmHmong is what users see
+              elsewhere); About explains the pair. */}
+          <Text className="text-xs text-stone-500 mt-3">
+            KawmHmoob {Constants.expoConfig?.version || '1.0.0'}
+          </Text>
         </View>
 
         {/* Admin-only entry to the dev tools. This is just the DOORWAY — /dev and

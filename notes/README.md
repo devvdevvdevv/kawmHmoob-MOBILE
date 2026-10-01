@@ -26,6 +26,7 @@ Long-running stories that span many days. Each links out to the dated notes.
 
 - `2026-09-30` [Eleven sets made always free, and tom qab split in two (2026-09-30)](2026-09-30-always-free-sets-and-tom-qab-split.md)
 - `2026-09-30` [The audio that never came back: why playback stuck, and the fix (2026-09-30)](2026-09-30-audio-stuck-playback-fix.md)
+- `2026-09-30` [Day summary: everything changed on 2026-09-30](2026-09-30-day-summary.md)
 - `2026-09-30` [Internal-testing build: subscription and audio bugs (2026-09-30)](2026-09-30-internal-testing-bugs-subscription-and-audio.md)
 - `2026-09-30` [txhais, intensifiers, and a dictionary batch (2026-09-30)](2026-09-30-txhais-intensifiers-dictionary.md)
 - `2026-09-30` [Word definition rulings: aws, tus, leej, nim no, tom qab (2026-09-30)](2026-09-30-word-definition-rulings.md)
@@ -227,4 +228,4 @@ Long-running stories that span many days. Each links out to the dated notes.
 
 ---
 
-202 notes, 36,940 lines.
+203 notes, 37,111 lines.

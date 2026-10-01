@@ -54,8 +54,14 @@ export default function CelebrationOverlay() {
         </Pressable>
 
         <Text style={{ fontSize: 56, marginBottom: 8 }}>🎉</Text>
+        {/* ⚠️ OVERRIDABLE SINCE 2026-09-30 — `body` and `cta` already were, and
+            this being the one hardcoded line meant the Pro purchase was
+            congratulated with "Lesson complete!". Buying a subscription is not
+            completing a lesson, and the mismatch undercut the one moment the
+            app most needs to feel deliberate.
+            Default unchanged, so every lesson caller keeps the copy it had. */}
         <Text className="font-serif" style={{ color: titleColor, fontSize: 26, fontWeight: '700', marginBottom: 10, textAlign: 'center' }}>
-          Lesson complete!
+          {celebration.heading || 'Lesson complete!'}
         </Text>
         <Text style={{ color: bodyColor, fontSize: 16, lineHeight: 24, textAlign: 'center', marginBottom: 24 }}>
           {celebration.body || `You’ve successfully completed “${celebration.title}.”`}

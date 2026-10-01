@@ -162,10 +162,32 @@ export default function About() {
     <TabScreen>
       <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'About' }]} />
 
+      {/* ⚠️ TWO NAMES, ON PURPOSE — stated here because this is the one screen
+          whose job is to explain the app to someone.
+            • KawmHmoob — the OFFICIAL name, in RPA, the way the language spells
+              itself. It is also what every id in the codebase still uses
+              (entitlement, package, storage keys), and those must never be
+              renamed: changing the entitlement id alone would revoke Pro for
+              every existing subscriber.
+            • KawmHmong — the name shown to users, so an English-reading learner
+              can see at a glance that it is for Hmong.
+          Neither is a rename of the other, and this paragraph exists so nobody
+          "fixes" one into the other later. */}
       <View className="mb-6">
         <Text className="font-serif text-4xl text-stone-900 mb-2">About KawmHmong</Text>
+        <Eyebrow tone="accent" className="mb-3">KawmHmoob 1.0</Eyebrow>
         <Text className="text-base font-medium text-stone-700 leading-relaxed mt-1">
           KawmHmong comes from Kawm Hmoob, “learn Hmong”. This app exists to help keep our language alive.
+        </Text>
+        <Text className="text-stone-600 text-sm leading-relaxed mt-3">
+          Its official name is <B>KawmHmoob</B>, spelled the way Hmong spells
+          itself in RPA. You will see <B>KawmHmong</B> throughout the app so it
+          is obvious at a glance which language it teaches — the same app, the
+          same name, written for two sets of eyes.
+        </Text>
+        <Text className="text-stone-600 text-sm leading-relaxed mt-2">
+          This is <B>version 1.0</B>, the first release. The course, the
+          recordings and the stories are added to as they are finished.
         </Text>
       </View>
 

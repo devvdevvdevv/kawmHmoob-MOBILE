@@ -210,12 +210,21 @@ export default function DrawerHost(){
                 mark (ko taw ntxhw, the app icon) sits to its LEFT — assets/adaptive-icon.png is the
                 white foot on transparent, so tintColor paints it the same clay as the wordmark.
                 Was: <View className="items-center mt-12 mb-4 opacity-90"> holding only the wordmark. */}
-            <View className="flex-row items-center justify-center gap-2 mt-12 mb-4 opacity-90">
+            {/* ⚠️ THE ICON GREW MORE THAN THE WORDMARK — 2026-09-30, author:
+                "make the icon bigger so users know what the logo is".
+                Was 40px icon / 150px wordmark. The mark is the elephant foot
+                (ko taw ntxhw) and at 40px beside a 150px wordmark it read as a
+                bullet point rather than as the app's symbol — the eye went
+                straight past it to the text. Raising BOTH equally would have
+                preserved that, so the icon goes up ~40% and the wordmark ~13%,
+                shifting the ratio from 1:3.75 to 1:3.
+                gap-3 because two larger elements at gap-2 start to crowd. */}
+            <View className="flex-row items-center justify-center gap-3 mt-12 mb-4 opacity-90">
               <Image
                 source={require('../../../assets/adaptive-icon.png')}
                 style={{
-                  width: 40,
-                  height: 40,
+                  width: 56,
+                  height: 56,
                   tintColor: `rgb(${(THEME_TOKENS[theme] || THEME_TOKENS.light)['--c-clay-600']})`,
                 }}
                 resizeMode="contain"
@@ -223,7 +232,7 @@ export default function DrawerHost(){
               />
               <KawmHmoobLogo
                 color={`rgb(${(THEME_TOKENS[theme] || THEME_TOKENS.light)['--c-clay-600']})`}
-                width={150}
+                width={170}
               />
             </View>
 
