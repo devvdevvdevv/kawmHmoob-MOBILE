@@ -1,8 +1,23 @@
-# Android PCM recording via @siteed/audio-studio — spike built (2026-08-20)
+# Android PCM recording via @siteed/audio-studio — ✅ CONFIRMED WORKING (2026-08-20)
 
-Attempt to remove the last hard blocker on tone scoring: **Android cannot record
-raw PCM through expo-audio.** Everything needed is now in place to answer that
-with a real device test rather than more source reading.
+> 🧵 **One chapter of the audio story.** The whole thread, in order:
+> [[AUDIO-END-TO-END]]
+
+**RESULT: PCM recording works on Android.** Verified on a real device through
+`/wav-spike`. This removes the last hard blocker on tone scoring.
+
+The original blocker: expo-audio wraps MediaRecorder, which has no PCM output at
+all. `@siteed/audio-studio` uses Android's lower-level **AudioRecord** API
+instead — and it both **compiles and runs**, which settles the open question from
+[[2026-08-13-siteed-audio-studio-build-break-version-pin]]. That note's "remove
+it for v1" conclusion is now **obsolete — the package stays.**
+
+Two side effects worth noting:
+- `app.config.js` app variants were added so the dev build
+  (`com.kawmhmoob.app.dev`) installs alongside the Play Store production app.
+  Without that, Android refuses the install — same package, different signing key.
+- Several notes asserting "Android cannot record PCM" were corrected on this date.
+  If you find another one, it is stale.
 
 Related: [[2026-08-18-pronunciation-pipeline-implemented]] (the pipeline this
 unblocks), [[2026-08-13-siteed-audio-studio-build-break-version-pin]] (the build
@@ -108,10 +123,10 @@ gives a known-good baseline to compare Android against.
 ## Status
 
 - Code: written, parses clean, isolated from the shipping path.
-- Device: **completely unverified.** No Android dev build has been made.
-- The Kotlin build question from 08-13 remains open and is answered by step 1.
+- Device: ✅ **VERIFIED on Android.** Real PCM in, decodes, pitch extracts.
+- Kotlin build question from 08-13: ✅ **answered — it compiles.**
 
-## If it passes
+## Next steps (it passed)
 
 1. Swap the lab's `say` step to `usePcmRecorder`.
 2. Decide whether `usePronunciation` retires or stays as the iOS path (no reason
@@ -121,12 +136,131 @@ gives a known-good baseline to compare Android against.
 4. Delete `app/spike.jsx` and this spike; fold the finding into
    `recordingOptions.js`, whose Android comment block would then be wrong.
 
-## If it fails
+~~If it fails~~ — it did not. Fallback options are left in git history if ever needed.
 
-Options, cheapest first:
-1. Re-test whether **expo-audio** now records WAV on the current SDK (zero new
-   dependencies if it does).
-2. `patch-package` whatever the current Kotlin error actually is.
-3. A different PCM recording library.
-4. Ship Android without tone scoring — record + playback + compare by ear still
-   works, and that is the feature's core value.
+---
+
+# Exercises — hammer in the Android/PCM concepts
+
+Predict the answer BEFORE running each one. The prediction is where the learning
+happens; the run just tells you whether you understood.
+
+---
+
+## A. Formats and bytes
+
+### A1. Read your own recording's header
+Record in `/wav-spike`, then in the Analyze code path log the first 44 bytes as
+hex. Identify by eye: `RIFF`, `WAVE`, `fmt `, the sample rate at bytes 24–27,
+bits-per-sample at 34–35, and where `data` starts.
+**Predict first:** what will bytes 24–27 be for 44100? (Hint: `0x44 0xac 0x00 0x00`
+— work out why before you look.)
+
+### A2. Prove little-endian matters
+In `decodeWav`, flip `view.getUint32(body + 4, true)` to `false`. Run the spike.
+What sample rate is reported? Why does the pipeline then produce a wrong F0
+instead of an error? **This is the single most dangerous class of bug in this
+file** — no crash, just wrong numbers.
+
+### A3. Break the chunk walker
+Modify the decoder to assume `data` starts at byte 44 instead of walking chunks.
+Does your Android recording still decode? Does iOS? If both still work, you have
+learned something about what those recorders actually emit — and why the walker
+is insurance rather than decoration.
+
+### A4. Compression is not a filename
+Record with `usePronunciation` (expo-audio) on Android and with `usePcmRecorder`
+(siteed). Compare `size ÷ durationMs` for each. One should be ~86 KB/s, the other
+far less. **Why does file size alone prove compression, regardless of what the
+extension or mimeType claims?**
+
+---
+
+## B. Platform and native modules
+
+### B1. Why did this need a rebuild?
+You changed no JS when you first tried siteed, yet a Metro reload could not make
+it work. Explain in your own words why `requireNativeModule('AudioStudio')` needs
+a new binary while editing `wavDecode.js` does not.
+
+### B2. Make it fail on purpose
+Open `/wav-spike` in **Expo Go** or on **web**. What happens, and at what moment —
+import time, render time, or when you tap Record? Relate that to
+`requireNativeModule` throwing rather than returning null.
+
+### B3. MediaRecorder vs AudioRecord
+Both are Android APIs. In two sentences each: what is MediaRecorder for, what is
+AudioRecord for, and why does only one of them serve pitch analysis? Then explain
+why this was never fixable by changing options in `recordingOptions.js`.
+
+### B4. The 08-13 note was wrong — diagnose the diagnosis
+That note concluded "remove for v1" based on Kotlin `reject()` signature errors.
+The package now compiles unchanged. List three things that could explain the
+discrepancy, and say which you'd check first. **Lesson to extract: how long is a
+build diagnosis valid for?**
+
+---
+
+## C. App identity
+
+### C1. Why two icons?
+Explain why `com.kawmhmoob.app.dev` can coexist with `com.kawmhmoob.app` but a
+second copy of `com.kawmhmoob.app` cannot — even though both are "your app."
+
+### C2. Signing, not naming
+Suppose you set the dev build's package BACK to `com.kawmhmoob.app` and tried to
+install over the Play Store version. **Predict the exact failure.** Why does the
+signing key matter and not just the name?
+
+### C3. What did you lose?
+The dev app starts signed out with empty progress. Which data came back after
+logging in, and which did not? Map each to where it actually lives
+(AsyncStorage vs Supabase). Use `src/context/ProgressContext.jsx` to check.
+
+---
+
+## D. The pipeline, end to end
+
+### D1. Trace one number
+Take the median F0 that `/wav-spike` printed. Work backwards and name every
+transformation that produced it, in order, with the file and function for each.
+Six or seven steps. Do it from memory first.
+
+### D2. Where did 16000 come from?
+Your recording is 44100. The spike reports the contour at 16000. Find the exact
+line that changed it, and state what would break if it were removed. Then compute
+how much slower `differenceFunction` would run at 44100 — the answer is a ratio
+of two products.
+
+### D3. Kill the energy gate
+Comment out the RMS check in `extractContour`. Record silence and analyze.
+How many "voiced" frames appear now, and what F0 do they claim? **This shows why
+the gate exists** — and why a confident wrong answer is worse than no answer.
+
+### D4. Whisper test
+Record a whispered vowel. Predict the voiced-frame count before you run it.
+Explain the result using the definition of F0 from Part 2 of
+[[f0-and-tone-scoring-guide]].
+
+---
+
+## E. The one that matters most
+
+### E1. Real speech, two tones
+Record yourself saying ONE Hmong word twice, with two DIFFERENT tones — pick a
+**contour** pair (rising `-v` vs falling `-j`), not two level tones. Extract both
+contours and score them against each other.
+
+**Success looks like:** self-match near 100, cross-match clearly lower.
+
+If they don't separate, stop and fix the scorer before building any more UI.
+
+### E2. Now try the level tones
+Same exercise with high (`-b`) vs low (`-s`). **Predict the result from what you
+know about `normalizeContour`.** You should be able to say what will happen and
+why BEFORE recording.
+
+Then read the level-tone section in
+[[2026-08-18-pronunciation-pipeline-implemented]] and decide which of the four
+fixes you want. **This decision gates the ffmpeg contour extraction** — two of the
+options change what needs storing per clip.

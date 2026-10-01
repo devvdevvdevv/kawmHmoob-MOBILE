@@ -7,7 +7,8 @@ const links = [
   { to: '/reference', label: 'Reference' },
   { to: '/vocabulary', label: 'Vocabulary' },
   { to: '/notebook', label: 'Notebook' },
-  { to: '/quiz', label: 'Quiz' },
+  // Quizzes live inside Vocabulary now — the /quiz menu is retired.
+  // { to: '/quiz', label: 'Quiz' },
 ]
 
 const resources = [
@@ -23,7 +24,7 @@ export default function Footer() {
     <View className="mt-12 bg-[#C7DEE0] border-t border-[#9CBFC2]/40">
       <View className="px-6 py-8 gap-8">
         <View>
-          <Text className="font-serif text-2xl text-stone-900">Kawm Hmoob</Text>
+          <Text className="font-serif text-2xl text-stone-900">KawmHmong</Text>
           <Text className="text-xs text-stone-800/80 italic mt-1">
             Learn the Hmong language
           </Text>
@@ -60,7 +61,7 @@ export default function Footer() {
       </View>
 
       <View className="border-t border-[#9CBFC2]/40 px-6 py-4 gap-1">
-        <Text className="text-xs text-stone-700/80">© {year} Kawm Hmoob · made with care</Text>
+        <Text className="text-xs text-stone-700/80">© {year} KawmHmong · made with care</Text>
         <Text className="text-xs text-stone-700/80">Ua tsaug rau koj txoj kev kawm.</Text>
       </View>
     </View>

@@ -48,7 +48,8 @@ export const vowels = [
   { letter: 'o', sound: 'aw' },
   { letter: 'u', sound: 'oo' },
   { letter: 'w', sound: 'uh (schwa)' },
-  { letter: 'aa', sound: 'an' },
+  // ⚠️ COMMENTED OUT 2026-09-28 — the author: "aa" is Green Hmong, not Hmoob Dawb. TO RESTORE: uncomment.
+  // { letter: 'aa', sound: 'an' },
   { letter: 'ai', sound: 'eye' },
   { letter: 'au', sound: 'ow' },
   { letter: 'aw', sound: 'aw-uh' },

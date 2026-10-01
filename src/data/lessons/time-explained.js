@@ -1,4 +1,7 @@
-// Standalone lesson: telling time and time-of-day words in Hmong.
+// Standalone lesson: TELLING THE TIME (the clock) in Hmong.
+// ⚠️ 2026-09-26: days / time of day are now their own lesson (time.js, "Days & Time of
+// Day"), which comes FIRST; this one is the intro of path unit u-clock. Its quiz uses
+// the new `clock-time` set. The Hmong below is unchanged.
 // Content filled 2026-07-16 (Slice A pass) — audio still pending, see
 // instructions/audio-files.md. Follows the lesson model in ../lessons.js.
 
@@ -9,9 +12,10 @@
 // here mark the same step complete in the other lesson.
 export const timeExplained = {
   id: 'time-explained',
-  title: 'Time Explained | Yog pestsawg teev lawm? What time is it? (ADVENTURE TIME!)',
+  title: 'Time Explained | Yog pes tsawg teev lawm? What time is it? (ADVENTURE TIME!)',
   summary: 'Explaining how to tell time, articulate literal time.',
-  vocab: 'timeframes',
+  // Was 'timeframes' — the clock words now live in their own set, 2026-09-26.
+  vocab: 'clock-time',
   steps: [
     {
       id: 'time-explained-intro',
@@ -38,11 +42,16 @@ export const timeExplained = {
         '> 3:46 — Peb teev thiab plaubcaum rau feeb',
         'Literally: "three hours and forty-six minutes."',
 
-        '## Morning and evening',
-        'Hmong has no separate a.m. / p.m. markers. You tag the part of the day onto the END of the phrase: "sawv ntxov" for morning, "tsaus ntuj" for evening and night.',
+        // The author, 2026-09-27: sawv ntxov and tsaus ntuj ARE a.m. and p.m. Was:
+        //   '## Morning and evening',
+        //   'Hmong has no separate a.m. / p.m. markers. You tag the part of the day onto the END of the phrase: "sawv ntxov" for morning, "tsaus ntuj" for evening and night.',
+        '## a.m. and p.m.: sawv ntxov and tsaus ntuj',
+        'Sawv ntxov is a.m. and tsaus ntuj is p.m. They go at the END of the time, after the minutes:',
+        '> sawv ntxov — a.m. (literally “rise early”, the morning)',
+        '> tsaus ntuj — p.m. (literally “the sky darkens”, the evening)',
         '> 6:30 a.m. — Rau teev pebcaug sawv ntxov',
         '> 5:25 p.m. — Tsib teev neesnkaum tsib tsaus ntuj',
-        '> 4:00 p.m. — Tamsim nov yog plaub teev tsuas ntuj', // TODO-VERIFY: "tsuas ntuj" here vs "tsaus ntuj" above — likely the same word
+        '> 4:00 p.m. — Tamsim nov yog plaub teev tsaus ntuj', // was "tsuas ntuj" — the author: tsaus (2026-09-27). // The author confirmed 2026-09-27 that this is p.m. ("tsuas ntuj … pm"). Spelling: the author writes tsuas here; the rest of the lesson and the dictionary say tsaus (dark) — asked which to use.
         'And inside a full sentence:',
         '> Lub teevsij hais tias nws peb teev mus plaubcaum tsib tsaus ntuj',
         'The clock says it is 3:45 p.m.',
@@ -50,10 +59,15 @@ export const timeExplained = {
         '## "Teev" for duration, not the clock',
         'The same word measures how long something lasted. Nothing about the time of day is implied here — context does all the work.',
         '> Kuv sau ntawv tau ob teev — I wrote for 2 hours.',
-        '> Koj lub teevsij yog pestsawg teev? — What time does your clock say?',
+        '> Koj lub teevsij yog pes tsawg teev? — What time does your clock say?',
         '> Kuv yuav muag koj pebcaug feeb ua koj daim tsev kawm ntawv lossis wb yuav sib ntaus — I will give you 30 minutes to do your homework, or we will fight each other.', // TODO-VERIFY: "muag" (to sell) where the gloss says "give" — likely "muab"
         '> Tamsim nov yog plaub teev — Right now it is 4 o\'clock.',
 
+        // Added 2026-09-27 — the author: thaum sets the location of time.
+        '## At what time: thaum',
+        'To say WHEN something happens, put thaum (when, during, at) in front of the time:',
+        '> Chai mus yos hav zoov thaum tsib teev tsaus ntuj. — Chai goes hunting at 5 p.m.',
+        'Without thaum you are just saying a time. With it, the time becomes the moment of an action.',
         'This one takes a while to feel natural, and that is normal — the order is simply different from English. The passages in the Readings unit use these constructions in context, which is the fastest way to make them stick.',
       ],
 

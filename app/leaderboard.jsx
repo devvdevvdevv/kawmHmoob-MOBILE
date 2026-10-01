@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo, useCallback } from 'react'
-import { View, Text, ActivityIndicator } from 'react-native'
-import { Link } from 'expo-router'
+import { View, Text } from 'react-native'
+// import { Link } from 'expo-router'  ← the page's only Link was the /pass one
+// in the placeholder footnote below; restore both together (2026-09-23).
 import TabScreen from '../src/components/TabScreen.jsx'
 import Breadcrumbs from '../src/components/common/Breadcrumbs.jsx'
 import Button from '../src/components/ui/Button.jsx'
@@ -9,11 +10,23 @@ import { useAuth } from '../src/context/AuthContext.jsx'
 import { buildBoard, lastWeekWinner } from '../src/data/leaderboard.js'
 import { levelFromPoints, seasonDaysLeft, SEASON } from '../src/lib/leveling.js'
 import { isSupabaseConfigured, supabase } from '../src/lib/supabase.js'
+import { SkeletonList } from '../src/components/common/SkeletonCard.jsx'
 
+
+// ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
+// (`border` + `border-cream-200`) read too dark on cream; shadow-warm and the
+// background contrast do the separating now.
+//
+// A className is a STRING — one class inside it cannot be commented out, so the
+// token was deleted and this note is the record.
+// TO RESTORE: re-add those two classes to the card classNames below.
 // Who's ahead. Real rankings come from the Supabase `leaderboard` VIEW (username +
 // xp, ranked). Guests / no-backend fall back to the placeholder roster (buildBoard).
 // Every row is normalized to ONE shape: { id, rank, name, points, isYou }.
 export default function Leaderboard() {
+  // ⚠️ A HOOK, so it sits above every early return in this component — the
+  // colours it resolves change with the theme, and hook order may not.
+
   const { xp } = useProgress()
   const { user } = useAuth()
 
@@ -93,20 +106,26 @@ export default function Leaderboard() {
       </View>
 
       {/* Last week's winner — a settled record, kept static for now. */}
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-5 mb-4">
+      <View className="rounded-md bg-cream-50 p-5 mb-4">
         <Text className="text-xs uppercase tracking-wider font-semibold text-stone-600 mb-2">Last week's winner</Text>
         <Text className="font-serif text-2xl text-stone-900">🏆 {lastWeekWinner.name}</Text>
-        <Text className="text-sm text-stone-700 mt-1">{lastWeekWinner.weekPoints.toLocaleString()} pts</Text>
+        <Text className="text-sm font-medium text-stone-700 mt-1">{lastWeekWinner.weekPoints.toLocaleString()} pts</Text>
         <Text className="text-xs text-stone-600 mt-1">{lastWeekWinner.week}</Text>
       </View>
 
       {loading ? (
-        <View className="items-center py-12">
-          <ActivityIndicator size="large" color="#b45309" />
-          <Text className="text-stone-600 mt-3">Loading the board…</Text>
-        </View>
+        // ⚠️ A SKELETON, NOT A SPINNER — 2026-09-09. The board is always a
+        // list of rows, so its shape is known before the data is: the skeleton
+        // holds that layout, and nothing on the page jumps when the rows land.
+        // A centred spinner collapsed the page to nothing and then pushed the
+        // whole board down in one frame.
+        //
+        // The paywall keeps its spinner on purpose — a purchase round-trip has
+        // no known shape, and a fake row there would be a lie about what is
+        // coming back.
+        <SkeletonList count={6} />
       ) : error ? (
-        <View className="rounded-md bg-cream-50 border border-cream-200 p-8 items-center">
+        <View className="rounded-md bg-cream-50 p-8 items-center">
           <Text className="font-serif text-xl text-stone-900 mb-2 text-center">{error}</Text>
           <Button variant="primary" onPress={load}>Retry</Button>
         </View>
@@ -114,12 +133,12 @@ export default function Leaderboard() {
         <>
           {/* Leading now */}
           {leader && (
-            <View className="rounded-md bg-cream-50 border border-cream-200 p-5 mb-6">
+            <View className="rounded-md bg-cream-50 p-5 mb-6">
               <Text className="text-xs uppercase tracking-wider font-semibold text-stone-600 mb-2">Leading now</Text>
               <Text className="font-serif text-2xl text-stone-900">
                 {leader.isYou ? '👑 You' : `👑 ${leader.name}`}
               </Text>
-              <Text className="text-sm text-stone-700 mt-1">{leader.points.toLocaleString()} pts</Text>
+              <Text className="text-sm font-medium text-stone-700 mt-1">{leader.points.toLocaleString()} pts</Text>
               {yourRow && !leader.isYou && (
                 <Text className="text-xs text-stone-600 mt-1">You're #{yourRow.rank} of {rows.length}</Text>
               )}
@@ -127,7 +146,7 @@ export default function Leaderboard() {
           )}
 
           {/* The ranked list */}
-          <View className="rounded-md bg-cream-50 border border-cream-200 overflow-hidden">
+          <View className="rounded-md bg-cream-50 overflow-hidden">
             {rows.map((r, i) => (
               <View
                 key={r.id}
@@ -151,9 +170,13 @@ export default function Leaderboard() {
 
           {usingPlaceholder && (
             <Text className="text-xs text-stone-600 mt-4">
+              {/* ⚠️ The trailing "see the season pass" link was commented out
+                  2026-09-23 with the pass itself — the sentence now ends at
+                  "practice". Restore list: app/pass.jsx's header.
+                  Was: quizzes, and practice; see the{' '}
+                       <Link href="/pass" className="underline text-clay-700">season pass</Link>. */}
               Sample standings — sign in to see the real leaderboard. Points come from lessons,
-              quizzes, and practice; see the{' '}
-              <Link href="/pass" className="underline text-clay-700">season pass</Link>.
+              quizzes, and practice.
             </Text>
           )}
         </>

@@ -6,9 +6,17 @@ import Breadcrumbs from '../../src/components/common/Breadcrumbs.jsx'
 import PaywallGate from '../../src/components/common/PaywallGate.jsx'
 import Button from '../../src/components/ui/Button.jsx'
 import PronounceStep from '../../src/components/speak/PronounceStep.jsx'
-import { getPhrase, adjacentPhrases, speakStepId } from '../../src/data/speak.js'
+import { getPhrase, adjacentPhrases, speakStepId, phraseTier } from '../../src/data/speak.js'
 import { useProgress } from '../../src/hooks/useProgress.js'
 
+
+// ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
+// (`border` + `border-cream-200`) read too dark on cream; shadow-warm and the
+// background contrast do the separating now.
+//
+// A className is a STRING — one class inside it cannot be commented out, so the
+// token was deleted and this note is the record.
+// TO RESTORE: re-add those two classes to the card classNames below.
 // One phrase's practice screen. PronounceStep does the listen/mark loop; this
 // page owns routing, the paywall, progress, and prev/next flow. (The web
 // AccountGate for guests isn't ported — RN has no access gating wired up.)
@@ -37,7 +45,8 @@ export default function SpeakPhrase() {
   }
 
   return (
-    <PaywallGate tier={phrase.tier} contentLabel={`"${phrase.hmong}" is a Pro phrase`}>
+    // Was: tier={phrase.tier} — the phrase's GROUP decides now (phraseTier, author 2026-09-28).
+    <PaywallGate tier={phraseTier(phrase.id)} contentLabel={`"${phrase.hmong}" is a Pro phrase`}>
       <TabScreen>
         <Breadcrumbs
           items={[
@@ -47,7 +56,7 @@ export default function SpeakPhrase() {
           ]}
         />
 
-        <View className="rounded-md bg-cream-50 border border-cream-200 shadow-warm p-6">
+        <View className="rounded-md bg-cream-50 shadow-warm p-6">
           <PronounceStep key={phrase.id} phrase={phrase} done={done} onDone={handleDone} />
         </View>
 

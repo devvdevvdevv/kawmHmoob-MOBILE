@@ -1,0 +1,644 @@
+{
+ "moves": [
+  {
+   "id": "phr-chaw-nres-tsheb",
+   "to": "places"
+  },
+  {
+   "id": "phr-rooj-noj-mov",
+   "to": "food"
+  },
+  {
+   "id": "phr-rooj-zaum",
+   "to": "tools-household"
+  },
+  {
+   "id": "phr-kab-raub-ris",
+   "to": "animals"
+  },
+  {
+   "id": "misc-lub-xauv",
+   "to": "tools-household"
+  },
+  {
+   "id": "misc-xib-xub",
+   "to": "war-conflict"
+  },
+  {
+   "id": "misc-tus-kas",
+   "to": "animals"
+  },
+  {
+   "id": "misc-paj-kws",
+   "to": "agriculture-foodstuffs"
+  },
+  {
+   "id": "misc-daj",
+   "to": "colors"
+  },
+  {
+   "id": "misc-nas",
+   "to": "animals"
+  },
+  {
+   "id": "misc-ntoo",
+   "to": "botany"
+  },
+  {
+   "id": "misc-toj",
+   "to": "places"
+  },
+  {
+   "id": "misc-xim",
+   "to": "colors"
+  },
+  {
+   "id": "misc-liab",
+   "to": "colors"
+  },
+  {
+   "id": "misc-nplej",
+   "to": "botany"
+  },
+  {
+   "id": "misc-qhov-rais",
+   "to": "household-rooms"
+  },
+  {
+   "id": "misc-qhov-rooj",
+   "to": "household-rooms"
+  },
+  {
+   "id": "misc-hav-zoov",
+   "to": "places"
+  },
+  {
+   "id": "misc-tus-tsov",
+   "to": "animals"
+  },
+  {
+   "id": "misc-tus-luav",
+   "to": "animals"
+  },
+  {
+   "id": "misc-xov-xwm",
+   "to": "arts-culture"
+  },
+  {
+   "id": "misc-tsav",
+   "to": "vehicles-travel"
+  },
+  {
+   "id": "misc-keeb-kwm",
+   "to": "arts-culture"
+  },
+  {
+   "id": "misc-tsheb-kauj-vab",
+   "to": "vehicles-travel"
+  },
+  {
+   "id": "misc-phab-ntsa",
+   "to": "household-rooms"
+  },
+  {
+   "id": "misc-nplog-teb",
+   "to": "countries"
+  },
+  {
+   "id": "misc-thaib-teb",
+   "to": "countries"
+  },
+  {
+   "id": "misc-suav-teb",
+   "to": "countries"
+  },
+  {
+   "id": "misc-xeev",
+   "to": "countries"
+  },
+  {
+   "id": "misc-choj",
+   "to": "places"
+  },
+  {
+   "id": "phr-cuaj-hlis",
+   "to": "months"
+  },
+  {
+   "id": "phr-peb-hlis",
+   "to": "months"
+  },
+  {
+   "id": "misc-tawg",
+   "to": "botany"
+  },
+  {
+   "id": "misc-cog",
+   "to": "botany"
+  },
+  {
+   "id": "misc-txhawb",
+   "to": "food"
+  },
+  {
+   "id": "misc-caij",
+   "to": "vehicles-travel"
+  },
+  {
+   "id": "misc-tsheb",
+   "to": "vehicles-travel"
+  },
+  {
+   "id": "gen-dab-muag",
+   "to": "arts-culture"
+  },
+  {
+   "id": "gen-hiav",
+   "to": "body-health"
+  },
+  {
+   "id": "gen-kab-lia",
+   "to": "body-health"
+  },
+  {
+   "id": "gen-moj-zeej",
+   "to": "arts-culture"
+  },
+  {
+   "id": "gen-nuv",
+   "to": "animals"
+  },
+  {
+   "id": "gen-qabntug",
+   "to": "places"
+  },
+  {
+   "id": "gen-qauv",
+   "to": "arts-culture"
+  },
+  {
+   "id": "gen-samthiaj",
+   "to": "places"
+  },
+  {
+   "id": "gen-suab-puam",
+   "to": "places"
+  },
+  {
+   "id": "gen-taubteg",
+   "to": "body-health"
+  },
+  {
+   "id": "gen-vijtsam",
+   "to": "tools-household"
+  },
+  {
+   "id": "gen-zoov-nujtxeeg",
+   "to": "places"
+  }
+ ],
+ "groups": [
+  [
+   "reading-law",
+   [
+    "phr-tub-ceev-xwm",
+    "phr-tus-kws-txiav-txim",
+    "phr-kws-lij-choj",
+    "phr-rooj-plaub",
+    "phr-tsev-hais-plaub",
+    "phr-txiav-txim",
+    "phr-raug-foob",
+    "phr-raug-ntes",
+    "phr-pov-thawj",
+    "phr-tim-khawv",
+    "phr-yuam-cev",
+    "misc-txim",
+    "misc-xwb",
+    "misc-ntes",
+    "misc-txwv",
+    "misc-zam-txim",
+    "misc-ncaj-ncees",
+    "misc-sense-thov",
+    "misc-pov",
+    "rv-rooj",
+    "misc-tuag",
+    "misc-raug",
+    "misc-foob",
+    "misc-txiav",
+    "misc-cai",
+    "misc-hnyav",
+    "misc-txhaum",
+    "misc-xwm",
+    "misc-ceev",
+    "gen-vajhuam"
+   ]
+  ],
+  [
+   "reading-speech",
+   [
+    "phr-sib-cav",
+    "phr-lo-lus",
+    "phr-hu-npe",
+    "misc-pw",
+    "misc-xuav-kauv",
+    "misc-li",
+    "misc-lub-suab",
+    "misc-qw",
+    "misc-thuam",
+    "misc-lees",
+    "misc-kam",
+    "rv-tab",
+    "rv-twg",
+    "rv-tsi",
+    "rv-cas",
+    "rv-phooj",
+    "rv-ywg",
+    "rv-cav",
+    "misc-sense-zaum-maybe",
+    "misc-hu",
+    "misc-hlis",
+    "misc-npe",
+    "misc-lus",
+    "misc-laj",
+    "misc-ntaub",
+    "misc-kheej",
+    "misc-txwm",
+    "misc-caug",
+    "misc-sib",
+    "misc-ho",
+    "gen-ceeb-toom",
+    "gen-lees",
+    "gen-taug-xaiv",
+    "gen-zab"
+   ]
+  ],
+  [
+   "reading-qualities",
+   [
+    "phr-txhob-txwm",
+    "phr-nyab-xeeb",
+    "phr-tseem-ceeb",
+    "phr-khov-kho",
+    "phr-nyaum",
+    "phr-puas-tsuaj",
+    "phr-txawv-txav",
+    "phr-tshwj-xeeb",
+    "misc-kiag",
+    "misc-xis",
+    "misc-thaum-ub",
+    "misc-tuav",
+    "misc-tsim-txom",
+    "misc-ib-yam-li",
+    "misc-hloov",
+    "misc-zog",
+    "misc-ruaj",
+    "misc-tib",
+    "misc-txhob",
+    "misc-yam",
+    "gen-suab-ncha-famous",
+    "gen-huv",
+    "gen-lo-phem",
+    "gen-feem-cuam",
+    "gen-kob-huam",
+    "gen-lauj-vaub",
+    "gen-noo",
+    "gen-piamsij",
+    "gen-vammeej",
+    "gen-vuabtsuab"
+   ]
+  ],
+  [
+   "reading-emotion",
+   [
+    "phr-chim",
+    "phr-chim-siab",
+    "phr-mob-siab",
+    "phr-lom-zem",
+    "misc-npau-taws",
+    "misc-kaj",
+    "misc-tu",
+    "misc-luab-lim",
+    "misc-hlub",
+    "misc-khiav",
+    "misc-ntshai",
+    "gen-dai-siab",
+    "gen-peem",
+    "gen-xijpeem"
+   ]
+  ],
+  [
+   "reading-work",
+   [
+    "phr-txoj-haujlwm",
+    "misc-pab",
+    "misc-koom",
+    "misc-haujlwm",
+    "misc-them",
+    "misc-muas",
+    "gen-lag-luam",
+    "gen-hawm",
+    "gen-sawv-cev"
+   ]
+  ],
+  [
+   "reading-people",
+   [
+    "phr-zej-tsoom",
+    "phr-tswv-cuab",
+    "phr-pab-hluas",
+    "phr-tus-muam",
+    "misc-sense-pab",
+    "misc-kev",
+    "misc-leeg",
+    "misc-luag",
+    "misc-tug",
+    "misc-xibfwb",
+    "misc-tug-tub-hluas",
+    "misc-poj-niam-zoo-nkauj",
+    "misc-tsev-neeg",
+    "misc-tsib-leeg",
+    "misc-hem",
+    "misc-poj-niam",
+    "misc-txiv-neej",
+    "misc-phooj-ywg",
+    "misc-zej-zog",
+    "rv-zej",
+    "misc-sense-ib",
+    "misc-hluas",
+    "misc-neeg",
+    "misc-menyuam",
+    "misc-kws",
+    "misc-yaus",
+    "gen-mab",
+    "gen-pejxeem",
+    "gen-tauv-pem",
+    "gen-xeebceem"
+   ]
+  ],
+  [
+   "reading-body",
+   [
+    "phr-kws-kho-mob",
+    "phr-hauv-paus",
+    "misc-muab",
+    "misc-dab",
+    "misc-thawv",
+    "misc-lub-siab",
+    "misc-tso-siab",
+    "misc-nraub-qaum",
+    "misc-hlab-ntsha",
+    "misc-ntiaj-teb",
+    "misc-ntsuj-plig",
+    "misc-ntuj",
+    "misc-mob",
+    "misc-yoj",
+    "misc-kho",
+    "misc-neej",
+    "misc-rov",
+    "gen-sia",
+    "gen-tuag",
+    "gen-ceeb-laj",
+    "gen-dab-ntub",
+    "gen-fab-seeb",
+    "gen-looj-hlias",
+    "gen-pauj",
+    "gen-yajceeb"
+   ]
+  ],
+  [
+   "reading-place",
+   [
+    "phr-npoo-av",
+    "misc-hoob",
+    "misc-tsev",
+    "misc-lub-zos",
+    "misc-txoj-kev",
+    "misc-lub-tsev-qub",
+    "misc-ntug-zos",
+    "misc-khw",
+    "misc-dej",
+    "misc-teb-chaws",
+    "rv-ntsa",
+    "rv-phab",
+    "misc-nroog",
+    "misc-khaws",
+    "misc-chaw",
+    "misc-qhov",
+    "misc-qho",
+    "gen-yajsab"
+   ]
+  ],
+  [
+   "reading-mind",
+   [
+    "phr-nco-txog",
+    "phr-kwv-yees",
+    "misc-nroj",
+    "misc-taub",
+    "misc-tsuag",
+    "misc-ua-ib-siab",
+    "misc-paub-li-mas",
+    "misc-nco",
+    "misc-paub",
+    "misc-xav",
+    "misc-nco-qab",
+    "misc-xaiv",
+    "misc-npaj",
+    "misc-ntseeg",
+    "misc-ua-txuj",
+    "misc-tseeb",
+    "misc-txawj",
+    "misc-cim",
+    "gen-cim-xeeb",
+    "gen-kwv-yees",
+    "gen-keeb",
+    "gen-meej-pem",
+    "gen-ras",
+    "gen-sablaj",
+    "gen-temtoob"
+   ]
+  ],
+  [
+   "reading-time",
+   [
+    "phr-ua-ke",
+    "phr-niaj-hnub",
+    "phr-ib-nyuag-ntu",
+    "phr-ib-ntus",
+    "phr-vib-nas-this",
+    "misc-hmo",
+    "misc-kuj",
+    "misc-mam",
+    "misc-thaum",
+    "misc-tiam",
+    "misc-twb",
+    "misc-txawm",
+    "misc-tib-sij-huam",
+    "misc-sij-hawm",
+    "rv-tsaus",
+    "misc-ib-zaum",
+    "misc-yav",
+    "misc-xyoos",
+    "misc-thawj",
+    "misc-thiaj",
+    "gen-nim-no"
+   ]
+  ],
+  [
+   "reading-quantity",
+   [
+    "phr-sib-cais",
+    "phr-me-ntsis",
+    "phr-feem-ntau",
+    "misc-tag",
+    "misc-tas",
+    "misc-tsuas",
+    "misc-noj-kom-tsau",
+    "misc-ib-txhia",
+    "misc-ntxiv",
+    "misc-tshaj-plaws",
+    "misc-sense-nees",
+    "misc-nkaum",
+    "rv-txhia",
+    "gen-hauj-sim",
+    "gen-haj-yam",
+    "gen-qee"
+   ]
+  ],
+  [
+   "reading-motion",
+   [
+    "phr-rov-qab",
+    "misc-dua",
+    "misc-poob",
+    "misc-taug",
+    "misc-tawm",
+    "misc-tua",
+    "misc-tuaj",
+    "misc-caum",
+    "misc-kawm-ntawv",
+    "misc-khiav-ceev",
+    "misc-thawb",
+    "misc-rub",
+    "misc-dim",
+    "misc-thauj",
+    "misc-nce",
+    "misc-nqes",
+    "misc-ntog",
+    "misc-kauj-ruam",
+    "rv-txheej",
+    "misc-sense-zaum-time",
+    "misc-tshaj",
+    "misc-ya",
+    "misc-dhia",
+    "misc-nqis",
+    "misc-tig",
+    "misc-txav",
+    "misc-cuag",
+    "misc-tsa",
+    "misc-ntaus",
+    "misc-xa",
+    "misc-nqa",
+    "misc-hla",
+    "misc-kav",
+    "misc-cev",
+    "misc-txaus",
+    "gen-fee",
+    "gen-laj-muam",
+    "gen-maub",
+    "gen-rawm",
+    "gen-xabnagkis",
+    "gen-yais"
+   ]
+  ],
+  [
+   "reading-general",
+   [
+    "phr-hwj-chim",
+    "phr-pob-zeb",
+    "phr-xwm-txheej",
+    "phr-yeeb-tshuaj",
+    "phr-npau-suav",
+    "phr-ua-si",
+    "phr-ua-pauj",
+    "phr-sawv-tsees",
+    "phr-tshawb-nrhiav",
+    "phr-cuam-tshuam",
+    "phr-tso-tseg",
+    "phr-raws-li",
+    "misc-peev-xwm",
+    "misc-tus-xov",
+    "misc-xav-pom",
+    "misc-kawg",
+    "misc-lam",
+    "misc-lwm",
+    "misc-puag",
+    "misc-qab",
+    "misc-sab",
+    "misc-sim",
+    "misc-siv",
+    "misc-tiag",
+    "misc-tim",
+    "misc-tom",
+    "misc-zeb",
+    "misc-tos",
+    "misc-tib-kaug",
+    "misc-teeb-meem",
+    "misc-kuv-txaus-siab-heev",
+    "misc-quaj",
+    "misc-nias",
+    "misc-vij",
+    "misc-txeeb",
+    "misc-tsoo",
+    "misc-plam",
+    "misc-xaus",
+    "misc-txais",
+    "misc-pib",
+    "misc-pub",
+    "misc-ceev-faj",
+    "misc-laj-thawj",
+    "misc-cwj-pwm",
+    "misc-tab-meeg",
+    "misc-tsim-nyog",
+    "misc-tshwm-sim",
+    "misc-tiv-thaiv",
+    "rv-vab",
+    "rv-tsum",
+    "misc-tej-zaum",
+    "misc-saum",
+    "misc-tshaws",
+    "misc-cawm",
+    "misc-nqus",
+    "misc-tsom",
+    "misc-tsuam",
+    "misc-tshuav",
+    "misc-tseg",
+    "misc-ntawv",
+    "misc-ntug",
+    "misc-txij",
+    "gen-hom",
+    "gen-cawm",
+    "gen-cwj-pwm",
+    "gen-daug",
+    "gen-dauv",
+    "gen-faj-suab",
+    "gen-haub",
+    "gen-kawj",
+    "gen-las-mees",
+    "gen-meem-txom",
+    "gen-nuam-yaj",
+    "gen-nog",
+    "gen-puab",
+    "gen-qaim-hli",
+    "gen-qaug-quav",
+    "gen-rauv",
+    "gen-raus",
+    "gen-rais",
+    "gen-sawblawj",
+    "gen-tabkaum",
+    "gen-xawb",
+    "gen-zes"
+   ]
+  ]
+ ]
+}

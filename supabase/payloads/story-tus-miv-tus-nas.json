@@ -1,0 +1,197 @@
+{
+  "id": "story-tus-miv-tus-nas",
+  "version": 1,
+  "status": "published",
+  "min_app_version": "1.0.0",
+  "title": "Tus Miv",
+  "english": "The Cat",
+  "blurb": "A cat, a mouse, and a game only one of them is playing.",
+  "genre": "life",
+  "level": "beginner",
+  "minutes": 4,
+  "tier": "free",
+  "payload": {
+    "paragraphs": [
+      [
+        {
+          "hmong": "Tus miv haus mis hauv lub tais.",
+          "english": "The cat drinks milk from a bowl."
+        },
+        {
+          "hmong": "Tus miv pom tus nas los.",
+          "english": "The cat sees the mouse coming."
+        }
+      ],
+      [
+        {
+          "hmong": "Tus miv xav tau tias tus nas xis noj heev.",
+          "english": "The cat thinks that the mouse would be very tasty to eat."
+        },
+        {
+          "hmong": "Nws mus puag tim tus nas tawm tuaj.",
+          "english": "It goes over toward where the mouse will come out."
+        },
+        {
+          "hmong": "Nws tos tus nas tiam sis tus nas twb paub tag lawm.",
+          "english": "It waits for the mouse, but the mouse already knows everything."
+        }
+      ],
+      [
+        {
+          "hmong": "Tus nas ua lub suab me’ li nws tawm los xwb.",
+          "english": "The mouse makes a small sound as if it is coming out."
+        },
+        {
+          "hmong": "Tus nas twb to taub tus miv lub siab tas.",
+          "english": "The mouse already understands the cat's intentions."
+        },
+        {
+          "hmong": "Tus nas lam sim tus miv lub siab kom nws muaj siab xwb.",
+          "english": "The mouse is only testing the cat's patience, so that the cat stays eager."
+        },
+        {
+          "hmong": "Tus nas maj mam ua lub suab me’ li nws yuav tawm los tiag.",
+          "english": "The mouse slowly makes a little sound, as if it really is about to come out."
+        }
+      ],
+      [
+        {
+          "hmong": "Tus miv xav tias nws mas tau noj kiag tus nas.",
+          "english": "The cat thinks it is about to eat the mouse."
+        },
+        {
+          "hmong": "Nws tos tus nas tau ob peb teev los tus nas kuj ua suab xuav’ kom tus miv muaj’ siab xwb.",
+          "english": "It waits several hours, but the mouse keeps whistling only to keep the cat interested."
+        },
+        {
+          "hmong": "Tau peb teev lawm, tus miv mam paub tias tus nas ua si xwb.",
+          "english": "After three hours, the cat finally realises that the mouse was only playing."
+        }
+      ],
+      [
+        {
+          "hmong": "Tus miv ua ib siab li nws tu siab mus pw tib tug no’ ib leeg tim nws lub hoob.",
+          "english": "The cat makes up its mind, feels sad, and goes to sleep alone in its room."
+        },
+        {
+          "hmong": "Tus nas pom tau tias tus miv mus pw lawm, nws mam tawm los xuav kauv ua si kom luab lim tus miv.",
+          "english": "The mouse sees that the cat has gone to sleep, then comes out, whistling and playing to mock the cat."
+        }
+      ],
+      [
+        {
+          "hmong": "Tus nas mas niam mus’ los’, haus miv tais mis, taug kev ua si tom tej ua li nws kaj siab heev.",
+          "english": "The mouse goes back and forth, drinks the milk from the cat's bowl, and walks around playing; it feels very peaceful and happy."
+        },
+        {
+          "hmong": "Tib sij huam li ib laim muag, tus miv tib kaug ua tus nas poob siab kiag.",
+          "english": "In the blink of an eye, the cat suddenly leaves the mouse terrified."
+        },
+        {
+          "hmong": "Tus nas mam paub tias tus miv los muab nws tom lawm.",
+          "english": "The mouse then realises that the cat has come to bite it."
+        },
+        {
+          "hmong": "Tus nas mam xav tias paub li mas.",
+          "english": "The mouse thinks, \"I should have known.\""
+        }
+      ]
+    ],
+    "glossary": [
+      {
+        "hmong": "luab lim",
+        "english": "to tease, to mock, to make fun of"
+      },
+      {
+        "hmong": "xuav kauv",
+        "english": "to whistle; a whistling or hissing sound"
+      },
+      {
+        "hmong": "tib sij huam",
+        "english": "in an instant; all at once; suddenly"
+      },
+      {
+        "hmong": "tib kaug",
+        "english": "suddenly; immediately; in one quick motion"
+      },
+      {
+        "hmong": "paub li mas",
+        "english": "\"I should have known\" — an expression of realisation or regret"
+      },
+      {
+        "hmong": "li",
+        "english": "like, as if — \"li nws tawm los\", as if it were coming out"
+      },
+      {
+        "hmong": "lub siab",
+        "english": "inner intention, desire, resolve — literally the heart or liver"
+      },
+      {
+        "hmong": "ua ib siab",
+        "english": "to make up one's mind; to steel oneself"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-miv-1",
+        "prompt": "Tus miv haus dab tsi? — What is the cat drinking?",
+        "options": [
+          "Milk from a bowl",
+          "Water from the field",
+          "Nothing at all",
+          "Tea"
+        ],
+        "answer": "Milk from a bowl",
+        "because": "Paragraph 1 — \"Tus miv haus mis hauv lub tais.\""
+      },
+      {
+        "id": "q-miv-2",
+        "prompt": "Vim li cas tus nas ua lub suab me? — Why does the mouse keep making a small sound?",
+        "options": [
+          "To keep the cat eager and waiting",
+          "Because it is frightened",
+          "To call other mice",
+          "Because it is hungry"
+        ],
+        "answer": "To keep the cat eager and waiting",
+        "because": "Paragraph 3 — \"Tus nas lam sim tus miv lub siab kom nws muaj siab xwb.\""
+      },
+      {
+        "id": "q-miv-3",
+        "prompt": "Tau pes tsawg teev tus miv mam paub tias tus nas ua si? — How long before the cat realises the mouse is only playing?",
+        "options": [
+          "Three hours",
+          "One hour",
+          "All night",
+          "A few minutes"
+        ],
+        "answer": "Three hours",
+        "because": "Paragraph 4 — \"Tau peb teev lawm, tus miv mam paub tias tus nas ua si xwb.\""
+      },
+      {
+        "id": "q-miv-4",
+        "prompt": "Thaum tus miv mus pw lawm, tus nas ua dab tsi? — Once the cat has gone to sleep, what does the mouse do?",
+        "options": [
+          "It comes out and drinks the cat's milk",
+          "It runs away from the house",
+          "It goes to sleep as well",
+          "It hides in its hole"
+        ],
+        "answer": "It comes out and drinks the cat's milk",
+        "because": "Paragraph 6 — \"…haus miv tais mis, taug kev ua si tom tej…\""
+      },
+      {
+        "id": "q-miv-5",
+        "prompt": "Thaum kawg, tus miv ua dab tsi rau tus nas? — In the end, what does the cat do to the mouse?",
+        "options": [
+          "It bites it",
+          "It lets it go",
+          "It follows it home",
+          "It shares the milk"
+        ],
+        "answer": "It bites it",
+        "because": "Paragraph 6 — \"Tus nas mam paub tias tus miv los muab nws tom lawm.\""
+      }
+    ]
+  }
+}

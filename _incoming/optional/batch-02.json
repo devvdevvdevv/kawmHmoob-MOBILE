@@ -1,0 +1,452 @@
+[
+  {
+    "id": "misc-xibfwb",
+    "word": "xibfwb",
+    "gloss": "teacher",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tug-tub-hluas",
+    "word": "tug tub hluas",
+    "gloss": "young man",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-vib-nas-this",
+    "word": "vib nas this",
+    "gloss": "a second — from the English \"minute second\"",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-mam",
+    "word": "mam",
+    "gloss": "then, afterwards",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-thaum",
+    "word": "thaum",
+    "gloss": "when — introducing a time clause · time; occasion",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tiam",
+    "word": "tiam",
+    "gloss": "generation; era",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-twb",
+    "word": "twb",
+    "gloss": "already (aspectual adverb) · indeed; in fact; as expected (discourse adverb)",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txawm",
+    "word": "txawm",
+    "gloss": "then; thereupon · even; even though; although",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tib-sij-huam",
+    "word": "tib sij huam",
+    "gloss": "in an instant; all at once; suddenly",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-xaus",
+    "word": "xaus",
+    "gloss": "to end, to conclude",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-pib",
+    "word": "pib",
+    "gloss": "begin; start · beginning; start — \"thaum pib\", at the beginning",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-sij-hawm",
+    "word": "sij hawm",
+    "gloss": "time — \"muaj sij hawm\", to have time",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "rv-tsaus",
+    "word": "tsaus",
+    "gloss": "dark; darkness (adjective / stative verb) · tsaus ntuj = evening; nighttime; darkness (compound time expression)",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ib-zaum",
+    "word": "ib zaum",
+    "gloss": "once, one time",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-yav",
+    "word": "yav",
+    "gloss": "a period of time — \"yav tsaus ntuj\" the evening, \"yav tom ntej\" the future.",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-xyoos",
+    "word": "xyoos",
+    "gloss": "year · years old — after a number, to state age",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-thawj",
+    "word": "thawj",
+    "gloss": "first — before all others in time, sequence or rank · main; principal; chief · reason; cause — ONLY as part of \"laj thawj\"",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txij",
+    "word": "txij",
+    "gloss": "from, since — \"txij thaum\", ever since",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-thiaj",
+    "word": "thiaj",
+    "gloss": "therefore; so; thus · only then; then finally",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-kawj",
+    "word": "kawj",
+    "gloss": "to start",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-nim-no",
+    "word": "nim no",
+    "gloss": "nowadays",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-sib-cais",
+    "word": "sib cais",
+    "gloss": "separately; apart from each other",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-me-ntsis",
+    "word": "me ntsis",
+    "gloss": "a little, slightly",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-feem-ntau",
+    "word": "feem ntau",
+    "gloss": "mostly, usually, for the most part",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tag",
+    "word": "tag",
+    "gloss": "finished, all, completely",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tas",
+    "word": "tas",
+    "gloss": "finished, all gone, completely",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tiag",
+    "word": "tiag",
+    "gloss": "really, truly",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tsuas",
+    "word": "tsuas",
+    "gloss": "only, merely",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-kuv-txaus-siab-heev",
+    "word": "kuv txaus siab heev",
+    "gloss": "I am very pleased",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-noj-kom-tsau",
+    "word": "noj kom tsau",
+    "gloss": "eat until full",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ib-txhia",
+    "word": "ib txhia",
+    "gloss": "some, some of them",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ntxiv",
+    "word": "ntxiv",
+    "gloss": "more; additional · further; furthermore; in addition",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tshaj-plaws",
+    "word": "tshaj plaws",
+    "gloss": "the most, -est — \"hnyav tshaj plaws\", the heaviest",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-sense-nees",
+    "word": "nees",
+    "gloss": "twenty — only in \"nees nkaum\"",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nkaum",
+    "word": "nkaum",
+    "gloss": "hide; conceal oneself (verb) · be hidden (stative verb) · nees nkaum = twenty (compound numeral) — ⚠ distinct from kaum = ten (numeral)",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "rv-txhia",
+    "word": "txhia",
+    "gloss": "some; various; different (indefinite determiner) · distributive or variety element in expressions such as txhua txhia (grammatical element)",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-hauj-sim",
+    "word": "hauj sim",
+    "gloss": "a little; somewhat; so-so",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-haj-yam",
+    "word": "haj yam",
+    "gloss": "even more or less",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-qee",
+    "word": "qee",
+    "gloss": "to reduce; to save; some",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-txoj-haujlwm",
+    "word": "txoj kev hauj lwm",
+    "gloss": "a job, a task, a duty",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-pab",
+    "word": "pab",
+    "gloss": "to help",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-siv",
+    "word": "siv",
+    "gloss": "to use",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-npaj",
+    "word": "npaj",
+    "gloss": "to prepare, to plan",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-koom",
+    "word": "koom",
+    "gloss": "join; participate (verb) · together; combined; shared (adjective / adverb) · be involved; be a party to (verb) · koom tes = cooperate; work together (compound verb) · koom nrog = join with; participate with (compound verb)",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-them",
+    "word": "them",
+    "gloss": "to pay — and to repay or settle a debt.",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tshuav",
+    "word": "tshuav",
+    "gloss": "to remain, to be left over — and to owe: \"tshuav nqi\".",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-muas",
+    "word": "muas",
+    "gloss": "to buy",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-lag-luam",
+    "word": "lag luam",
+    "gloss": "business; trade",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-hawm",
+    "word": "hawm",
+    "gloss": "to worship; to pay respect",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-sawv-cev",
+    "word": "sawv cev",
+    "gloss": "to represent; on behalf of",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  }
+]

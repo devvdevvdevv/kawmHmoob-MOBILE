@@ -60,6 +60,7 @@ const consonantFamilies = consonantGroups.map((g) => ({
     hmong: c.letter,
     english: c.sound || '',
     audio: c.audio || '',
+    example: c.exampleWord || '',  // shown on the family screen's letter card, 2026-09-28
     // A bare consonant has no vowel/tone — the breakdown is skipped for these.
   })),
 }))
@@ -89,6 +90,7 @@ const vowelFamilies = vowelGroups.map((g) => ({
     hmong: v.letter,
     english: v.sound || '',
     audio: v.audio || '',
+    example: v.exampleWord || '',  // shown on the family screen's letter card, 2026-09-28
     // A bare vowel has no consonant/tone — the breakdown is skipped for these.
   })),
 }))

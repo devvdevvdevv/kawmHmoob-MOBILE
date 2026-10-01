@@ -17,14 +17,62 @@ import { HEADER_CONTENT_HEIGHT } from './GlobalHeader.jsx'
 //
 // Background is transparent — the single page background (seafoam-300) is
 // painted once by the root layout and shows through.
-export default function TabScreen({ children, scroll = true }) {
+// The page gutter. Exported so a full-bleed child — a horizontally scrolling
+// tab rail, say — can cancel it with a negative margin and restore it inside
+// its own content padding, instead of hardcoding 20 and drifting if this moves.
+export const SCREEN_PADDING_X = 20
+
+/**
+ * How much padding sits below a TabScreen's content, clearing the floating tab
+ * bar and the home indicator.
+ *
+ * Exported as a HOOK because it depends on the safe-area inset, which is a
+ * runtime value. A full-bleed surface that should reach the bottom EDGE of the
+ * screen cancels this with a negative margin and adds it back as its own
+ * padding — see app/words/sentences/[groupId].jsx.
+ */
+
+
+// JavaScript Prop for sentence builder
+
+
+
+
+export function useBottomClearance() {
   const insets = useSafeAreaInsets()
-  const topClearance = HEADER_CONTENT_HEIGHT + insets.top + 16
-  const bottomClearance = TAB_BAR_HEIGHT + Math.max(insets.bottom, 8) + 24
+  return TAB_BAR_HEIGHT + Math.max(insets.bottom, 8) + 24
+}
+
+/**
+ * The mirror of useBottomClearance: how much padding sits ABOVE a TabScreen's
+ * content, clearing the floating header and the notch.
+ *
+ * ⚠️ Added 2026-09-21, and the formula was MOVED here rather than copied. It
+ * used to live inline in the component below; a full-bleed surface that wants
+ * to reach the top EDGE needs the same number, and a second copy of
+ * `HEADER_CONTENT_HEIGHT + insets.top + 16` is a number that drifts the next
+ * time the header changes height. Same lesson as useBottomClearance.
+ */
+export function useTopClearance() {
+  const insets = useSafeAreaInsets()
+  return HEADER_CONTENT_HEIGHT + insets.top + 16
+}
+
+// `background` — 2026-09-25. An optional STATIC class string (e.g.
+// 'bg-cream-50') painted on the whole screen: the ScrollView itself, so it also
+// covers the overscroll bounce and anything past the 672px column on a wide
+// screen. For a screen that must be ONE colour edge to edge — the sentence
+// builder. Every other screen omits it and stays transparent over the seafoam
+// ground, as above.
+// ⚠️ Pass a literal class, never one built by interpolation: NativeWind only
+// compiles classes it can see in source.
+export default function TabScreen({ children, scroll = true, fill = false, background = '' }) {
+  const topClearance = useTopClearance()
+  const bottomClearance = useBottomClearance()
 
   if (!scroll) {
     return (
-      <View style={{ flex: 1, paddingHorizontal: 20, paddingTop: topClearance, paddingBottom: bottomClearance, alignItems: 'center' }}>
+      <View className={background} style={{ flex: 1, paddingHorizontal: SCREEN_PADDING_X, paddingTop: topClearance, paddingBottom: bottomClearance, alignItems: 'center' }}>
         <View style={{ width: '100%', maxWidth: 672, flex: 1 }}>{children}</View>
       </View>
     )
@@ -32,19 +80,31 @@ export default function TabScreen({ children, scroll = true }) {
 
   return (
     <ScrollView
+      className={background}
       style={{ flex: 1, width: '100%' }}
       contentContainerStyle={{
-        paddingHorizontal: 20,
+        paddingHorizontal: SCREEN_PADDING_X,
         paddingTop: topClearance,
         paddingBottom: bottomClearance,
         // Center the column via the CONTAINER's cross-axis alignment. Putting
         // maxWidth on a self-centered child instead makes react-native-web's
         // ScrollView treat 672 as a MIN width, overflowing narrow screens.
         alignItems: 'center',
+        // `fill` — for a screen whose background must reach the bottom EDGE
+        // rather than stopping where its text stops (the sentence builder's
+        // cream sheet). Both halves are required and neither works alone:
+        //
+        //   flexGrow here  → the scroll content is at least viewport-tall
+        //   flex below     → the wrapper PASSES that height to the child
+        //
+        // A ScrollView's content container is content-sized by definition, so
+        // without the first there is no spare height to claim; without the
+        // second the wrapper shrinks to its content and swallows it again.
+        ...(fill && { flexGrow: 1 }),
       }}
       showsVerticalScrollIndicator={false}
     >
-      <View style={{ width: '100%' }}>{children}</View>
+      <View style={{ width: '100%', ...(fill && { flex: 1 }) }}>{children}</View>
     </ScrollView>
   )
 }

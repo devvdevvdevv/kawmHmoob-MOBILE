@@ -2,7 +2,16 @@ import { View, Text } from 'react-native'
 import { Link } from 'expo-router'
 import TabScreen from '../src/components/TabScreen.jsx'
 import Breadcrumbs from '../src/components/common/Breadcrumbs.jsx'
+import Eyebrow from '../src/components/ui/Eyebrow.jsx'
 
+
+// ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
+// (`border` + `border-cream-200`) read too dark on cream; shadow-warm and the
+// background contrast do the separating now.
+//
+// A className is a STRING — one class inside it cannot be commented out, so the
+// token was deleted and this note is the record.
+// TO RESTORE: re-add those two classes to the card classNames below.
 // In-app Privacy Policy + Data Safety summary. This is the human-readable version
 // shown inside the app; Google Play also needs the SAME policy hosted at a public
 // URL (link that URL in the Play listing). The "Data safety at a glance" card below
@@ -22,15 +31,15 @@ export default function Privacy() {
       <View className="mb-6">
         <Text className="font-serif text-4xl text-stone-900 mb-2">Privacy Policy</Text>
         <Text className="text-sm text-stone-500">Last updated: {LAST_UPDATED}</Text>
-        <Text className="text-base text-stone-700 leading-relaxed mt-3">
-          Kawm Hmoob is a Hmong language-learning app. This policy explains what we
+        <Text className="text-base font-medium text-stone-700 leading-relaxed mt-3">
+          KawmHmong is a Hmong language-learning app. This policy explains what we
           collect, why, and the control you have over it. We keep it short and plain.
         </Text>
       </View>
 
       {/* Data safety at a glance — mirrors the Play Console Data Safety form */}
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-5 mb-8">
-        <Text className="text-xs uppercase tracking-[2px] font-semibold text-clay-700 mb-3">Data safety at a glance</Text>
+      <View className="rounded-md bg-cream-50 p-5 mb-8">
+        <Eyebrow tone="accent" className="mb-3">Data safety at a glance</Eyebrow>
         <SafetyRow label="Data collected" value="Account info (email, username, display name, dialect) and your learning progress (XP, streak, lessons, quiz scores, saved words & notes)." />
         <SafetyRow label="Why" value="To run the app and sync your progress to your account across devices." />
         <SafetyRow label="Sold or shared for ads?" value="No. We don't sell your data and use no advertising trackers." />
@@ -47,7 +56,7 @@ export default function Privacy() {
 
       <Section title="2. Guests">
         <Para>
-          You can use Kawm Hmoob without an account. As a guest, your progress is stored
+          You can use KawmHmong without an account. As a guest, your progress is stored
           <B> only on your device</B> and is never uploaded to our servers. Create an
           account if you want your progress saved and synced.
         </Para>
@@ -94,7 +103,7 @@ export default function Privacy() {
 
       <Section title="8. Children">
         <Para>
-          Kawm Hmoob is intended for a general audience and is not directed at children
+          KawmHmong is intended for a general audience and is not directed at children
           under 13. We do not knowingly collect personal information from children under
           13. If you believe a child has provided us data, contact us and we'll remove it.
         </Para>
@@ -129,7 +138,7 @@ function Section({ title, children }) {
 }
 
 function Para({ children }) {
-  return <Text className="text-base text-stone-700 leading-relaxed">{children}</Text>
+  return <Text className="text-base font-medium text-stone-700 leading-relaxed">{children}</Text>
 }
 
 function Bullet({ children }) {

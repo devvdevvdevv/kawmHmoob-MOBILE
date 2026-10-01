@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Kawm Hmoob",
+    "name": "KawmHmong",
     "slug": "kawm-hmoob",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -33,7 +33,7 @@
       [
         "expo-audio",
         {
-          "microphonePermission": "Kawm Hmoob uses your mic to score your pronunciation."
+          "microphonePermission": "KawmHmong uses your mic to score your pronunciation."
         }
       ],
       "expo-asset",

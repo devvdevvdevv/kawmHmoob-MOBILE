@@ -1,5 +1,8 @@
 # Pronunciation pipeline: Boxes 2 & 3 built (2026-08-18)
 
+> 🧵 **One chapter of the audio story.** The whole thread, in order:
+> [[AUDIO-END-TO-END]]
+
 Tone scoring now exists in the RN app. `PronounceStep`'s three-box comment has
 been the standing TODO since the port; Boxes 2 and 3 are now done and **verified
 by an automated self-test**, Box 1 remains device-blocked on Android.
@@ -16,7 +19,7 @@ node scripts/pronunciation-selftest.mjs     # 16/16 PASS, no device required
 
 | Box | What | Before | Now |
 |---|---|---|---|
-| 1 | record real PCM | wired, format unproven | **iOS yes / Android NO** (hard limit) |
+| 1 | record real PCM | wired, format unproven | **iOS yes / Android YES** via @siteed (2026-08-20) |
 | 2 | bytes → samples | not built | **built + verified** |
 | 3a | samples → pitch contour | not built | **built + verified** |
 | 3b | contour → score | not built | **built + verified** |
@@ -49,9 +52,9 @@ untouched.**
 
 ---
 
-## ⚠️ Two hard constraints (neither is fixable in config)
+## ⚠️ Two hard constraints — #1 was SOLVED 2026-08-20 (see below)
 
-### 1. Android cannot record PCM
+### 1. Android cannot record PCM ~~(via expo-audio)~~ — SOLVED, see the update at the end
 
 `expo-audio` uses MediaRecorder. Its complete format list — `3gp`, `mpeg4`,
 `amrnb`, `amrwb`, `aac_adts`, `mpeg2ts`, `webm` — has no PCM/WAV entry. This was
@@ -252,3 +255,88 @@ so this decides whether tone scoring exists for the actual user base at all.
 4. **Reference contours** (needs ffmpeg), then further UI polish.
 
 Steps 3–4 are only worth doing if 2 comes back positive.
+
+---
+
+## 🔴 2026-08-20 — SCORER CANNOT DISTINGUISH LEVEL TONES
+
+Found by `scripts/tone-separation-test.mjs`, written to answer "is scoring
+actually working?" BEFORE investing in reference-contour data collection. Good
+call — the answer is *partly*.
+
+### The finding
+
+Score matrix over synthetic speech-like audio (harmonics + noise + envelope +
+unvoiced gaps), base 150 Hz:
+
+```
+                 high-b  high-j  mid     low-s   mid-v   low-g
+high level (-b)     100      82    100     100      84      89
+high falling (-j)    82     100     82      82      68      96
+mid level (none)    100      82    100     100      84      89
+low level (-s)      100      82    100     100      84      89
+mid rising (-v)      84      68     84      84     100      74
+low falling (-g)     89      96     89      89      74     100
+```
+
+**All three LEVEL tones score 100 against each other.** high-b, mid, and low-s
+are indistinguishable to the scorer.
+
+Contour tones separate fine: rising vs falling is 68 vs 100.
+
+### Why — and it is not a bug
+
+`normalizeContour()` in yin.js centres every contour on **its own median**:
+
+```js
+st = 12 * Math.log2(f0 / median)
+```
+
+A flat contour at 190 Hz and a flat contour at 128 Hz both become "flat at 0
+semitones." Identical curves.
+
+That normalization is exactly what makes CROSS-GENDER scoring work (a man and a
+woman producing the same tone overlay perfectly — verified, still passing). The
+same step that buys speaker-independence **discards absolute height**, which is
+the only thing distinguishing level tones.
+
+Shape is preserved. Height is thrown away. Level tones differ only in height.
+
+### Why this matters for Hmong specifically
+
+High (`-b`), mid (unmarked), and low (`-s`) are three separate tones separated
+purely by pitch height. The scorer cannot score any contrast among them — a large
+fraction of the language.
+
+### What still works
+
+- ✅ contour tones: rising (`-v`), falling (`-j`), low-falling (`-g`)
+- ✅ cross-speaker/cross-gender comparison (score 99 male vs female, same tone)
+- ✅ pitch tracking on harmonic-rich noisy audio, 0.0% error at 110/180/240 Hz
+- ✅ no octave errors even with 16 harmonics
+- ✅ unvoiced consonants correctly produce gaps (0 false frames in noise)
+
+### Possible fixes (NOT yet designed — decide before collecting data)
+
+1. **Speaker-range normalization.** Normalize against the learner's pitch range
+   measured across a whole SESSION, not the current utterance. Preserves relative
+   height. Needs a calibration step ("say these three words") and per-user state.
+2. **Score height and shape separately.** Two numbers: contour match (DTW as now)
+   plus median-offset match relative to the speaker's baseline. Level tones would
+   be scored almost entirely on the height term.
+3. **Only score contour tones.** Ship what works; use self-assessment for level
+   tones. Cheapest, and honest.
+4. **Reference-relative normalization.** Normalize both curves against the
+   REFERENCE speaker's median rather than each their own — reintroduces the
+   cross-gender problem the current design solved.
+
+⚠️ **Do not run the ffmpeg contour extraction until this is decided.** Option 1
+or 2 would change what needs storing per reference clip.
+
+### Caveat on the test itself
+
+Synthetic. Speech-like, but not speech. Harmonic stack with 1/n rolloff, gaussian
+noise, amplitude envelope, F0 jitter, unvoiced gaps — a much harder input than
+the sine waves in `pronunciation-selftest.mjs`, and a stronger filter. **Not a
+substitute for recording a human.** But a failure here would certainly have
+failed on real speech, so it saved a recording session.

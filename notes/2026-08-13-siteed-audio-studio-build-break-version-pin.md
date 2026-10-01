@@ -1,5 +1,8 @@
 # @siteed/audio-studio breaks the Android release build (Kotlin Promise reject) — unused, drop for v1 (2026-08-13)
 
+> 🧵 **One chapter of the audio story.** The whole thread, in order:
+> [[AUDIO-END-TO-END]]
+
 ## Issue
 EAS **Android release build fails during `:siteed-audio-studio:compileReleaseKotlin`.**
 

@@ -1,0 +1,2586 @@
+{
+  "id": "story-zong-vang",
+  "version": 1,
+  "status": "published",
+  "min_app_version": "1.0.0",
+  "title": "Kev Tua Zong Vang Uas Txaus Ntshai",
+  "english": "The Horrifying Murder of Zong Vang",
+  "blurb": "Green Bay, 1998 — a true case, told in full. The killing of a child, and threats of sexual violence. Not for young readers.",
+  "genre": "history",
+  "level": "advanced",
+  "minutes": 15,
+  "tier": "free",
+  "payload": {
+    "warning": {
+      "title": "This story is for mature audiences",
+      "body": "A horrifying true crime story about the murder of a Hmong boy in Green Bay, Wisconsin, in 1998. Every event in it happened, and the people in it are real.",
+      "includes": [
+        "Torture",
+        "Bullying and group violence",
+        "The murder of a child",
+        "Threats of sexual violence",
+        "Descriptions of fatal injuries"
+      ]
+    },
+    "paragraphs": [
+      [
+        {
+          "hmong": "Qhov xwm txheej ntawm Zong Vang",
+          "english": "What happened to Zong Vang",
+          "heading": true
+        }
+      ],
+      [
+        {
+          "hmong": "Hnub tim nees nkaum plaub, lub Cuaj Hlis, xyoo ib txhiab cuaj puas cuaj caum yim, thaum yav tsaus ntuj, nyob hauv Lub Nroog Green Bay, Xeev Wisconsin, Zong Vang—ib tug tub hluas Hmoob muaj kaum peb xyoos—tau tawm hauv nws tsev mus rau lub khw muas zaub mov yuav txiv lws suav rau nws tus tij laug Zou.",
+          "english": "On the evening of September 24, 1998, in Green Bay, Wisconsin, thirteen-year-old Zong Vang left his home to go to the grocery store to buy tomatoes for his older brother Zou."
+        }
+      ],
+      [
+        {
+          "hmong": "Thaum Zong caij nws lub tsheb kauj vab, nqa ib lub hnab txiv lws suav raws txoj kev Webster Avenue rov qab los tsev, nws mus ntsib tsib tug hluas:",
+          "english": "As Zong rode his bicycle home along Webster Avenue carrying a bag of tomatoes, he came upon five young people:"
+        }
+      ],
+      [
+        {
+          "hmong": "Omer Ninham, muaj kaum plaub xyoos",
+          "english": "Omer Ninham, fourteen years old"
+        },
+        {
+          "hmong": "Richard Crapeau, muaj kaum peb xyoos",
+          "english": "Richard Crapeau, thirteen years old"
+        },
+        {
+          "hmong": "Jeffrey P., muaj kaum peb xyoos",
+          "english": "Jeffrey P., thirteen years old"
+        },
+        {
+          "hmong": "Amanda G., muaj kaum plaub xyoos",
+          "english": "Amanda G., fourteen years old"
+        },
+        {
+          "hmong": "Christian J., muaj kaum plaub xyoos",
+          "english": "Christian J., fourteen years old"
+        }
+      ],
+      [
+        {
+          "hmong": "Zong tsis paub cov hluas no, thiab lawv kuj tsis paub Zong.",
+          "english": "Zong did not know these young people, and they did not know Zong."
+        },
+        {
+          "hmong": "Raws li cov lus tim khawv thiab cov ntaub ntawv hauv tsev hais plaub, Zong tsis tau hais los sis ua ib yam dab tsi ua rau lawv chim los sis npau taws.",
+          "english": "According to the testimony and the court records, Zong had not said or done anything to anger or provoke them."
+        }
+      ],
+      [
+        {
+          "hmong": "Richard Crapeau tau piav qhov pib ntawm qhov xwm txheej hauv nws cov lus qhia rau tub ceev xwm:",
+          "english": "Richard Crapeau later detailed the start of the encounter in a statement:"
+        },
+        {
+          "hmong": "“Thaum peb nce txoj kev Webster (Avenue), kuv pom tus menyuam Esxias no caij tsheb kauj vab tuaj rau peb.",
+          "english": "“As we walked up Webster (Avenue) I saw this Asian kid riding a bike toward us."
+        },
+        {
+          "hmong": "Kuv tseem chim rau kuv niam thiab kuv xav sib ntaus los sis xav pom kev sib ntaus, kuv thiaj hais rau Omer tias, ‘Cia peb ua phem rau tus menyuam no.’",
+          "english": "I was still upset with my mom and I wanted to fight or see a fight so I told Omer, ‘Let’s mess with this kid.’"
+        },
+        {
+          "hmong": "Kuv tsis paub tus menyuam no yog leej twg thiab tsis tau pom nws dua li.”",
+          "english": "I didn’t know who this kid was and didn’t recognize him.”"
+        },
+        {
+          "hmong": "Richard Crapeau yog tus pib qhov xwm txheej no.",
+          "english": "Richard Crapeau was the instigator."
+        }
+      ],
+      [
+        {
+          "hmong": "Omer thiab Richard txav mus ze Zong, thaiv nws txoj kev caij tsheb kauj vab, thiab pib thuam nws.",
+          "english": "Omer and Richard moved in close to Zong, blocked the way he was riding, and began taunting him."
+        },
+        {
+          "hmong": "Peb tug hluas uas nrog nkawd nyob ntawd tau txhawb nkawd thiab saib qhov xwm txheej ntawd.",
+          "english": "The three others who were there with them egged the two of them on and watched what was happening."
+        },
+        {
+          "hmong": "Tsis ntev tom qab ntawd, kev thuam hloov mus ua kev sib ntaus.",
+          "english": "Not long after, the taunting turned into a beating."
+        }
+      ],
+      [
+        {
+          "hmong": "Richard tsoo Zong lub xub pwg, ua rau Zong poob saum lub tsheb kauj vab los.",
+          "english": "Richard bumped into Zong’s shoulder, knocking him off the bicycle."
+        },
+        {
+          "hmong": "Richard rub lub tsheb kauj vab tawm ntawm Zong, txeeb nws lub hnab txiv lws suav, thiab muab pov mus rau sab St. Vincent Hospital, uas nyob tib txoj kev.",
+          "english": "Richard pulled the bicycle away from Zong, snatched his bag of tomatoes, and threw it toward St. Vincent Hospital, on the same street."
+        },
+        {
+          "hmong": "Thaum Zong thov kom muab nws lub tsheb kauj vab rov qab, Omer ntaus nws lub ntsej muag, ua rau Zong ntog rau hauv av.",
+          "english": "When Zong asked for his bicycle back, Omer struck him in the face, knocking him to the ground."
+        }
+      ],
+      [
+        {
+          "hmong": "Zong thiaj sawv tsees thiab khiav mus rau St. Vincent Hospital lub chaw nres tsheb ntau theem uas nyob ze ntawd.",
+          "english": "Zong got up and ran to the multi-level parking ramp at St. Vincent Hospital nearby."
+        },
+        {
+          "hmong": "Tsib tug hluas caum nws mus.",
+          "english": "The five of them chased him."
+        },
+        {
+          "hmong": "Lawv caum nws mus, ua rau nws khiav nce txhua theem ntawm lub chaw nres tsheb, mus txog theem saum toj kawg—theem thib tsib.",
+          "english": "They chased after him, making him run up each level of the parking ramp before reaching the top floor — the fifth."
+        },
+        {
+          "hmong": "Nws raug vij rau saum ntawd, thiab nrhiav tsis tau lwm txoj kev khiav dim lawm.",
+          "english": "He was trapped up there, and could not find another way to run."
+        }
+      ],
+      [
+        {
+          "hmong": "Thaum lawv caum cuag Zong, pab hluas ntawd vij nws rau ntawm ntug phab ntsa pob zeb saum theem thib tsib thiab txwv tsis pub nws khiav dim.",
+          "english": "When they caught up with Zong, the group hemmed him in against the edge of the concrete wall on the fifth level and would not let him get away."
+        },
+        {
+          "hmong": "Richard rov ntaus Zong lub ntsej muag dua.",
+          "english": "Richard struck Zong in the face again."
+        },
+        {
+          "hmong": "Zong quaj thiab nug tias, “Ua cas nej ho xav ua phem rau kuv?” thiab thov kom lawv tso nws mus.",
+          "english": "Zong cried and asked, “Why are you trying to hurt me?” and pleaded with them to leave him alone."
+        }
+      ],
+      [
+        {
+          "hmong": "Tiam sis, Omer thiab Richard pib thawb Zong mus mus los los hauv ib txoj kev ua si uas nkawd hu ua “Chicken,” thaum peb tug hluas ntawd txhawb nkawd.",
+          "english": "Instead, Omer and Richard began pushing Zong back and forth in a game they would refer to as “Chicken,” while the other three juveniles cheered them on."
+        },
+        {
+          "hmong": "Omer ntaus Zong lub hauv siab thaum nws thawb nws mus mus los los, ces txawm tuav Zong ob txhais dab teg, nias nws tsuam rau ntawm lub chaw nres tsheb phab ntsa pob zeb, thiab tuav nws nyob ruaj ntawd.",
+          "english": "Omer punched Zong in the chest as he pushed him back and forth, before grabbing Zong by his wrists, pinning him against the parking ramp’s concrete wall, and holding him in place."
+        },
+        {
+          "hmong": "Thaum Zong raug nias tsuam rau ntawm phab ntsa, nkawd tseem ntaus nws ntxiv.",
+          "english": "While Zong was pinned against the wall, they went on beating him."
+        },
+        {
+          "hmong": "Thaum nws sib zog nrhiav kev dim ntawm Omer txhais tes, Richard rov ntaus nws lub ntsej muag hnyav dua.",
+          "english": "When he squirmed to get out of Omer’s grasp, Richard punched him in the face harder."
+        },
+        {
+          "hmong": "Zong quaj, qw, thiab thov kom nkawd “tso nws mus.”",
+          "english": "Zong was crying and screaming, and pleading with the two of them to “let him go.”"
+        },
+        {
+          "hmong": "Qhov no tsis yog ib pliag xwb. Lawv muaj sij hawm los tseg.",
+          "english": "None of this was quick. They had time to stop."
+        },
+        {
+          "hmong": "Nws muaj kaum peb xyoos. Nws quaj. Nws thov lawv tso nws mus. Lawv tseem ua ntxiv.",
+          "english": "He was thirteen. He was crying. He was asking them to let him go. They kept going."
+        }
+      ],
+      [
+        {
+          "hmong": "Tab sis nkawd tsis tso nws mus.",
+          "english": "But they didn’t let him go."
+        },
+        {
+          "hmong": "Thaum Omer tseem tuav Zong ob txhais dab teg, Richard txawm tuav Zong ob txhais pob taws.",
+          "english": "Instead, while Omer was still holding onto Zong by his wrists, Richard grabbed Zong by his ankles."
+        },
+        {
+          "hmong": "Nkawd yoj Zong mus mus los los hla saum ntug phab ntsa pob zeb, uas siab li plaub caum tsib feet saum npoo av.",
+          "english": "The two of them swung Zong back and forth out over the edge of the concrete wall, about forty-five feet above the ground."
+        },
+        {
+          "hmong": "Zong quaj thiab thov kom nkawd tsis txhob tso nws.",
+          "english": "Zong cried and begged them not to let go of him."
+        },
+        {
+          "hmong": "Nws paub tias nws yuav poob, thiab nkawd yoj nws ntev txaus kom nws paub.",
+          "english": "He knew he was going to fall, and they swung him long enough that he knew it."
+        }
+      ],
+      [
+        {
+          "hmong": "Richard luag thiab nug cov hluas uas sawv ntawd tias, “Puas yuav tsis lom zem yog nws poob?”",
+          "english": "Richard laughed and asked the others standing there, “Wouldn’t it be funny if he fell?”"
+        },
+        {
+          "hmong": "Nkawd ob leeg yoj Zong tawm hla phab ntsa, ces Richard tso Zong ob txhais pob taws.",
+          "english": "They both swung Zong out over the wall, and Richard let go of Zong’s ankles."
+        },
+        {
+          "hmong": "Ces nws hais kom Omer “muab nws tso.”",
+          "english": "He then told Omer to “drop him.”"
+        },
+        {
+          "hmong": "Omer thiaj tso Zong ob txhais dab teg—yam kawg uas tseem tuav Zong cia kom tsis txhob poob.",
+          "english": "So Omer let go of Zong’s wrists — the last thing still holding him from falling."
+        },
+        {
+          "hmong": "Zong qw thaum nws poob saum theem saum toj ntawm lub chaw nres tsheb mus rau saum txoj kev hauv qab.",
+          "english": "Zong screamed as he fell from the top floor of the parking ramp onto the pavement on the ground."
+        },
+        {
+          "hmong": "Plaub caum tsib feet hauv qab, nws lub cev tsoo rau saum cement nrog lub zog loj kawg nkaus.",
+          "english": "Forty-five feet below, his body struck the concrete with tremendous force."
+        },
+        {
+          "hmong": "Raws li Richard tus kheej cov lus, Zong “ya hla phab ntsa mus xwb.”",
+          "english": "In Richard’s own words, Zong “just sailed out over the wall.”"
+        }
+      ],
+      [
+        {
+          "hmong": "Thaum kwv yees li yim teev tsaus ntuj, ib tug txiv neej hu npe Steven Heraly tab tom tsav tsheb tawm hauv St. Vincent Hospital lub chaw nres tsheb.",
+          "english": "At about eight in the evening, a man named Steven Heraly was driving out of the St. Vincent Hospital parking ramp."
+        },
+        {
+          "hmong": "Nws hnov ib lub suab nrov uas nws piav tias zoo li “ib lub hnab cement poob rau hauv txoj kev.”",
+          "english": "He heard a loud sound that he described as like “a bag of cement dropping into the road.”"
+        },
+        {
+          "hmong": "Zong ntog nrog nws nraub qaum rau saum txoj kev tawm ntawm lub chaw nres tsheb, kaum ob feet ntawm lub chaw nres tsheb lub hauv paus.",
+          "english": "Zong landed on his back on the parking ramp’s paved exit lane, twelve feet from the base of the ramp."
+        },
+        {
+          "hmong": "Cov neeg pab cawm neeg, uas raug xa tuaj thaum yim teev peb feeb tsaus ntuj, pom tias Zong txoj hlab ntsha tseem dhia me ntsis.",
+          "english": "Rescue personnel, dispatched at 8:03 p.m., detected a faint pulse from Zong."
+        },
+        {
+          "hmong": "Txhais tau tias Zong tseem ua neej nyob—tseem muaj sia nyob ib nyuag ntu luv—tom qab nws poob.",
+          "english": "Which means Zong was still alive — alive a short while longer — after the fall."
+        },
+        {
+          "hmong": "Zong raug thauj mus rau St. Vincent Hospital, qhov chaw uas cov kws kho mob tsis muaj peev xwm tsa tau nws sawv rov los.",
+          "english": "Zong was then transported to St. Vincent Hospital where physicians were unable to revive him."
+        }
+      ],
+      [
+        {
+          "hmong": "Kev kuaj tus tuag lub cev qhia tias Zong raug tsoo hnyav rau nws lub taub hau thiab nws lub cev, thiab tuag los ntawm craniocerebral trauma vim nws poob saum qhov siab los.",
+          "english": "An autopsy revealed that Zong suffered a blunt impact to his head and trunk and died from craniocerebral trauma due to a fall from height."
+        },
+        {
+          "hmong": "Craniocerebral trauma txhais tau tias lub taub hau thiab lub hlwb raug puas tsuaj ua ke—ib tug menyuam muaj kaum peb xyoos lub taub hau, tawg rau ntawm cement.",
+          "english": "Craniocerebral trauma means the skull and the brain destroyed together — a thirteen-year-old’s head, broken on concrete."
+        }
+      ],
+      [
+        {
+          "hmong": "Omer, Richard, thiab cov hluas uas nrog nkawd nyob ntawd tsis tau mus xyuas seb Zong zoo li cas li.",
+          "english": "Omer, Richard, and the others with them never checked on Zong’s condition."
+        },
+        {
+          "hmong": "Lawv txhua tus khiav tawm ntawm qhov chaw ntawd.",
+          "english": "Instead, they all ran from the scene."
+        },
+        {
+          "hmong": "Lawv tso Zong pw nws ib leeg hauv qhov tsaus ntuj, ntawm lub chaw nres tsheb hauv paus.",
+          "english": "They left Zong lying alone in the dark, at the base of the parking ramp."
+        }
+      ],
+      [
+        {
+          "hmong": "Tom qab qhov xwm txheej",
+          "english": "After it happened",
+          "heading": true
+        }
+      ],
+      [
+        {
+          "hmong": "Tom qab ntawd, Richard tau hais tias pab hluas ntawd ntsia nqes hla phab ntsa thiab pom Zong pw hauv qab.",
+          "english": "Richard later said that the group looked down over the wall and saw Zong lying below."
+        },
+        {
+          "hmong": "Nws cov lus hais tias, “Omer xav nqis mus xyuas seb nws puas tseem muaj sia, tab sis yog nws tsis muaj lawm, peb yuav raug ntes.”",
+          "english": "His statement said, “Omer wanted to go down and check to see if he was still alive, but if he wasn’t, we’d be busted.”"
+        },
+        {
+          "hmong": "Thaum pab hluas taug kev rov qab, tsis muaj leej twg hais lus li.",
+          "english": "As the group walked back, no one said a word."
+        },
+        {
+          "hmong": "Lawv hnov lub tsheb thauj neeg mob nrov thaum lawv hla txoj kev East Mason Street.",
+          "english": "They heard the ambulance as they crossed East Mason Street."
+        },
+        {
+          "hmong": "Crapeau hais tias, “Peb twb paub lawm tias tsis muaj leej twg yuav hais dab tsi, peb tsis tas tham txog qhov ntawd.”",
+          "english": "Crapeau said, “We pretty much knew nobody would say anything, we didn’t have to talk about it.”"
+        }
+      ],
+      [
+        {
+          "hmong": "Tau ib ntus, tub ceev xwm tseem tsis tau paub tseeb tias leej twg ua rau Zong tuag.",
+          "english": "For a time, the police still did not know for certain who had caused Zong’s death."
+        },
+        {
+          "hmong": "Tom qab Jeffrey P. thiab Amanda G. qhia lawv cov txheeb ze thiab tub ceev xwm txog tej yam lawv paub, Green Bay Tub Ceev Xwm Lub Chaw Haujlwm thiaj tsom tau rau tsib tug hluas ntawd.",
+          "english": "After Jeffrey P. and Amanda G. told their relatives and the police what they knew, the Green Bay Police Department was able to focus on the five."
+        }
+      ],
+      [
+        {
+          "hmong": "Jeffrey P. hais rau tub ceev xwm tias, tom qab Zong raug muab tso hla phab ntsa lawm, Omer ntsia nqes rau Zong tau ob peb vib nas this.",
+          "english": "Jeffrey P. told the police that after Zong had been dropped over the wall, Omer looked down at him for a few seconds."
+        },
+        {
+          "hmong": "Jeffrey hais tias Omer tig los hais rau nws tias, “Tsis txhob hais ib los lus li—koj yuav tsum tsis txhob hais ib yam dab tsi li.”",
+          "english": "Jeffrey said Omer turned and said to him, “Don’t say nothing, better not say shit.”"
+        }
+      ],
+      [
+        {
+          "hmong": "Lo lus nug uas tseem ua rau ntau tus xav txog rooj plaub no yog: vim li cas ho tshwm sim li no?",
+          "english": "The question that still makes many people think about this case is: why did it happen at all?"
+        },
+        {
+          "hmong": "Vim qhov no tsis yog kev ua pauj los sis kev ua phem rov qab rau leej twg, thiab tsis yog ib qho kev tua neeg uas tau npaj tseg.",
+          "english": "Because this wasn’t a vendetta or revenge mission against someone, nor was it a planned killing."
+        },
+        {
+          "hmong": "Cov hluas no xaiv Zong yam tsis muaj laj thawj, ces tua nws.",
+          "english": "These kids picked Zong at random, and then killed him."
+        },
+        {
+          "hmong": "Puas yog kev ua yam tsis saib xyuas, los yog kev txhob txwm?",
+          "english": "Was it reckless conduct, or was it intentional?"
+        },
+        {
+          "hmong": "Richard Crapeau hais tias nws xav sib ntaus los sis xav pom kev sib ntaus. Puas yog qhov no tiag tiag yog qhov nws txhais?",
+          "english": "Richard Crapeau stated that he wanted to fight or see a fight. Is this really what he meant?"
+        }
+      ],
+      [
+        {
+          "hmong": "Tom qab Jeffrey thiab Amanda qhia txog qhov xwm txheej, Lub Nroog Green Bay tub ceev xwm thiaj ntes Richard thiab Omer, thiab nkawd raug coj mus hais plaub sib cais ib yam li neeg laus rau kev tua Zong Vang—kev tua neeg txhob txwm thawj theem.",
+          "english": "After Jeffrey and Amanda reported the incident, both Richard and Omer were arrested by the Green Bay police and were both tried separately as adults for the first-degree murder of Zong Vang."
+        },
+        {
+          "hmong": "Nkawd ob leeg raug kaw hauv Brown County Lub Chaw Kaw Menyuam Yaus.",
+          "english": "They were both held at the Brown County Juvenile Detention facility."
+        },
+        {
+          "hmong": "Nkawd hais tias nkawd tsis ua txhaum.",
+          "english": "Both of them pleaded not guilty."
+        }
+      ],
+      [
+        {
+          "hmong": "Omer Ninham rooj plaub",
+          "english": "Omer Ninham’s trial",
+          "heading": true
+        }
+      ],
+      [
+        {
+          "hmong": "Ua ntej Omer Ninham rooj plaub pib, nws tseem raug foob ntxiv: ib qho kev hem tus kws txiav txim, thiab peb qho kev hem cov neeg ua pov thawj.",
+          "english": "Before Omer Ninham’s trial began, he faced further charges: one count of threatening a judge, and three counts of intimidating a witness."
+        },
+        {
+          "hmong": "Cov kev foob no yog los ntawm cov lus uas nws tau hais thaum nws raug kaw hauv Brown County Lub Chaw Kaw Menyuam Yaus.",
+          "english": "Those charges came from things he said while he was held at the Brown County Juvenile Detention Center."
+        },
+        {
+          "hmong": "Thaum nws raug kaw, nws tau hem tus kws txiav txim Richard J. Dietz txoj sia—tus kws txiav txim uas saib xyuas nws rooj plaub.",
+          "english": "While he was held there, he threatened the life of Judge Richard J. Dietz — the circuit court judge presiding over his case."
+        },
+        {
+          "hmong": "Tom qab nws paub txog lwm cov hluas cov lus qhia rau tub ceev xwm, nws tau hem ntxiv:",
+          "english": "After learning of the other juveniles’ statements to the police, he made further threats:"
+        },
+        {
+          "hmong": "tias nws yuav tsav tsheb dhau Jeffrey P. lub tsev thiab tua—ib qho “drive-by”;",
+          "english": "that he would carry out a “drive-by” at Jeffrey P.’s house;"
+        },
+        {
+          "hmong": "tias nws yuav yuam cev thiab tua Amanda G.;",
+          "english": "that he would “rape and kill” Amanda G.;"
+        },
+        {
+          "hmong": "thiab tias nws yuav npaj kom muaj neeg tua Richard Crapeau tus muam.",
+          "english": "and that he would arrange for the killing of Richard Crapeau’s sister."
+        }
+      ],
+      [
+        {
+          "hmong": "Hauv Omer rooj plaub uas kav plaub hnub, nws txoj kev tiv thaiv tseem ceeb yog tias nws tsis nyob ntawm lub chaw nres tsheb thaum yav tsaus ntuj Cuaj Hlis 24, 1998.",
+          "english": "At Omer’s four-day trial, his main defense was that he was not there on the parking ramp on the evening of September 24, 1998."
+        },
+        {
+          "hmong": "Nws kuj sib cav tias, txawm nws nyob ntawd los, nws tsis muaj lub siab xav ua kom Zong tuag.",
+          "english": "He also argued that even if he had been there, he had no intention of causing Zong’s death."
+        }
+      ],
+      [
+        {
+          "hmong": "Zong tsev neeg tau qhia txog txoj kev mob siab heev uas lawv ntsib tom qab plam Zong.",
+          "english": "Zong’s family spoke about the deep grief they carried after losing him."
+        },
+        {
+          "hmong": "Nws niam nws txiv hais tias lawv tau khiav tawm hauv Nplog teb thiab Thaib teb, vam tias Tebchaws Meskas yuav yog ib qho chaw nyab xeeb thiab muaj lub neej zoo dua rau lawv cov menyuam.",
+          "english": "His mother and father said they had fled Laos and Thailand, believing the United States would be a safer place and a better life for their children."
+        },
+        {
+          "hmong": "Lawv hais tias lawv khiav ntawm kev phem, tsuas yog los ntsib kev phem dua hauv lwm qhov chaw.",
+          "english": "They said they had fled evil only to find it again in another place."
+        },
+        {
+          "hmong": "Tom qab Zong tuag, lawv hais tias lawv poob siab rau tib neeg txoj kev siab zoo, thiab cov menyuam uas tseem tshuav ntshai tsis kam tawm hauv tsev mus.",
+          "english": "After Zong died, they said, they lost their faith in human kindness, and the children who were left were afraid to go out of the house."
+        }
+      ],
+      [
+        {
+          "hmong": "Thaum txog lub sij hawm txiav txim rau txim, Zong tus tij laug Seng Say Vang tau hais lus sawv cev rau tsev neeg thiab cov phooj ywg.",
+          "english": "When the time came for sentencing, Zong’s older brother Seng Say Vang spoke on behalf of the family and their friends."
+        },
+        {
+          "hmong": "Nws thov kom tsev hais plaub muab lub txim hnyav tshaj plaws rau Ninham: kaw mus tas sim neej yam tsis muaj cai thov tawm ntxov.",
+          "english": "He asked the court to impose on Ninham the maximum sentence of life imprisonment without parole."
+        },
+        {
+          "hmong": "Nws thov kom muab “tib txoj kev nyaum thiab tsis muaj kev hlub ib yam li tus uas Ninham tau muab rau Zong thaum Cuaj Hlis 24, 1998.”",
+          "english": "He asked for “the same brutal and merciless ultimatum as [Ninham] had given to Zong on September 24th, 1998.”"
+        }
+      ],
+      [
+        {
+          "hmong": "Seng Say kuj qhia txog nws tsev neeg Hmoob txoj kev ntseeg.",
+          "english": "Seng Say also spoke about his family’s Hmong beliefs."
+        },
+        {
+          "hmong": "Nws hais tias, “Nyob rau hauv peb Hmoob kev cai, peb ntseeg tias tus neeg raug tua tus ntsuj plig yuav tsis tau dim mus nyob kaj siab mus txog thaum cov neeg ua txhaum raug coj los raug kev ncaj ncees.",
+          "english": "He said, “In our Hmong culture we believe that the spirit of a murdered person cannot be set free to go in peace until the perpetrators be brought to justice."
+        },
+        {
+          "hmong": "Yog li ntawd, peb thov Tsev Hais Plaub, tus uas tib leeg muaj hwj chim los tso peb tus tub, tus kwv, thiab tus phooj ywg hlub, Zong, tus ntsuj plig mus nyob kaj siab, los ntawm kev coj Omer Ninham thiab nws cov neeg koom tes los raug kev ncaj ncees.”",
+          "english": "Therefore, we ask the Court, who is the only one to have the power to set free the spirit of our beloved son, brother, and friend, Zong, to go in peace by bringing Omer Ninham and his accomplices to justice.”"
+        }
+      ],
+      [
+        {
+          "hmong": "Thaum xaus rooj plaub, Omer tus kws lij choj lees tias Omer nyob ntawm lub chaw nres tsheb nrog Zong, thiab lees txais qhov kev foob ua phem rau menyuam yaus.",
+          "english": "In the closing arguments, Omer’s counsel did not deny that he was on the parking ramp with Zong, and actually conceded the charge of physical abuse of a child."
+        },
+        {
+          "hmong": "Nws hais tias, “Hais txog kev ua phem rau menyuam yaus, kuv yuav tsis sib cav txog qhov ntawd. Kuv xav tias muaj kev thawb mus thawb los, muaj kev ntaus. Kuv xav tias Omer tau koom nrog rau qhov ntawd.”",
+          "english": "He said, “In terms of the abuse of a child, I’m not going to argue that. I think obviously there was some pushing back and forth, some punching going on. I think Omer participated in that.”"
+        },
+        {
+          "hmong": "Tab sis tus kws lij choj sib cav tias lub xeev tsis tau muab pov thawj tias Omer, thaum nws muaj kaum plaub xyoos, muaj lub siab txhob txwm tua Zong.",
+          "english": "But the lawyer argued that the state had not proved that Omer, at fourteen years old, had the deliberate intention of killing Zong."
+        },
+        {
+          "hmong": "Nws hais tias, “Kev txiav txim tsis zoo? Ib tug hluas phem? Phem ntau yam? Tab sis kuv tsis xav tias koj muab tau Omer Ninham lub txim tua neeg txhob txwm los ntawm cov pov thawj hauv rooj plaub no.”",
+          "english": "He said, “Bad judgment? Bad juvenile? Bad a lot of things. But I don’t think you can saddle Omer Ninham at this point from the facts and evidence on this record with intentional homicide.”"
+        },
+        {
+          "hmong": "Cov kws foob teb tias, txawm nkawd tsis xav tua Zong los, nkawd paub tseeb tias qhov nkawd ua yuav ua rau nws tuag.",
+          "english": "The prosecutors answered that even if Omer and Richard did not intend to kill Zong, they knew that their actions were certain to cause death."
+        }
+      ],
+      [
+        {
+          "hmong": "Omer kuj hais lus thaum txiav txim rau txim. Nws hais tias nws thov txim rau Zong txoj kev tuag.",
+          "english": "Omer also spoke at sentencing. He told the court that he was sorry about Zong’s death."
+        },
+        {
+          "hmong": "Tab sis nws hais ntxiv tias, “Tsis muaj dab tsi kuv ua tau. Kuv tsis nyob ntawd. Kuv yuav hais li no mus txog hnub kuv tuag. Kuv tsis nyob ntawd, thiab qhov ntawd yog qhov tseeb.”",
+          "english": "But he went on, “There wasn’t nothing I could do. I wasn’t there. I’m going to keep saying that until the day I die. I was not there, and that’s the honest truth.”"
+        }
+      ],
+      [
+        {
+          "hmong": "Hnub tim nees nkaum plaub, lub Peb Hlis, xyoo ob txhiab, pawg neeg txiav txim tau txiav txim tias Omer Ninham ua txhaum kev tua neeg txhob txwm thawj theem thiab kev ua phem rau menyuam yaus.",
+          "english": "On 24 March 2000, the jury found Omer Ninham guilty of first-degree intentional homicide and physical abuse of a child."
+        }
+      ],
+      [
+        {
+          "hmong": "Tsev hais plaub ua lub rooj txiav txim rau txim rau hnub tim nees nkaum cuaj, lub Rau Hli, xyoo ob txhiab.",
+          "english": "The circuit court conducted a sentencing hearing on June 29, 2000."
+        },
+        {
+          "hmong": "Thaum pib, lub xeev thov muab qhov kev foob hem tus kws txiav txim thiab peb qhov kev foob hem cov neeg ua pov thawj tso tseg—tab sis thov kom nyeem plaub qhov kev foob ntawd rau hauv cov ntaub ntawv.",
+          "english": "At the outset, the State moved to dismiss the single count of threat to a judge and three counts of intimidation of a witness, but asked that all four charges be read in."
+        },
+        {
+          "hmong": "Tsev hais plaub pom zoo. Txhais tau tias tsis muaj kev txiav txim rau plaub qhov ntawd, tab sis tsev hais plaub tseem xav txog lawv thaum txiav txim rau txim.",
+          "english": "The circuit court granted the motion — which means there was no conviction on those four, but the court could still weigh them in sentencing."
+        }
+      ],
+      [
+        {
+          "hmong": "Daim ntawv tshawb nrhiav ua ntej txiav txim qhia tias Ninham, uas muaj kaum rau xyoos lawm, tseem tsis lees tias nws koom nrog rau Zong txoj kev tuag.",
+          "english": "The pre-sentence investigation revealed that Ninham, by then sixteen years old, continued to deny any involvement in Zong’s homicide."
+        },
+        {
+          "hmong": "Daim ntawv ntawd hais tias, “raws li txhua yam lus qhia, Ninham tuaj ntawm ib tsev neeg uas puas tsuaj heev”—ib tsev neeg uas nws niam nws txiv thiab ob peb tus kwv tij muaj teeb meem yeeb tshuaj hnyav thiab kev sib ntaus sib tua hauv tsev.",
+          "english": "It said that “by all accounts, Ninham emanates from an extremely dysfunctional family structure,” in which both of his parents and several of his siblings engage in severe substance abuse and domestic violence."
+        },
+        {
+          "hmong": "Nws raug piav tias yog ib tug “neeg siv yeeb tshuaj hnyav” uas nqus cocaine txhua lub lim tiam, thiab haus cawv txhua hnub txij thaum nws kawm ntawv theem pib—feem ntau nws ib leeg, thiab feem ntau mus txog thaum nws tsis paub qab hau.",
+          "english": "He was described as a “serious substance abuser” who snorted cocaine on a weekly basis and, since grade school, drank alcohol every day, often alone, and usually to the point of unconsciousness."
+        },
+        {
+          "hmong": "Ninham yog ib tug tswv cuab ntawm Menominee Indian Tribe, thiab nws hais tias nws nyuam qhuav muaj kev txaus siab tshiab rau Native American kev ntseeg.",
+          "english": "Ninham, a member of the Menominee Indian Tribe, claimed to have a newfound interest in Native American spirituality."
+        }
+      ],
+      [
+        {
+          "hmong": "Thaum txiav txim rau txim, tsev hais plaub xav txog peb yam tseem ceeb: qhov kev ua txhaum hnyav npaum li cas, tus neeg ua txhaum tus cwj pwm, thiab qhov yuav tsum tiv thaiv pej xeem.",
+          "english": "In imposing Ninham’s sentence, the circuit court considered three primary factors: the gravity of the offense, the character of the offender, and the need to protect the public."
+        },
+        {
+          "hmong": "Ib: tsev hais plaub hais tias qhov kev ua txhaum hnyav “dhau qhov piav tau,” thiab “txaus ntshai” yam tsis muaj leej twg sib cav tau, thiab nws cuam tshuam rau Zong tsev neeg, nws cov phooj ywg, thiab lub zej zog hauv Lub Nroog Green Bay yam piav tsis tau.",
+          "english": "First, the circuit court regarded the gravity of the offense as “beyond description” and indisputably “horrific,” with an indescribable impact on Zong’s family and friends and on the Green Bay community."
+        },
+        {
+          "hmong": "Ob: txog tus neeg ua txhaum tus cwj pwm, tsev hais plaub “lees rau kev sib tham tias Omer Ninham yog ib tug menyuam,” tab sis piav nws tias yog “ib tug tub hluas txaus ntshai.”",
+          "english": "Second, on the character of the offender, the circuit court “conceded for the sake of discussion that Omer Ninham is a child” but nevertheless described him as “a frightening young man.”"
+        },
+        {
+          "hmong": "Tsev hais plaub lees tias Ninham tuaj ntawm ib tsev neeg uas puas tsuaj, tab sis tsis kam cia qhov ntawd zam txim rau nws: nws yog “ib tug menyuam ntawm txoj kev uas paub qhov nws ua.”",
+          "english": "The circuit court acknowledged that Ninham derives from a dysfunctional family but refused to let that excuse his conduct, explaining that he is “a child of the street who knew what he was doing.”"
+        },
+        {
+          "hmong": "Peb: tsev hais plaub hais tias zej zog yuav tsum raug tiv thaiv ntawm Ninham—“Zej tsoom yuav tsum paub, thiab tshwj xeeb tshaj yog zej zog no yuav tsum paub, tias koj xa tau koj tus menyuam mus rau lub khw thiab cia siab tias koj yuav rov pom nws dua.”",
+          "english": "Third, the circuit court reasoned that the community needs to be protected from Ninham: “Society needs to know, and especially this community needs to know, that you can send your child to the grocery store and expect to see him again.”"
+        }
+      ],
+      [
+        {
+          "hmong": "Rau qhov kev foob tua neeg txhob txwm thawj theem, tsev hais plaub txiav txim rau Ninham kom raug kaw mus tas sim neej yam tsis muaj cai thov tawm ntxov.",
+          "english": "As to the count of first-degree intentional homicide, the circuit court sentenced Ninham to life imprisonment without the possibility of parole."
+        },
+        {
+          "hmong": "Rau qhov kev foob ua phem rau menyuam yaus, tsev hais plaub txiav txim rau nws kom raug kaw tsib xyoos ntxiv, ua ntxiv rau lub txim kaw mus tas sim neej.",
+          "english": "For the count of physical abuse of a child, the circuit court sentenced him to five years imprisonment, consecutive to the life sentence."
+        }
+      ],
+      [
+        {
+          "hmong": "Richard Crapeau raug txiav txim tias ua txhaum ua ib tug koom tes rau kev tua neeg txhob txwm thawj theem thiab ua ib tug koom tes rau kev ua phem rau menyuam yaus.",
+          "english": "Richard Crapeau was convicted of being party to first-degree intentional homicide and party to physical abuse of a child."
+        },
+        {
+          "hmong": "Nws raug kaw mus tas sim neej, tab sis muaj cai thov tawm ntxov tom qab raug kaw tsib caug xyoo.",
+          "english": "He was sentenced to life in prison with the possibility of parole after fifty years."
+        },
+        {
+          "hmong": "Raws li tus kws foob hais, txoj kev ntshai uas tus raug tsim txom thiab nws tsev neeg thiab phooj ywg tau ntsib yog—hais ib lo lus—tsis muaj leej twg xav txog tau.",
+          "english": "As the prosecutor put it, the terror experienced by the victim and his family and friends is, in a word, unimaginable."
+        },
+        {
+          "hmong": "Nws hais tias qhov kev ua phem tsis muaj laj thawj no yuav tsum tsis txhob tshwm sim dua li lawm.",
+          "english": "He said this cruel and senseless crime should never, ever happen again."
+        }
+      ],
+      [
+        {
+          "hmong": "Jeffrey P., Amanda G., thiab Christian J. tsis raug foob rau Zong txoj kev tuag, vim cov ntaub ntawv tsis qhia tias lawv yog cov ntaus los sis cov tuav Zong thaum nws raug muab tso hla phab ntsa.",
+          "english": "Jeffrey P., Amanda G., and Christian J. were not charged in Zong’s death, because the record did not show that they were the ones who struck him or held him when he was dropped over the wall."
+        }
+      ],
+      [
+        {
+          "hmong": "Kev thov rov hais plaub dua",
+          "english": "The appeal",
+          "heading": true
+        }
+      ],
+      [
+        {
+          "hmong": "Richard Crapeau thov kom rov hais nws rooj plaub dua, hais tias nws tsis nyob ntawm lub chaw nres tsheb hmo ntawd, tab sis nyob lwm qhov haus yeeb tshuaj.",
+          "english": "Richard Crapeau asked for a new trial, claiming he was not at the parking ramp that night and was instead elsewhere smoking marijuana."
+        },
+        {
+          "hmong": "Hnub tim nees nkaum, lub Ib Hlis, xyoo ob txhiab, tus kws txiav txim Richard Dietz tsis kam, vim cov lus ntawd tsis tsim nyog ntseeg.",
+          "english": "On 20 January 2000, Judge Richard Dietz denied it, finding the claim lacked credibility."
+        },
+        {
+          "hmong": "Crapeau thiaj thov mus rau Lub Tsev Hais Plaub Rov Hais Dua, tab sis hnub tim kaum, lub Plaub Hlis, xyoo ob txhiab ib, lub tsev hais plaub ntawd tsis kam thiab tuav nws lub txim cia.",
+          "english": "Crapeau then appealed to the Court of Appeals, but on 10 April 2001 that court rejected his arguments and upheld the conviction."
+        }
+      ],
+      [
+        {
+          "hmong": "Tom qab kev txiav txim, Omer Ninham tau thov kom rov hais nws lub txim dua.",
+          "english": "After the sentence, Omer Ninham asked for his sentence to be heard again."
+        },
+        {
+          "hmong": "Nws sib cav tias kev muab ib tug hluas muaj kaum plaub xyoos kaw mus tas sim neej yam tsis muaj cai thov tawm ntxov yog kev rau txim hnyav dhau thiab tsis tsim nyog raws li Tebchaws Meskas Txoj Cai Lij Choj thiab Wisconsin Txoj Cai Lij Choj.",
+          "english": "He argued that sentencing a fourteen-year-old to life without parole was excessive punishment, and not justified under the law of the United States or the law of Wisconsin."
+        }
+      ],
+      [
+        {
+          "hmong": "Nws qhov kev sib cav nce mus txog Wisconsin Lub Tsev Hais Plaub Siab Tshaj, tab sis xyoo ob txhiab kaum ib—yuav luag kaum peb xyoo tom qab qhov kev ua txhaum—lub tsev hais plaub ntawd tau txiav txim kom tuav Ninham lub txim qub cia.",
+          "english": "His argument made its way up to the Wisconsin Supreme Court, but in 2011 — nearly thirteen years after the crime — that court maintained the original judgment."
+        },
+        {
+          "hmong": "Lub tsev hais plaub txiav txim tias, nyob rau hauv ib rooj plaub tua neeg txhob txwm, kev kaw ib tug hluas muaj kaum plaub xyoos mus tas sim neej yam tsis muaj cai thov tawm ntxov tsis yog kev rau txim uas txhaum Tsab Cai Hloov Kho Thib Yim (Eighth Amendment) los sis Wisconsin Txoj Cai Lij Choj Loj (Wisconsin Constitution).",
+          "english": "The court held that in a case of intentional homicide, sentencing a fourteen-year-old to life without parole is not a punishment that violates the Eighth Amendment or the Wisconsin Constitution."
+        },
+        {
+          "hmong": "Lub tsev hais plaub kuj siv nws tus kheej txoj kev txiav txim thiab hais tias lub txim ntawd tsis yog kev rau txim nyaum thiab txawv txav rau rooj plaub no, thiab tsis lees txais qhov kev sib cav tias lub txim hnyav dhau.",
+          "english": "The court also exercised its own independent judgment and determined that the punishment was not cruel and unusual in this context, and it rejected the claim that the sentence was unduly harsh or excessive."
+        }
+      ],
+      [
+        {
+          "hmong": "Lub tsev hais plaub tau tham txog Graham v. Florida, ib rooj plaub uas txwv tsis pub muab cov menyuam yaus kaw mus tas sim neej yam tsis muaj cai thov tawm ntxov rau tej kev ua txhaum uas tsis yog kev tua neeg.",
+          "english": "The court discussed Graham v. Florida, a case that forbids sentencing children to life without parole for offences that are not homicide."
+        },
+        {
+          "hmong": "Tab sis Wisconsin Lub Tsev Hais Plaub Siab Tshaj hais tias txoj cai ntawd tsis ncaj qha siv tau rau Ninham, vim Ninham raug txim rau kev tua neeg txhob txwm.",
+          "english": "But the Wisconsin Supreme Court said that rule did not apply directly to Ninham, because Ninham was convicted of intentional homicide."
+        }
+      ],
+      [
+        {
+          "hmong": "Raws li cov ntaub ntawv txog xyoo 2026, Richard Crapeau raug kaw ntawm Racine Correctional Institution hauv Lub Nroog Racine, Xeev Wisconsin.",
+          "english": "According to records as of 2026, Richard Crapeau is held at the Racine Correctional Institution in Racine, Wisconsin."
+        },
+        {
+          "hmong": "Nws twb raug kaw li nees nkaum yim xyoo lawm, thiab nws hnub muaj cai thov tawm ntxov tseem tshuav ntau caum xyoo.",
+          "english": "He has served roughly twenty-eight years, and his parole eligibility remains several decades away."
+        },
+        {
+          "hmong": "Omer Ninham raug kaw ntawm Fox Lake Correctional Institution.",
+          "english": "Omer Ninham is incarcerated at the Fox Lake Correctional Institution."
+        },
+        {
+          "hmong": "Nws raug kaw mus tas sim neej yam tsis muaj cai thov tawm ntxov, ua rau nws yog ib tug ntawm cov tsawg tsawg hauv Xeev Wisconsin keeb kwm uas tau txais lub txim no rau kev ua txhaum thaum muaj kaum plaub xyoos.",
+          "english": "He was sentenced to life without the possibility of parole, making him one of the few people in Wisconsin history to receive such a sentence for a crime committed at the age of fourteen."
+        }
+      ],
+      [
+        {
+          "hmong": "Nco txog Zong Vang",
+          "english": "Remembering Zong Vang",
+          "heading": true
+        }
+      ],
+      [
+        {
+          "hmong": "Tom qab qhov kev txiav txim kawg, Zong tus tij laug Seng Vang hais tias qhov ntawd zoo li yog ib kauj ruam loj rau tsev neeg los kho lawv txoj kev mob siab uas plam lawv tus kwv.",
+          "english": "After the final ruling, Zong’s older brother Seng Vang said it felt like a large step for the family toward healing the grief of losing their younger brother."
+        },
+        {
+          "hmong": "Nws hais tias tag nrho qhov no “ua rau lub siab mob heev,” thiab hais tias, “Kuv niam kuv txiv yuav tsa muag saib Vajtswv thiab thov nws zam txim rau nws tsev neeg thiab rau Richard.”",
+          "english": "He said the experience had been “so emotional,” and said, “My parents will look towards God and they will ask him to forgive his family and Richard.”"
+        },
+        {
+          "hmong": "Nws nco txog Zong tias yog ib tug tub uas “muab siab rau txhua yam nws ua” thiab tau npau suav xav ua kws kho mob.",
+          "english": "He remembered Zong as a boy who “put so much desire into everything he did,” and who had once dreamed of becoming a doctor."
+        }
+      ],
+      [
+        {
+          "hmong": "Zong Vang tsuas yog ib tug tub hluas uas tawm mus yuav txiv lws suav los pab nws tsev neeg xwb.",
+          "english": "Zong Vang was a boy who went out to buy tomatoes to help his family, and nothing more than that."
+        },
+        {
+          "hmong": "Nws tsim nyog tau rov los tsev nyab xeeb.",
+          "english": "He deserved to come home safely."
+        }
+      ],
+      [
+        {
+          "hmong": "Zong tus tij laug, Nhee, piav nws tias yog ib tug “neeg ua haujlwm khov kho” uas tau khaws nyiaj tau ib txhiab tsib puas duas las los ntawm nws txoj haujlwm xa ntawv.",
+          "english": "Zong’s older brother, Nhee, described him as a “strong worker” who had saved $1,500 from his paper route."
+        },
+        {
+          "hmong": "Zong tau khaws nyiaj tau ib txhiab tsib puas duas las los ntawm nws txoj haujlwm xa ntawv.",
+          "english": "Zong had saved fifteen hundred dollars from his paper route."
+        },
+        {
+          "hmong": "Nws txawj ntaus bass cello, thiab cov neeg uas paub nws piav tias nws yog ib tug neeg txaus luag.",
+          "english": "He could play the bass cello, and people who knew him said he was funny."
+        }
+      ],
+      [
+        {
+          "hmong": "Zong niam, Mai Chou Yang, piav txog kev plam nws tus tub tias zoo li muaj neeg rub nqaij tawm ntawm nws lub cev.",
+          "english": "Zong’s mother, Mai Chou Yang, described losing her son as like having flesh pulled from her body."
+        }
+      ],
+      [
+        {
+          "hmong": "Niaj hnub no, Zong tseem raug nco txog hauv Lub Nroog Green Bay.",
+          "english": "To this day, Zong is still remembered in Green Bay."
+        },
+        {
+          "hmong": "Muaj ib qho chaw nco txog nws nyob hauv St. James Park, nrog ib tsob ntoo oak uas cog rau nws lub npe.",
+          "english": "There is a memorial to him in St. James Park, with an oak tree planted in his name."
+        },
+        {
+          "hmong": "Kuj muaj ib lub rooj zaum pob zeb uas raug them ob txhiab tsib puas duas las, sau cov lus “phooj ywg, menyuam yaus, neeg zej zog” ua lus Askiv thiab lus Hmoob.",
+          "english": "There is also a $2,500 memorial stone bench, inscribed with the words “friend, child, neighbor” in both English and Hmong."
+        }
+      ],
+      [
+        {
+          "hmong": "Txawm rooj plaub no cov kev hais plaub xaus los ntau caum xyoo lawm, nws tseem yog ib tshooj ntawv tu siab hauv Lub Nroog Green Bay keeb kwm—qhov chaw uas ib tug tub “ua haujlwm khov kho” thiab ib tug kwv uas raug hlub tseem raug nco txog.",
+          "english": "And although the legal proceedings of this case concluded decades ago, the case remains a somber chapter in Green Bay’s history, marking the spot where a boy who was a “strong worker” and beloved brother is still remembered."
+        },
+        {
+          "hmong": "Ib txoj haujlwm mus khw thaum yav tsaus ntuj uas xaus rau ib qho kev ua txhaum txaus ntshai tshaj plaws hauv Xeev Wisconsin keeb kwm.",
+          "english": "An evening errand to the grocery that ended in one of the most horrifying crimes in Wisconsin history."
+        },
+        {
+          "hmong": "Thiab txawm peb yuav tsis paub li cas tsib tug hluas ho xav ua phem rau ib tug neeg yam tsis muaj laj thawj, qhov peb kawm tau yog qhov yuav tshwm sim los ntawm kev ua li ntawd.",
+          "english": "And although we may never understand why five juveniles wanted to hurt someone for no reason, what we can learn is the consequences of doing so."
+        },
+        {
+          "hmong": "Tab sis qee zaum, kev phem nkaum nyob rau hauv cov chaw uas peb xav tsis txog li.",
+          "english": "But sometimes, evil lurks in the most unsuspecting places."
+        }
+      ],
+      [
+        {
+          "hmong": "Tus kab raub ris thiab tus qav",
+          "english": "The scorpion and the frog",
+          "heading": true
+        }
+      ],
+      [
+        {
+          "hmong": "Muaj ib zaj lus qub txog tus kab raub ris thiab tus qav.",
+          "english": "There is an old story about the scorpion and the frog."
+        },
+        {
+          "hmong": "Tus kab raub ris thov tus qav thauj nws hla tus dej loj. Tus qav ntshai tsam raug tshaws.",
+          "english": "The scorpion asked the frog to carry it across the river. The frog was afraid of being stung."
+        },
+        {
+          "hmong": "“Yog kuv tshaws koj,” tus kab raub ris hais, “wb ob leeg yuav tuag.” Tus qav thiaj ntseeg nws.",
+          "english": "“If I sting you,” the scorpion said, “we will both drown.” So the frog believed it."
+        },
+        {
+          "hmong": "Thaum nkawd nyob nruab nrab tus dej loj, tus kab raub ris tshaws tus qav.",
+          "english": "Halfway across the river, the scorpion stung the frog."
+        },
+        {
+          "hmong": "Thaum tus qav nug tias ua cas, tus kab raub ris teb tias, “Vim qhov ntawd yog kuv lub siab. Kuv tsis hloov tau.”",
+          "english": "As the frog asked why, the scorpion answered, “Because it is my nature. I cannot change it.”"
+        },
+        {
+          "hmong": "Tus qav tsis muaj zog lawm, ces nkawd ob leeg poob rau hauv dej.",
+          "english": "The frog lost its strength, and the two of them went under."
+        },
+        {
+          "hmong": "Nkawd ob leeg tuag hauv tus dej loj ua ke.",
+          "english": "They both drowned in the river."
+        },
+        {
+          "hmong": "Tus kab raub ris twb paub tias yuav zoo li ntawd. Nws tseem tshaws.",
+          "english": "The scorpion already knew that was how it would end. It stung anyway."
+        }
+      ],
+      [
+        {
+          "hmong": "Muaj coob tus neeg zoo li tus kab raub ris nyob hauv lub ntiaj teb no. Lawv nyob nrog peb.",
+          "english": "There are many people like the scorpion in this world. They live among us."
+        },
+        {
+          "hmong": "Lawv tsis xav tau ib yam dab tsi ntawm koj. Lawv tsis chim rau koj. Lawv tsis paub koj lub npe.",
+          "english": "They want nothing from you. They are not angry with you. They do not know your name."
+        },
+        {
+          "hmong": "Thiab lawv zoo li koj thiab kuv.",
+          "english": "And they look like you and me."
+        },
+        {
+          "hmong": "Ib txhia muaj lub cim ntawm txoj cai. Ib txhia muaj phom. Ib txhia zaum ntawm koj lub rooj noj mov.",
+          "english": "Some of them wear the badge of the law. Some of them carry a gun. Some of them sit at your table."
+        },
+        {
+          "hmong": "Ib txhia ua phem tab meeg. Ib txhia ua txuj ua koj phooj ywg ua ntej.",
+          "english": "Some of them do harm out in the open. Some of them will pretend to be your friend first."
+        },
+        {
+          "hmong": "Ib txhia yog txiv neej. Ib txhia yog poj niam.",
+          "english": "Some of them are men. Some of them are women."
+        },
+        {
+          "hmong": "Ib txhia tseem yog Hmoob, ib yam li koj.",
+          "english": "Some of them are Hmong, the same as you."
+        },
+        {
+          "hmong": "Lawv ua phem vim qhov ntawd yog lawv lub siab. Tsis muaj laj thawj li.",
+          "english": "They do harm because that is their nature. There is no reason to it."
+        },
+        {
+          "hmong": "Koj yuav tsis pom lawv tuaj. Lawv tseem zoo li ib pab hluas uas taug kev hauv ib txoj kev xwb.",
+          "english": "You will not see them coming. They can even look like a group of kids walking down a street."
+        },
+        {
+          "hmong": "Yog li ntawd: ceev faj rau lwm tus. Tsis txhob tso siab rau cov neeg koj tsis paub, txawm lawv tseem me los.",
+          "english": "So: be careful around other people. Do not trust strangers, however young they look."
+        },
+        {
+          "hmong": "Zong tsis tau ua ib yam dab tsi txhaum. Nws tsuas caij nws lub tsheb kauj vab los tsev xwb. Qhov ntawd twb txaus rau cov neeg phem no muab nws tua tsis muaj laj thawj li lawm.",
+          "english": "Zong did nothing wrong. He was riding his bicycle home. That was enough for these bad people to randomly kill him."
+        }
+      ],
+      [
+        {
+          "hmong": "Nyob kaj siab, Zong Vang.",
+          "english": "Rest in peace, Zong Vang."
+        }
+      ]
+    ],
+    "glossary": [
+      {
+        "hmong": "Lub Nroog Green Bay, Xeev Wisconsin",
+        "english": "the City of Green Bay, State of Wisconsin"
+      },
+      {
+        "hmong": "Green Bay Tub Ceev Xwm Lub Chaw Haujlwm",
+        "english": "the Green Bay Police Department"
+      },
+      {
+        "hmong": "Brown County Lub Chaw Kaw Menyuam Yaus",
+        "english": "the Brown County Juvenile Detention Center"
+      },
+      {
+        "hmong": "kev tua neeg txhob txwm thawj theem",
+        "english": "first-degree intentional homicide"
+      },
+      {
+        "hmong": "kev ua phem rau menyuam yaus",
+        "english": "physical abuse of a child"
+      },
+      {
+        "hmong": "kaw mus tas sim neej yam tsis muaj cai thov tawm ntxov",
+        "english": "life without parole"
+      },
+      {
+        "hmong": "muaj cai thov tawm ntxov tom qab raug kaw tsib caug xyoo",
+        "english": "parole eligible after fifty years"
+      },
+      {
+        "hmong": "Wisconsin Lub Tsev Hais Plaub Siab Tshaj",
+        "english": "the Wisconsin Supreme Court"
+      },
+      {
+        "hmong": "Tsab Cai Hloov Kho Thib Yim",
+        "english": "the Eighth Amendment"
+      },
+      {
+        "hmong": "Wisconsin Txoj Cai Lij Choj Loj",
+        "english": "the Wisconsin Constitution"
+      },
+      {
+        "hmong": "pawg neeg txiav txim",
+        "english": "jury"
+      },
+      {
+        "hmong": "kev kuaj tus tuag lub cev",
+        "english": "autopsy; examination of the body"
+      },
+      {
+        "hmong": "tub ceev xwm",
+        "english": "police; a police officer"
+      },
+      {
+        "hmong": "Lub Tsev Hais Plaub Rov Hais Dua",
+        "english": "the Court of Appeals"
+      },
+      {
+        "hmong": "tus kws txiav txim",
+        "english": "judge"
+      },
+      {
+        "hmong": "rooj plaub",
+        "english": "a legal case; a trial"
+      },
+      {
+        "hmong": "tsev hais plaub",
+        "english": "court; courthouse"
+      },
+      {
+        "hmong": "txiav txim",
+        "english": "to decide, to judge; to sentence"
+      },
+      {
+        "hmong": "raug foob",
+        "english": "to be charged; to be sued"
+      },
+      {
+        "hmong": "raug ntes",
+        "english": "to be arrested, to be caught"
+      },
+      {
+        "hmong": "sib cav",
+        "english": "to argue, to contend"
+      },
+      {
+        "hmong": "pov thawj",
+        "english": "proof, evidence — \"neeg ua pov thawj\", a witness"
+      },
+      {
+        "hmong": "tim khawv",
+        "english": "testimony; a witness"
+      },
+      {
+        "hmong": "kws lij choj",
+        "english": "lawyer, attorney"
+      },
+      {
+        "hmong": "txhob txwm",
+        "english": "deliberate, on purpose, intentional"
+      },
+      {
+        "hmong": "tsheb kauj vab",
+        "english": "bicycle"
+      },
+      {
+        "hmong": "txiv lws suav",
+        "english": "tomato"
+      },
+      {
+        "hmong": "chaw nres tsheb",
+        "english": "a parking place — here, a multi-level parking ramp"
+      },
+      {
+        "hmong": "phab ntsa",
+        "english": "wall"
+      },
+      {
+        "hmong": "pob zeb",
+        "english": "stone, rock — here, concrete"
+      },
+      {
+        "hmong": "ntsej muag",
+        "english": "face"
+      },
+      {
+        "hmong": "dab teg",
+        "english": "wrist"
+      },
+      {
+        "hmong": "xub pwg",
+        "english": "shoulder"
+      },
+      {
+        "hmong": "thuam",
+        "english": "to taunt, to mock, to insult"
+      },
+      {
+        "hmong": "thawb",
+        "english": "push; shove (transitive verb) · promote; urge forward (transitive verb)"
+      },
+      {
+        "hmong": "txeeb",
+        "english": "to snatch, to grab away"
+      },
+      {
+        "hmong": "caum",
+        "english": "to chase, to pursue; to follow after"
+      },
+      {
+        "hmong": "vij",
+        "english": "to surround, to hem in"
+      },
+      {
+        "hmong": "yoj",
+        "english": "to swing, to sway back and forth"
+      },
+      {
+        "hmong": "kws kho mob",
+        "english": "doctor"
+      },
+      {
+        "hmong": "mob",
+        "english": "sick; ill — and as a noun, pain, illness or injury: “raug mob”, injured. NOT “doctor”: that is “kws kho mob”."
+      },
+      {
+        "hmong": "choj",
+        "english": "bridge (noun)"
+      },
+      {
+        "hmong": "haujlwm",
+        "english": "work; job; employment (noun) · task; duty; responsibility (noun) · activity; operation; undertaking (noun)"
+      },
+      {
+        "hmong": "pov",
+        "english": "throw; toss (transitive verb) · pov thawj = proof; evidence (compound noun) · neeg ua pov thawj = witness (compound noun) — ⚠ proof/evidence is not a standalone core sense of pov"
+      },
+      {
+        "hmong": "vab",
+        "english": "net; web (noun) · tsheb kauj vab = bicycle (compound noun)"
+      },
+      {
+        "hmong": "ntuj",
+        "english": "sky (noun) · heaven; upper spiritual realm (noun) · hmo ntuj = night (compound noun) · tsaus ntuj = evening; nighttime; darkness (compound time expression)"
+      },
+      {
+        "hmong": "phooj",
+        "english": "bound word — not used alone: phooj ywg = friend (compound noun)"
+      },
+      {
+        "hmong": "ywg",
+        "english": "bound word — not used alone: phooj ywg = friend (compound noun)"
+      },
+      {
+        "hmong": "tua",
+        "english": "kill (transitive verb) · shoot; fire a gun (transitive verb) · turn off; extinguish (transitive verb) · beat; strike an instrument (transitive verb)"
+      },
+      {
+        "hmong": "phem",
+        "english": "bad; evil; harmful (adjective) · severe; serious (adjective)"
+      },
+      {
+        "hmong": "kom",
+        "english": "so that; in order that (purpose complementizer) · tell; direct someone to do something (causative / directive verb) · clause linker for a request, command, desired outcome, or result (complementizer)"
+      },
+      {
+        "hmong": "tom",
+        "english": "at; over at; located at (locative marker / preposition) · bite (transitive verb) · tom qab = after; later; behind (compound preposition / temporal expression) · separately (adverb)"
+      },
+      {
+        "hmong": "koj",
+        "english": "you, one person (second-person singular pronoun) · your; yours (possessive pronoun)"
+      },
+      {
+        "hmong": "rooj",
+        "english": "table (noun) · rooj plaub = legal case; lawsuit; trial (compound noun)"
+      },
+      {
+        "hmong": "tub",
+        "english": "son; boy (noun) · male-person / role element in compounds (compound-noun element) · tub hluas = young man (compound noun) · tub ceev xwm = police officer; police (compound noun)"
+      },
+      {
+        "hmong": "ntsa",
+        "english": "wall (noun) · cliff; steep wall-like surface (noun) — ⚠ phab ntsa = wall (compound noun)"
+      },
+      {
+        "hmong": "ntxov",
+        "english": "early (adjective / adverb) · morning or early-day element, as in tag kis ntxov = tomorrow morning (time-expression element)"
+      },
+      {
+        "hmong": "twg",
+        "english": "which; what; where; who, depending on construction (interrogative word) · qhov twg = where; which place (interrogative compound) · thaum twg = when (interrogative compound) · leej twg = who (interrogative compound)"
+      },
+      {
+        "hmong": "tsi",
+        "english": "what (interrogative word) · anything; something in indefinite or negative constructions (indefinite interrogative element) · dab tsi = what; anything (compound interrogative phrase) · yam dab tsi = anything; something (compound noun phrase)"
+      },
+      {
+        "hmong": "cas",
+        "english": "how; why; what kind of, depending on construction (interrogative word) · vim li cas = why (compound interrogative expression) · kim npaum li cas = how expensive; how much (compound question expression)"
+      },
+      {
+        "hmong": "tuaj",
+        "english": "come (motion verb) · arrive (motion verb) · come to be; arise (directional / resultative verb element)"
+      },
+      {
+        "hmong": "xwb",
+        "english": "only; just; merely (restrictive particle) · that’s all; no more than that (sentence-final particle)"
+      },
+      {
+        "hmong": "teb",
+        "english": "answer; reply (verb) · respond; react (verb) · land; country, as in Teb Chaws Asmeskas (noun / compound-noun element)"
+      },
+      {
+        "hmong": "ntsib",
+        "english": "meet; encounter (verb) · face; confront (verb)"
+      },
+      {
+        "hmong": "sawv",
+        "english": "stand (intransitive verb) · get up; rise (intransitive verb) · wake up (intransitive verb) · arise; rise, including the sun rising (verb)"
+      },
+      {
+        "hmong": "sim",
+        "english": "try; attempt (verb) · test; examine (verb) · taste; sample (verb)"
+      },
+      {
+        "hmong": "dab",
+        "english": "spirit; ghost; supernatural being (noun) · dab tsi = what; anything (compound interrogative expression) — ⚠ “what” is not a standalone sense of dab"
+      },
+      {
+        "hmong": "txhia",
+        "english": "some; various; different (indefinite determiner) · distributive or variety element in expressions such as txhua txhia (grammatical element)"
+      },
+      {
+        "hmong": "txheej",
+        "english": "event; incident; occurrence (noun) · time; occasion; instance (noun) · layer; arrangement; sequence (noun) — ⚠ cross-reference xwm txheej / txheej xwm (compound nouns)"
+      },
+      {
+        "hmong": "niam",
+        "english": "mother (noun) · female / woman element in kinship, gender, and animal compounds (compound-noun element)"
+      },
+      {
+        "hmong": "zej",
+        "english": "community; neighborhood; village area (noun) · zej zog = community; society; neighborhood (compound noun)"
+      },
+      {
+        "hmong": "twb",
+        "english": "already (aspectual adverb) · indeed; in fact; as expected (discourse adverb)"
+      },
+      {
+        "hmong": "phab",
+        "english": "side (noun) · wall, especially in phab ntsa (compound-noun element) · party; side; faction (noun)"
+      },
+      {
+        "hmong": "leej",
+        "english": "classifier for people; respectful individual classifier (classifier) · leej twg = who (compound interrogative phrase)"
+      },
+      {
+        "hmong": "cav",
+        "english": "argue; dispute; contend (verb) · claim; maintain; assert (verb)"
+      },
+      {
+        "hmong": "tim",
+        "english": "at; over at, dialect/construction-sensitive (locative marker) · tim li cas = cause; reason; why, dialect-sensitive (compound interrogative expression)"
+      },
+      {
+        "hmong": "tsaus",
+        "english": "dark; darkness (adjective / stative verb) · tsaus ntuj = evening; nighttime; darkness (compound time expression)"
+      },
+      {
+        "hmong": "pob",
+        "english": "ball; round lump; rounded object (noun) · classifier for small round or lump-like objects (classifier) · right?; is that so? (sentence-final confirmation particle)"
+      },
+      {
+        "hmong": "tsum",
+        "english": "must; have to; need to (modal verb) · necessity or obligation marker (modal particle)"
+      },
+      {
+        "hmong": "chim",
+        "english": "anger; be angry (noun / stative verb) · inner feeling; disposition in compounds (noun)"
+      },
+      {
+        "hmong": "saib",
+        "english": "look at; watch (transitive verb) · examine; inspect (transitive verb) · care for; look after (transitive verb) · consider; regard (mental verb)"
+      },
+      {
+        "hmong": "muag",
+        "english": "sell (transitive verb) · be for sale; be sold (verb / predicate)"
+      },
+      {
+        "hmong": "tshaj",
+        "english": "to exceed, to be more than — “tshaj plaws”, the most. NOT the name of a court: that is the whole phrase “Wisconsin Lub Tsev Hais Plaub Siab Tshaj”."
+      },
+      {
+        "hmong": "ntsuj plig",
+        "english": "spirit, soul"
+      },
+      {
+        "hmong": "mob siab",
+        "english": "grief; to be heartsick"
+      },
+      {
+        "hmong": "tij laug",
+        "english": "older brother"
+      },
+      {
+        "hmong": "npau suav",
+        "english": "to dream"
+      },
+      {
+        "hmong": "nco txog",
+        "english": "to remember, to think of"
+      },
+      {
+        "hmong": "zej zog",
+        "english": "community, neighbourhood"
+      },
+      {
+        "hmong": "nyab xeeb",
+        "english": "safe; safety"
+      },
+      {
+        "hmong": "tsim txom",
+        "english": "to torture; to mistreat cruelly, to persecute"
+      },
+      {
+        "hmong": "tsoo",
+        "english": "to strike, to smash into, to collide with"
+      },
+      {
+        "hmong": "zog",
+        "english": "strength, force"
+      },
+      {
+        "hmong": "pob taws",
+        "english": "ankle"
+      },
+      {
+        "hmong": "nraub qaum",
+        "english": "back (of the body)"
+      },
+      {
+        "hmong": "kawg nkaus",
+        "english": "utterly, extremely — the strongest intensifier here"
+      },
+      {
+        "hmong": "puas tsuaj",
+        "english": "destroyed, ruined, wrecked"
+      },
+      {
+        "hmong": "kab raub ris",
+        "english": "scorpion"
+      },
+      {
+        "hmong": "qav",
+        "english": "frog (noun)"
+      },
+      {
+        "hmong": "tshaws",
+        "english": "to sting"
+      },
+      {
+        "hmong": "ris",
+        "english": "trousers, pants — here only as part of “kab raub ris”, scorpion. It does NOT mean scorpion on its own."
+      },
+      {
+        "hmong": "raub",
+        "english": "bound word here: only in “kab raub ris”, scorpion"
+      },
+      {
+        "hmong": "dej",
+        "english": "water; a river"
+      },
+      {
+        "hmong": "coob",
+        "english": "many — used of people, where “ntau” is used of things"
+      },
+      {
+        "hmong": "ntiaj teb",
+        "english": "the world, the earth"
+      },
+      {
+        "hmong": "ib txhia",
+        "english": "some, some of them"
+      },
+      {
+        "hmong": "cim",
+        "english": "a mark, a sign, an emblem — “lub cim ntawm txoj cai”, the badge of the law"
+      },
+      {
+        "hmong": "phom",
+        "english": "a gun"
+      },
+      {
+        "hmong": "tab meeg",
+        "english": "openly, in front of everyone"
+      },
+      {
+        "hmong": "ua txuj",
+        "english": "to pretend, to put on an act"
+      },
+      {
+        "hmong": "Hmoob",
+        "english": "Hmong — the people and the language"
+      },
+      {
+        "hmong": "poj niam",
+        "english": "a woman"
+      },
+      {
+        "hmong": "kav",
+        "english": "to last, to run for — “uas kav plaub hnub”, that ran four days"
+      },
+      {
+        "hmong": "Zong",
+        "english": "Zong Vang — the thirteen-year-old boy killed in this case"
+      },
+      {
+        "hmong": "Vang",
+        "english": "Vang — Zong’s family name; also his brothers Seng Vang, Seng Say Vang and Nhee"
+      },
+      {
+        "hmong": "Omer",
+        "english": "Omer Ninham — fourteen, convicted of first-degree intentional homicide"
+      },
+      {
+        "hmong": "Ninham",
+        "english": "Omer Ninham — fourteen at the time; sentenced to life without parole"
+      },
+      {
+        "hmong": "Richard",
+        "english": "Richard Crapeau — thirteen, convicted as a party to the killing. Also the first name of Judge Richard J. Dietz."
+      },
+      {
+        "hmong": "Crapeau",
+        "english": "Richard Crapeau — thirteen at the time; sentenced to life, parole possible after fifty years"
+      },
+      {
+        "hmong": "Jeffrey",
+        "english": "Jeffrey P. — thirteen, present but never charged; told police what he knew"
+      },
+      {
+        "hmong": "Amanda",
+        "english": "Amanda G. — fourteen, present but never charged; told police what she knew"
+      },
+      {
+        "hmong": "Christian",
+        "english": "Christian J. — fourteen, present but never charged"
+      },
+      {
+        "hmong": "Steven",
+        "english": "Steven Heraly — the bystander who heard Zong fall"
+      },
+      {
+        "hmong": "Heraly",
+        "english": "Steven Heraly — the man driving out of the ramp who heard the fall"
+      },
+      {
+        "hmong": "Seng",
+        "english": "Seng Say Vang and Seng Vang — Zong’s older brothers, who spoke for the family"
+      },
+      {
+        "hmong": "Say",
+        "english": "in “Seng Say Vang” — Zong’s older brother, who spoke at sentencing"
+      },
+      {
+        "hmong": "Nhee",
+        "english": "Nhee — Zong’s older brother, who described him as a “strong worker”"
+      },
+      {
+        "hmong": "Mai",
+        "english": "Mai Chou Yang — Zong’s mother"
+      },
+      {
+        "hmong": "Chou",
+        "english": "in “Mai Chou Yang” — Zong’s mother"
+      },
+      {
+        "hmong": "Yang",
+        "english": "in “Mai Chou Yang” — Zong’s mother; also a Hmong family name"
+      },
+      {
+        "hmong": "Dietz",
+        "english": "Richard J. Dietz — the circuit court judge in Omer Ninham’s case"
+      },
+      {
+        "hmong": "Wisconsin",
+        "english": "Wisconsin — the state where this happened"
+      },
+      {
+        "hmong": "Webster",
+        "english": "Webster Avenue — the street Zong was riding home along"
+      },
+      {
+        "hmong": "txoj kev",
+        "english": "a road, a street, a way — the classifier a named street takes: “txoj kev Webster Avenue”. Also “a way” in the abstract, as in “txoj kev tuag”, death."
+      },
+      {
+        "hmong": "Lub Nroog",
+        "english": "the City of — the classifier a named city takes: “Lub Nroog Green Bay”, “Lub Nroog Racine”"
+      },
+      {
+        "hmong": "kwv yees",
+        "english": "to estimate, to reckon — “kwv yees li yim teev”, about eight o’clock"
+      },
+      {
+        "hmong": "tiam sis",
+        "english": "but, however"
+      },
+      {
+        "hmong": "npoo av",
+        "english": "ground level — “saum npoo av”, above the ground"
+      },
+      {
+        "hmong": "lom zem",
+        "english": "fun, funny, enjoyable"
+      },
+      {
+        "hmong": "ya",
+        "english": "to fly — “ya hla phab ntsa”, sailed out over the wall"
+      },
+      {
+        "hmong": "cawm",
+        "english": "to rescue, to save — “pab cawm neeg”, to rescue people"
+      },
+      {
+        "hmong": "dhia",
+        "english": "to jump; of a pulse, to beat"
+      },
+      {
+        "hmong": "me ntsis",
+        "english": "a little, slightly"
+      },
+      {
+        "hmong": "ib nyuag ntu",
+        "english": "a short while, a little stretch of time"
+      },
+      {
+        "hmong": "tawg",
+        "english": "to break, to crack, to burst"
+      },
+      {
+        "hmong": "nqis",
+        "english": "to go down, to descend"
+      },
+      {
+        "hmong": "ib ntus",
+        "english": "for a time, for a while"
+      },
+      {
+        "hmong": "vib nas this",
+        "english": "a second (of time) — from the English “minute second”"
+      },
+      {
+        "hmong": "tig",
+        "english": "to turn, to turn around"
+      },
+      {
+        "hmong": "tshawb nrhiav",
+        "english": "to investigate, to search out"
+      },
+      {
+        "hmong": "nqus",
+        "english": "to suck in, to inhale — of a drug, to snort"
+      },
+      {
+        "hmong": "txij",
+        "english": "from, since — “txij thaum”, ever since"
+      },
+      {
+        "hmong": "cuam tshuam",
+        "english": "to affect, to have an impact on"
+      },
+      {
+        "hmong": "tshwj xeeb",
+        "english": "special; especially — “tshwj xeeb tshaj yog”, especially"
+      },
+      {
+        "hmong": "pab hluas",
+        "english": "a group of young people — “pab”, a group, NOT “pab”, to help. Both senses are in this story: “pab cawm” is to rescue."
+      },
+      {
+        "hmong": "ua si",
+        "english": "to play; a game — “txoj kev ua si”, a game they were playing"
+      },
+      {
+        "hmong": "txawv txav",
+        "english": "unusual, out of the ordinary — in law, “cruel and unusual”"
+      },
+      {
+        "hmong": "ncaj qha",
+        "english": "directly, straight — “tsis ncaj qha siv tau”, does not apply directly"
+      },
+      {
+        "hmong": "txawj",
+        "english": "to know how to, to be able to — “nws txawj ntaus bass cello”"
+      },
+      {
+        "hmong": "niaj hnub",
+        "english": "every day; these days — “niaj hnub no”, to this day"
+      },
+      {
+        "hmong": "cog",
+        "english": "to plant — “cog rau nws lub npe”, planted in his name"
+      },
+      {
+        "hmong": "them",
+        "english": "to pay — “raug them ob txhiab tsib puas duas las”, cost $2,500"
+      },
+      {
+        "hmong": "Eighth Amendment",
+        "english": "the Eighth Amendment to the US Constitution — bans cruel and unusual punishment. The author’s Hmong for it is “Tsab Cai Hloov Kho Thib Yim”."
+      },
+      {
+        "hmong": "Constitution",
+        "english": "constitution (English, kept as written) — “Wisconsin Txoj Cai Lij Choj Loj”"
+      },
+      {
+        "hmong": "Graham v. Florida",
+        "english": "Graham v. Florida — the 2010 US Supreme Court case barring life without parole for children, for crimes other than homicide"
+      },
+      {
+        "hmong": "Florida",
+        "english": "Florida — the state in the case name “Graham v. Florida”"
+      },
+      {
+        "hmong": "Fox Lake Correctional Institution",
+        "english": "Fox Lake Correctional Institution — the Wisconsin prison where Ninham is held"
+      },
+      {
+        "hmong": "St. James Park",
+        "english": "St. James Park — the Green Bay park where Zong’s memorial stands"
+      },
+      {
+        "hmong": "Park",
+        "english": "park (English, kept as written) — Hmong: “chaw ua si”"
+      },
+      {
+        "hmong": "oak",
+        "english": "oak (English, kept as written) — the tree planted in Zong’s name"
+      },
+      {
+        "hmong": "bass cello",
+        "english": "the double bass (English, kept as written) — the instrument Zong played"
+      },
+      {
+        "hmong": "sis",
+        "english": "in “los sis” or; in “tiam sis” but — never alone"
+      },
+      {
+        "hmong": "P.",
+        "english": "the initial of Jeffrey P., who was thirteen and never charged — abbreviated on purpose"
+      },
+      {
+        "hmong": "G.",
+        "english": "the initial of Amanda G., who was fourteen and never charged — abbreviated on purpose"
+      },
+      {
+        "hmong": "J.",
+        "english": "the initial of Christian J., who was fourteen and never charged — abbreviated on purpose"
+      },
+      {
+        "hmong": "St. Vincent Hospital",
+        "english": "St. Vincent Hospital — the Green Bay hospital whose parking ramp this happened on"
+      },
+      {
+        "hmong": "Hospital",
+        "english": "hospital (English, kept as written) — Hmong: “tsev kho mob”"
+      },
+      {
+        "hmong": "Avenue",
+        "english": "avenue (English, kept as written) — part of the street name"
+      },
+      {
+        "hmong": "Street",
+        "english": "street (English, kept as written) — part of the street name"
+      },
+      {
+        "hmong": "East Mason Street",
+        "english": "East Mason Street — the street they crossed, hearing the ambulance"
+      },
+      {
+        "hmong": "Racine",
+        "english": "Racine — the Wisconsin city where Crapeau is held"
+      },
+      {
+        "hmong": "Correctional Institution",
+        "english": "a prison (English, kept as written) — “Racine Correctional Institution”"
+      },
+      {
+        "hmong": "Chicken",
+        "english": "“Chicken” — the English name Omer and Richard gave what they were doing at the wall"
+      },
+      {
+        "hmong": "cement",
+        "english": "cement, concrete (English, used as a Hmong loan)"
+      },
+      {
+        "hmong": "cocaine",
+        "english": "cocaine (English, kept as written)"
+      },
+      {
+        "hmong": "Indian",
+        "english": "in “Menominee Indian Tribe” — kept as the tribe writes its own name"
+      },
+      {
+        "hmong": "Tribe",
+        "english": "in “Menominee Indian Tribe” — kept as the tribe writes its own name"
+      },
+      {
+        "hmong": "Native American",
+        "english": "Native American — kept as written; the spirituality Ninham said he had taken an interest in"
+      },
+      {
+        "hmong": "drive-by",
+        "english": "a drive-by shooting (English) — one of the threats Ninham made"
+      },
+      {
+        "hmong": "Menominee",
+        "english": "the Menominee Indian Tribe — Ninham is a member"
+      },
+      {
+        "hmong": "Graham",
+        "english": "Graham v. Florida — the case the Supreme Court discussed and set aside here"
+      },
+      {
+        "hmong": "Esxias",
+        "english": "Asian — the word in Crapeau’s statement to police"
+      },
+      {
+        "hmong": "Askiv",
+        "english": "English — “lus Askiv”, the English language"
+      },
+      {
+        "hmong": "Vajtswv",
+        "english": "God"
+      },
+      {
+        "hmong": "quaj",
+        "english": "to cry, to weep"
+      },
+      {
+        "hmong": "thauj",
+        "english": "to carry, to transport"
+      },
+      {
+        "hmong": "tseeb",
+        "english": "true, certain — “paub tseeb”, to know for certain"
+      },
+      {
+        "hmong": "plam",
+        "english": "to lose, to be deprived of"
+      },
+      {
+        "hmong": "xaus",
+        "english": "to end, to conclude"
+      },
+      {
+        "hmong": "txais",
+        "english": "to receive, to accept"
+      },
+      {
+        "hmong": "txav",
+        "english": "to move, to shift closer"
+      },
+      {
+        "hmong": "rub",
+        "english": "to pull, to take hold of and draw"
+      },
+      {
+        "hmong": "ntog",
+        "english": "to fall over, to land"
+      },
+      {
+        "hmong": "av",
+        "english": "ground, earth"
+      },
+      {
+        "hmong": "nias",
+        "english": "to press down on"
+      },
+      {
+        "hmong": "qw",
+        "english": "to shout, to scream"
+      },
+      {
+        "hmong": "tsav",
+        "english": "to drive — “tsav tsheb”"
+      },
+      {
+        "hmong": "tshaj plaws",
+        "english": "the most, -est — “hnyav tshaj plaws”, the heaviest"
+      },
+      {
+        "hmong": "sawv tsees",
+        "english": "to get up, to spring to one’s feet"
+      },
+      {
+        "hmong": "cuag",
+        "english": "to reach, to catch up to — “caum cuag”, to catch up with"
+      },
+      {
+        "hmong": "feem ntau",
+        "english": "mostly, usually, for the most part"
+      },
+      {
+        "hmong": "ib yam li",
+        "english": "the same as, just like"
+      },
+      {
+        "hmong": "rooj noj mov",
+        "english": "a dining table — literally the table where food is eaten"
+      },
+      {
+        "hmong": "mov",
+        "english": "food — “noj mov” is to eat; it also means cooked rice on its own"
+      },
+      {
+        "hmong": "zaum",
+        "english": "to sit — the only sense used in this story. (The word also means “a time, an occasion”, and with “tej” in front of it, “perhaps”.)"
+      },
+      {
+        "hmong": "rooj zaum",
+        "english": "a seat, a bench"
+      },
+      {
+        "hmong": "ua ke",
+        "english": "together, at the same time"
+      },
+      {
+        "hmong": "hloov",
+        "english": "to change"
+      },
+      {
+        "hmong": "nruab nrab",
+        "english": "the middle; halfway"
+      },
+      {
+        "hmong": "ceev faj",
+        "english": "to be careful, to watch out"
+      },
+      {
+        "hmong": "tso siab",
+        "english": "to trust; to put one’s heart at ease"
+      },
+      {
+        "hmong": "pej xeem",
+        "english": "the public; citizens"
+      },
+      {
+        "hmong": "cwj pwm",
+        "english": "character; behaviour, disposition"
+      },
+      {
+        "hmong": "zej tsoom",
+        "english": "society; the public at large"
+      },
+      {
+        "hmong": "tswv cuab",
+        "english": "a member (of a family or group)"
+      },
+      {
+        "hmong": "cawv",
+        "english": "alcohol, liquor"
+      },
+      {
+        "hmong": "tso tseg",
+        "english": "to drop, to dismiss, to abandon"
+      },
+      {
+        "hmong": "nees",
+        "english": "in “nees nkaum” — twenty. NOT “horse”, which is what this word means on its own."
+      },
+      {
+        "hmong": "nees nkaum",
+        "english": "twenty — “nees nkaum plaub” is twenty-four, “nees nkaum cuaj” twenty-nine"
+      },
+      {
+        "hmong": "caug",
+        "english": "in a number, “-ty” — “tsib caug xyoo” is fifty years"
+      },
+      {
+        "hmong": "kaum",
+        "english": "ten (numeral) · teen-number element, as in kaum peb = thirteen (numeral element) — ⚠ distinct from nkaum = hide (verb)"
+      },
+      {
+        "hmong": "puas",
+        "english": "hundred — “cuaj puas” is nine hundred. (Also the yes/no question word, “puas yog…?”)"
+      },
+      {
+        "hmong": "txhiab",
+        "english": "thousand — “ib txhiab cuaj puas cuaj caum yim” is 1998"
+      },
+      {
+        "hmong": "tsib",
+        "english": "five"
+      },
+      {
+        "hmong": "hlis",
+        "english": "month (noun) · month-name element (proper-name element) · Peb Hlis = March (proper noun) · Cuaj Hlis = September (proper noun)"
+      },
+      {
+        "hmong": "hnub tim",
+        "english": "the date, the day of the month"
+      },
+      {
+        "hmong": "plaub",
+        "english": "four — BUT in “rooj plaub” a legal case, and “tsev hais plaub” a court. Not the number in those."
+      },
+      {
+        "hmong": "txim",
+        "english": "in “txiav txim”, to judge or decide; “kws txiav txim”, a judge; “lub txim”, the sentence or punishment"
+      },
+      {
+        "hmong": "kaw",
+        "english": "close; shut (transitive verb) · closed; not open (stative verb / adjective) · confine; imprison (transitive verb) · raug kaw = be imprisoned (compound verb construction)"
+      },
+      {
+        "hmong": "foob",
+        "english": "to charge, to accuse, to sue — “raug foob”, to be charged"
+      },
+      {
+        "hmong": "hluas",
+        "english": "young — “tub hluas” a young man, “pab hluas” a group of young people. Not “niam hluas”."
+      },
+      {
+        "hmong": "tab",
+        "english": "bound word — not used alone: tab sis = but; however (conjunction) · tab tom = currently doing; in the process of doing (progressive aspect construction)"
+      },
+      {
+        "hmong": "laj",
+        "english": "in “laj thawj” — a reason, a cause"
+      },
+      {
+        "hmong": "thawj",
+        "english": "in “laj thawj” a reason; in “thawj theem”, first degree"
+      },
+      {
+        "hmong": "qhov",
+        "english": "a thing, a place, a point — “qhov xwm txheej” the incident, “qhov chaw” the place, “qhov siab” the height"
+      },
+      {
+        "hmong": "ntaub",
+        "english": "in “ntaub ntawv” — documents, records, papers"
+      },
+      {
+        "hmong": "ntawv",
+        "english": "paper, writing — “ntaub ntawv” records, “xa ntawv” to deliver mail"
+      },
+      {
+        "hmong": "tib",
+        "english": "same; one and the same (adjective / determiner) · tib neeg = human being; humanity (compound noun) · tib txoj = the same one; same route/rule depending on the following noun (determiner phrase)"
+      },
+      {
+        "hmong": "kheej",
+        "english": "in “tus kheej” — oneself, one’s own"
+      },
+      {
+        "hmong": "tsa",
+        "english": "to raise, to lift up — “tsa tau nws sawv rov los”, to revive him"
+      },
+      {
+        "hmong": "ntug",
+        "english": "the edge — “ntug phab ntsa”, the edge of the wall"
+      },
+      {
+        "hmong": "hnyav",
+        "english": "heavy — and so “severely”: “raug mob hnyav”, badly injured; “ntaus hnyav dua”, hit harder"
+      },
+      {
+        "hmong": "txaus",
+        "english": "enough — “ntev txaus” long enough; “txaus ntshai” frightening, enough to fear"
+      },
+      {
+        "hmong": "siab",
+        "english": "the seat of feeling and intent — “lub hauv siab” the chest, “lub siab” one’s intention or nature, “poob siab” to lose heart"
+      },
+      {
+        "hmong": "tom qab",
+        "english": "after; behind"
+      },
+      {
+        "hmong": "hauv qab",
+        "english": "below, underneath"
+      },
+      {
+        "hmong": "ntaus",
+        "english": "to hit, to strike, to punch — AND to play an instrument: “ntaus bass cello”, played the bass cello"
+      },
+      {
+        "hmong": "xwm",
+        "english": "xwm txheej = event; incident; situation (compound noun) · peev xwm = ability; capability (compound noun) · tub ceev xwm = police; police officer (compound noun) — ⚠ do not teach police or ability as standalone meanings of xwm"
+      },
+      {
+        "hmong": "tsom",
+        "english": "to aim at, to focus on — “tsom tau rau”, narrowed the investigation to. Not “tsom iav”, spectacles."
+      },
+      {
+        "hmong": "npe",
+        "english": "a name"
+      },
+      {
+        "hmong": "hu",
+        "english": "to call — “hu ua”, called or named"
+      },
+      {
+        "hmong": "neeg",
+        "english": "a person, people — “tib neeg” human beings, “cov neeg pab cawm neeg” the rescue crew"
+      },
+      {
+        "hmong": "raug",
+        "english": "to undergo, to be subjected to — “raug ntes” arrested, “raug foob” charged, “raug kaw” imprisoned, “raug mob” injured"
+      },
+      {
+        "hmong": "yam",
+        "english": "a thing, a kind of thing — and in “yam tsis muaj…”, without"
+      },
+      {
+        "hmong": "txiav",
+        "english": "to cut — and in “txiav txim”, to decide or to judge"
+      },
+      {
+        "hmong": "chaw",
+        "english": "a place — “qhov chaw” the spot, “lub chaw nres tsheb” the parking ramp, “lub chaw haujlwm” the department"
+      },
+      {
+        "hmong": "menyuam",
+        "english": "child; baby; offspring (noun) · children; young people (collective noun) · menyuam yaus = children; young ones (compound noun)"
+      },
+      {
+        "hmong": "yaus",
+        "english": "young; small; immature (adjective) · menyuam yaus = children; young ones (compound noun)"
+      },
+      {
+        "hmong": "txhob",
+        "english": "do not; don’t (prohibitive negative particle) · txhob txwm = deliberately; intentionally; on purpose (compound adverb)"
+      },
+      {
+        "hmong": "txwm",
+        "english": "bound word — not used alone: txhob txwm = deliberately; intentionally; on purpose (compound adverb)"
+      },
+      {
+        "hmong": "cai",
+        "english": "right; entitlement; permission (noun) · law; rule; regulation (noun) · correct; proper; legitimate (adjective / stative predicate) · muaj cai = have the right; be allowed to (verb construction) · txoj cai = law; rule; right (compound noun) · kev cai = custom; tradition (compound noun)"
+      },
+      {
+        "hmong": "rov",
+        "english": "back, again — “rov qab” to go back, “rov hais dua” to hear again"
+      },
+      {
+        "hmong": "tuag",
+        "english": "to die; dead — “txoj kev tuag”, death"
+      },
+      {
+        "hmong": "neej",
+        "english": "life — “ua neej nyob” to be alive, “tas sim neej” for the whole of life"
+      },
+      {
+        "hmong": "cev",
+        "english": "body (noun) · physical self; bodily form (noun) · hand over; pass something, as in cev tes (transitive verb)"
+      },
+      {
+        "hmong": "kho",
+        "english": "to fix, to treat — “kws kho mob” a doctor. In “Hloov Kho” it is part of “amendment”."
+      },
+      {
+        "hmong": "kws",
+        "english": "a skilled person — “kws kho mob” doctor, “kws lij choj” lawyer, “kws txiav txim” judge"
+      },
+      {
+        "hmong": "ceev",
+        "english": "in “tub ceev xwm”, police — the ones who keep order"
+      },
+      {
+        "hmong": "sib",
+        "english": "each other; one another (reciprocal marker) · mutual action marker placed before a verb (verbal prefix / grammatical marker) · sib ntaus = fight each other (reciprocal verb) · sib cav = argue with each other (reciprocal verb)"
+      },
+      {
+        "hmong": "tsheb",
+        "english": "a vehicle — “tsheb kauj vab” bicycle, “chaw nres tsheb” a parking ramp"
+      },
+      {
+        "hmong": "ntxiv",
+        "english": "more, further, in addition"
+      },
+      {
+        "hmong": "kam",
+        "english": "to be willing; to agree to"
+      },
+      {
+        "hmong": "khw",
+        "english": "a market, a store — “lub khw muas zaub mov”, the grocery store"
+      },
+      {
+        "hmong": "dim",
+        "english": "escape; get free (verb) · be safe; survive (resultative verb) · free; released (stative / resultative verb)"
+      },
+      {
+        "hmong": "yav",
+        "english": "a period of time — “yav tsaus ntuj”, the evening"
+      },
+      {
+        "hmong": "ho",
+        "english": "(emphatic in a question) — “ua cas nej ho…”, why on earth did you…"
+      },
+      {
+        "hmong": "kauj ruam",
+        "english": "a step — “ib kauj ruam loj”, a big step forward"
+      },
+      {
+        "hmong": "tshwm sim",
+        "english": "to happen, to occur, to come about"
+      },
+      {
+        "hmong": "tiv thaiv",
+        "english": "to defend; a defence"
+      },
+      {
+        "hmong": "ncaj ncees",
+        "english": "justice; righteous, fair"
+      },
+      {
+        "hmong": "tsim nyog",
+        "english": "to deserve; to be fitting, to be worthy of"
+      },
+      {
+        "hmong": "txhawb",
+        "english": "to encourage, to egg on, to support"
+      },
+      {
+        "hmong": "txwv",
+        "english": "to forbid, to prevent"
+      },
+      {
+        "hmong": "pub",
+        "english": "to allow, to let — “txwv tsis pub”, would not let"
+      },
+      {
+        "hmong": "tsuam",
+        "english": "to press down on, to pin"
+      },
+      {
+        "hmong": "xaiv",
+        "english": "to choose, to pick out"
+      },
+      {
+        "hmong": "nrov",
+        "english": "loud; to sound"
+      },
+      {
+        "hmong": "hauv paus",
+        "english": "the base, the foot of something"
+      },
+      {
+        "hmong": "nqes",
+        "english": "to descend, to go down"
+      },
+      {
+        "hmong": "lo lus",
+        "english": "a word; a question or remark"
+      },
+      {
+        "hmong": "npaj",
+        "english": "to prepare, to plan"
+      },
+      {
+        "hmong": "tseem ceeb",
+        "english": "important, principal"
+      },
+      {
+        "hmong": "feet",
+        "english": "feet — the English unit, kept as written"
+      },
+      {
+        "hmong": "tuav",
+        "english": "hold; grip (transitive verb) · keep; maintain (transitive verb) · support; uphold; hold firmly (transitive verb)"
+      },
+      {
+        "hmong": "qho",
+        "english": "(classifier for things, places and abstract items) — “ib qho kev foob”, one charge"
+      },
+      {
+        "hmong": "xwm txheej",
+        "english": "an event, an incident, what happened"
+      },
+      {
+        "hmong": "pib",
+        "english": "to begin, to start"
+      },
+      {
+        "hmong": "yuav tsum",
+        "english": "must, have to"
+      },
+      {
+        "hmong": "hem",
+        "english": "threaten (transitive verb) · menace; threaten to happen (verb)"
+      },
+      {
+        "hmong": "lees",
+        "english": "admit; acknowledge; concede (transitive verb) · accept; receive (transitive verb) · take responsibility for (verb construction) · lees txais = accept; receive (compound verb)"
+      },
+      {
+        "hmong": "phooj ywg",
+        "english": "friend, friends"
+      },
+      {
+        "hmong": "ntseeg",
+        "english": "believe; trust (verb) · txoj kev ntseeg = faith; religion; belief (compound noun)"
+      },
+      {
+        "hmong": "koom",
+        "english": "join; participate (verb) · together; combined; shared (adjective / adverb) · be involved; be a party to (verb) · koom tes = cooperate; work together (compound verb) · koom nrog = join with; participate with (compound verb)"
+      },
+      {
+        "hmong": "Nplog teb",
+        "english": "Laos"
+      },
+      {
+        "hmong": "Thaib teb",
+        "english": "Thailand"
+      },
+      {
+        "hmong": "Tebchaws Meskas",
+        "english": "the United States"
+      },
+      {
+        "hmong": "xeev",
+        "english": "a state — “Xeev Wisconsin”; also “lub xeev”, the State as a party in court"
+      },
+      {
+        "hmong": "nroog",
+        "english": "a city — “Lub Nroog Green Bay”"
+      },
+      {
+        "hmong": "caij",
+        "english": "to ride"
+      },
+      {
+        "hmong": "xa",
+        "english": "to send, to dispatch — “xa ntawv”, to deliver mail"
+      },
+      {
+        "hmong": "tshuav",
+        "english": "to remain, to be left over"
+      },
+      {
+        "hmong": "nyaum",
+        "english": "fierce, brutal, cruel"
+      },
+      {
+        "hmong": "khaws",
+        "english": "to keep, to save up, to pick up"
+      },
+      {
+        "hmong": "muas",
+        "english": "to buy — “khw muas zaub mov”, a grocery store"
+      },
+      {
+        "hmong": "nqa",
+        "english": "to carry"
+      },
+      {
+        "hmong": "ruaj",
+        "english": "firm, secure — “tuav nws nyob ruaj”, held him fast"
+      },
+      {
+        "hmong": "kawg",
+        "english": "end; last (noun / adjective) · finish; end (verb) · ultimate; topmost (adjective) · very; extremely, as an intensifier following an adjective (intensifier)"
+      },
+      {
+        "hmong": "txiv neej",
+        "english": "a man"
+      },
+      {
+        "hmong": "lwm",
+        "english": "another, other — “lwm txoj kev”, another way"
+      },
+      {
+        "hmong": "nrhiav",
+        "english": "to look for, to search for"
+      },
+      {
+        "hmong": "nce",
+        "english": "to go up, to climb"
+      },
+      {
+        "hmong": "sij hawm",
+        "english": "time — “muaj sij hawm”, to have time"
+      },
+      {
+        "hmong": "tseg",
+        "english": "to stop, to leave off — “tso tseg”, to drop or dismiss"
+      },
+      {
+        "hmong": "hu npe",
+        "english": "named, called — “hu npe Steven Heraly”, named Steven Heraly"
+      },
+      {
+        "hmong": "txiv",
+        "english": "father — BUT “txiv neej” is a man, and “txiv lws suav” a tomato. All three are in this story."
+      },
+      {
+        "hmong": "hlab ntsha",
+        "english": "blood vessel; pulse"
+      },
+      {
+        "hmong": "yuam cev",
+        "english": "to rape; to force oneself on someone"
+      },
+      {
+        "hmong": "yeeb tshuaj",
+        "english": "drugs; here, marijuana"
+      },
+      {
+        "hmong": "tus muam",
+        "english": "sister"
+      },
+      {
+        "hmong": "zam txim",
+        "english": "to forgive; to pardon"
+      },
+      {
+        "hmong": "keeb kwm",
+        "english": "history"
+      },
+      {
+        "hmong": "ua pauj",
+        "english": "to take revenge; a vendetta"
+      },
+      {
+        "hmong": "khov kho",
+        "english": "solid, sturdy, strong"
+      },
+      {
+        "hmong": "hwj chim",
+        "english": "power, authority"
+      },
+      {
+        "hmong": "sib cais",
+        "english": "separately; apart from each other"
+      },
+      {
+        "hmong": "nkaum",
+        "english": "hide; conceal oneself (verb) · be hidden (stative verb) · nees nkaum = twenty (compound numeral) — ⚠ distinct from kaum = ten (numeral)"
+      },
+      {
+        "hmong": "Zou",
+        "english": "Zou — Zong’s older brother, who sent him for the tomatoes"
+      },
+      {
+        "hmong": "craniocerebral trauma",
+        "english": "craniocerebral trauma — injury to the skull and the brain together; the medical cause of death"
+      },
+      {
+        "hmong": "xyoos",
+        "english": "year; years old"
+      },
+      {
+        "hmong": "lus",
+        "english": "word, speech, language"
+      },
+      {
+        "hmong": "los sis",
+        "english": "or"
+      },
+      {
+        "hmong": "rov qab",
+        "english": "back; to return, to go back"
+      },
+      {
+        "hmong": "thiaj",
+        "english": "so, therefore, and so"
+      },
+      {
+        "hmong": "raws li",
+        "english": "according to; following"
+      },
+      {
+        "hmong": "txhaum",
+        "english": "wrong; guilty; to break a rule"
+      },
+      {
+        "hmong": "hla",
+        "english": "to cross, to go over"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-zong-1",
+        "prompt": "Zong Vang muaj pes tsawg xyoos? — How old was Zong Vang?",
+        "options": [
+          "Thirteen",
+          "Fourteen",
+          "Eleven",
+          "Sixteen"
+        ],
+        "answer": "Thirteen",
+        "because": "Paragraph 2 — \"Zong Vang—ib tug tub hluas Hmoob muaj kaum peb xyoos…\""
+      },
+      {
+        "id": "q-zong-2",
+        "prompt": "Zong tawm hauv tsev mus ua dab tsi? — Why did Zong leave the house?",
+        "options": [
+          "To buy tomatoes, as his older brother had asked",
+          "To deliver newspapers on his route",
+          "To meet friends at the park",
+          "To go to the hospital"
+        ],
+        "answer": "To buy tomatoes, as his older brother had asked",
+        "because": "Paragraph 2 — \"…mus rau lub khw muas zaub mov yuav txiv lws suav rau nws tus tij laug Zou.\""
+      },
+      {
+        "id": "q-zong-3",
+        "prompt": "Zong puas paub cov hluas ntawd? — Did Zong know the group?",
+        "options": [
+          "No — they were strangers to each other",
+          "Yes, they went to school together",
+          "Yes, they were neighbours",
+          "He knew only Omer"
+        ],
+        "answer": "No — they were strangers to each other",
+        "because": "Paragraph 5 — \"Zong tsis paub cov hluas no, thiab lawv kuj tsis paub Zong.\""
+      },
+      {
+        "id": "q-zong-4",
+        "prompt": "Raws li Richard, vim li cas nws xav mus sib ntaus? — By Richard’s own account, why did he want to fight?",
+        "options": [
+          "He was angry with his mother",
+          "Zong had insulted him",
+          "He had lost a bicycle",
+          "The others told him to"
+        ],
+        "answer": "He was angry with his mother",
+        "because": "Paragraph 6 — \"Kuv tseem chim rau kuv niam thiab kuv xav sib ntaus los sis xav pom kev sib ntaus…\""
+      },
+      {
+        "id": "q-zong-5",
+        "prompt": "Zong khiav mus rau qhov twg? — Where did Zong run to?",
+        "options": [
+          "A hospital parking ramp",
+          "A police station",
+          "His brother’s house",
+          "A school"
+        ],
+        "answer": "A hospital parking ramp",
+        "because": "Paragraph 9 — \"…khiav mus rau St. Vincent Hospital lub chaw nres tsheb ntau theem…\""
+      },
+      {
+        "id": "q-zong-6",
+        "prompt": "Theem twg ntawm lub chaw nres tsheb? — Which level of the parking ramp?",
+        "options": [
+          "The fifth, the top level",
+          "The first",
+          "The third",
+          "The hospital roof"
+        ],
+        "answer": "The fifth, the top level",
+        "because": "Paragraph 9 — \"…theem saum toj kawg—theem thib tsib…\""
+      },
+      {
+        "id": "q-zong-7",
+        "prompt": "Tom qab Zong poob, pab hluas ntawd ua li cas? — What did the group do after Zong fell?",
+        "options": [
+          "They ran from the scene without helping",
+          "They went down to help him",
+          "They called an ambulance",
+          "They went to the police"
+        ],
+        "answer": "They ran from the scene without helping",
+        "because": "Paragraph 16 — \"…tsis tau mus xyuas seb Zong zoo li cas li. Lawv txhua tus khiav tawm ntawm qhov chaw ntawd.\""
+      },
+      {
+        "id": "q-zong-8",
+        "prompt": "Vim li cas tub ceev xwm thiaj tsom tau rau tsib tug hluas? — How did the police come to focus on the five?",
+        "options": [
+          "Two of them told relatives and police what they knew",
+          "A camera recorded it",
+          "Omer confessed at once",
+          "A neighbour recognised them"
+        ],
+        "answer": "Two of them told relatives and police what they knew",
+        "because": "Paragraph 19 — \"Tom qab Jeffrey P. thiab Amanda G. qhia lawv cov txheeb ze thiab tub ceev xwm txog tej yam lawv paub…\""
+      },
+      {
+        "id": "q-zong-9",
+        "prompt": "Seng Say Vang thov dab tsi ntawm tsev hais plaub? — What did Seng Say Vang ask the court for?",
+        "options": [
+          "The heaviest sentence: life without parole",
+          "A shorter sentence, because of their age",
+          "Money for the family",
+          "A public apology"
+        ],
+        "answer": "The heaviest sentence: life without parole",
+        "because": "Paragraph 27 — \"…muab lub txim hnyav tshaj plaws rau Ninham: kaw mus tas sim neej yam tsis muaj cai thov tawm ntxov.\""
+      },
+      {
+        "id": "q-zong-10",
+        "prompt": "Raws li tsev neeg txoj kev ntseeg, tus ntsuj plig yuav kaj siab thaum twg? — In the family’s belief, when can the spirit be at peace?",
+        "options": [
+          "When those who did the wrong are brought to justice",
+          "After one year has passed",
+          "When the family moves away",
+          "When the story is told publicly"
+        ],
+        "answer": "When those who did the wrong are brought to justice",
+        "because": "Paragraph 28 — \"…tus ntsuj plig yuav tsis tau dim mus nyob kaj siab mus txog thaum cov neeg ua txhaum raug coj los raug kev ncaj ncees.\""
+      },
+      {
+        "id": "q-zong-11",
+        "prompt": "Xyoo ob txhiab kaum ib, Wisconsin Lub Tsev Hais Plaub Siab Tshaj txiav txim li cas? — What did the Wisconsin Supreme Court decide in 2011?",
+        "options": [
+          "Ninham’s original sentence should stand",
+          "Ninham should be released",
+          "A new trial was ordered",
+          "The case went back to the jury"
+        ],
+        "answer": "Ninham’s original sentence should stand",
+        "because": "Paragraph 41 — \"…tau txiav txim kom tuav Ninham lub txim qub cia.\""
+      },
+      {
+        "id": "q-zong-12",
+        "prompt": "Zong npau suav xav ua dab tsi? — What did Zong dream of becoming?",
+        "options": [
+          "A doctor",
+          "A lawyer",
+          "A musician",
+          "A police officer"
+        ],
+        "answer": "A doctor",
+        "because": "Paragraph 45 — \"…tau npau suav xav ua kws kho mob.\""
+      },
+      {
+        "id": "q-zong-13",
+        "prompt": "Dab tsi nyob hauv St. James Park los nco txog Zong? — What is in St. James Park in Zong’s memory?",
+        "options": [
+          "An oak tree and a stone bench",
+          "A statue",
+          "A library",
+          "A playground"
+        ],
+        "answer": "An oak tree and a stone bench",
+        "because": "Paragraph 49 — \"…nrog ib tsob ntoo oak uas cog rau nws lub npe.\""
+      },
+      {
+        "id": "q-zong-14",
+        "prompt": "Vim li cas pab hluas ntawd thiaj tua Zong? — Why did the group attack and kill him?",
+        "options": [
+          "It was completely random and unprovoked — the wrong place at the wrong time",
+          "Zong was in a Hmong gang and threw gang signs to provoke them",
+          "Zong was carrying valuables and they wanted to rob him",
+          "They recognised Zong from an earlier conflict and hunted him down"
+        ],
+        "answer": "It was completely random and unprovoked — the wrong place at the wrong time",
+        "because": "Paragraph 21 — \"Cov hluas no xaiv Zong yam tsis muaj laj thawj, ces tua nws.\""
+      },
+      {
+        "id": "q-zong-15",
+        "prompt": "Nkawd hu qhov nkawd ua ntawm phab ntsa ua dab tsi? — What did the two of them call what they were doing at the wall?",
+        "options": [
+          "“Chicken”",
+          "“The swing”",
+          "“The drop”",
+          "They did not call it anything"
+        ],
+        "answer": "“Chicken”",
+        "because": "Paragraph 11 — \"…hauv ib txoj kev ua si uas nkawd hu ua “Chicken,” thaum peb tug hluas ntawd txhawb nkawd.\""
+      },
+      {
+        "id": "q-zong-16",
+        "prompt": "Yam kawg uas tseem tuav Zong yog dab tsi? — What was the last thing holding Zong before he fell?",
+        "options": [
+          "Omer’s grip on his wrists",
+          "Richard’s grip on his ankles",
+          "The edge of the concrete wall",
+          "His own hands on the wall"
+        ],
+        "answer": "Omer’s grip on his wrists",
+        "because": "Paragraph 13 — \"Omer thiaj tso Zong ob txhais dab teg—yam kawg uas tseem tuav Zong cia kom tsis txhob poob.\""
+      },
+      {
+        "id": "q-zong-17",
+        "prompt": "Qhov siab ntawd yog pes tsawg? — How far was the drop?",
+        "options": [
+          "Forty-five feet",
+          "Fifteen feet",
+          "Ninety feet",
+          "Twelve feet"
+        ],
+        "answer": "Forty-five feet",
+        "because": "Paragraph 12 — \"…uas siab li plaub caum tsib feet saum npoo av.\""
+      },
+      {
+        "id": "q-zong-18",
+        "prompt": "Steven Heraly hnov dab tsi? — What did Steven Heraly hear?",
+        "options": [
+          "A sound like a bag of cement hitting the pavement",
+          "Shouting from the top of the ramp",
+          "A car alarm",
+          "Nothing — he saw it happen"
+        ],
+        "answer": "A sound like a bag of cement hitting the pavement",
+        "because": "Paragraph 14 — \"…zoo li “ib lub hnab cement poob rau hauv txoj kev.”\""
+      },
+      {
+        "id": "q-zong-19",
+        "prompt": "Cov neeg pab cawm neeg pom dab tsi thaum lawv tuaj txog? — What did rescue personnel find when they reached Zong?",
+        "options": [
+          "A faint pulse — he was still alive",
+          "That he had died on impact",
+          "That he had already been moved",
+          "No sign of injury"
+        ],
+        "answer": "A faint pulse — he was still alive",
+        "because": "Paragraph 14 — \"…pom tias Zong txoj hlab ntsha tseem dhia me ntsis.\""
+      },
+      {
+        "id": "q-zong-20",
+        "prompt": "Kev kuaj tus tuag lub cev hais tias nws tuag los ntawm dab tsi? — What did the autopsy give as the cause of death?",
+        "options": [
+          "Craniocerebral trauma from a fall from height",
+          "Blood loss",
+          "Injuries from the beating, before the fall",
+          "The cause could not be determined"
+        ],
+        "answer": "Craniocerebral trauma from a fall from height",
+        "because": "Paragraph 15 — \"…tuag los ntawm craniocerebral trauma vim nws poob saum qhov siab los.\""
+      },
+      {
+        "id": "q-zong-21",
+        "prompt": "Omer hais li cas rau Jeffrey tom qab ntawd? — What did Omer say to Jeffrey afterwards?",
+        "options": [
+          "To say nothing about it",
+          "To call for an ambulance",
+          "To go down and check on Zong",
+          "To tell the truth if asked"
+        ],
+        "answer": "To say nothing about it",
+        "because": "Paragraph 20 — \"Tsis txhob hais ib los lus li—koj yuav tsum tsis txhob hais ib yam dab tsi li.\""
+      },
+      {
+        "id": "q-zong-22",
+        "prompt": "Omer raug foob ntxiv txog dab tsi ua ntej nws rooj plaub? — What further charges did Omer face before his trial?",
+        "options": [
+          "Threatening a judge, and intimidating witnesses",
+          "Threatening a police officer",
+          "Escaping from detention",
+          "There were no further charges"
+        ],
+        "answer": "Threatening a judge, and intimidating witnesses",
+        "because": "Paragraph 24 — \"…ib qho kev hem tus kws txiav txim, thiab peb qho kev hem cov neeg ua pov thawj.\""
+      },
+      {
+        "id": "q-zong-23",
+        "prompt": "Omer txoj kev tiv thaiv tseem ceeb yog dab tsi? — What was Omer’s main defence at trial?",
+        "options": [
+          "That he had not been at the parking ramp at all",
+          "That Richard alone dropped Zong",
+          "That it was an accident during a game",
+          "That he was too young to be tried"
+        ],
+        "answer": "That he had not been at the parking ramp at all",
+        "because": "Paragraph 25 — \"…nws tsis nyob ntawm lub chaw nres tsheb thaum yav tsaus ntuj Cuaj Hlis 24, 1998.\""
+      },
+      {
+        "id": "q-zong-26",
+        "prompt": "Zong niam nws txiv hais li cas hauv Omer rooj plaub? — What did Zong’s parents testify at Omer Ninham’s trial?",
+        "options": [
+          "That they fled Laos and Thailand for a safer life for their children, and had lost their faith in people’s goodness",
+          "That they had been allies of the Pathet Lao in Laos",
+          "That they knew the families of the boys who killed Zong",
+          "That Zong had been in trouble before that evening"
+        ],
+        "answer": "That they fled Laos and Thailand for a safer life for their children, and had lost their faith in people’s goodness",
+        "because": "Paragraph 26 — \"…lawv tau khiav tawm hauv Nplog teb thiab Thaib teb… lawv poob siab rau tib neeg txoj kev siab zoo, thiab cov menyuam uas tseem tshuav ntshai tsis kam tawm hauv tsev mus.\""
+      },
+      {
+        "id": "q-zong-24",
+        "prompt": "Richard Crapeau raug txim li cas? — What sentence did Richard Crapeau receive?",
+        "options": [
+          "Life, with parole eligibility after fifty years",
+          "Life without parole",
+          "Fifty years, then release",
+          "He was not sentenced — he testified instead"
+        ],
+        "answer": "Life, with parole eligibility after fifty years",
+        "because": "Paragraph 36 — \"…muaj cai thov tawm ntxov tom qab raug kaw tsib caug xyoo.\""
+      },
+      {
+        "id": "q-zong-25",
+        "prompt": "Vim li cas tus kab raub ris ho tshaws tus qav? — In the story, why does the scorpion sting the frog?",
+        "options": [
+          "Because it is its nature, and it cannot change",
+          "Because the frog swam too slowly",
+          "Because it was afraid of drowning",
+          "Because the frog had stung it first"
+        ],
+        "answer": "Because it is its nature, and it cannot change",
+        "because": "Paragraph 52 — \"Vim qhov ntawd yog kuv lub siab. Kuv tsis hloov tau.\""
+      }
+    ]
+  }
+}

@@ -22,11 +22,20 @@ export const conjunctions = {
 
         '## The everyday joiners',
         'Start with the four you will use in almost every conversation:',
-        '> Kuv thiab koj. — You and I.',
+        // Was: '> Kuv thiab koj. — You and I.' — the Hmong order follows the English: koj thiab kuv = you and I; kuv thiab koj = me and you (author, 2026-09-28).
+        '> Koj thiab kuv. — You and I.',
         '> Kuv mus nrog nws. — I go with him.',
         '> Kuv xav tiamsis tsis tau. — I want but cannot.',
         '> Kuv tsis mus vim hais tias kuv nyuaj siab. — I do not go because I am sad.',
         'Notice they sit BETWEEN the two things being joined, the same as in English. That much transfers directly.',
+
+        // Added 2026-09-28 (author: "rau still needs to be known as to/for" in Joining Words —
+        // its other meanings live in the Rau unit, but here it is to / for).
+        '## "Rau" — to, for',
+        'Rau points the action at someone: who it goes to, or who it is for. It comes after the verb, before the person.',
+        '> Kuv muab rau koj. — I give (it) to you.',
+        '> Kuv sau ntawv rau koj nyeem. — I am writing for you to read.',
+        'Rau is one of the most common words in Hmong. It has other meanings too (six, to put on), and those get their own unit, Rau, right after this one. Here, it means to and for.',
 
         '## "Ces" — and then',
         '"Ces" chains events in sequence: this happened, then that happened.',
@@ -75,9 +84,11 @@ export const conjunctions = {
         { hmong: 'tiamsis', audio: 'grammar/conjunctions/hmong-conjunctions-tiamsis.mp3', english: 'but', note: 'Marks the contrast between two clauses.' },
         { hmong: 'vim', audio: 'grammar/conjunctions/hmong-conjunctions-vim.mp3', english: 'because', note: 'The short form. "Vim hais tias" is the longer one.' },
         { hmong: 'lossis', audio: 'grammar/conjunctions/hmong-conjunctions-lossis.mp3', english: 'or', note: 'Pairs with "los yog", which carries the same gloss.' },
-        { hmong: 'yog hais tias', audio: 'grammar/conjunctions/hmong-conjunctions-yog-hais-tias.mp3', english: 'if', note: 'Opens a condition. "Yog" alone can also do this.' },
+        { hmong: 'yog hais tias', audio: 'grammar/conjunctions/hmong-conjunctions-yog-hais-tias.mp3', english: 'if', note: 'The usual way to say if: clearer than yog alone, which also works (author, 2026-09-28).' },
         { hmong: 'ces', audio: 'grammar/conjunctions/hmong-conjunctions-ces.mp3', english: 'then, so then', note: 'Chains events in sequence.' }, // TODO-VERIFY: "ces" as sequential chaining
         { hmong: 'nrog', audio: 'grammar/conjunctions/hmong-conjunctions-nrog.mp3', english: 'with', note: 'Joins a companion to the action.' },
+        // Added 2026-09-28 (author: rau = to / for).
+        { hmong: 'rau', audio: 'grammar/conjunctions/hmong-conjunctions-rau.mp3', english: 'to, for', note: 'After the verb, before the person: "Kuv muab rau koj" — I give (it) to you.' },
         { hmong: 'uas', audio: 'grammar/conjunctions/hmong-conjunctions-uas.mp3', english: '(relative marker: that, which, who)', note: 'Introduces a description of the noun before it.' },
       ],
     },

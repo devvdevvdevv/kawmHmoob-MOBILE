@@ -1,0 +1,452 @@
+[
+  {
+    "id": "gen-keeb",
+    "word": "keeb",
+    "gloss": "origin; starting point",
+    "category": "reading-mind",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-temtoob",
+    "word": "temtoob",
+    "gloss": "forgetful; unaware",
+    "category": "reading-mind",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-kawm-ntawv",
+    "word": "kawm ntawv",
+    "gloss": "to study; to go to school",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-khiav-ceev",
+    "word": "khiav ceev",
+    "gloss": "to run fast",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-thawb",
+    "word": "thawb",
+    "gloss": "push; shove (transitive verb) · promote; urge forward (transitive verb)",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-rub",
+    "word": "rub",
+    "gloss": "to pull, to draw toward oneself",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tuav",
+    "word": "tuav",
+    "gloss": "hold; grip (transitive verb) · keep; maintain (transitive verb) · support; uphold; hold firmly (transitive verb)",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nias",
+    "word": "nias",
+    "gloss": "to press down on",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-vij",
+    "word": "vij",
+    "gloss": "to surround, to hem in",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-dim",
+    "word": "dim",
+    "gloss": "escape; get free (verb) · be safe; survive (resultative verb) · free; released (stative / resultative verb)",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txeeb",
+    "word": "txeeb",
+    "gloss": "to snatch, to grab away",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-thauj",
+    "word": "thauj",
+    "gloss": "to carry, to transport",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nce",
+    "word": "nce",
+    "gloss": "to go up, to climb",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nqes",
+    "word": "nqes",
+    "gloss": "to descend, to go down",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ntog",
+    "word": "ntog",
+    "gloss": "to fall over, to land",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-kauj-ruam",
+    "word": "kauj ruam",
+    "gloss": "a step",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "rv-txheej",
+    "word": "txheej",
+    "gloss": "event; incident; occurrence (noun) · time; occasion; instance (noun) · layer; arrangement; sequence (noun) — ⚠ cross-reference xwm txheej / txheej xwm (compound nouns)",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-sense-zaum-time",
+    "word": "zaum",
+    "gloss": "a time, an occasion, a turn — the classifier for counting occurrences: \"ib zaum\" once, \"ob zaum\" twice, \"zaum kawg\" the last time",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tshaj",
+    "word": "tshaj",
+    "gloss": "pass; go past · exceed; be more than · than — comparative · most, -est, with \"plaws\"",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ya",
+    "word": "ya",
+    "gloss": "to fly",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tawg",
+    "word": "tawg",
+    "gloss": "to break, to crack, to burst — and of a flower, to bloom: \"paj tawg\".",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nqis",
+    "word": "nqis",
+    "gloss": "to go down, to descend — and to invest: \"nqis peev\".",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tig",
+    "word": "tig",
+    "gloss": "to turn, to turn around — and to turn something over.",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txav",
+    "word": "txav",
+    "gloss": "to move, to shift closer",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-cuag",
+    "word": "cuag",
+    "gloss": "to reach, to catch up to — \"caum cuag\", to catch up with",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tsa",
+    "word": "tsa",
+    "gloss": "to raise, to lift up",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ntaus",
+    "word": "ntaus",
+    "gloss": "hit; strike; punch · fight — in \"sib ntaus\" · play by striking — a drum or an instrument treated as struck · type; enter text — \"ntaus ntawv\"",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tsuam",
+    "word": "tsuam",
+    "gloss": "to press down on, to pin",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-caij",
+    "word": "caij",
+    "gloss": "to ride — and a season or period of time: \"caij ntuj no\", winter.",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-xa",
+    "word": "xa",
+    "gloss": "to send, to dispatch — and to see someone off, to escort.",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nqa",
+    "word": "nqa",
+    "gloss": "to carry — and to bring, to fetch.",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-hla",
+    "word": "hla",
+    "gloss": "cross; go across · pass over; go beyond · skip; omit",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-kav",
+    "word": "kav",
+    "gloss": "to last, to run for — and to govern, to rule over.",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txaus",
+    "word": "txaus",
+    "gloss": "enough; sufficient · reach; arrive at · enough to cause — resultative, as in \"txaus ntshai\"",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-dauv",
+    "word": "dauv",
+    "gloss": "to hang; to dip down; to look down upon; to sham",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-fee",
+    "word": "fee",
+    "gloss": "to turn aside; to look aside; to ignore",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-maub",
+    "word": "maub",
+    "gloss": "to go or act without seeing",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-raus",
+    "word": "raus",
+    "gloss": "to dip into; to participate",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-rawm",
+    "word": "rawm",
+    "gloss": "to be in a rush",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-tauv-pem",
+    "word": "tauv pem",
+    "gloss": "to visit; to hang out with friends and family",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-xabnagkis",
+    "word": "xabnagkis",
+    "gloss": "days ahead; days to come",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-yais",
+    "word": "yais",
+    "gloss": "to distribute; to pass out",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-zej-tsoom",
+    "word": "zej tsoom",
+    "gloss": "society; the public at large",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-tswv-cuab",
+    "word": "tswv cuab",
+    "gloss": "a member of a family or a group",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-pab-hluas",
+    "word": "pab hluas",
+    "gloss": "a group of young people — “pab” here is a group, not “to help”",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-sense-pab",
+    "word": "pab",
+    "gloss": "a group, a band — the classifier for a group of people or animals: \"pab hluas\", a group of young people",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-kev",
+    "word": "kev",
+    "gloss": "road; path; route; way · way; method; manner · abstract-concept marker, forming nouns from verbs and qualities",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-leeg",
+    "word": "leeg",
+    "gloss": "classifier for people — \"ob leeg\", both of them · person; individual — \"ib leeg\", alone · muscle; tendon; sinew",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-luag",
+    "word": "luag",
+    "gloss": "to laugh; also others, other people",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tug",
+    "word": "tug",
+    "gloss": "classifier for people and animals — a form used in some writing traditions. ⚠️ NOT simply a misspelling of \"tus\": preserve whichever form the source uses.",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  }
+]

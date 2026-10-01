@@ -29,6 +29,11 @@ import GlobalHeader from '../src/components/GlobalHeader.jsx'
 import DrawerHost from '../src/components/Drawer/DrawerHost.jsx'
 import WelcomeTour from '../src/components/onboarding/WelcomeTour.jsx'
 import CelebrationOverlay from '../src/components/common/CelebrationOverlay.jsx'
+import ErrorBoundary from '../src/components/common/ErrorBoundary.jsx'
+import { QuizSettingsProvider } from '../src/context/QuizSettingsContext.jsx'
+import { NavGuardProvider, NavGuardHost } from '../src/context/NavGuardContext.jsx'
+import { PathLockProvider, PathLockHost } from '../src/context/PathLockContext.jsx'
+import QuizSettingsHost from '../src/components/quiz/QuizSettingsHost.jsx'
 import * as SplashScreen from 'expo-splash-screen'
 import '../global.css'
 
@@ -60,25 +65,39 @@ export default function RootLayout() {
     // The native splash still covers the screen here, so render nothing under it.
     return null
   }
-
+  // OUTER boundary — last resort. Catches a throw in any provider (a bad persisted
+  // blob, a failed hydrate) that the inner one can't see, since the inner one
+  // lives inside the very providers that would have to be alive to render it.
   return (
-    <SafeAreaProvider>
-      <ThemeProvider>
-        <AuthProvider>
-          <SubscriptionProvider>
-            <ProgressProvider>
-              <DrawerProvider>
-                <NotebookProvider>
-                  <CelebrationProvider>
-                    <ThemedShell />
-                  </CelebrationProvider>
-                </NotebookProvider>
-              </DrawerProvider>
-            </ProgressProvider>
-          </SubscriptionProvider>
-        </AuthProvider>
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <ErrorBoundary>
+      <SafeAreaProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <SubscriptionProvider>
+              <ProgressProvider>
+                <DrawerProvider>
+                  <NotebookProvider>
+                    <CelebrationProvider>
+                      <QuizSettingsProvider>
+                        {/* Must sit ABOVE ThemedShell: GlobalTabBar (inside it)
+                            asks this before navigating. Inside ThemeProvider
+                            too — its confirm dialog resolves theme tokens. */}
+                        <NavGuardProvider>
+                          {/* The path's lock / Pro modal (2026-09-28) — see PathLockContext. */}
+                          <PathLockProvider>
+                            <ThemedShell />
+                          </PathLockProvider>
+                        </NavGuardProvider>
+                      </QuizSettingsProvider>
+                    </CelebrationProvider>
+                  </NotebookProvider>
+                </DrawerProvider>
+              </ProgressProvider>
+            </SubscriptionProvider>
+          </AuthProvider>
+        </ThemeProvider>
+      </SafeAreaProvider>
+    </ErrorBoundary>
   )
 }
 
@@ -102,18 +121,33 @@ function ThemedShell() {
   return (
     <View style={[{ flex: 1, overflow: 'hidden' }, THEME_VARS[theme]]}>
       <StatusBar style={theme === 'light' ? 'dark' : 'light'} />
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: { backgroundColor: bg },
-          animation: 'fade',
-        }}
-      />
+      {/* INNER boundary — a crash in ONE screen resets to a "Try again" inside the
+          live shell, with providers (and so the user's session and progress) still
+          mounted. Without it, a single bad route would take the whole app down. */}
+      <ErrorBoundary>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { backgroundColor: bg },
+            animation: 'fade',
+          }}
+        />
+      </ErrorBoundary>
       <GlobalHeader />
       <GlobalTabBar />
       <DrawerHost/>
       {/* First-run tour — shows once, over everything, then never again */}
       <WelcomeTour />
+      {/* Quiz/study settings — root-mounted so its absolute-fill overlay covers
+          the header and tab bar too. A screen-level mount cannot: those are
+          zIndex-30 siblings of the Stack. See QuizSettingsContext. */}
+      <QuizSettingsHost />
+      {/* "Leave this story?" when a tab press would take you off a guarded
+          screen. Root-mounted for the same reason as QuizSettingsHost above —
+          it has to cover the tab bar that triggered it. */}
+      <NavGuardHost />
+      {/* Locked / Pro path unit — root-mounted to cover the header and tab bar (2026-09-28). */}
+      <PathLockHost />
       {/* Celebration (confetti + "complete!") — LAST so it's above the bars */}
       <CelebrationOverlay />
       {/* Forces new (un-onboarded) accounts through onboarding */}

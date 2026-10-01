@@ -10,7 +10,8 @@ const links = [
   { to: '/reference', label: 'Reference' },
   { to: '/vocabulary', label: 'Vocabulary' },
   { to: '/notebook', label: 'Notebook' },
-  { to: '/quiz', label: 'Quiz' },
+  // Quizzes live inside Vocabulary now — the /quiz menu is retired.
+  // { to: '/quiz', label: 'Quiz' },
 ]
 
 function isActive(pathname, to) {
@@ -28,7 +29,7 @@ export default function Navbar() {
       <View className="px-4 pt-4 pb-3 flex-row items-center justify-between gap-3 flex-wrap">
         <Link href="/" asChild>
           <Pressable>
-            <Text className="font-serif text-2xl text-stone-900">Kawm Hmoob</Text>
+            <Text className="font-serif text-2xl text-stone-900">KawmHmong</Text>
             <Text className="text-xs text-stone-800/80 italic">Learn the Hmong language</Text>
           </Pressable>
         </Link>

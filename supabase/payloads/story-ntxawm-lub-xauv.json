@@ -1,0 +1,263 @@
+{
+  "id": "story-ntxawm-lub-xauv",
+  "version": 1,
+  "status": "published",
+  "min_app_version": "1.0.0",
+  "title": "Ntxawm Lub Xauv",
+  "english": "Ntxawm's Lock",
+  "blurb": "A lock, a lost thread, and a goat in the field.",
+  "genre": "life",
+  "level": "beginner",
+  "minutes": 3,
+  "tier": "free",
+  "payload": {
+    "paragraphs": [
+      [
+        {
+          "hmong": "Ntxawm muaj lub xauv xim liab uas nws txiv muab rau nws.",
+          "english": "Ntxawm has a red lock that her father gave her."
+        },
+        {
+          "hmong": "Nws siv lub xauv xauv nws lub thawv me txhua hmo.",
+          "english": "She uses the lock to lock her little box every night."
+        }
+      ],
+      [
+        {
+          "hmong": "Muaj ib tag kis, Ntxawm pom nws pog koob Zaub nyob tom qab vaj.",
+          "english": "One morning, Ntxawm saw her great-grandmother Zaub behind the garden."
+        },
+        {
+          "hmong": "Pog Zaub tab tom nrhiav nws lub xov uas poob rau hauv cov nroj tsuag.",
+          "english": "Grandmother Zaub was looking for her thread, which had fallen into the plants."
+        }
+      ],
+      [
+        {
+          "hmong": "Ntxawm hais tias, “Kuv peev xwm pab koj nrhiav tau.”",
+          "english": "Ntxawm said, \"I can help you find it.\""
+        },
+        {
+          "hmong": "Nws thiab Pog Zaub nkawd saib hauv qab pob zeb thiab ntawm ib tsob ntoo paj.",
+          "english": "She and Grandmother Zaub looked under a rock and by a flowering tree."
+        }
+      ],
+      [
+        {
+          "hmong": "Thaum kawg, lawv pom lub xov nyob ze ib lub paj kws.",
+          "english": "At last, they saw the thread near a corn plant."
+        },
+        {
+          "hmong": "Lub xov ntawd xim daj thiab tseem zoo.",
+          "english": "That thread was yellow and still good."
+        }
+      ],
+      [
+        {
+          "hmong": "Tom qab ntawd, Ntxawm mus tom teb nrog nws tus kwv Nkaub.",
+          "english": "After that, Ntxawm went to the field with her younger brother Nkaub."
+        },
+        {
+          "hmong": "Nkawd hnov ib lub suab tuaj ntawm ib sab toj.",
+          "english": "The two of them heard a sound coming from one side of the hill."
+        },
+        {
+          "hmong": "Nkaub coj nws xib xub, tiam sis nkawd tsis tua dab tsi.",
+          "english": "Nkaub brought his arrow, but they did not shoot anything."
+        },
+        {
+          "hmong": "Nkawd tsuas pom ib tug kas noj nyom xwb.",
+          "english": "They only saw a goat eating grass."
+        }
+      ],
+      [
+        {
+          "hmong": "Ntxawm xav pom tus kas kom ze dua, tab sis nws tsis xav ua kom tus kas ntshai.",
+          "english": "Ntxawm wanted to see the goat closer, but she did not want to frighten it."
+        },
+        {
+          "hmong": "Nws txawm mus tsev thiab qhia nws txiv tias nws tau pab Pog Zaub nrhiav lub xov.",
+          "english": "So she went home and told her father that she had helped Grandmother Zaub find the thread."
+        }
+      ],
+      [
+        {
+          "hmong": "Nws txiv luag thiab hais tias, “Koj ua tau zoo heev. Koj muaj peev xwm pab lwm tus.”",
+          "english": "Her father laughed and said, \"You did very well. You have the ability to help others.\""
+        }
+      ]
+    ],
+    "glossary": [
+      {
+        "hmong": "Ntxawm",
+        "english": "Ntxawm — the girl in this story"
+      },
+      {
+        "hmong": "Nkaub",
+        "english": "Nkaub — Ntxawm's younger brother"
+      },
+      {
+        "hmong": "Zaub",
+        "english": "Zaub — the great-grandmother, \"Pog Zaub\""
+      },
+      {
+        "hmong": "rau",
+        "english": "to, for, into — \"muab rau nws\", gave it to her"
+      },
+      {
+        "hmong": "peev xwm",
+        "english": "ability; can, to be able to"
+      },
+      {
+        "hmong": "lub xauv",
+        "english": "lock"
+      },
+      {
+        "hmong": "xov",
+        "english": "string, thread, cord — takes the classifier lub: \"lub xov\""
+      },
+      {
+        "hmong": "xav pom",
+        "english": "to want to see"
+      },
+      {
+        "hmong": "xib xub",
+        "english": "arrow"
+      },
+      {
+        "hmong": "pog koob",
+        "english": "great-grandmother"
+      },
+      {
+        "hmong": "tus kas",
+        "english": "goat"
+      },
+      {
+        "hmong": "paj kws",
+        "english": "corn"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-xauv-1",
+        "prompt": "Ntxawm muaj lub xauv xim dab tsi? — What colour is Ntxawm’s lock?",
+        "options": [
+          "Red",
+          "Yellow",
+          "Black",
+          "Green"
+        ],
+        "answer": "Red",
+        "because": "Paragraph 1 — \"Ntxawm muaj lub xauv xim liab…\""
+      },
+      {
+        "id": "q-xauv-2",
+        "prompt": "Leej twg poob lub xov? — Who lost the thread?",
+        "options": [
+          "Pog Zaub, her great-grandmother",
+          "Ntxawm herself",
+          "Nkaub, her younger brother",
+          "Her father"
+        ],
+        "answer": "Pog Zaub, her great-grandmother",
+        "because": "Paragraph 2 — \"Pog Zaub tab tom nrhiav nws lub xov…\""
+      },
+      {
+        "id": "q-xauv-3",
+        "prompt": "Ntxawm hais tias nws muaj peev xwm ua dab tsi? — What does Ntxawm say she is able to do?",
+        "options": [
+          "Help her look for it",
+          "Buy her a new one",
+          "Carry the basket",
+          "Lock the little box"
+        ],
+        "answer": "Help her look for it",
+        "because": "Paragraph 3 — \"Kuv peev xwm pab koj nrhiav tau.\""
+      },
+      {
+        "id": "q-xauv-4",
+        "prompt": "Nkawd nrhiav lub xov nyob qhov twg? — Where do they look for the thread?",
+        "options": [
+          "Under a rock and by a flowering tree",
+          "Inside the little box",
+          "On the road to the field",
+          "Behind the house"
+        ],
+        "answer": "Under a rock and by a flowering tree",
+        "because": "Paragraph 3 — \"…saib hauv qab pob zeb thiab ntawm ib tsob ntoo paj.\""
+      },
+      {
+        "id": "q-xauv-5",
+        "prompt": "Lub xov xim dab tsi? — What colour is the thread?",
+        "options": [
+          "Yellow",
+          "Red",
+          "White",
+          "Blue"
+        ],
+        "answer": "Yellow",
+        "because": "Paragraph 4 — \"Lub xov ntawd xim daj thiab tseem zoo.\""
+      },
+      {
+        "id": "q-xauv-6",
+        "prompt": "Ntxawm mus tom teb nrog leej twg? — Who does Ntxawm go to the field with?",
+        "options": [
+          "Her younger brother Nkaub",
+          "Her father",
+          "Pog Zaub",
+          "She goes alone"
+        ],
+        "answer": "Her younger brother Nkaub",
+        "because": "Paragraph 5 — \"…mus tom teb nrog nws tus kwv Nkaub.\""
+      },
+      {
+        "id": "q-xauv-7",
+        "prompt": "Nkaub coj dab tsi nrog nws? — What does Nkaub bring with him?",
+        "options": [
+          "His arrow",
+          "The red lock",
+          "A basket of corn",
+          "The thread"
+        ],
+        "answer": "His arrow",
+        "because": "Paragraph 5 — \"Nkaub coj nws xib xub…\""
+      },
+      {
+        "id": "q-xauv-8",
+        "prompt": "Nkawd pom tsiaj dab tsi tom teb? — What animal do they see in the field?",
+        "options": [
+          "A goat",
+          "A bird",
+          "A dog",
+          "A tiger"
+        ],
+        "answer": "A goat",
+        "because": "Paragraph 5 — \"Nkawd tsuas pom ib tug kas noj nyom xwb.\""
+      },
+      {
+        "id": "q-xauv-9",
+        "prompt": "Vim li cas Ntxawm tsis mus ze tus kas? — Why does Ntxawm not go closer to the goat?",
+        "options": [
+          "She does not want to frighten it",
+          "Her brother tells her not to",
+          "It is getting dark",
+          "The goat runs away first"
+        ],
+        "answer": "She does not want to frighten it",
+        "because": "Paragraph 6 — \"…tab sis nws tsis xav ua kom tus kas ntshai.\""
+      },
+      {
+        "id": "q-xauv-10",
+        "prompt": "Ntxawm qhia leej twg txog qhov nws tau pab Pog Zaub? — Who does Ntxawm tell about helping Pog Zaub?",
+        "options": [
+          "Her father",
+          "Her brother Nkaub",
+          "Pog Zaub",
+          "Nobody"
+        ],
+        "answer": "Her father",
+        "because": "Paragraph 6 — \"…qhia nws txiv tias nws tau pab Pog Zaub nrhiav lub xov.\""
+      }
+    ]
+  }
+}

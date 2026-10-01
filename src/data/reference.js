@@ -130,7 +130,8 @@ export const vowels = [
   { letter: 'o', sound: 'aw', audio: '/assets/audio/vowels/single-vowels/hmong-single-vowels-o.mp3' },
   { letter: 'u', sound: 'oo', audio: '/assets/audio/vowels/single-vowels/hmong-single-vowels-u.mp3' },
   { letter: 'w', sound: 'uh (schwa)', audio: '/assets/audio/vowels/single-vowels/hmong-single-vowels-w.mp3' },
-  { letter: 'aa', sound: 'an', audio: `/assets/audio/vowels/double-vowels/hmong-double-vowels-aa.mp3` },
+  // ⚠️ COMMENTED OUT 2026-09-28 — the author: "aa" is Green Hmong, not Hmoob Dawb. TO RESTORE: uncomment.
+  // { letter: 'aa', sound: 'an', audio: `/assets/audio/vowels/double-vowels/hmong-double-vowels-aa.mp3` },
   { letter: 'ai', sound: 'eye', audio: `/assets/audio/vowels/double-vowels/hmong-double-vowels-ai.mp3` },
   { letter: 'au', sound: 'ow', audio: `/assets/audio/vowels/double-vowels/hmong-double-vowels-au.mp3` },
   { letter: 'aw', sound: 'aw-uh', audio: `/assets/audio/vowels/double-vowels/hmong-double-vowels-aw.mp3` },
@@ -170,7 +171,8 @@ export const singleVowels = [
 
 
 export const doubleVowels = [
-  { letter: 'aa', sound: 'an', audio: '/assets/audio/vowels/double-vowels/hmong-double-vowels-aa.mp3' },
+  // ⚠️ COMMENTED OUT 2026-09-28 — the author: "aa" is Green Hmong, not Hmoob Dawb. TO RESTORE: uncomment.
+  // { letter: 'aa', sound: 'an', audio: '/assets/audio/vowels/double-vowels/hmong-double-vowels-aa.mp3' },
   { letter: 'ai', sound: 'eye', audio: '/assets/audio/vowels/double-vowels/hmong-double-vowels-ai.mp3' },
   { letter: 'au', sound: 'ow', audio: '/assets/audio/vowels/double-vowels/hmong-double-vowels-au.mp3' },
   { letter: 'aw', sound: 'aw-uh', audio: '/assets/audio/vowels/double-vowels/hmong-double-vowels-aw.mp3' },
@@ -251,7 +253,11 @@ export const grammar = [
   {
     title: 'Question Words',
     note: 'These usually sit at the END of the sentence in Hmong.',
-    lesson: { unitId: 'numbers-and-time', lessonId: 'numbers-how-much' },
+    // ⚠️ REDIRECTED 2026-09-25 (author): "Learn this" now opens the dedicated
+    // Asking Questions unit. Was { unitId: 'numbers-and-time', lessonId:
+    // 'numbers-how-much' } — the How Much? lesson, which teaches pes tsawg and
+    // prices, not question words.
+    lesson: { unitId: 'questions', lessonId: 'grammar-question-words' },
     items: [
       { hmong: 'Dab tsi?', english: 'What?' },
       { hmong: 'Leej twg?', english: 'Who?' },
@@ -264,7 +270,7 @@ export const grammar = [
   },
   {
     title: 'Noun Classifiers',
-    note: 'Pattern: number + classifier + noun — "ib tug dev" (one dog).',
+    note: 'Pattern: number + classifier + noun — "ib tus aub" (one dog).',
     lesson: { unitId: 'grammar', lessonId: 'foundations-noun-classifiers' },
     items: [
       { hmong: 'Tus', english: 'People and animals' },

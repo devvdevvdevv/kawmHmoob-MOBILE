@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Animated, { FadeIn } from 'react-native-reanimated'
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { usePathname, useRouter } from 'expo-router'
@@ -24,7 +25,7 @@ const BASE_STEPS = [
   {
     emoji: '👋',
     title: 'Nyob zoo!',
-    body: 'Welcome to KawmHmoob — learn to read, speak, and understand Hmong. Here’s a 30-second tour so you know where everything is.',
+    body: 'Welcome to KawmHmong — learn to read, speak, and understand Hmong. Here’s a 30-second tour so you know where everything is.',
   },
   {
     emoji: '🧩',
@@ -61,7 +62,9 @@ const BASE_STEPS = [
 const ACCOUNT_STEP = {
   emoji: '✨',
   title: 'Save your progress',
-  body: 'You’re exploring as a guest — your progress only lives on this device. Creating an account is free and keeps your streak, saved words, and XP synced everywhere. You can always do this later from the menu.',
+  // Was: '...keeps your streak, saved words, and XP synced everywhere.' Saved words
+  // do NOT sync (NotebookContext is local-only) — restore when they do.
+  body: 'You’re exploring as a guest — your progress only lives on this device. Creating an account is free and keeps your streak and XP synced everywhere. You can always do this later from the menu.',
   account: true, // renders the Create-account action
 }
 
@@ -105,7 +108,7 @@ export default function WelcomeTour() {
   const createAccount = () => { markSeen(); router.push('/register') }
 
   return (
-    <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0,0,0,0.6)', alignItems: 'center', justifyContent: 'center', paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24, paddingHorizontal: 24, zIndex: 9999, elevation: 9999 }]}>
+    <Animated.View entering={FadeIn.duration(200)} style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0,0,0,0.6)', alignItems: 'center', justifyContent: 'center', paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24, paddingHorizontal: 24, zIndex: 9999, elevation: 9999 }]}>
         <View style={{ width: '100%', maxWidth: 440, backgroundColor: cardBg, borderColor: border, borderWidth: 1, borderRadius: 20, padding: 28 }}>
           {/* Skip — always available, top-right */}
           {!s.account && (
@@ -166,6 +169,6 @@ export default function WelcomeTour() {
             </View>
           )}
         </View>
-      </View>
+      </Animated.View>
   )
 }

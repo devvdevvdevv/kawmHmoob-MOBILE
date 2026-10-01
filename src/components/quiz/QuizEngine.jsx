@@ -1,8 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { View, Text, Pressable } from 'react-native'
 import { useLocalSearchParams, useRouter } from 'expo-router'
-import { getQuizConfig, getQuizDataset } from '../../data/quizzes.js'
+import { getQuizConfig, getQuizDataset, orientDataset } from '../../data/quizzes.js'
+import { useQuizPrefs, applyStatusFilter, resolveCount } from '../../lib/quizPrefs.js'
+// import QuizSettingsSheet from './QuizSettingsSheet.jsx'  ← restore with the ⚙ below
 import { quizUnlock } from '../../lib/access.js'
+import { isAdmin } from '../../lib/admin.js'
 import { useQuizState } from '../../hooks/useQuizState.js'
 import { useProgress } from '../../hooks/useProgress.js'
 import AudioButton from '../common/AudioButton.jsx'
@@ -12,6 +15,14 @@ import ConfirmModal from '../common/ConfirmModal.jsx'
 import QuizResults from './QuizResults.jsx'
 import Button from '../ui/Button.jsx'
 
+
+// ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
+// (`border` + `border-cream-200`) read too dark on cream; shadow-warm and the
+// background contrast do the separating now.
+//
+// A className is a STRING — one class inside it cannot be commented out, so the
+// token was deleted and this note is the record.
+// TO RESTORE: re-add those two classes to the card classNames below.
 // Quote
 
 import { useDailyQuota } from '../../hooks/useDailyQuota.js'
@@ -36,10 +47,22 @@ function shuffle(arr) {
   return copy
 }
 
-function buildQuestions(config, dataset) {
+function buildQuestions(config, dataset, prefs = {}) {
   if (!dataset || dataset.length === 0) return []
+  // QUESTION-TYPE OVERRIDE — commented out 2026-08-29 with its control in
+  // QuizSettingsSheet. Restore the two together.
+  //
+  // ⚠️ It matters that this went with the control rather than the control alone:
+  // the preference is PERSISTED, so anyone who had already picked "Matching only"
+  // would have been stuck with an untested mode and no visible way back. Ignoring
+  // the stored value returns every quiz to its own declared types.
+  //
+  // const types =
+  //   prefs.questionType && prefs.questionType !== 'quiz-default'
+  //     ? [prefs.questionType]
+  //     : config.questionTypes || ['multiple-choice']
   const types = config.questionTypes || ['multiple-choice']
-  const count = Math.min(config.questionCount, dataset.length)
+  const count = resolveCount(prefs.questionCount, dataset.length)
   const pool = shuffle(dataset).slice(0, count)
   return pool.map((item, i) => {
     const type = types[i % types.length]
@@ -58,10 +81,40 @@ function buildQuestions(config, dataset) {
     // without it the options could show the same tone twice ("Low / Low / High"),
     // which looks broken. options are answer STRINGS, guaranteed unique + include
     // the correct one exactly once.
-    const distinctWrong = [...new Set(dataset.map((d) => d.answer))].filter((a) => a !== item.answer)
+    //
+    // `alsoCorrect` covers the case the plain `!== item.answer` check missed: two
+    // items can share a PROMPT, which makes both their answers right. English
+    // "because" maps to both "vim" and "vim hais tias", so asking it in reverse
+    // could offer two correct options and mark one wrong. Rare (8 glosses in 476)
+    // but silently unfair when it happens, and only a real risk once a quiz can
+    // be reversed.
+    const alsoCorrect = new Set(
+      dataset.filter((d) => d.prompt === item.prompt).map((d) => d.answer)
+    )
+    const distinctWrong = [...new Set(dataset.map((d) => d.answer))].filter(
+      (a) => !alsoCorrect.has(a)
+    )
     const distractors = shuffle(distinctWrong).slice(0, 3)
     const options = shuffle([item.answer, ...distractors])
-    return { type: 'multiple-choice', prompt: item.prompt, answer: item.answer, options }
+    // ⚠️ AUDIO — 2026-09-25. Every dataset adapter already passes `audio` (the
+    // word's clip, or a letter's/tone's), and this used to drop it, so the
+    // prompt's speaker button was always disabled. Carried through now.
+    //
+    // The clip is always the HMONG side. When the quiz is flipped to
+    // English → Hmong, the Hmong is the ANSWER, so playing it first would read
+    // the answer aloud: `audioRevealsAnswer` holds the button until the learner
+    // has picked. Same test orientDataset uses to decide whether it flipped.
+    const flipped = prefs.direction === 'english-hmong' && Boolean(config.reversible)
+    return {
+      type: 'multiple-choice',
+      prompt: item.prompt,
+      answer: item.answer,
+      options,
+      audio: item.audio || null,
+      audioKey: item.id || item.prompt,
+      audioRevealsAnswer: flipped,
+    }
+    // Was: return { type: 'multiple-choice', prompt: item.prompt, answer: item.answer, options }
   })
 }
 
@@ -69,15 +122,66 @@ export default function QuizEngine() {
   const { topicId } = useLocalSearchParams()
   const router = useRouter()
   const config = getQuizConfig(topicId)
-  const dataset = getQuizDataset(topicId)
+  // Settings from the ⚙ sheet. `prefsReady` is load-bearing: the read is async,
+  // and the auto-start effect below would otherwise build questions from the
+  // DEFAULTS before the stored preferences arrived — the settings would appear
+  // to do nothing on the first quiz after launch.
+  const { prefs, ready: prefsReady } = useQuizPrefs()  // setPref: restore with the ⚙
+  // const [showSettings, setShowSettings] = useState(false)  ← restore with the ⚙
   const { state, start, answer, next, review, reset } = useQuizState()
   const { recordQuizScore, vocabProgress } = useProgress()
+
+  // Vocab quiz ids are `vocab-<categoryId>`, and their dataset items carry the
+  // word's own id — so a word's Learning/Known status is reachable. Other quizzes
+  // have no per-item status, so they pass null and the filter is a no-op.
+  const statusOf = useMemo(() => {
+    if (!String(topicId ?? '').startsWith('vocab-')) return null
+    return (item) => vocabProgress[item.id] || 'new'
+  }, [topicId, vocabProgress])
+
+  // ORDER MATTERS: filter on the ORIGINAL orientation, because the status lookup
+  // keys off the item, not off which side is showing; then flip. Doing it the
+  // other way round works today only because orientDataset preserves `id`.
+  const { dataset, filterFellBack } = useMemo(() => {
+    const raw = getQuizDataset(topicId)
+    const { dataset: filtered, fellBack } = applyStatusFilter(raw, prefs.statusFilter, statusOf)
+    return {
+      dataset: orientDataset(filtered, prefs.direction, config),
+      filterFellBack: fellBack,
+    }
+  }, [topicId, prefs.statusFilter, prefs.direction, config, statusOf])
+
+  // ⚠️ CURRENTLY UNUSED — its only consumer was the in-quiz ⚙, commented out
+  // below. Kept because it is the logic, not the widget: these are the reasons a
+  // setting silently does nothing on THIS quiz, and they come back the moment any
+  // sheet is shown from here again. (The category-page sheet passes its own
+  // notes; it cannot compute these, because it does not know the quiz.)
+  //
+  // Told to the learner next to the control that didn't do what they expected,
+  // rather than as a toast they'd miss.
+  const settingNotes = []
+  if (prefs.direction === 'english-hmong' && !config?.reversible) {
+    settingNotes.push('This quiz can only be asked one way, so Direction is ignored here.')
+  }
+  if (filterFellBack) {
+    settingNotes.push(
+      'No words match that filter yet, so this quiz is using all of them. Mark some words Learning or Known first.'
+    )
+  }
+  if (prefs.statusFilter !== 'all' && !statusOf) {
+    settingNotes.push('Only vocabulary quizzes can filter by word status.')
+  }
   const unlock = quizUnlock(topicId, vocabProgress)
 // Daily Quota Tracking
 
   const {user} = useAuth()
 
   const {isPro} = useSubscription()
+
+  // ⚠️ ADMINS PASS A PATH QUIZ'S PAYWALL — 2026-09-25, for debugging ("admin has
+  // access to the paths at all times"). Path quizzes ONLY (id `path-<unit>`): every
+  // other Pro quiz still gates admins like anyone else. Was: tier={config.tier}.
+  const gateTier = isAdmin(user) && String(topicId ?? '').startsWith('path-') ? 'free' : config?.tier
 
 
 
@@ -91,20 +195,54 @@ export default function QuizEngine() {
   const [savedThisRun, setSavedThisRun] = useState(false)
   const [showQuitConfirm, setShowQuitConfirm] = useState(false)
 
-  const questions = useMemo(() => (config ? buildQuestions(config, dataset) : []), [config, dataset])
+  const questions = useMemo(
+    () => (config ? buildQuestions(config, dataset, prefs) : []),
+    [config, dataset, prefs]
+  )
 
   const locked = unlock.gated && !unlock.unlocked
 
+  // EVERY EXIT LEADS TO VOCABULARY. The quiz menu at /quiz is retired (the
+  // Vocabulary page absorbed it — see app/quiz/index.jsx), so there is no
+  // "back to Quizzes" to go back to. A vocab quiz returns to its own category
+  // deck — the words it just tested, which is where you go to fix a bad score —
+  // and everything else returns to the Vocabulary index.
+  const quizId = String(topicId ?? '')
+  const isVocabQuiz = quizId.startsWith('vocab-')
+  // A beginner-path unit quiz (src/data/path.js) returns to its UNIT, not to
+  // Vocabulary — the unit screen is where its other four steps are.
+  const pathUnitId = quizId.startsWith('path-') ? quizId.slice('path-'.length) : null
+  const backTo = pathUnitId
+    ? `/path/${pathUnitId}`
+    : isVocabQuiz ? `/vocabulary/${quizId.slice('vocab-'.length)}` : '/vocabulary'
+  const backLabel = pathUnitId ? 'Back to the unit' : isVocabQuiz ? 'Back to the words' : 'Back to Vocabulary'
+  const crumbs = pathUnitId
+    ? [
+        { label: 'Home', to: '/' },
+        { label: 'Paths', to: '/path' },
+        { label: config?.title || 'Unit', to: backTo },
+        { label: 'Quiz' },
+      ]
+    : [
+        { label: 'Home', to: '/' },
+        { label: 'Vocabulary', to: '/vocabulary' },
+        ...(isVocabQuiz && unlock.category ? [{ label: unlock.category.title, to: backTo }] : []),
+        { label: config?.title || 'Quiz' },
+      ]
 
-  const quota = useDailyQuota('quiz', quotaLimit('quiz', user.isGuest), {enabled: !isPro, scope: user?.id || 'guest'})
+  // ⚠️ A PATH QUIZ DOES NOT SPEND THE DAILY ALLOWANCE. The allowance meters the
+  // open library; the path is gated by its own rules (free units, then Pro), and
+  // a free unit that burned the day's two quizzes would stall the free course
+  // partway through its own lesson. PaywallGate still applies, via config.tier.
+  const quota = useDailyQuota('quiz', quotaLimit('quiz', user.isGuest), { enabled: !isPro && !pathUnitId, scope: user?.id || 'guest' })
 
   useEffect(() => {
-    if (config && !locked && questions.length > 0 && state.status === 'idle' && !quota.exhausted && quota.ready){
+    if (config && !locked && prefsReady && questions.length > 0 && state.status === 'idle' && !quota.exhausted && quota.ready){
       
       start(questions)
       quota.consume()
     }
-  }, [config, locked, questions, start, state.status, quota.ready, quota.exhausted])
+  }, [config, locked, prefsReady, questions, start, state.status, quota.ready, quota.exhausted])
 
   useEffect(() => {
     if (state.status !== 'active') return
@@ -135,7 +273,7 @@ export default function QuizEngine() {
     return (
       <View>
         <Text className="text-stone-900">Quiz not found.</Text>
-        <Button onPress={() => router.push('/quiz')} className="mt-4">Back to Quizzes</Button>
+        <Button onPress={() => router.push(backTo)} className="mt-4">{backLabel}</Button>
       </View>
     )
   }
@@ -144,26 +282,22 @@ export default function QuizEngine() {
     return (
       <View>
         <Text className="text-stone-900">No data available for this quiz yet.</Text>
-        <Button onPress={() => router.push('/quiz')} className="mt-4">Back to Quizzes</Button>
+        <Button onPress={() => router.push(backTo)} className="mt-4">{backLabel}</Button>
       </View>
     )
   }
 
-  // Study-before-quiz gate. The menu already hides locked quizzes behind a
-  // "Study first" card, but THIS guard is what actually enforces it — a direct
-  // link to /quiz/vocab-<cat> would otherwise walk straight past the menu.
+  // Study-before-quiz gate. The Vocabulary page already swaps a locked quiz's
+  // row for a "study N more" line, but THIS guard is what actually enforces it —
+  // a direct link to /quiz/vocab-<cat> would otherwise walk straight past it.
   if (locked) {
     const pct = unlock.needed > 0 ? Math.min(100, (unlock.studied / unlock.needed) * 100) : 0
     return (
       <View className="items-center">
         <Breadcrumbs
-          items={[
-            { label: 'Home', to: '/' },
-            { label: 'Quizzes', to: '/quiz' },
-            { label: config.title },
-          ]}
+          items={crumbs}
         />
-        <View className="w-full max-w-md items-center rounded-md bg-cream-50 border border-cream-200 p-8">
+        <View className="w-full max-w-md items-center rounded-md bg-cream-50 p-8">
           <View className="h-14 w-14 items-center justify-center rounded-full bg-cream-100 mb-4">
             <Text className="text-2xl">🔒</Text>
           </View>
@@ -180,7 +314,7 @@ export default function QuizEngine() {
             <View className="h-2 rounded-full bg-cream-200 overflow-hidden">
               <View className="h-full rounded-full bg-clay-600" style={{ width: `${pct}%` }} />
             </View>
-            <Text className="text-sm text-stone-600 text-center mt-2">
+            <Text className="text-sm font-medium text-stone-600 text-center mt-2">
               {unlock.studied} of {unlock.needed} studied · {unlock.remaining} to go
             </Text>
           </View>
@@ -188,8 +322,8 @@ export default function QuizEngine() {
           <Button onPress={() => router.push(`/vocabulary/${unlock.category.id}`)}>
             📖 Study the {unlock.category.title} words
           </Button>
-          <Pressable onPress={() => router.push('/quiz')} className="mt-4">
-            <Text className="text-sm text-stone-600 underline">Back to Quizzes</Text>
+          <Pressable onPress={() => router.push('/vocabulary')} className="mt-4">
+            <Text className="text-sm font-medium text-stone-600 underline">Back to Vocabulary</Text>
           </Pressable>
         </View>
       </View>
@@ -198,7 +332,7 @@ export default function QuizEngine() {
 
   if (quota.exhausted){
     return(
-      <QuotaWall/>
+      <QuotaWall />
     );
 
   }
@@ -206,18 +340,14 @@ export default function QuizEngine() {
   const confirmQuit = () => {
     setShowQuitConfirm(false)
     reset()
-    router.push('/quiz')
+    router.push(backTo)
   }
 
   if (state.status === 'finished' || state.status === 'reviewing') {
     return (
-      <PaywallGate tier={config.tier} contentLabel={`${config.title} is a Pro quiz`}>
+      <PaywallGate tier={gateTier} contentLabel={`${config.title} is a Pro quiz`}>
         <Breadcrumbs
-          items={[
-            { label: 'Home', to: '/' },
-            { label: 'Quizzes', to: '/quiz' },
-            { label: config.title },
-          ]}
+          items={crumbs}
         />
         <QuizResults
           config={config}
@@ -228,7 +358,8 @@ export default function QuizEngine() {
           onRetry={() => { reset(); setSavedThisRun(false); setElapsed(0); setFeedback(null) }}
           reviewing={state.status === 'reviewing'}
           onReview={review}
-          onBack={() => router.push('/quiz')}
+          onBack={() => router.push(backTo)}
+          backLabel={backLabel}
         />
       </PaywallGate>
     )
@@ -238,28 +369,54 @@ export default function QuizEngine() {
   if (!q) return null
 
   return (
-    <PaywallGate tier={config.tier} contentLabel={`${config.title} is a Pro quiz`}>
+    <PaywallGate tier={gateTier} contentLabel={`${config.title} is a Pro quiz`}>
       <View>
         <Breadcrumbs
-          items={[
-            { label: 'Home', to: '/' },
-            { label: 'Quizzes', to: '/quiz' },
-            { label: config.title },
-          ]}
+          items={crumbs}
         />
 
         <View className="flex-row flex-wrap justify-between items-center mb-5 gap-2">
-          <Text className="text-sm text-stone-700">
+          <Text className="text-sm font-medium text-stone-700">
             Question {state.currentIndex + 1} / {state.questions.length}
           </Text>
-          <View className="flex-row gap-2">
+          <View className="flex-row items-center gap-2">
             <Pill bg="bg-cream-200" textColor="text-clay-700">⏱ {elapsed}s</Pill>
             <Pill bg="bg-orange-200" textColor="text-orange-900">🔥 {state.streak}</Pill>
             <Pill bg="bg-cream-100" textColor="text-stone-800">★ {state.score}</Pill>
+            {/* ⚙ REMOVED FROM THE RUNNING QUIZ — commented out 2026-08-29.
+                It was wedged among the ⏱/🔥/★ chips, which wrap on a phone, so it
+                was effectively invisible; and by the time a quiz is running its
+                questions are already built, so nothing it changes applies to the
+                run you are looking at. The gear that matters lives on the
+                vocabulary category page, above the quiz button.
+
+                To restore, this AND the sheet below need to come back — plus
+                `showSettings` state and the QuizSettingsSheet import at the top.
+            <Pressable
+              onPress={() => setShowSettings(true)}
+              hitSlop={10}
+              accessibilityRole="button"
+              accessibilityLabel="Quiz settings"
+              className="h-8 w-8 items-center justify-center rounded-full bg-cream-200"
+            >
+              <Text className="text-base">⚙️</Text>
+            </Pressable> */}
           </View>
         </View>
 
-        <View className="rounded-md bg-cream-50 border border-cream-200 p-6">
+        {/* Commented out with the gear above.
+        <QuizSettingsSheet
+          visible={showSettings}
+          onClose={() => setShowSettings(false)}
+          prefs={prefs}
+          setPref={setPref}
+          notes={[
+            ...settingNotes,
+            'Changes take effect on your next quiz — this run keeps the questions it started with.',
+          ]}
+        /> */}
+
+        <View className="rounded-md bg-cream-50 p-6">
           {q.type === 'multiple-choice' && (
             <MultipleChoice
               question={q}
@@ -331,7 +488,15 @@ function MultipleChoice({ question, feedback, onPick }) {
   return (
     <View>
       <View className="flex-row items-center gap-3 mb-5">
-        <AudioButton audioSrc={null} wordId={question.prompt} />
+        {/* Was: audioSrc={null} — always disabled. Now the question's own clip;
+            a word with no recording still shows the greyed button, as before.
+            Held until answered when the clip would give the answer away. */}
+        <AudioButton
+          audioSrc={question.audio}
+          wordId={question.audioKey || question.prompt}
+          disabled={question.audioRevealsAnswer && !feedback}
+          size="lg"
+        />
         <Text className="font-serif text-3xl text-stone-900 flex-1">{question.prompt}</Text>
       </View>
       <View className="gap-2">
@@ -377,7 +542,7 @@ function Matching({ question, feedback, onComplete }) {
   return (
     <View>
       <Text className="font-serif text-xl text-stone-900 mb-1">{question.prompt}</Text>
-      <Text className="text-sm text-stone-600 mb-4 italic">
+      <Text className="text-sm font-medium text-stone-600 mb-4 italic">
         Tap a Hmong word, then tap its English meaning.
       </Text>
       <View className="flex-row gap-3">

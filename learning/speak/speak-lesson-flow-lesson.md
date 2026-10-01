@@ -37,7 +37,8 @@ Full explanation + exercises: [[f0-and-tone-scoring-guide]].
 
 ⚠️ **But do NOT design around a score being available.** It is absent more often
 than present:
-- **Android returns `unsupported-format`** — the OS cannot record raw PCM at all.
+- ~~Android returns `unsupported-format`~~ — SOLVED 2026-08-20: @siteed/audio-studio
+  records real PCM on Android. Use `usePcmRecorder`, not `usePronunciation`.
 - **Most phrases return `no-reference`** — reference contours must be extracted
   offline and `src/data/contours.json` is still empty.
 

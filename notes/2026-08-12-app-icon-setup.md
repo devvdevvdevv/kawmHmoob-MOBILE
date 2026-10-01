@@ -71,3 +71,32 @@ foreground needs the safe-zone padding.
 
 ⚠️ Still needs `npx expo prebuild --clean` + a fresh build — icons bake in at BUILD
 time, a JS reload will not show this.
+
+---
+
+## Tweak: more breathing room on Android (2026-09-05)
+
+Not a clipping fix — 60.2% was already safely inside the 66% zone. Purely taste: the
+mark read as too tight inside the circular mask.
+
+**Scaled the foreground 0.90x** → content diameter **60.2% → 54.2%**, margin per side
+~19.9% → ~22.9%. `icon.png` (iOS) was NOT touched; it stays full-bleed at 72.4%, so
+the two platforms now differ on purpose.
+
+- `assets/adaptive-icon.png` — current (54.2%)
+- `assets/adaptive-icon-60pct-backup.png` — the 60.2% version, to restore if this
+  reads as too timid on device
+- `assets/adaptive-icon-oversized-backup.png` — the original 72.5%, still there
+
+**Padding never needs the logo recreated.** It is a re-composite: scale the whole
+1024x1024 canvas about its center (the mark is already dead-centered, so no bbox math)
+and paste onto a fresh transparent canvas. One trap — the transparent pixels' RGB is
+black, so a naive resize bleeds grey into the mark's anti-aliased edge. Premultiply
+alpha before the resize and un-premultiply after.
+
+⚠️ **Side effect: the splash screen shrank too.** `adaptive-icon.png` does double duty
+as the `expo-splash-screen` image (app.json). At `imageWidth: 320` with `contain`, the
+visible mark went ~193px → ~173px. If that matters, split it: copy the 60.2% backup to
+`assets/splash-icon.png` and point the splash plugin at that instead.
+
+Still needs `npx expo prebuild --clean` + a fresh build. Icons bake in at BUILD time.

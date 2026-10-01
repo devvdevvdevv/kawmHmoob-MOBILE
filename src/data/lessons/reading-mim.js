@@ -13,7 +13,8 @@ export const readingMim = {
       title: 'Tus Me Nyuam thiab Niam',
       level: 'Beginner',
       intro: 'Read the Hmong aloud first. Only reveal the English when you have made your best guess.',
-      hmong: 'Muaj ib tug me nyuam. Nws hu ua Mim. Mim hlub nws niam heev.',
+      // ⚠️ FIXED 2026-09-25 (author): "Nws hu ua Mim" → "Nws npe hu ua Mim" — the name needs npe.
+      hmong: 'Muaj ib tug me nyuam. Nws npe hu ua Mim. Mim hlub nws niam heev.',
       english: 'There is a child. Her name is Mim. Mim loves her mother very much.',
       glossary: [
         { hmong: 'muaj', english: 'there is / to have' },

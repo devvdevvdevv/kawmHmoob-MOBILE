@@ -13,6 +13,15 @@ import { useSubscription } from '../../../src/context/SubscriptionContext.jsx'
 import { useDailyQuota } from '../../../src/hooks/useDailyQuota.js'
 import { quotaLimit } from '../../../src/lib/quotaLimits.js'
 import QuotaWall from '../../../src/components/common/QuotaWall.jsx'
+import Eyebrow from '../../../src/components/ui/Eyebrow.jsx'
+
+// ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
+// (`border` + `border-cream-200`) read too dark on cream; shadow-warm and the
+// background contrast do the separating now.
+//
+// A className is a STRING — one class inside it cannot be commented out, so the
+// token was deleted and this note is the record.
+// TO RESTORE: re-add those two classes to the card classNames below.
 // Module drill — steps through one Speak group's phrases with an internal index,
 // the same loop as word-family practice. Condenses a group (e.g. the 8 tones)
 // into a single lesson you swipe through instead of a wall of buttons.
@@ -46,7 +55,8 @@ export default function SpeakGroup() {
   const phrase = phrases[index]
   const done = completedSteps.includes(speakStepId(phrase.id))
   const practiced = phrases.filter((p) => completedSteps.includes(speakStepId(p.id))).length
-  const locked = phrase.tier === 'pro' && !isPro
+  // Was: phrase.tier === 'pro' && !isPro — a phrase in a non-free group is Pro (author, 2026-09-28).
+  const locked = !group.free && !isPro
   const quotaBlocked = quotaApplies && speakQuota.exhausted
 
   const handleDone = async () => {
@@ -68,35 +78,32 @@ export default function SpeakGroup() {
       />
 
       <View className="mb-6">
-        <View className="flex-row items-center gap-2 mb-2">
-          <View className="h-2 w-2 rounded-full bg-clay-600" />
-          <Text className="text-xs uppercase tracking-[2px] text-stone-600">Speak lesson</Text>
-        </View>
+        <Eyebrow dot className="mb-2">Speak lesson</Eyebrow>
         <Text className="font-serif text-4xl text-stone-900 mb-2">{group.title}</Text>
         <Text className="text-stone-700 leading-relaxed">{group.description}</Text>
       </View>
 
       <View className="flex-row flex-wrap justify-between items-center gap-2 mb-2">
-        <Text className="text-sm text-stone-700">{index + 1} of {phrases.length}</Text>
-        <Text className="text-sm text-stone-600">✓ {practiced} practiced</Text>
+        <Text className="text-sm font-medium text-stone-700">{index + 1} of {phrases.length}</Text>
+        <Text className="text-sm font-medium text-stone-600">✓ {practiced} practiced</Text>
       </View>
       <View className="h-1.5 rounded-full bg-cream-200 overflow-hidden mb-6">
         <View className="h-full bg-clay-600" style={{ width: `${((index + 1) / phrases.length) * 100}%` }} />
       </View>
 
       {locked ? (
-        <View className="rounded-md bg-cream-50 border border-cream-200 shadow-warm p-8 items-center">
-          <Text className="text-xs uppercase tracking-[3px] text-clay-600 mb-3">Pro lesson</Text>
+        <View className="rounded-md bg-cream-50 shadow-warm p-8 items-center">
+          <Eyebrow tone="accent" className="mb-3">Pro lesson</Eyebrow>
           <Text className="font-serif text-2xl text-stone-900 mb-2 text-center">{phrase.hmong}</Text>
           <Text className="text-stone-700 mb-6 text-center">
-            Unlock every pronunciation lesson with Kawm Hmoob Pro.
+            Unlock every pronunciation lesson with KawmHmong Pro.
           </Text>
           <Link href="/paywall" asChild>
             <Button variant="primary">Unlock with Pro</Button>
           </Link>
         </View>
       ) : quotaBlocked ? (
-        // <View className="rounded-md bg-cream-50 border border-cream-200 shadow-warm p-8 items-center">
+        // <View className="rounded-md bg-cream-50 shadow-warm p-8 items-center">
         //   <Text className="text-xs uppercase tracking-[3px] text-clay-600 mb-3">Daily limit reached</Text>
         //   {user.isGuest ? (
         //     <>
@@ -122,7 +129,7 @@ export default function SpeakGroup() {
         // </View>
         <QuotaWall/>
       ) : (
-        <View className="rounded-md bg-cream-50 border border-cream-200 shadow-warm p-6">
+        <View className="rounded-md bg-cream-50 shadow-warm p-6">
           <PronounceStep key={phrase.id} phrase={phrase} done={done} onDone={handleDone} />
         </View>
       )}

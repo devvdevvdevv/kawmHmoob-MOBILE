@@ -1,5 +1,8 @@
 # Pronunciation recording wired + audio-quality fix (2026-08-10)
 
+> 🧵 **One chapter of the audio story.** The whole thread, in order:
+> [[AUDIO-END-TO-END]]
+
 Box 1 of the pronunciation pipeline is wired into the app: record your voice, play
 it back against the native clip. Built from
 `learning/pronunciation/voice-record-step-lesson.md` (§7–§9).

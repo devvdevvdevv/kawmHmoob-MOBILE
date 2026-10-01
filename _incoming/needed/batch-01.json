@@ -1,0 +1,335 @@
+[
+  {
+    "id": "country-meskas",
+    "word": "Meskas",
+    "gloss": "United States; America",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-meskas",
+    "word": "Teb Chaws Meskas",
+    "gloss": "the United States",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-fabkis",
+    "word": "Teb Chaws Fabkis",
+    "gloss": "France",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-nplog",
+    "word": "Nplog",
+    "gloss": "Laos",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-nplog",
+    "word": "Teb Chaws Nplog",
+    "gloss": "Laos",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-thaib",
+    "word": "Teb Chaws Thaib",
+    "gloss": "Thailand",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-suav",
+    "word": "Teb Chaws Suav",
+    "gloss": "China",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-nyab-laj",
+    "word": "Teb Chaws Nyab Laj",
+    "gloss": "Vietnam",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-qhab-meem",
+    "word": "Teb Chaws Qhab Meem",
+    "gloss": "Cambodia",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-mias-mas",
+    "word": "Mias Mas",
+    "gloss": "Myanmar; Burma",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-nyij-pooj",
+    "word": "Teb Chaws Nyij Pooj",
+    "gloss": "Japan",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-kaus-lim",
+    "word": "Teb Chaws Kaus Lim",
+    "gloss": "Korea",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-kaus-lim-qaum-teb",
+    "word": "Kaus Lim Qaum Teb",
+    "gloss": "North Korea",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-kaus-lim-qab-teb",
+    "word": "Kaus Lim Qab Teb",
+    "gloss": "South Korea",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-lav-xias",
+    "word": "Lav Xias",
+    "gloss": "Russia",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-yelemees",
+    "word": "Yelemees",
+    "gloss": "Germany",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-kas-nas-das",
+    "word": "Kas Nas Das",
+    "gloss": "Canada",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-austalaslias",
+    "word": "Austalaslias",
+    "gloss": "Australia",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-nyu-xis-las",
+    "word": "Nyu Xis Las",
+    "gloss": "New Zealand",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-is-nrias",
+    "word": "Is Nrias",
+    "gloss": "India",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-pas-kis-taas",
+    "word": "Pas Kis Taas",
+    "gloss": "Pakistan",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-nplas-des",
+    "word": "Nplas Des",
+    "gloss": "Bangladesh",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-nes-npas",
+    "word": "Nes Npas",
+    "gloss": "Nepal",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-is-do-nes-xias",
+    "word": "Is Do Nes Xias",
+    "gloss": "Indonesia",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-filiv-pees",
+    "word": "Filiv Pees",
+    "gloss": "Philippines",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-mas-lis-xias",
+    "word": "Mas Lis Xias",
+    "gloss": "Malaysia",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-xis-nka-puv",
+    "word": "Xis Nka Puv",
+    "gloss": "Singapore",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-mes-kas-kos",
+    "word": "Mes Kas Kos",
+    "gloss": "Mexico",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-nplas-xis",
+    "word": "Nplas Xis",
+    "gloss": "Brazil",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-aas-xes-tias-nas",
+    "word": "Aas Xes Tias Nas",
+    "gloss": "Argentina",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-itaus-liv",
+    "word": "Itaus Liv",
+    "gloss": "Italy",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-xip-pees",
+    "word": "Xip Pees",
+    "gloss": "Spain",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-pov-tu-kees",
+    "word": "Pov Tu Kees",
+    "gloss": "Portugal",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-hoo-las",
+    "word": "Hoo Las",
+    "gloss": "Netherlands; Holland",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-xuv-xis",
+    "word": "Xuv Xis",
+    "gloss": "Switzerland",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-xus-vis-dees",
+    "word": "Xus Vis Dees",
+    "gloss": "Sweden",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-naw-vees",
+    "word": "Naw Vees",
+    "gloss": "Norway",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  }
+]

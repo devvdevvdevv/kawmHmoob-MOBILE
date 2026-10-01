@@ -3,6 +3,8 @@ import { speakGroups } from './speak.js'
 import { toneDrillWords } from './toneDrill.js'
 
 import {categories} from './vocabulary.js'
+import { getUnit, unitWords } from './path.js'
+import { isCategoryFree } from '../lib/vocabAccess.js'
 
 // Quiz shape: { id, title, description, questionCount, questionTypes, category, tier? }
 // Optional `tier: 'free' | 'pro'` gates the quiz behind the paywall. Default 'free'.
@@ -14,13 +16,20 @@ export const vocabQuizzes = categories.map((cat) => ({
   id: `vocab-${cat.id}`,
   title: cat.title,
   description: cat.description,
-  questionCount: Math.min(10,cat.words.length),
   questionTypes: ['multiple-choice'],
-  category: 'Vocabulary'
+  category: 'Vocabulary',
+  // Hmong word ↔ English gloss — both directions are a real question, so this
+  // quiz honours the Settings direction preference. See `reversible` below.
+  reversible: true,
+  // ⚠️ 2026-09-25 — a locked set's quiz is Pro too, or the quiz would be a way
+  // round the lock. QuizEngine's PaywallGate reads this. See lib/vocabAccess.js.
+  tier: isCategoryFree(cat.id) ? 'free' : 'pro',
 }))
 
 
-export const quizzes = [
+// `questionCount` is NOT written here — it's derived below from each quiz's own
+// dataset, so a quiz always asks every item it has.
+const QUIZ_DEFS = [
   ...vocabQuizzes,
 
   // COMMENTED OUT — the consonant and vowel quizzes are superseded by the
@@ -62,50 +71,132 @@ export const quizzes = [
     id: 'alphabet-tones',
     title: 'Tone Markers',
     description: 'Identify the 8 Hmong tone markers.',
-    questionCount: 8,
     questionTypes: ['multiple-choice'],
     category: 'Alphabet',
+    // Marker ↔ tone name, one-to-one both ways.
+    reversible: true,
   },
   {
     id: 'tone-drill',
     title: 'Tone Drill',
     description: 'Identify the tone of each Hmong word — uniquely valuable for tonal-language listening practice.',
-    questionCount: 12,
     questionTypes: ['multiple-choice'],
     category: 'Tones',
+    // ⚠️ NOT reversible, and this is not an oversight. Reversed, the prompt
+    // becomes a tone name ("Low") and DOZENS of words answer it correctly — the
+    // question would have no single right answer. Many-to-one datasets can only
+    // be asked in the many→one direction.
+    reversible: false,
   },
   {
     id: 'grammar-pronouns',
     title: 'Pronouns',
     description: 'Translate Hmong pronouns.',
-    questionCount: 7,
     // MATCHING DISABLED — multiple-choice only for now.
     // questionTypes: ['multiple-choice', 'matching'],
     questionTypes: ['multiple-choice'],
     category: 'Grammar',
+    reversible: true,
   },
   {
     id: 'everyday-greetings',
     title: 'Greetings',
     description: 'Common Hmong greetings.',
-    questionCount: 5,
     questionTypes: ['multiple-choice'],
     category: 'Speak',
+    reversible: true,
   },
 ]
 
-export function getQuizConfig(id) {
-  return quizzes.find((q) => q.id === id)
+// EVERY QUIZ ASKS EVERYTHING IT HAS. `questionCount` is derived from the quiz's
+// own dataset instead of being written by hand, so:
+//
+//   • a vocab quiz covers the whole category — a 31-word category was being
+//     tested with a 10-question sample, so two thirds of it never came up;
+//   • adding words to a category grows its quiz automatically, with no second
+//     place to remember to update;
+//   • a hand-typed count can't drift below (or above) the data again.
+//
+// getQuizDataset is a hoisted function declaration, so calling it here — above
+// its definition — is fine; the data it reads comes from ES imports, which are
+// evaluated before this module body runs.
+export const quizzes = QUIZ_DEFS.map((q) => ({
+  ...q,
+  questionCount: getQuizDataset(q.id).length,
+}))
 
+export function getQuizConfig(id) {
+  return quizzes.find((q) => q.id === id) || pathQuizConfig(id)
+}
+
+// ── PATH UNIT QUIZZES — `path-<unitId>` ─────────────────────────────────────
+// Built on demand, and deliberately NOT in `quizzes`: that list feeds the
+// Vocabulary page's "quizzes taken" count and its Drills section, and a unit
+// quiz is neither — it belongs to the path, and is reached from a unit screen.
+//
+// `tier` carries the unit's `free` flag, so PaywallGate — which QuizEngine
+// already wraps every quiz in — enforces the paywall on a unit quiz opened by
+// URL exactly as it does for any other Pro quiz.
+function pathQuizConfig(id) {
+  if (!String(id || '').startsWith('path-')) return undefined
+  const unit = getUnit(id.slice('path-'.length))
+  if (!unit) return undefined
+  return {
+    id,
+    title: unit.title,
+    description: unit.blurb,
+    questionTypes: ['multiple-choice'],
+    category: 'Path',
+    reversible: true,
+    tier: unit.free ? 'free' : 'pro',
+    questionCount: unitWords(unit).length,
+  }
+}
+
+/**
+ * Apply the learner's direction preference to a dataset.
+ *
+ * Every adapter below returns the same `{ prompt, answer }` shape, which is what
+ * makes this a one-line feature: reversing a quiz is swapping those two fields.
+ * `audio` and `blurb` ride along untouched — they describe the ITEM, not a side
+ * of it.
+ *
+ * A quiz without `reversible: true` is returned unchanged, whatever the
+ * preference says. Direction is a property of the DATA (is the mapping
+ * one-to-one?), not of what the learner would like — see tone-drill above.
+ *
+ * @param {Array<{prompt:string, answer:string}>} dataset
+ * @param {string} direction  ENGLISH_TO_HMONG reverses; anything else doesn't
+ * @param {{reversible?: boolean}} config  the quiz definition
+ */
+export function orientDataset(dataset, direction, config) {
+  if (direction !== 'english-hmong' || !config?.reversible) return dataset
+  return dataset.map((d) => ({ ...d, prompt: d.answer, answer: d.prompt }))
 }
 
 
 export function getQuizDataset(id) {
 
+  // A path unit's quiz asks the unit's own words — the same shape as a vocab
+  // quiz, so every question type and the direction preference work unchanged.
+  if (id.startsWith('path-')) {
+    return unitWords(getUnit(id.slice('path-'.length))).map((item) => ({
+      id: item.id,
+      prompt: item.hmongRPA,
+      answer: item.english,
+      audio: item.audioFile,
+    }))
+  }
+
   if (id.startsWith('vocab-')){
     const catId = id.slice(6);
     const cat = categories.find((c) => c.id == catId)
     return cat ? cat.words.map((item) => ({
+      // The WORD's id, carried through so a quiz can look the word up in
+      // vocabProgress — that's what lets the settings sheet filter a quiz down
+      // to only Learning or only Known. Survives orientDataset, which swaps
+      // prompt/answer and leaves everything else alone.
+      id: item.id,
       prompt: item.hmongRPA,
       answer: item.english,
       audio: item.audioFile,   // bare filename — resolveSrc prepends AUDIO_BASE

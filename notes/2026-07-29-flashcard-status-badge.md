@@ -3,6 +3,11 @@
 **Status: IMPLEMENTED** in `src/components/vocabulary/Flashcard.jsx`. Below is the
 diff/plan; the "What shipped" section at the bottom records the actual edit.
 
+> **MOVED (2026-08-29):** `StatusBadge` + the `STATUS` map now live in their own
+> file, `src/components/vocabulary/StatusBadge.jsx`, so the word detail page can
+> fly the same flag. Flashcard imports it and passes `floating`. Rendering is
+> unchanged. See notes/2026-08-29-word-detail-status-flag.
+
 ## Symptom
 
 In vocab, the flashcard looks like an "older version": the **status ribbon

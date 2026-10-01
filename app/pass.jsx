@@ -1,3 +1,40 @@
+// ⚠️ SEASON PASS — COMMENTED OUT 2026-09-23, NOT DELETED.
+//
+// WHY: the pass needs a SERVER SIDE before it can ship. The tiers, the season
+// points and the rewards are all client-side mockups today (see
+// src/data/battlepass.js — `PLACEHOLDER_BRANDS`, and a level derived from XP
+// rather than from a season-points bucket that does not exist). Play billing is
+// already configured, so the missing piece is ours, not Google's.
+//
+// It also advertised a SECOND price ($9.99/season) beside Pro at $7.99/mo. See
+// notes/2026-09-23-what-pro-sells.md, §6.
+//
+// ⚠️ THE ROUTE STILL EXISTS, and that is deliberate. A file in app/ IS a route,
+// so deleting the default export would 404 anyone holding a deep link (and
+// expo-router needs one). The stub below redirects to Home instead, so an old
+// link lands somewhere sensible rather than on an error.
+//
+// ── TO RESTORE ───────────────────────────────────────────────────────────────
+// 1. Delete the stub component below, and the `/*` and `*/` lines around the
+//    original — the implementation between them is untouched and complete.
+// 2. Put back the five entry points, each commented out on the same day with a
+//    pointer back to this file:
+//       · src/components/Drawer/DrawerHost.jsx   — the NAV row
+//       · src/components/progress/LevelBadge.jsx — the header badge's Link
+//       · app/(tabs)/index.jsx                   — the Explore card AND the
+//                                                  "Season Pass" button
+//       · app/leaderboard.jsx                    — the inline prose link
+//       · src/data/pageInfo.js                   — the '/pass' info entry
+// 3. `src/data/battlepass.js` was NOT touched — the data is all still there.
+// ─────────────────────────────────────────────────────────────────────────────
+
+import { Redirect } from 'expo-router'
+
+export default function BattlePassDisabled() {
+  return <Redirect href="/" />
+}
+
+/* ── THE ORIGINAL PAGE, INTACT. Delete this line and the one at the end. ──
 import { useMemo } from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import { Link } from 'expo-router'
@@ -10,6 +47,15 @@ import { PASS, tiers, nextMilestone, TYPE_META } from '../src/data/battlepass.js
 import {
   levelFromPoints, MAX_LEVEL, POINTS_TO_MAX, POINT_SOURCES, DAILY_CAP, SEASON, seasonDaysLeft,
 } from '../src/lib/leveling.js'
+import Eyebrow from '../src/components/ui/Eyebrow.jsx'
+
+// ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
+// (`border` + `border-cream-200`) read too dark on cream; shadow-warm and the
+// background contrast do the separating now.
+//
+// A className is a STRING — one class inside it cannot be commented out, so the
+// token was deleted and this note is the record.
+// TO RESTORE: re-add those two classes to the card classNames below.
 
 // Season pass — level track + reward tiers, ported from the web BattlePass.
 // The RN progress model has no separate season-points bucket yet, so level is
@@ -27,7 +73,7 @@ export default function BattlePass() {
       <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Season Pass' }]} />
 
       <View className="mb-8">
-        <Text className="text-sm uppercase tracking-[2px] font-semibold text-clay-700 mb-2">{SEASON.title}</Text>
+        <Eyebrow tone="accent" className="mb-2">{SEASON.title}</Eyebrow>
         <Text className="font-serif text-5xl text-stone-900 mb-3">{PASS.title}</Text>
         <Text className="text-lg text-stone-700">
           {daysLeft} days left · {MAX_LEVEL} tiers · {POINTS_TO_MAX.toLocaleString()} points to max
@@ -36,7 +82,7 @@ export default function BattlePass() {
 
       {user.isGuest && <GuestNotice seasonPoints={seasonPoints} />}
 
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-6 mb-8">
+      <View className="rounded-md bg-cream-50 p-6 mb-8">
         <View className="flex-row flex-wrap items-end justify-between gap-4 mb-5">
           <View>
             <Text className="text-sm uppercase tracking-wider font-semibold text-stone-600 mb-1">Your level</Text>
@@ -46,7 +92,7 @@ export default function BattlePass() {
             <Text className="font-serif text-3xl text-stone-900">
               {seasonPoints.toLocaleString()}<Text className="text-lg text-stone-600"> pts</Text>
             </Text>
-            <Text className="text-sm text-stone-600 mt-1">
+            <Text className="text-sm font-medium text-stone-600 mt-1">
               {lv.maxed ? 'Max level reached' : `${lv.remaining.toLocaleString()} to level ${lv.level + 1}`}
             </Text>
           </View>
@@ -55,7 +101,7 @@ export default function BattlePass() {
           <View className="h-full rounded-full bg-clay-600" style={{ width: `${Math.round(lv.progress * 100)}%` }} />
         </View>
         {upNext && (
-          <Text className="text-base text-stone-700 mt-4">
+          <Text className="text-base font-medium text-stone-700 mt-4">
             Up next: <Text className="font-semibold">{upNext.name}</Text> at level {upNext.level}
           </Text>
         )}
@@ -63,7 +109,7 @@ export default function BattlePass() {
 
       <View className="flex-row flex-wrap items-end justify-between gap-2 mb-4">
         <Text className="font-serif text-3xl text-stone-900">Rewards</Text>
-        <Text className="text-sm text-stone-600">{PASS.premiumTrackLabel} · {PASS.premiumPrice}</Text>
+        <Text className="text-sm font-medium text-stone-600">{PASS.premiumTrackLabel} · {PASS.premiumPrice}</Text>
       </View>
 
       <ScrollView
@@ -75,17 +121,17 @@ export default function BattlePass() {
           <TierCard key={tier.level} tier={tier} unlocked={lv.level >= tier.level} isCurrent={lv.level === tier.level} />
         ))}
       </ScrollView>
-      <Text className="text-sm text-stone-600 mt-1 mb-10">Scroll sideways to see all {MAX_LEVEL} tiers</Text>
+      <Text className="text-sm font-medium text-stone-600 mt-1 mb-10">Scroll sideways to see all {MAX_LEVEL} tiers</Text>
 
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-6 mb-8">
+      <View className="rounded-md bg-cream-50 p-6 mb-8">
         <Text className="font-serif text-2xl text-stone-900 mb-2">How you earn</Text>
-        <Text className="text-base text-stone-700 mb-5">
+        <Text className="text-base font-medium text-stone-700 mb-5">
           Study actions share a {DAILY_CAP}-point daily cap. Voice recordings have no cap — every
           clip helps build the Hmong speech corpus, so there's no point telling you to stop.
         </Text>
         <View className="gap-3">
           {Object.entries(POINT_SOURCES).map(([id, s]) => (
-            <View key={id} className="flex-row items-center justify-between gap-3 rounded-xl bg-cream-100 px-4 py-3">
+            <View key={id} className="flex-row items-center justify-between gap-3 rounded-md bg-cream-100 px-4 py-3">
               <Text className="text-base text-stone-800 flex-1">{s.label}</Text>
               <View className="flex-row items-center gap-2">
                 {!s.capped && (
@@ -100,8 +146,8 @@ export default function BattlePass() {
         </View>
       </View>
 
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-6">
-        <Text className="text-base text-stone-700 mb-5">
+      <View className="rounded-md bg-cream-50 p-6">
+        <Text className="text-base font-medium text-stone-700 mb-5">
           <Text className="font-semibold">Everything above is a placeholder.</Text> No partnership
           exists and every business named is invented — they're here to show what the reward track
           could hold, not to advertise anything. Levels are real, rewards are mockups.
@@ -122,7 +168,7 @@ function TierCard({ tier, unlocked, isCurrent }) {
       style={isCurrent ? { borderWidth: 2 } : undefined}
     >
       <View className="flex-row items-start justify-between mb-4">
-        <View className={`w-11 h-11 rounded-xl items-center justify-center ${unlocked ? 'bg-emerald-500' : 'bg-cream-200'}`}>
+        <View className={`w-11 h-11 rounded-md items-center justify-center ${unlocked ? 'bg-emerald-500' : 'bg-cream-200'}`}>
           <Text className="text-xl">{meta.icon}</Text>
         </View>
         {tier.premium && (
@@ -153,16 +199,16 @@ function TierCard({ tier, unlocked, isCurrent }) {
 function GuestNotice({ seasonPoints }) {
   const earned = seasonPoints > 0
   return (
-    <View className="rounded-md bg-cream-50 border border-cream-200 border-l-4 border-l-clay-600 p-6 mb-8">
+    <View className="rounded-md bg-cream-50 border-l-4 border-l-clay-600 p-6 mb-8">
       <Text className="font-serif text-2xl text-stone-900 mb-2">
         {earned ? 'Keep your progress' : 'Create an account to compete'}
       </Text>
-      <Text className="text-base text-stone-700 mb-1">
+      <Text className="text-base font-medium text-stone-700 mb-1">
         {earned
           ? `You've earned ${seasonPoints.toLocaleString()} season points as a guest. They're saved on this device only — create a free account and they'll come with you.`
           : "You're browsing as a guest. Season points and levels still work, but they live on this device only and you won't appear on the leaderboard."}
       </Text>
-      <Text className="text-sm text-stone-600 mb-5">
+      <Text className="text-sm font-medium text-stone-600 mb-5">
         Points you earn now move to a new account when you create one. Logging into an account you
         already have keeps that account's progress instead.
       </Text>
@@ -177,3 +223,4 @@ function GuestNotice({ seasonPoints }) {
     </View>
   )
 }
+*/

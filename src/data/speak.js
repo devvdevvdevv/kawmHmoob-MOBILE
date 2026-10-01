@@ -32,13 +32,14 @@ import { tones } from './reference.js'
 // data and you may need to trim "Cim " or adjust a word.
 const toneSpeakGroup = {
   id: 'speak-tones',
+  category: 'tones',
   title: 'The Eight Tones',
   // `free: true` — the tones are the foundational hook and are ALWAYS free:
   // never Pro-locked, and EXEMPT from the daily speak-practice quota. Every
   // quota/lock check must skip a group with this flag.
   free: true,
   description:
-    'Tone carries meaning in Hmong. Hear each one, say it back, and watch your pitch line up against the native curve.',
+    'Hear each tone, say it back, and watch your pitch against the native curve.',
   phrases: tones.map((t) => ({
     id: `speak-tone-${t.marker || 'mid'}`,
     hmong: t.example2, // demonstration word for this tone — verify vs recording
@@ -52,8 +53,9 @@ export const speakGroups = [
   toneSpeakGroup,
   {
     id: 'speak-greetings',
+    category: 'phrases',
     title: 'Greetings',
-    description: 'The phrases you will say most — get these tones right first.',
+    description: 'The phrases you will say most. Get these tones right first.',
     // All five wired to the greetings-and-farewells recordings, so they
     // record + score end to end. See notes/62.
     phrases: [
@@ -96,6 +98,7 @@ export const speakGroups = [
   },
   {
     id: 'speak-politeness',
+    category: 'phrases',
     title: 'Politeness',
     description: 'Thank you, sorry, please — small words, big goodwill.',
     phrases: [
@@ -106,29 +109,38 @@ export const speakGroups = [
         audio: '/assets/audio/grammar/conversations/greetings-and-farewells/hmonggreetingsandfarewells-ua-tsaug.mp3',
         tip: '"Tsaug" ends in -g: a breathy low falling tone.',
       },
-      // COMMENTED OUT — no recording yet. Restore when audio is recorded; do
-      // not delete (the tips + ids are worth keeping). See notes/62.
-      // {
-      //   id: 'speak-thov-txim',
-      //   hmong: 'Thov txim',
-      //   english: 'Sorry / excuse me',
-      //   audio: '',
-      //   tip: '"Thov" rises (-v); "txim" stays level. Mind the aspirated "Th".',
-      // },
-      // {
-      //   id: 'speak-tsis-ua-li-cas',
-      //   hmong: 'Tsis ua li cas',
-      //   english: "You're welcome / no worries",
-      //   audio: '',
-      //   tip: 'Four quick syllables — keep the rhythm even rather than rushing the middle.',
-      // },
-      // {
-      //   id: 'speak-thov',
-      //   hmong: 'Thov',
-      //   english: 'Please',
-      //   audio: '',
-      //   tip: 'The "Th" is aspirated — a puff of air, not the English "th" in "the".',
-      // },
+      // ✅ RESTORED 2026-09-12 — these three were commented out for want of a
+      // clip. The Thanks & Sorry lesson recordings cover all three, so they are
+      // back with the same ids and tips they were archived with.
+      //
+      // ⚠️ THE CLIPS LIVE UNDER lessons/, NOT phrases/. notes/audio-todo.md
+      // asks for `assets/audio/phrases/thov-txim.mp3` because that is where it
+      // expects drill audio; the takes were made for the lesson and there is no
+      // reason to hold a second copy. If a drill-specific reading is ever
+      // recorded, point these at it — nothing else needs to change.
+      //
+      // ⚠️ .wav, not .mp3 — see the note in src/data/speakLessons.js.
+      {
+        id: 'speak-thov-txim',
+        hmong: 'Thov txim',
+        english: 'Sorry / excuse me',
+        audio: '/assets/audio/lessons/politeness/thov-txim.wav',
+        tip: '"Thov" rises (-v); "txim" stays level. Mind the aspirated "Th".',
+      },
+      {
+        id: 'speak-tsis-ua-li-cas',
+        hmong: 'Tsis ua li cas',
+        english: "You're welcome / no worries",
+        audio: '/assets/audio/lessons/politeness/tsis-ua-li-cas.wav',
+        tip: 'Four quick syllables — keep the rhythm even rather than rushing the middle.',
+      },
+      {
+        id: 'speak-thov',
+        hmong: 'Thov',
+        english: 'Please',
+        audio: '/assets/audio/lessons/politeness/thov.wav',
+        tip: 'The "Th" is aspirated — a puff of air, not the English "th" in "the".',
+      },
     ],
   },
   // COMMENTED OUT — no recordings for any of these phrases yet. The Speak page
@@ -200,6 +212,76 @@ export const speakGroups = [
   //     },
   //   ],
   // },
+  // ══ GRAMMAR ═══════════════════════════════════════════════════════════════
+  // Added 2026-08-29 to give the Grammar tab real content instead of an empty
+  // shell. Every clip was ALREADY bundled (src/lib/audioMap.js) — the mobile app
+  // simply had no data referencing the grammar folders.
+  //
+  // Hmong + English + notes are taken VERBATIM from the web app's own data
+  // (KawmHmoob/src/data). Nothing here was authored or guessed.
+  //
+  // Same shape as every other group, so `/speak/group/[groupId]` drills these
+  // with ZERO new screens.
+  {
+    id: 'speak-grammar-pronouns',
+    category: 'grammar',
+    title: 'Pronouns',
+    // FREE — 2026-09-28 (author: "make pronoun speak practice free"). Pronouns are unit 2 of the
+    // free path, and the home "Phrase of the day" now draws from this group. `free` also exempts
+    // it from the daily speak quota, like the tones. TO RE-LOCK: remove this line.
+    free: true,
+    description: 'Hmong marks ONE, TWO, and THREE-OR-MORE — a distinction English lost.',
+    phrases: [
+      { id: 'speak-pron-kuv', hmong: 'Kuv', english: 'I / me / my', audio: '/assets/audio/grammar/pronouns/hmong-pronouns-kuv.mp3', tip: 'Singular.' },
+      { id: 'speak-pron-koj', hmong: 'Koj', english: 'you', audio: '/assets/audio/grammar/pronouns/hmong-pronouns-koj.mp3', tip: 'Singular.' },
+      { id: 'speak-pron-nws', hmong: 'Nws', english: 'he / she / it', audio: '/assets/audio/grammar/pronouns/hmong-pronouns-nws.mp3', tip: 'Singular, no gender — one word covers all three.' },
+      { id: 'speak-pron-wb', hmong: 'Wb', english: 'we two (you and I)', audio: '/assets/audio/grammar/pronouns/hmong-pronouns-wb.mp3', tip: 'Dual — exactly two people, including the speaker.' },
+      { id: 'speak-pron-neb', hmong: 'Neb', english: 'you two', audio: '/assets/audio/grammar/pronouns/hmong-pronouns-neb.mp3', tip: 'Dual — exactly two listeners.' },
+      { id: 'speak-pron-peb', hmong: 'Peb', english: 'we (three or more)', audio: '/assets/audio/grammar/pronouns/hmong-pronouns-peb.mp3', tip: 'Also the number three — context separates them.' },
+      { id: 'speak-pron-nej', hmong: 'Nej', english: 'you (three or more)', audio: '/assets/audio/grammar/pronouns/hmong-pronouns-nej.mp3', tip: 'Plural.' },
+      { id: 'speak-pron-lawv', hmong: 'Lawv', english: 'they', audio: '/assets/audio/grammar/pronouns/hmong-pronouns-lawv.mp3', tip: 'Plural. "Lawv lub tsev" = their house.' },
+    ],
+  },
+  {
+    id: 'speak-grammar-yog',
+    category: 'grammar',
+    title: 'Yog — to be',
+    description: 'One verb for am / is / are — plus negation and questions.',
+    phrases: [
+      { id: 'speak-yog-base', hmong: 'Yog', english: 'is / to be', audio: '/assets/audio/grammar/yog-to-be/hmong-yog-to-be-yog.mp3', tip: 'The bare verb — no conjugation to learn.' },
+      { id: 'speak-yog-kuv', hmong: 'Kuv yog', english: 'I am', audio: '/assets/audio/grammar/yog-to-be/hmong-yog-to-be-kuv-yog.mp3', tip: '"Kuv yog Hmoob" = I am Hmong.' },
+      { id: 'speak-yog-koj', hmong: 'Koj yog', english: 'you are', audio: '/assets/audio/grammar/yog-to-be/hmong-yog-to-be-koj-yog.mp3', tip: 'Pairs with "puas" questions: "Koj puas yog…?"' },
+      { id: 'speak-yog-nws', hmong: 'Nws yog', english: 'he / she is', audio: '/assets/audio/grammar/yog-to-be/hmong-yog-to-be-nws-yog.mp3', tip: 'One pronoun covers he, she and it.' },
+      { id: 'speak-yog-tsis', hmong: 'Tsis yog', english: 'is not / no', audio: '/assets/audio/grammar/yog-to-be/hmong-yog-to-be-tsis-yog.mp3', tip: '"Tsis" is the general negator — it works on other verbs too.' },
+      { id: 'speak-yog-puas', hmong: 'Puas yog?', english: 'Is it? / Right?', audio: '/assets/audio/grammar/yog-to-be/hmong-yog-to-be-puas-yog.mp3', tip: 'Tacked on the end, it works like "…right?"' },
+    ],
+  },
+  {
+    id: 'speak-grammar-tense',
+    category: 'grammar',
+    title: 'Tense markers',
+    description: 'Verbs never change form. A small word does the work.',
+    phrases: [
+      { id: 'speak-tense-tabtom', hmong: 'tab tom', english: 'currently (-ing)', audio: '/assets/audio/grammar/tense-markers/hmong-tense-markers-tabtom.mp3', tip: 'Before the verb: "Kuv tab tom noj" — I am eating.' },
+      { id: 'speak-tense-yuav', hmong: 'yuav', english: 'will (future)', audio: '/assets/audio/grammar/tense-markers/hmong-tense-markers-yuav.mp3', tip: 'Before the verb: "Kuv yuav noj" — I will eat.' },
+      { id: 'speak-tense-tau', hmong: 'tau', english: 'did, have done (attained, completed)', audio: '/assets/audio/grammar/tense-markers/hmong-tense-markers-tau.mp3', tip: 'Before the verb: "Kuv tau noj" — I have eaten.' },
+      { id: 'speak-tense-tseem', hmong: 'tseem', english: 'still', audio: '/assets/audio/grammar/tense-markers/hmong-tense-markers-tseem.mp3', tip: 'Before the verb: "Kuv tseem noj" — I am still eating.' },
+      { id: 'speak-tense-lawm', hmong: 'lawm', english: 'completed (sentence-final)', audio: '/assets/audio/grammar/tense-markers/hmong-tense-markers-lawm.mp3', tip: '⚠️ Goes at the END: "Kuv noj lawm" — I ate already.' },
+    ],
+  },
+  {
+    id: 'speak-grammar-demonstratives',
+    category: 'grammar',
+    title: 'This & that',
+    description: 'They follow the noun — the opposite of English.',
+    phrases: [
+      { id: 'speak-dem-no', hmong: 'No', english: 'this', audio: '/assets/audio/grammar/common-demonstratives/hmong-demonstratives-no.mp3', tip: '"Lub tsev no" = this house — it FOLLOWS the noun.' },
+      { id: 'speak-dem-ntawd', hmong: 'Ntawd', english: 'that', audio: '/assets/audio/grammar/common-demonstratives/hmong-demonstratives-ntawd.mp3', tip: 'That one, over there — away from the speaker.' },
+      { id: 'speak-dem-ko', hmong: 'Ko', english: 'that (near listener)', audio: '/assets/audio/grammar/common-demonstratives/hmong-demonstratives-ko.mp3', tip: 'Specifically near the person you are talking to.' },
+      { id: 'speak-dem-ntawm-no', hmong: 'Ntawm no', english: 'here', audio: '/assets/audio/grammar/common-demonstratives/hmong-demonstratives-ntawm-no.mp3', tip: 'Literally "at this (place)."' },
+      { id: 'speak-dem-ntawm-ntawd', hmong: 'Ntawm ntawd', english: 'there', audio: '/assets/audio/grammar/common-demonstratives/hmong-demonstratives-ntawm-ntawd.mp3', tip: 'Literally "at that (place)."' },
+    ],
+  },
 ]
 
 // ── Helpers — pure lookups over the data above ──────────────────────────────
@@ -210,6 +292,14 @@ export function allPhrases() {
 
 export function getPhrase(phraseId) {
   return allPhrases().find((p) => p.id === phraseId) || null
+}
+
+// ⚠️ PHRASES AND GRAMMAR ARE PRO — 2026-09-28 (author: "lock phrases and grammar speak behind
+// paywall"). A phrase is free only when its GROUP is free (the tones). Was: each phrase's own
+// `tier`, so a free-tier phrase inside a phrase or grammar group stayed open.
+export function phraseTier(phraseId) {
+  const group = speakGroups.find((g) => g.phrases.some((p) => p.id === phraseId))
+  return group && group.free ? 'free' : 'pro'
 }
 
 // A whole module (group) by id — for the module drill screen.

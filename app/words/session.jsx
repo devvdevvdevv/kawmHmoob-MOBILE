@@ -5,6 +5,7 @@ import Svg, { Path } from 'react-native-svg'
 import TabScreen from '../../src/components/TabScreen.jsx'
 import Button from '../../src/components/ui/Button.jsx'
 import Breadcrumbs from '../../src/components/common/Breadcrumbs.jsx'
+import Confetti from '../../src/components/common/Confetti.jsx'
 import Flashcard from '../../src/components/vocabulary/Flashcard.jsx'
 import { categories } from '../../src/data/vocabulary.js'
 import { useProgress } from '../../src/hooks/useProgress.js'
@@ -12,6 +13,14 @@ import { selectSession } from '../../src/context/ProgressContext.jsx'
 import { useTheme } from '../../src/context/ThemeContext.jsx'
 import { THEME_TOKENS } from '../../src/lib/themes.js'
 
+
+// ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
+// (`border` + `border-cream-200`) read too dark on cream; shadow-warm and the
+// background contrast do the separating now.
+//
+// A className is a STRING — one class inside it cannot be commented out, so the
+// token was deleted and this note is the record.
+// TO RESTORE: re-add those two classes to the card classNames below.
 // Arrow icons ported path-for-path from the web icon set (ArrowLeft/ArrowRight):
 // 24x24, stroke currentColor @ 2px, round caps/joins. Color is passed in from
 // the active theme so it matches the stone-800 glyphs the web renders.
@@ -51,7 +60,9 @@ export default function WordsSession() {
     return (
       <SessionEnd
         title="All caught up."
-        body="No reviews due and no new words waiting. Browse vocabulary to go deeper, or come back tomorrow."
+        // Copy no longer points at a "Browse vocabulary" button — that second
+        // action was removed from SessionEnd.
+        body="No reviews due and no new words waiting. Come back tomorrow to keep the streak going."
       />
     )
   }
@@ -113,8 +124,10 @@ export default function WordsSession() {
           <ArrowLeftIcon color={arrowColor} />
         </Pressable>
 
+        {/* Was: "Mark the card to advance, or skip it" — Mark Known stopped
+            advancing 2026-09-25 (see Flashcard.jsx), so the arrow is the way on. */}
         <Text className="text-xs text-stone-600 flex-1 text-center">
-          Mark the card to advance, or skip it
+          Mark the card, then tap → for the next one
         </Text>
 
         <Pressable
@@ -130,17 +143,30 @@ export default function WordsSession() {
 
 function SessionEnd({ title, body, celebrate = false }) {
   return (
-    <TabScreen>
-      <View className={`p-8 items-center rounded-md ${celebrate ? 'bg-cream-50 border border-cream-200 shadow-warm' : 'bg-cream-50 border border-cream-200'}`}>
-        <Text className="font-serif text-3xl text-stone-900 mb-2 text-center">{title}</Text>
-        <Text className="text-stone-700 mb-6 text-center leading-relaxed">{body}</Text>
-        <View className="flex-row flex-wrap gap-3 justify-center">
+    // scroll={false}: this page is one card and one button — nothing to scroll,
+    // and a flex column is what lets it sit in the MIDDLE of the screen instead of
+    // pinned to the top. TabScreen centers horizontally; justify-center does the
+    // vertical half.
+    <TabScreen scroll={false}>
+      <View className="flex-1 justify-center items-center">
+        {/* Confetti rides on the COLUMN, not inside the card, so the pieces fall
+            across the full width instead of a narrow ribbon. It self-removes when
+            the last piece lands and is pointerEvents="none", so it never blocks
+            the button underneath. */}
+        {celebrate && <Confetti />}
+
+        <View className="w-full max-w-md p-8 items-center rounded-md bg-cream-50 shadow-warm">
+          <Text className="font-serif text-3xl text-stone-900 mb-2 text-center">{title}</Text>
+          <Text className="text-stone-700 mb-6 text-center leading-relaxed">{body}</Text>
           <Link href="/words" asChild>
             <Button>Back to Words</Button>
           </Link>
+          {/* One way out, on purpose — the second action competed with it. Restore
+              this for the bonus drill / browse link:
           <Link href={celebrate ? '/quiz/tone-drill' : '/vocabulary'} asChild>
             <Button variant="ghost">{celebrate ? 'Bonus: tone drill' : 'Browse vocabulary'}</Button>
           </Link>
+          */}
         </View>
       </View>
     </TabScreen>

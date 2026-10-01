@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Animated, ScrollView, BackHandler, StyleSheet, useWindowDimensions } from "react-native";
+import { View, Text, Pressable, Animated, ScrollView, BackHandler, StyleSheet, useWindowDimensions, Image } from "react-native";
 import {useSafeAreaInsets} from "react-native-safe-area-context"
 import {useDrawer} from "./DrawerContext.jsx"
 import { usePathname, useRouter } from 'expo-router'
@@ -17,7 +17,9 @@ import KawmHmoobLogo from "../common/KawmHmoobLogo.jsx";
 
 const NAV = [
     { to: '/account', label: "Account"},
-    { to: '/pass', label: "Season Pass"},
+    // ⚠️ SEASON PASS — commented out 2026-09-23 until the server side exists.
+    // Restore this row with the rest; the list is in app/pass.jsx's header.
+    // { to: '/pass', label: "Season Pass"},
     { to: '/leaderboard', label: "Leaderboard"},
     { to: '/search', label: "Search"},
     { to: '/notebook', label: "Notebook"},
@@ -144,7 +146,7 @@ export default function DrawerHost(){
                         <Text className="font-serif text-lg text-stone-900">
                             {user.isGuest ? 'Guest' : (user.displayName || `@${user.username}`)}
                         </Text>
-                        <Text className="text-sm text-stone-600">
+                        <Text className="text-sm font-medium text-stone-600">
                             {user.isGuest ? 'Tap to create an account' : `Lv ${lv.level} · 🔥 ${streakData.currentStreak} · ${xp} XP`}
                         </Text>
                     </View>
@@ -202,8 +204,23 @@ export default function DrawerHost(){
 
           </Pressable>
 
-            {/* KawmHmoob wordmark — a few spaces under the theme row, brand-colored */}
-            <View className="items-center mt-12 mb-4 opacity-90">
+            {/* KawmHmoob wordmark — a few spaces under the theme row, brand-colored.
+                ⚠️ KEPT AS "KawmHmoob" ON PURPOSE after the KawmHmong rebrand (2026-09-29, author:
+                "keep the original kawmhmoob logo in there as a throwback"). The author's elephant-foot
+                mark (ko taw ntxhw, the app icon) sits to its LEFT — assets/adaptive-icon.png is the
+                white foot on transparent, so tintColor paints it the same clay as the wordmark.
+                Was: <View className="items-center mt-12 mb-4 opacity-90"> holding only the wordmark. */}
+            <View className="flex-row items-center justify-center gap-2 mt-12 mb-4 opacity-90">
+              <Image
+                source={require('../../../assets/adaptive-icon.png')}
+                style={{
+                  width: 40,
+                  height: 40,
+                  tintColor: `rgb(${(THEME_TOKENS[theme] || THEME_TOKENS.light)['--c-clay-600']})`,
+                }}
+                resizeMode="contain"
+                accessibilityLabel="KawmHmong elephant foot logo"
+              />
               <KawmHmoobLogo
                 color={`rgb(${(THEME_TOKENS[theme] || THEME_TOKENS.light)['--c-clay-600']})`}
                 width={150}

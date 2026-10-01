@@ -1,0 +1,2045 @@
+[
+  {
+    "id": "country-meskas",
+    "word": "Meskas",
+    "gloss": "United States; America",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-meskas",
+    "word": "Teb Chaws Meskas",
+    "gloss": "the United States",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-fabkis",
+    "word": "Teb Chaws Fabkis",
+    "gloss": "France",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-nplog",
+    "word": "Nplog",
+    "gloss": "Laos",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-nplog",
+    "word": "Teb Chaws Nplog",
+    "gloss": "Laos",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-thaib",
+    "word": "Teb Chaws Thaib",
+    "gloss": "Thailand",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-suav",
+    "word": "Teb Chaws Suav",
+    "gloss": "China",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-nyab-laj",
+    "word": "Teb Chaws Nyab Laj",
+    "gloss": "Vietnam",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-qhab-meem",
+    "word": "Teb Chaws Qhab Meem",
+    "gloss": "Cambodia",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-mias-mas",
+    "word": "Mias Mas",
+    "gloss": "Myanmar; Burma",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-nyij-pooj",
+    "word": "Teb Chaws Nyij Pooj",
+    "gloss": "Japan",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-teb-chaws-kaus-lim",
+    "word": "Teb Chaws Kaus Lim",
+    "gloss": "Korea",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-kaus-lim-qaum-teb",
+    "word": "Kaus Lim Qaum Teb",
+    "gloss": "North Korea",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-kaus-lim-qab-teb",
+    "word": "Kaus Lim Qab Teb",
+    "gloss": "South Korea",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-lav-xias",
+    "word": "Lav Xias",
+    "gloss": "Russia",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-yelemees",
+    "word": "Yelemees",
+    "gloss": "Germany",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-kas-nas-das",
+    "word": "Kas Nas Das",
+    "gloss": "Canada",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-austalaslias",
+    "word": "Austalaslias",
+    "gloss": "Australia",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-nyu-xis-las",
+    "word": "Nyu Xis Las",
+    "gloss": "New Zealand",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-is-nrias",
+    "word": "Is Nrias",
+    "gloss": "India",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-pas-kis-taas",
+    "word": "Pas Kis Taas",
+    "gloss": "Pakistan",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-nplas-des",
+    "word": "Nplas Des",
+    "gloss": "Bangladesh",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-nes-npas",
+    "word": "Nes Npas",
+    "gloss": "Nepal",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-is-do-nes-xias",
+    "word": "Is Do Nes Xias",
+    "gloss": "Indonesia",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-filiv-pees",
+    "word": "Filiv Pees",
+    "gloss": "Philippines",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-mas-lis-xias",
+    "word": "Mas Lis Xias",
+    "gloss": "Malaysia",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-xis-nka-puv",
+    "word": "Xis Nka Puv",
+    "gloss": "Singapore",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-mes-kas-kos",
+    "word": "Mes Kas Kos",
+    "gloss": "Mexico",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-nplas-xis",
+    "word": "Nplas Xis",
+    "gloss": "Brazil",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-aas-xes-tias-nas",
+    "word": "Aas Xes Tias Nas",
+    "gloss": "Argentina",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-itaus-liv",
+    "word": "Itaus Liv",
+    "gloss": "Italy",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-xip-pees",
+    "word": "Xip Pees",
+    "gloss": "Spain",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-pov-tu-kees",
+    "word": "Pov Tu Kees",
+    "gloss": "Portugal",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-hoo-las",
+    "word": "Hoo Las",
+    "gloss": "Netherlands; Holland",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-xuv-xis",
+    "word": "Xuv Xis",
+    "gloss": "Switzerland",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-xus-vis-dees",
+    "word": "Xus Vis Dees",
+    "gloss": "Sweden",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "country-naw-vees",
+    "word": "Naw Vees",
+    "gloss": "Norway",
+    "category": "countries",
+    "priority": 100,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-keeb",
+    "word": "keeb",
+    "gloss": "origin; starting point",
+    "category": "reading-mind",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-temtoob",
+    "word": "temtoob",
+    "gloss": "forgetful; unaware",
+    "category": "reading-mind",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-kawm-ntawv",
+    "word": "kawm ntawv",
+    "gloss": "to study; to go to school",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-khiav-ceev",
+    "word": "khiav ceev",
+    "gloss": "to run fast",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-thawb",
+    "word": "thawb",
+    "gloss": "push; shove (transitive verb) · promote; urge forward (transitive verb)",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-rub",
+    "word": "rub",
+    "gloss": "to pull, to draw toward oneself",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tuav",
+    "word": "tuav",
+    "gloss": "hold; grip (transitive verb) · keep; maintain (transitive verb) · support; uphold; hold firmly (transitive verb)",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nias",
+    "word": "nias",
+    "gloss": "to press down on",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-vij",
+    "word": "vij",
+    "gloss": "to surround, to hem in",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-dim",
+    "word": "dim",
+    "gloss": "escape; get free (verb) · be safe; survive (resultative verb) · free; released (stative / resultative verb)",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txeeb",
+    "word": "txeeb",
+    "gloss": "to snatch, to grab away",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-thauj",
+    "word": "thauj",
+    "gloss": "to carry, to transport",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nce",
+    "word": "nce",
+    "gloss": "to go up, to climb",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nqes",
+    "word": "nqes",
+    "gloss": "to descend, to go down",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ntog",
+    "word": "ntog",
+    "gloss": "to fall over, to land",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-kauj-ruam",
+    "word": "kauj ruam",
+    "gloss": "a step",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "rv-txheej",
+    "word": "txheej",
+    "gloss": "event; incident; occurrence (noun) · time; occasion; instance (noun) · layer; arrangement; sequence (noun) — ⚠ cross-reference xwm txheej / txheej xwm (compound nouns)",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-sense-zaum-time",
+    "word": "zaum",
+    "gloss": "a time, an occasion, a turn — the classifier for counting occurrences: \"ib zaum\" once, \"ob zaum\" twice, \"zaum kawg\" the last time",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tshaj",
+    "word": "tshaj",
+    "gloss": "pass; go past · exceed; be more than · than — comparative · most, -est, with \"plaws\"",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ya",
+    "word": "ya",
+    "gloss": "to fly",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tawg",
+    "word": "tawg",
+    "gloss": "to break, to crack, to burst — and of a flower, to bloom: \"paj tawg\".",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nqis",
+    "word": "nqis",
+    "gloss": "to go down, to descend — and to invest: \"nqis peev\".",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tig",
+    "word": "tig",
+    "gloss": "to turn, to turn around — and to turn something over.",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txav",
+    "word": "txav",
+    "gloss": "to move, to shift closer",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-cuag",
+    "word": "cuag",
+    "gloss": "to reach, to catch up to — \"caum cuag\", to catch up with",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tsa",
+    "word": "tsa",
+    "gloss": "to raise, to lift up",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ntaus",
+    "word": "ntaus",
+    "gloss": "hit; strike; punch · fight — in \"sib ntaus\" · play by striking — a drum or an instrument treated as struck · type; enter text — \"ntaus ntawv\"",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tsuam",
+    "word": "tsuam",
+    "gloss": "to press down on, to pin",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-caij",
+    "word": "caij",
+    "gloss": "to ride — and a season or period of time: \"caij ntuj no\", winter.",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-xa",
+    "word": "xa",
+    "gloss": "to send, to dispatch — and to see someone off, to escort.",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nqa",
+    "word": "nqa",
+    "gloss": "to carry — and to bring, to fetch.",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-hla",
+    "word": "hla",
+    "gloss": "cross; go across · pass over; go beyond · skip; omit",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-kav",
+    "word": "kav",
+    "gloss": "to last, to run for — and to govern, to rule over.",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txaus",
+    "word": "txaus",
+    "gloss": "enough; sufficient · reach; arrive at · enough to cause — resultative, as in \"txaus ntshai\"",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-dauv",
+    "word": "dauv",
+    "gloss": "to hang; to dip down; to look down upon; to sham",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-fee",
+    "word": "fee",
+    "gloss": "to turn aside; to look aside; to ignore",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-maub",
+    "word": "maub",
+    "gloss": "to go or act without seeing",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-raus",
+    "word": "raus",
+    "gloss": "to dip into; to participate",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-rawm",
+    "word": "rawm",
+    "gloss": "to be in a rush",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-tauv-pem",
+    "word": "tauv pem",
+    "gloss": "to visit; to hang out with friends and family",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-xabnagkis",
+    "word": "xabnagkis",
+    "gloss": "days ahead; days to come",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-yais",
+    "word": "yais",
+    "gloss": "to distribute; to pass out",
+    "category": "reading-motion",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-zej-tsoom",
+    "word": "zej tsoom",
+    "gloss": "society; the public at large",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-tswv-cuab",
+    "word": "tswv cuab",
+    "gloss": "a member of a family or a group",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-pab-hluas",
+    "word": "pab hluas",
+    "gloss": "a group of young people — “pab” here is a group, not “to help”",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-sense-pab",
+    "word": "pab",
+    "gloss": "a group, a band — the classifier for a group of people or animals: \"pab hluas\", a group of young people",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-kev",
+    "word": "kev",
+    "gloss": "road; path; route; way · way; method; manner · abstract-concept marker, forming nouns from verbs and qualities",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-leeg",
+    "word": "leeg",
+    "gloss": "classifier for people — \"ob leeg\", both of them · person; individual — \"ib leeg\", alone · muscle; tendon; sinew",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-luag",
+    "word": "luag",
+    "gloss": "to laugh; also others, other people",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tug",
+    "word": "tug",
+    "gloss": "classifier for people and animals — a form used in some writing traditions. ⚠️ NOT simply a misspelling of \"tus\": preserve whichever form the source uses.",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-xibfwb",
+    "word": "xibfwb",
+    "gloss": "teacher",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tug-tub-hluas",
+    "word": "tug tub hluas",
+    "gloss": "young man",
+    "category": "reading-people",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-vib-nas-this",
+    "word": "vib nas this",
+    "gloss": "a second — from the English \"minute second\"",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-mam",
+    "word": "mam",
+    "gloss": "then, afterwards",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-thaum",
+    "word": "thaum",
+    "gloss": "when — introducing a time clause · time; occasion",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tiam",
+    "word": "tiam",
+    "gloss": "generation; era",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-twb",
+    "word": "twb",
+    "gloss": "already (aspectual adverb) · indeed; in fact; as expected (discourse adverb)",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txawm",
+    "word": "txawm",
+    "gloss": "then; thereupon · even; even though; although",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tib-sij-huam",
+    "word": "tib sij huam",
+    "gloss": "in an instant; all at once; suddenly",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-xaus",
+    "word": "xaus",
+    "gloss": "to end, to conclude",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-pib",
+    "word": "pib",
+    "gloss": "begin; start · beginning; start — \"thaum pib\", at the beginning",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-sij-hawm",
+    "word": "sij hawm",
+    "gloss": "time — \"muaj sij hawm\", to have time",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "rv-tsaus",
+    "word": "tsaus",
+    "gloss": "dark; darkness (adjective / stative verb) · tsaus ntuj = evening; nighttime; darkness (compound time expression)",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ib-zaum",
+    "word": "ib zaum",
+    "gloss": "once, one time",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-yav",
+    "word": "yav",
+    "gloss": "a period of time — \"yav tsaus ntuj\" the evening, \"yav tom ntej\" the future.",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-xyoos",
+    "word": "xyoos",
+    "gloss": "year · years old — after a number, to state age",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-thawj",
+    "word": "thawj",
+    "gloss": "first — before all others in time, sequence or rank · main; principal; chief · reason; cause — ONLY as part of \"laj thawj\"",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txij",
+    "word": "txij",
+    "gloss": "from, since — \"txij thaum\", ever since",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-thiaj",
+    "word": "thiaj",
+    "gloss": "therefore; so; thus · only then; then finally",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-kawj",
+    "word": "kawj",
+    "gloss": "to start",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-nim-no",
+    "word": "nim no",
+    "gloss": "nowadays",
+    "category": "reading-time",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-sib-cais",
+    "word": "sib cais",
+    "gloss": "separately; apart from each other",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-me-ntsis",
+    "word": "me ntsis",
+    "gloss": "a little, slightly",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-feem-ntau",
+    "word": "feem ntau",
+    "gloss": "mostly, usually, for the most part",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tag",
+    "word": "tag",
+    "gloss": "finished, all, completely",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tas",
+    "word": "tas",
+    "gloss": "finished, all gone, completely",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tiag",
+    "word": "tiag",
+    "gloss": "really, truly",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tsuas",
+    "word": "tsuas",
+    "gloss": "only, merely",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-kuv-txaus-siab-heev",
+    "word": "kuv txaus siab heev",
+    "gloss": "I am very pleased",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-noj-kom-tsau",
+    "word": "noj kom tsau",
+    "gloss": "eat until full",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ib-txhia",
+    "word": "ib txhia",
+    "gloss": "some, some of them",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ntxiv",
+    "word": "ntxiv",
+    "gloss": "more; additional · further; furthermore; in addition",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tshaj-plaws",
+    "word": "tshaj plaws",
+    "gloss": "the most, -est — \"hnyav tshaj plaws\", the heaviest",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-sense-nees",
+    "word": "nees",
+    "gloss": "twenty — only in \"nees nkaum\"",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nkaum",
+    "word": "nkaum",
+    "gloss": "hide; conceal oneself (verb) · be hidden (stative verb) · nees nkaum = twenty (compound numeral) — ⚠ distinct from kaum = ten (numeral)",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "rv-txhia",
+    "word": "txhia",
+    "gloss": "some; various; different (indefinite determiner) · distributive or variety element in expressions such as txhua txhia (grammatical element)",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-hauj-sim",
+    "word": "hauj sim",
+    "gloss": "a little; somewhat; so-so",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-haj-yam",
+    "word": "haj yam",
+    "gloss": "even more or less",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-qee",
+    "word": "qee",
+    "gloss": "to reduce; to save; some",
+    "category": "reading-quantity",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-txoj-haujlwm",
+    "word": "txoj kev hauj lwm",
+    "gloss": "a job, a task, a duty",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-pab",
+    "word": "pab",
+    "gloss": "to help",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-siv",
+    "word": "siv",
+    "gloss": "to use",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-npaj",
+    "word": "npaj",
+    "gloss": "to prepare, to plan",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-koom",
+    "word": "koom",
+    "gloss": "join; participate (verb) · together; combined; shared (adjective / adverb) · be involved; be a party to (verb) · koom tes = cooperate; work together (compound verb) · koom nrog = join with; participate with (compound verb)",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-them",
+    "word": "them",
+    "gloss": "to pay — and to repay or settle a debt.",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tshuav",
+    "word": "tshuav",
+    "gloss": "to remain, to be left over — and to owe: \"tshuav nqi\".",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-muas",
+    "word": "muas",
+    "gloss": "to buy",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-lag-luam",
+    "word": "lag luam",
+    "gloss": "business; trade",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-hawm",
+    "word": "hawm",
+    "gloss": "to worship; to pay respect",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-sawv-cev",
+    "word": "sawv cev",
+    "gloss": "to represent; on behalf of",
+    "category": "reading-work",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-txhob-txwm",
+    "word": "txhob txwm",
+    "gloss": "deliberate, on purpose, intentional",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-nyab-xeeb",
+    "word": "nyab xeeb",
+    "gloss": "safe; safety",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-tseem-ceeb",
+    "word": "tseem ceeb",
+    "gloss": "important, principal",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-khov-kho",
+    "word": "khov kho",
+    "gloss": "solid, sturdy, strong",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-nyaum",
+    "word": "nyaum",
+    "gloss": "fierce, brutal, cruel",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-puas-tsuaj",
+    "word": "puas tsuaj",
+    "gloss": "destroyed, ruined, wrecked",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-txawv-txav",
+    "word": "txawv txav",
+    "gloss": "unusual, out of the ordinary",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-tshwj-xeeb",
+    "word": "tshwj xeeb",
+    "gloss": "special; especially — \"tshwj xeeb tshaj yog\", especially",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-kiag",
+    "word": "kiag",
+    "gloss": "right away, immediately — an emphatic particle",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tsuag",
+    "word": "tsuag",
+    "gloss": "pale, faint, bland; in \"nroj tsuag\", plants or vegetation",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-xis",
+    "word": "xis",
+    "gloss": "comfortable, pleasant; in \"xis siab\", pleased",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-thaum-ub",
+    "word": "thaum ub",
+    "gloss": "long ago",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tsim-txom",
+    "word": "tsim txom",
+    "gloss": "to torture; to mistreat cruelly",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ib-yam-li",
+    "word": "ib yam li",
+    "gloss": "the same as, just like",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-hloov",
+    "word": "hloov",
+    "gloss": "to change — and to replace, to swap one thing for another.",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-zog",
+    "word": "zog",
+    "gloss": "strength; force; power · strong; vigorous · intensely; strongly — adverbial",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ruaj",
+    "word": "ruaj",
+    "gloss": "firm, secure, steady — and lasting, permanent: \"ruaj khov\".",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tib",
+    "word": "tib",
+    "gloss": "same; one and the same (adjective / determiner) · tib neeg = human being; humanity (compound noun) · tib txoj = the same one; same route/rule depending on the following noun (determiner phrase)",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txhob",
+    "word": "txhob",
+    "gloss": "do not; don’t (prohibitive negative particle) · txhob txwm = deliberately; intentionally; on purpose (compound adverb)",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-yam",
+    "word": "yam",
+    "gloss": "thing; kind; type; matter · anything; something — \"yam twg\", \"yam dab tsi\" · without; lacking — in \"yam tsis muaj\"",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-suab-ncha-famous",
+    "word": "suab ncha",
+    "gloss": "famous",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-huv",
+    "word": "huv",
+    "gloss": "clean",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-lo-phem",
+    "word": "lo phem",
+    "gloss": "dirty",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-feem-cuam",
+    "word": "feem cuam",
+    "gloss": "undecided; unsure; inconclusive",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-kob-huam",
+    "word": "kob huam",
+    "gloss": "in a poor state; flat broke",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-lauj-vaub",
+    "word": "lauj vaub",
+    "gloss": "messy; tangled; in knots",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-noo",
+    "word": "noo",
+    "gloss": "damp",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-piamsij",
+    "word": "piamsij",
+    "gloss": "ruined; broken",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-vammeej",
+    "word": "vammeej",
+    "gloss": "prosperous; affluent; successful",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-vuabtsuab",
+    "word": "vuabtsuab",
+    "gloss": "dirty; filthy",
+    "category": "reading-qualities",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-hwj-chim",
+    "word": "hwj chim",
+    "gloss": "power, authority",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-pob-zeb",
+    "word": "pob zeb",
+    "gloss": "stone, rock",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-rooj-zaum",
+    "word": "rooj zaum",
+    "gloss": "a seat, a bench",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-kab-raub-ris",
+    "word": "kab raub ris",
+    "gloss": "a scorpion",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-xwm-txheej",
+    "word": "xwm txheej",
+    "gloss": "an event, an incident, what happened",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-yeeb-tshuaj",
+    "word": "yeeb tshuaj",
+    "gloss": "drugs, narcotics",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-npau-suav",
+    "word": "npau suav",
+    "gloss": "to dream",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-ua-si",
+    "word": "ua si",
+    "gloss": "to play; a game",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-ua-pauj",
+    "word": "ua pauj",
+    "gloss": "to take revenge; a vendetta",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-sawv-tsees",
+    "word": "sawv tsees",
+    "gloss": "to get up, to spring to one’s feet",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-tshawb-nrhiav",
+    "word": "tshawb nrhiav",
+    "gloss": "to investigate, to search out",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-cuam-tshuam",
+    "word": "cuam tshuam",
+    "gloss": "to affect, to have an impact on",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-tso-tseg",
+    "word": "tso tseg",
+    "gloss": "to drop, to dismiss, to abandon",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "phr-raws-li",
+    "word": "raws li",
+    "gloss": "according to; following",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-peev-xwm",
+    "word": "peev xwm",
+    "gloss": "ability; can, to be able to",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tus-xov",
+    "word": "xov",
+    "gloss": "string, thread, cord — classifier lub: \"lub xov\"",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-xav-pom",
+    "word": "xav pom",
+    "gloss": "to want to see",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-lam",
+    "word": "lam",
+    "gloss": "casually, idly, just for the sake of it",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-lwm",
+    "word": "lwm",
+    "gloss": "another; other · else — \"lwm tus\", anyone else",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nroj",
+    "word": "nroj",
+    "gloss": "weeds; in \"nroj tsuag\", plants or vegetation",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ntoo",
+    "word": "ntoo",
+    "gloss": "tree, wood",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-sim",
+    "word": "sim",
+    "gloss": "try; attempt (verb) · test; examine (verb) · taste; sample (verb)",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tim",
+    "word": "tim",
+    "gloss": "at; over at, dialect/construction-sensitive (locative marker) · tim li cas = cause; reason; why, dialect-sensitive (compound interrogative expression)",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tos",
+    "word": "tos",
+    "gloss": "to wait",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tib-kaug",
+    "word": "tib kaug",
+    "gloss": "suddenly; immediately; in one quick motion",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-teeb-meem",
+    "word": "teeb meem",
+    "gloss": "problem, trouble",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-quaj",
+    "word": "quaj",
+    "gloss": "to cry, to weep",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-xaiv",
+    "word": "xaiv",
+    "gloss": "to choose, to pick out",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tsoo",
+    "word": "tsoo",
+    "gloss": "to strike, to smash into, to collide with",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-plam",
+    "word": "plam",
+    "gloss": "to lose, to be deprived of",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txais",
+    "word": "txais",
+    "gloss": "to receive, to accept",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-pub",
+    "word": "pub",
+    "gloss": "to allow, to let — \"txwv tsis pub\", would not let",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ceev-faj",
+    "word": "ceev faj",
+    "gloss": "to be careful, to watch out",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-laj-thawj",
+    "word": "laj thawj",
+    "gloss": "a reason, a cause",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-cwj-pwm",
+    "word": "cwj pwm",
+    "gloss": "character; behaviour",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tab-meeg",
+    "word": "tab meeg",
+    "gloss": "openly, in front of everyone",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tsim-nyog",
+    "word": "tsim nyog",
+    "gloss": "to deserve; to be fitting",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tshwm-sim",
+    "word": "tshwm sim",
+    "gloss": "to happen, to occur",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tiv-thaiv",
+    "word": "tiv thaiv",
+    "gloss": "to defend; a defence",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-xeev",
+    "word": "xeev",
+    "gloss": "a state or province — \"Xeev Wisconsin\"",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "rv-vab",
+    "word": "vab",
+    "gloss": "net; web (noun) · tsheb kauj vab = bicycle (compound noun)",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "rv-tsum",
+    "word": "tsum",
+    "gloss": "must; have to; need to (modal verb) · necessity or obligation marker (modal particle)",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tej-zaum",
+    "word": "tej zaum",
+    "gloss": "perhaps, maybe, it may be that — the everyday way of marking something uncertain",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tshaws",
+    "word": "tshaws",
+    "gloss": "to sting",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-cawm",
+    "word": "cawm",
+    "gloss": "to rescue, to save — \"pab cawm\", to rescue",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-nqus",
+    "word": "nqus",
+    "gloss": "to suck in, to inhale; of a drug, to snort",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tsom",
+    "word": "tsom",
+    "gloss": "to aim at, to focus on",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-txhawb",
+    "word": "txhawb",
+    "gloss": "to encourage, to support, to egg on",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-tseg",
+    "word": "tseg",
+    "gloss": "to stop, to leave off — and to set aside, to keep: \"khaws tseg\".",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "misc-ntawv",
+    "word": "ntawv",
+    "gloss": "paper · writing; document; letter · book; reading material",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-hom",
+    "word": "hom",
+    "gloss": "type; kind; class; category; variety",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-cawm",
+    "word": "cawm",
+    "gloss": "to rescue; to save",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-cwj-pwm",
+    "word": "cwj pwm",
+    "gloss": "attitude; behavior",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-dab-muag",
+    "word": "dab muag",
+    "gloss": "souvenir",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-daug",
+    "word": "daug",
+    "gloss": "to hatch",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-faj-suab",
+    "word": "faj suab",
+    "gloss": "haze; heat mist",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-haub",
+    "word": "haub",
+    "gloss": "to entice; to lure; to persuade",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-las-mees",
+    "word": "las mees",
+    "gloss": "to ignore; to not respond",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-meem-txom",
+    "word": "meem txom",
+    "gloss": "uncomfortable",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  },
+  {
+    "id": "gen-moj-zeej",
+    "word": "moj zeej",
+    "gloss": "scarecrow; statue",
+    "category": "reading-general",
+    "priority": 200,
+    "hmong": "",
+    "english": ""
+  }
+]

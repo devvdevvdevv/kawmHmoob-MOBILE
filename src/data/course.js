@@ -94,7 +94,8 @@ export const readings = [
   {
     title: 'Tus me nyuam thiab niam',
     level: 'Beginner',
-    hmong: 'Muaj ib tug me nyuam. Nws hu ua Mim. Mim hlub nws niam heev.',
+    // ⚠️ FIXED 2026-09-25 (author): "Nws hu ua Mim" → "Nws npe hu ua Mim" — the name needs npe.
+    hmong: 'Muaj ib tug me nyuam. Nws npe hu ua Mim. Mim hlub nws niam heev.',
     english: 'There is a child. Her name is Mim. Mim loves her mother very much.',
   },
   {

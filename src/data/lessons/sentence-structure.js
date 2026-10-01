@@ -1,0 +1,98 @@
+// Standalone lesson: HOW A SENTENCE IS BUILT — beginner word order, one piece at a time.
+// Written 2026-09-28 for path unit u-sentence-structure (author: "create a path for learning how
+// sentences are built too actually, this is important"; "keep it simple beginner friendly").
+// Drafted by GPT from a prompt carrying the author's settled rules, reviewed by Claude. Fixes on
+// review: "Naghmo" was glossed "Tonight" three times — naghmo is YESTERDAY; "nees nkaum" →
+// neesnkaum (the app joins the tens). TODO-VERIFY with the author: the whole lesson.
+
+export const sentenceStructure = {
+  id: 'grammar-sentence-structure',
+  title: 'How a Sentence Is Built',
+  summary: 'Build simple Hmong sentences by putting each part in the right place.',
+  vocab: 'sentence-structure',
+  reference: 'grammar',
+  steps: [
+    {
+      id: 'grammar-sentence-structure-intro',
+      kind: 'intro',
+      title: 'One piece at a time',
+      body: [
+        '## 1. Start with the subject and verb',
+        'A simple Hmong sentence can be just subject + verb. The verb never changes form.',
+        '> Kuv noj. — I eat.',
+        '> Nws mus. — He goes.',
+        '## 2. Add an object',
+        'The thing the action is done to comes after the verb: subject + verb + object.',
+        '> Kuv noj mov. — I eat. (I have a meal.)',
+        '> Nws nyeem ntawv. — He reads.',
+        '## 3. Describe a noun',
+        'A describing word comes after the noun. Never put yog before a describing word.',
+        '> tsev loj — a big house',
+        '> neeg zoo — a good person',
+        '## 4. Use classifiers',
+        'The number or pronoun comes first, then the classifier, then the noun.',
+        '> ib lub tsev — one house',
+        '> kuv tus aub — my dog',
+        '## 5. Add time and tense',
+        'Time words usually come first. Tense markers go right before the verb; lawm goes at the end.',
+        // Was: 'Naghmo kuv mus.' — "went" takes tau (author, 2026-09-28).
+        '> Naghmo kuv tau mus. — Yesterday I went.',
+        '> Tagkis kuv yuav mus. — Tomorrow I will go.',
+        '## 6. Say no, or ask',
+        'Tsis goes right before the verb. A question keeps the same word order, with the question word where the answer would go.',
+        '> Kuv tsis noj. — I don’t eat.',
+        '> Koj noj dab tsi? — What do you eat?',
+        '## 7. Build a full sentence',
+        'Put it together: time, subject, verb, object, then place. For where someone is, use nyob + hauv or ntawm + the place.',
+        '> Naghmo kuv noj mov hauv tsev. — Yesterday I ate at home.',
+        '> Kuv nyob hauv tsev. — I am at home.',
+        '## An easy way to remember',
+        '> subject + verb + object — and the verb never changes',
+        '> describing words come after the noun',
+        '> number or pronoun + classifier + noun',
+        '> time first; yuav, tab tom, tau right before the verb; lawm at the end',
+        '> tsis right before the verb',
+        '> a question keeps the order of the answer',
+      ],
+    },
+    {
+      id: 'grammar-sentence-structure-examples',
+      kind: 'examples',
+      title: 'From small to full',
+      intro: 'Each sentence adds one piece. Read them aloud.',
+      items: [
+        { hmong: 'Kuv noj.', english: 'I eat.', note: 'subject + verb' },
+        { hmong: 'Kuv noj mov.', english: 'I eat. (I have a meal.)', note: '+ object' },
+        { hmong: 'Kuv tsis noj mov.', english: 'I don’t eat.', note: '+ tsis before the verb' },
+        { hmong: 'Tagkis kuv yuav noj mov.', english: 'Tomorrow I will eat.', note: '+ time first, yuav before the verb' },
+        { hmong: 'Naghmo kuv noj mov hauv tsev.', english: 'Yesterday I ate at home.', note: '+ place at the end' },
+        { hmong: 'Koj noj dab tsi?', english: 'What do you eat?', note: 'the question word where the answer goes' },
+      ],
+    },
+    {
+      id: 'grammar-sentence-structure-check-order',
+      kind: 'practice',
+      title: 'Which order?',
+      prompt: 'Which word order is right for “I eat”?',
+      options: ['Kuv noj mov.', 'Kuv mov noj.', 'Noj kuv mov.', 'Mov kuv noj.'],
+      answer: 'Kuv noj mov.',
+    },
+    {
+      id: 'grammar-sentence-structure-check-time',
+      kind: 'practice',
+      title: 'Where does the time go?',
+      prompt: 'Which sentence says “Tomorrow I will go”?',
+      options: ['Kuv tagkis yuav mus.', 'Tagkis kuv yuav mus.', 'Yuav mus tagkis kuv.', 'Kuv yuav tagkis mus.'],
+      answer: 'Tagkis kuv yuav mus.',
+    },
+    {
+      id: 'grammar-sentence-structure-check-question',
+      kind: 'practice',
+      title: 'Asking',
+      prompt: 'Which sentence asks “What do you eat?”',
+      options: ['Koj dab tsi noj?', 'Dab tsi koj noj?', 'Koj noj dab tsi?', 'Noj koj dab tsi?'],
+      answer: 'Koj noj dab tsi?',
+    },
+    { id: 'grammar-sentence-structure-quiz', kind: 'quiz', title: 'Learn the words' },
+  ],
+}

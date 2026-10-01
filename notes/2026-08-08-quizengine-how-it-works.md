@@ -1,5 +1,14 @@
 # 2026-08-08 — How QuizEngine works (walkthrough for me)
 
+> ⚠️ **SUPERSEDED 2026-09-22 by [learning/feature-logic/quiz-engine-explained.md](../learning/feature-logic/quiz-engine-explained.md)**,
+> which merges this note with everything that changed after it. Read that one.
+>
+> Kept as-is because it is the record of what the file looked like in August, but
+> **its line numbers are now wrong** (the file grew from ~300 to 562 lines), and it
+> predates: the direction setting (`reversible` / `orientDataset`), the status
+> filter, the derived `questionCount`, path unit quizzes, and the daily allowance.
+> Both bugs in Part 7 have since been fixed.
+
 A read-along explainer for [src/components/quiz/QuizEngine.jsx](../src/components/quiz/QuizEngine.jsx).
 Not a change log — this is the "what is this file actually doing" note.
 

@@ -65,6 +65,9 @@ module.exports = {
           500: v('danger-500'), 700: v('danger-700'), 900: v('danger-900'),
         },
         orange: { 200: v('orange-200'), 900: v('orange-900') },
+        // Lime is NOT part of the success (emerald) scale — it's the lighter,
+        // brighter green for a passing quiz score. 200 = background, 900 = text.
+        lime: { 200: v('lime-200'), 900: v('lime-900') },
       },
       boxShadow: {
         warm: '0 4px 14px -2px rgba(120, 80, 40, 0.12), 0 2px 4px -2px rgba(120, 80, 40, 0.08)',

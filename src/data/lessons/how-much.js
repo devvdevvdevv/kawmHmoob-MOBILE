@@ -16,7 +16,13 @@ export const howMuch = {
       body: [
         '"Pes tsawg" is the Hmong phrase for "how much" or "how many". Paired with "yog" it asks the price of something:',
         '> Yog pes tsawg? — How much is it?',
-        'One question word covers both prices and counts — context does the rest. Notice where it sits: Hmong question words usually come at the end of the sentence, so listen for "pes tsawg?" as the closing beat of the question.',
+        // Was: '…Notice where it sits: Hmong question words usually come at the end of
+        // the sentence, so listen for "pes tsawg?" as the closing beat…' — WRONG for pes
+        // tsawg (author, 2026-09-26): it goes BEFORE the noun, where a number would go.
+        'One question word covers prices, counts and ages, and what exactly it asks depends mostly on context. It is mostly for asking how much of something there is.',
+        'Notice where it sits. Unlike most question words, pes tsawg does not wait for the end of the sentence: it goes where a number would go, after the verb and before the noun.',
+        '> Koj muaj pes tsawg xyoo? — How old are you?',
+        'Only when there is no noun after it, as in Yog pes tsawg?, does it end the sentence.',
       ],
     },
     {

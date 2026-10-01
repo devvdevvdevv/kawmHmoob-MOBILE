@@ -3,7 +3,16 @@ import { Link } from 'expo-router'
 import { lessonProgress } from '../../data/lessons.js'
 import { useProgress } from '../../hooks/useProgress.js'
 import { useSubscription, canAccess } from '../../context/SubscriptionContext.jsx'
+import PlaceholderBadge from '../common/PlaceholderBadge.jsx'
 
+
+// ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
+// (`border` + `border-cream-200`) read too dark on cream; shadow-warm and the
+// background contrast do the separating now.
+//
+// A className is a STRING — one class inside it cannot be commented out, so the
+// token was deleted and this note is the record.
+// TO RESTORE: re-add those two classes to the card classNames below.
 // One lesson tile — used by the Learn hub tab and the Unit page. It reads its
 // own progress/tier state, so callers just pass the lesson + its unit. Mirrors
 // the web LessonCard; the guest "Free account" badge isn't ported (the RN app
@@ -19,9 +28,11 @@ export default function LessonCard({ unit, lesson }) {
 
   return (
     <Link href={`/learn/${unit.id}/${lesson.id}`} asChild>
-      <Pressable className="rounded-md bg-cream-50 border border-cream-200 p-5 active:bg-cream-100">
+      <Pressable className="rounded-md bg-cream-50 p-5 active:bg-cream-100">
         <View className="flex-row justify-between items-start mb-2 gap-3">
           <Text className="font-serif text-xl text-stone-900 flex-1">{lesson.title}</Text>
+          {/* Placeholder lessons (2026-09-28) — shown alongside Pro / Done, never instead. */}
+          {lesson.placeholder ? <PlaceholderBadge /> : null}
           {locked ? (
             <View className="rounded-full bg-clay-600 px-2 py-0.5">
               <Text className="text-xs font-semibold text-cream-50">◆ Pro</Text>
@@ -32,7 +43,7 @@ export default function LessonCard({ unit, lesson }) {
             </View>
           ) : null}
         </View>
-        <Text className="text-sm text-stone-700 mb-4">{lesson.summary}</Text>
+        <Text className="text-sm font-medium text-stone-700 mb-4">{lesson.summary}</Text>
         <View className="h-2 w-full bg-cream-200 rounded-full overflow-hidden">
           <View className="h-full bg-clay-600" style={{ width: `${pct}%` }} />
         </View>

@@ -6,6 +6,7 @@ import { useSubscription } from '../../context/SubscriptionContext.jsx'
 import { useProgress } from '../../hooks/useProgress.js'
 import { categories } from '../../data/vocabulary.js'
 import { loadJSON, saveJSON } from '../../lib/storage.js'
+import { dialectOptions, DIALECT_NOTE } from '../../data/dialects.js'
 import ProgressBar from '../progress/ProgressBar.jsx'
 import Button from '../ui/Button.jsx'
 import Picker from '../ui/Picker.jsx'
@@ -15,8 +16,18 @@ import InfoModal from '../common/InfoModal.jsx'
 import DeleteAccountModal from './DeleteAccountModal.jsx'
 import { MONETIZATION_ENABLED } from '../../lib/launch.js'
 
+
+// ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
+// (`border` + `border-cream-200`) read too dark on cream; shadow-warm and the
+// background contrast do the separating now.
+//
+// A className is a STRING — one class inside it cannot be commented out, so the
+// token was deleted and this note is the record.
+// TO RESTORE: re-add those two classes to the card classNames below.
 // Smoothin collapsible animation
 import { LayoutAnimation, Platform, UIManager } from 'react-native'
+import Eyebrow from '../ui/Eyebrow.jsx'
+import { useThemeColor } from '../../lib/themeColor.js'
 
 // You can change your username at most once every 2 weeks.
 const USERNAME_COOLDOWN_DAYS = 14
@@ -24,18 +35,20 @@ const USERNAME_COOLDOWN_DAYS = 14
 // Note: data export uses console.log on native (no Blob download).
 // To export to a file on device, you can add expo-file-system + expo-sharing later.
 
-const dialectOptions = [
-  { value: 'white', label: 'White Hmong (Hmoob Dawb)' },
-  { value: 'green', label: 'Green Hmong (Moob Leeg)' },
-]
+// ⚠️ THE LIST MOVED — 2026-09-12. It was copied into four files and they had
+// already drifted: onboarding offered Dananshan, this did not. src/data/dialects.js
+// is the one source, and it carries the database-constraint warning too.
 
 // Reasons
 
 const REASONS = [
-  'Sync your streak, XP, and saved words across devices',
+  // Saved words are NOT synced — NotebookContext is AsyncStorage-only. Restore the
+  // line below when the notebook mirrors to Supabase the way ProgressContext does.
+  // 'Sync your streak, XP, and saved words across devices',
+  'Sync your streak and XP across devices',
   'Never lose your progress if you reinstall',
   'Compete on the leaderboard',
-  'Unlock Kawm Hmoob Pro when you’re ready',
+  'Unlock KawmHmong Pro when you’re ready',
 ]
 
 // Animation configuration
@@ -45,9 +58,14 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
 }
 
 export default function ProfilePage() {
+  // ⚠️ A HOOK, so it sits above every early return in this component — the
+  // colours it resolves change with the theme, and hook order may not.
+  const themeColor = useThemeColor()
+
   const router = useRouter()
   const { user, logout, updateProfile, deleteAccount } = useAuth()
-  const { isPro, manageSubscription, devProOverride, devSetPro } = useSubscription()
+  // manageSubscription moved to app/subscription.jsx — this page links there now.
+  const { isPro, devProOverride, devSetPro } = useSubscription()
   const { xp, streakData, quizScores, vocabProgress, completedLessons, exportData } = useProgress()
 
   const wordsKnown = Object.values(vocabProgress).filter((s) => s === 'known').length
@@ -120,7 +138,7 @@ export default function ProfilePage() {
 
   if (user.isGuest) {
     return (
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-8 max-w-xl">
+      <View className="rounded-md bg-cream-50 p-8 max-w-xl">
         <Text className="font-serif text-3xl text-stone-900 mb-2">Guest Account</Text>
         <Text className="text-stone-700 mb-5">
           You're learning as a guest. Progress is saved on this device only. Create an account to sync your work.
@@ -139,7 +157,7 @@ export default function ProfilePage() {
           LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
           setOpen((o) => !o)
         }}
-        className="flex-row items-center justify-between py-3 border-t border-cream-200 "
+        className="flex-row items-center justify-between py-3 border-t border-cream-200"
         accessibilityRole='button'
         accessibilityState={{expanded: open}}
         
@@ -215,7 +233,7 @@ export default function ProfilePage() {
   return (
     <View className="gap-6 max-w-3xl">
       {/* Identity + inline username edit */}
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-6">
+      <View className="rounded-md bg-cream-50 p-6">
         <Text className="font-serif text-4xl text-stone-900">{user.displayName}</Text>
         {editingUsername ? (
           <View className="mt-3">
@@ -251,13 +269,22 @@ export default function ProfilePage() {
       </View>
 
       {MONETIZATION_ENABLED && (
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-6">
-        <Text className="text-xs uppercase tracking-[3px] text-clay-600 mb-2">Subscription</Text>
+      <View className="rounded-md bg-cream-50 p-6">
+        <Eyebrow tone="accent" className="mb-2">Subscription</Eyebrow>
         {isPro ? (
           <>
-            <Text className="font-serif text-2xl text-stone-900 mb-3">Kawm Hmoob Pro</Text>
+            <Text className="font-serif text-2xl text-stone-900 mb-3">KawmHmong Pro</Text>
             <Text className="text-stone-700 mb-4">You have full access to every lesson, quiz, and reading.</Text>
-            <Button variant="ghost" onPress={manageSubscription}>Manage subscription</Button>
+            {/* ⚠️ GOES TO /subscription NOW, not straight out to Google Play.
+                The old button called manageSubscription() directly, which
+                answered "how do I cancel" and no other question — not which
+                plan, not when it renews, not which ACCOUNT holds it, which is
+                the one this app most needs to answer. The Play hand-off still
+                exists; it lives on that screen, one step further in, where the
+                user can first see what they are managing. */}
+            <Link href="/subscription" asChild>
+              <Button variant="ghost">Manage subscription</Button>
+            </Link>
           </>
         ) : (
           <>
@@ -292,20 +319,21 @@ export default function ProfilePage() {
         <Stat icon="check" label="Words Known" value={wordsKnown} />
       </View>
 
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-6">
+      <View className="rounded-md bg-cream-50 p-6">
         <Text className="font-serif text-xl text-stone-900 mb-3">Dialect Preference</Text>
         <Picker
           value={user.dialectPreference}
           onChange={(v) => {
-              updateProfile({ dialectPreference: v }).catch((e) =>
-                console.warn('[profile] could not save dialect', e)
-              )
-            }}
-          options={dialectOptions}
+            updateProfile({ dialectPreference: v }).catch((e) =>
+              console.warn('[profile] could not save dialect', e)
+            )
+          }}
+          options={dialectOptions()}
         />
+        <Text className="text-xs text-stone-600 mt-2">{DIALECT_NOTE}</Text>
       </View>
 
-      <View className="rounded-md bg-cream-50 border border-cream-200 p-6">
+      <View className="rounded-md bg-cream-50 p-6">
         <Text className="font-serif text-xl text-stone-900 mb-4">My Progress</Text>
         <View className="gap-3">
           {categories.map((c) => {
@@ -336,14 +364,14 @@ export default function ProfilePage() {
         {/* Danger zone — a clearly-bounded, tinted card, not a bare link. */}
         <View className="rounded-md border border-red-200 bg-red-50/60 p-4">
           <Text className="text-xs uppercase tracking-wider font-semibold text-red-700 mb-1">Danger zone</Text>
-          <Text className="text-sm text-stone-600 mb-3">
+          <Text className="text-sm font-medium text-stone-600 mb-3">
             Permanently delete your account and all progress. This can't be undone.
           </Text>
           <Pressable
             onPress={() => { setDeleteErr(null); setModal('delete') }}
             className="flex-row items-center justify-center gap-2 rounded-md border border-red-300 bg-cream-50 px-4 py-3 active:bg-red-100"
           >
-            <Icon name="trash" size={18} color="#dc2626" />
+            <Icon name="trash" size={18} color={themeColor('--c-danger-500')} />
             <Text className="text-sm font-semibold text-red-700">Delete my account</Text>
           </Pressable>
         </View>
@@ -390,7 +418,7 @@ export default function ProfilePage() {
 
 function Stat({ icon, label, value }) {
   return (
-    <View className="grow basis-[47%] rounded-md bg-cream-50 border border-cream-200 p-5 items-center">
+    <View className="grow basis-[47%] rounded-md bg-cream-50 p-5 items-center">
       <Icon name={icon} size={22} tone="accent" />
       <Text className="font-serif text-3xl text-stone-900 mt-1.5">{value}</Text>
       <Text className="text-xs uppercase tracking-wider text-clay-600 mt-1">{label}</Text>

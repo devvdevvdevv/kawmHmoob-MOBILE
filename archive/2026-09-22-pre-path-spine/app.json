@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "KawmHmoob",
+    "slug": "kawm-hmoob",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "kawmhmoob",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "icon": "./assets/icon.png",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kawmhmoob.app"
+    },
+    "android": {
+      "package": "com.kawmhmoob.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#B0E0E6"
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Kawm Hmoob uses your mic to score your pronunciation."
+        }
+      ],
+      "expo-asset",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/adaptive-icon.png",
+          "imageWidth": 320,
+          "resizeMode": "contain",
+          "backgroundColor": "#B0E0E6"
+        }
+      ],
+      "@siteed/audio-studio"
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "6ca4171e-b347-43e1-bf3e-4ab143c877a8"
+      }
+    },
+    "owner": "veddveddvedd"
+  }
+}
