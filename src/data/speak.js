@@ -45,6 +45,7 @@ const toneSpeakGroup = {
     hmong: t.example2, // demonstration word for this tone — verify vs recording
     english: `${t.name} tone`,
     audio: t.audio,
+    audioFemale: t.audioFemale, // Emily's Cim name, 2026-10-25 — PronounceStep picks by voice
     tip: t.description,
   })),
 }

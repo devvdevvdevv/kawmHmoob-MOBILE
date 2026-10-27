@@ -123,6 +123,28 @@ export function scoreBand(score) {
   return { label: 'Different shape', hint: 'Hear the native clip, then match its rise and fall.' }
 }
 
+/**
+ * The caveat that goes WITH EVERY SCORE SHOWN — 2026-10-15, the author: "need to
+ * add a message that tone scoring is still experimental and may not be accurate."
+ *
+ * ⚠️ IT LIVES HERE, NEXT TO scoreBand(), BECAUSE TWO SCREENS SHOW A SCORE:
+ * PronounceStep (phrase, group and word-family practice) and LessonSteps (the
+ * Speak lesson runner). One string, imported twice — the alternative is two
+ * copies that drift, and the one that drifts is the honest disclaimer.
+ *
+ * ⚠️ AND IT IS SHOWN EVERY TIME, not once. Speak already has a first-visit
+ * modal saying the same thing (`useOnce('speak-beta')` in app/(tabs)/speak.jsx),
+ * and a notice dismissed on day one is not attached to the number somebody reads
+ * on day twelve. This module's own comments give the reason the caveat is true:
+ * the thresholds in scoreBand() were never calibrated against human judgement
+ * and src/data/contours.json is still empty.
+ *
+ * Kept to one short line on purpose. A full orange ribbon on every take would
+ * either shout or be tuned out, and this has to sit under a number without
+ * drowning it.
+ */
+export const SCORE_CAVEAT = 'Tone scoring is experimental and may not be accurate — trust the curve more than the number.'
+
 /** Human-readable text for each `reason`. Keeps copy out of components. */
 export const REASON_TEXT = {
   'no-recording': 'Record yourself first.',

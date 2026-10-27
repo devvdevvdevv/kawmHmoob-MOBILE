@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { View, Text } from 'react-native'
 import AudioButton from '../common/AudioButton.jsx'
 import Button from '../ui/Button.jsx'
 import ToneCurve from './ToneCurve.jsx'
 import { useRecorder, RECORDING_IS_ANALYSABLE } from '../../hooks/useRecorder.js'
 import { useAbCompare } from '../../hooks/useAbCompare.js'
-import { scoreTake, scoreBand, REASON_TEXT } from '../../lib/pronounceScore.js'
+import { scoreTake, scoreBand, REASON_TEXT, SCORE_CAVEAT } from '../../lib/pronounceScore.js'
 import { syllableTones } from '../../lib/hmongTone.js'
+import { useVoicePrefs, pickVoice } from '../../lib/voicePrefs.js'
+import VoiceToggle from '../reference/VoiceToggle.jsx'
 
 
 // ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
@@ -36,7 +38,16 @@ import { syllableTones } from '../../lib/hmongTone.js'
 // feature. @siteed already ships in the Conversations flow through this same
 // hook, so this adds no new native dependency.
 export default function PronounceStep({ phrase, done, onDone }) {
-  const hasAudio = Boolean(phrase.audio)
+  // ⚠️ MALE / FEMALE — 2026-10-25. `src` is THE native clip for this screen: what
+  // Listen plays, what the take is scored against and what A/B compare plays. All
+  // three must agree, or the score is against a voice the learner did not hear.
+  // Scoring is per-clip median-normalised (semitones), so a female reference is a
+  // fair target for any learner — but it needs her contour in contours.json
+  // (node scripts/extract-contours.mjs assets/audio/<folder>/female).
+  // Was: phrase.audio at every one of those sites.
+  const { voice, setVoice } = useVoicePrefs()
+  const src = pickVoice(phrase, voice)
+  const hasAudio = Boolean(src)
   const { status, uri, start, stop, playTake, playing } = useRecorder()
 
   // ⚠️ A/B COMPARE — ADDED 2026-09-12, and it was already built. The Conversations
@@ -61,7 +72,7 @@ export default function PronounceStep({ phrase, done, onDone }) {
     if (!uri) return
     setScoring(true)
     try {
-      setResult(await scoreTake(uri, phrase.audio))
+      setResult(await scoreTake(uri, src))
     } catch (e) {
       setResult({ score: null, ref: [], user: [], reason: 'error', error: e.message })
     } finally {
@@ -71,6 +82,9 @@ export default function PronounceStep({ phrase, done, onDone }) {
 
   // A new take invalidates the old score — leaving it on screen would attribute
   // the previous attempt's curve to this one.
+  // A score was computed against ONE voice's curve; switching voice makes it stale.
+  useEffect(() => { setResult(null) }, [src])
+
   const startTake = () => {
     setResult(null)
     start()
@@ -82,11 +96,19 @@ export default function PronounceStep({ phrase, done, onDone }) {
         <Text className="font-serif text-4xl text-clay-700 mb-2 text-center">{phrase.hmong}</Text>
         <Text className="text-stone-600 mb-4 text-center">{phrase.english}</Text>
         <View className="flex-row items-center gap-3">
-          <AudioButton audioSrc={phrase.audio} wordId={phrase.id} size="lg" />
+          <AudioButton audioSrc={src} wordId={phrase.id} size="lg" />
           <Text className="font-sans text-sm text-stone-500">
             {hasAudio ? 'Listen' : 'No recording yet'}
           </Text>
         </View>
+        {/* Only where a second voice exists — on a phrase with one recording the
+            switch would do nothing, and a control that does nothing reads as broken. */}
+        {phrase.audioFemale ? (
+          // self-stretch so the toggle can reach the right edge of this centred column.
+          <View className="mt-4 self-stretch">
+            <VoiceToggle voice={voice} onChange={setVoice} />
+          </View>
+        ) : null}
       </View>
 
       {/* ── Tones in this phrase ──────────────────────────────────────────────
@@ -190,7 +212,7 @@ export default function PronounceStep({ phrase, done, onDone }) {
         {uri && status !== 'recording' && hasAudio && (
           <Button
             variant="secondary"
-            onPress={abRunning ? stopAb : () => compare(phrase.audio, uri)}
+            onPress={abRunning ? stopAb : () => compare(src, uri)}
             className="w-full mt-2"
           >
             {abRunning
@@ -224,6 +246,14 @@ export default function PronounceStep({ phrase, done, onDone }) {
               </Text>
               <Text className="font-sans text-[10px] text-stone-500 opacity-70 mt-1">
                 {result.score}/100
+              </Text>
+              {/* ⚠️ ATTACHED TO THE NUMBER, EVERY TIME — 2026-10-15. Speak's
+                  first-visit modal says this too, but a notice dismissed on day
+                  one is not attached to the score read on day twelve. The string
+                  is SCORE_CAVEAT in lib/pronounceScore.js, shared with the
+                  lesson runner so the two cannot drift. */}
+              <Text className="font-sans text-[10px] text-stone-500 text-center leading-snug mt-2">
+                {SCORE_CAVEAT}
               </Text>
             </View>
           ) : (

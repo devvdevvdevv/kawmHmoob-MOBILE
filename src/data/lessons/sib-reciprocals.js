@@ -13,7 +13,8 @@ export const sibReciprocals = {
       kind: 'intro',
       title: 'How "sib" works',
       body: [
-        '"Sib" is a small word placed before a verb to make the action reciprocal — something two or more people do TO each other. A verb meaning "to hit" becomes "to hit each other" the moment "sib" goes in front of it.',
+        '"Sib" is a small word placed before a verb to make the action reciprocal — something two or more people do TO each other.',
+        //' A verb meaning "to hit" becomes "to hit each other" the moment "sib" goes in front of it.',
         'Because the action flows both ways, the subject is naturally two or more people:',
         '> Nkawd sib hlub. — The two of them love each other.',
         'You have already met "sib" in one very common phrase:',
@@ -23,10 +24,10 @@ export const sibReciprocals = {
         '## Reading a "sib" sentence',
         'Here it is doing real work in a full sentence:',
         '> Wb sib ntaus. / Lawv sib ntaus. — We fight each other. / They are fighting each other.',
-        'Most of the time "sib" appears with a plural subject like "wb" or "lawv" — the mutual action needs at least two people to flow between. A few uses drop the plural noun and lean on context instead, but that is the exception, not the pattern to learn from.',
+        'Most of the time "**sib**" appears with a plural subject like "**wb**" or "**lawv**" — the mutual action needs at least two people to flow between. A few uses drop the plural noun and lean on context instead, but that is the exception, not the pattern to learn from.',
 
         '## How far it reaches',
-        '"Sib" can theoretically combine with almost any verb that could involve two or more people — the five in this lesson are simply the most common. Not every combination will sound natural to a fluent ear, though: whether a given "sib + verb" pair actually makes sense is context-dependent, the same way not every English verb takes "each other" comfortably ("we breakfast each other" does not work, even though "we help each other" does).',
+        '"**Sib**" can theoretically combine with almost any verb that could involve two or more people — the five in this lesson are simply the most common. Not every combination will sound natural to a fluent ear, though: whether a given "**sib + verb**" pair actually makes sense is context-dependent, the same way not every English verb takes "each other" comfortably ("we breakfast each other" does not work, even though "we help each other" does).',
       ],
     },
     {

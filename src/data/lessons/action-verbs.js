@@ -1,138 +1,275 @@
+
 // Standalone lesson: common Hmong action verbs.
-// Content filled 2026-07-16 (Slice A pass) — audio still pending, see
-// instructions/audio-files.md. Follows the lesson model in ../lessons.js.
 //
-// ⚠️ REWRITTEN 2026-09-27 (author: "need a better lesson explanation for action verbs,
-// because that explanation is more suited for time verb placement; verbs need to be
-// more general"). The old intro was mostly yuav / lawm — Time Markers material. Now it
-// is about VERBS: word order, no conjugation (one line, pointing on to Time Markers),
-// verbs that bring their own object, commands, verbs in a row, describing words that
-// act as verbs, and where tsis / puas go. Examples are the Verbs set's own sentences
-// (Kuv pom koj, Kuv mus tsev, Kuv nyeem ntawv, Qhib lub rooj…), "Hnub no kub heev"
-// (the heev card), "Kuv zoo siab" (the pronoun story) and "Kuv mus xyuas kuv pog"
-// (the xyuas card — an AI example, so TODO-VERIFY). Ids unchanged (progress keys).
+// Expanded lesson pass.
+// Audio paths for the original seven verbs are preserved.
+// Audio for additional verbs still needs to be created and reviewed.
+//
+// TODO:
+// - Review all example sentences with a fluent White Hmong speaker.
+// - Confirm translations and natural usage.
+// - Add audio for the new verbs after recordings are approved.
 
 export const actionVerbs = {
   id: 'foundations-action-verbs',
   title: 'Action Verbs',
-  // Was: 'Everyday Hmong verbs for the things people do.'
-  summary: 'Everyday verbs, and how a Hmong sentence is built around them.',
+  summary:
+    'Learn everyday Hmong verbs, build simple sentences, and talk about common actions.',
   vocab: 'verbs',
   reference: 'grammar',
   steps: [
     {
       id: 'foundations-action-verbs-intro',
       kind: 'intro',
-      title: 'How Hmong verbs work',
+      title: 'How Hmong action verbs work',
       body: [
-        'A verb names what someone does: eat, go, see, read, talk. In Hmong the verb is the heart of the sentence, and it is refreshingly simple to use.',
-        '## Word order: who, then the verb, then what',
-        'A basic sentence runs like English: the doer, the verb, then the thing it happens to.',
-        '> Kuv pom koj. — I see you.',
-        '> Kuv nug koj. — I ask you.',
-        '> Kuv tham nrog koj. — I talk with you.',
-        'A place goes straight after a verb of motion, with no word for “to”:',
-        '> Kuv mus tsev. — I go home. (literally “I go home”, no “to”)',
-        '## A verb never changes',
-        'Noj is noj whoever eats and whenever they eat: there is no eats, ate or eating. I eat, she eats, they ate are all the same verb. Time is shown by other words; the Time Markers lesson teaches them.',
-        // The author, 2026-09-27: action verbs can stand alone, but are almost always said
-        // with a given noun; together they name the activity itself. Was a shorter
-        // "Many verbs bring their own object" with four examples.
-        '## Verb + its everyday noun',
-        'An action verb can be used by itself, but in everyday Hmong it is almost always said together with a noun. The pair names the activity itself, and it is the normal way to say, or explain, what someone is doing. English often uses the verb alone for the same thing.',
-        '> Taug kev — to walk. (taug = to walk along, kev = road: literally “walk the road”)',
-        '> Noj mov — to eat, to have a meal. (noj = eat, mov = food)',
-        '> Nyeem ntawv — to read. (nyeem = read, ntawv = writing)',
-        '> Sau ntawv — to write. (sau = write, ntawv = writing)',
-        '> Kawm ntawv — to study, to go to school. (kawm = learn, ntawv = writing)',
-        '> Mloog lus — to listen; to do as you are told. (mloog = listen, lus = words)',
-        '> Hais lus — to speak. (hais = say, lus = words)',
-        'So “Kuv nyeem ntawv” is simply “I am reading”: you do not need to say what you read. Learn these seven as pairs; they are some of the most common phrases in the language.',
-        // Added 2026-09-28 — the other direction has its own unit, Nouns by Purpose.
-        'It works the other way too: a verb after a NOUN says what the thing is for. Lub rooj noj mov is a dining table, tsev kawm ntawv a school. That is its own lesson, Nouns by Purpose.',
-        '## A command is just the verb',
-        'Leave out the doer and the verb becomes an instruction:',
-        '> Qhib lub rooj. — Open the door.',
-        '> Kaw lub rooj. — Close the door.',
-        '## Two verbs in a row',
-        'Hmong happily puts verbs side by side, with no word between them. Mus (go) and los (come) often lead:',
-        '> Kuv mus xyuas kuv pog. — I go (and) check on my grandmother.',
-        '> Kuv mus saib yeeb yam. — I go (and) watch a movie.',
-        '## Describing words act like verbs',
-        // Softened 2026-09-28 (author: yog before a describing word = a statement with emphasis). Was: 
-        // 'Words like hot, happy or big work as verbs themselves, so there is no “is” in front of them. Yog (to be) is not used before a describing word.',
-        // ⚠️ NO YOG BEFORE A DESCRIBING WORD — the author, 2026-09-28 (emphatic): Nws zoo heev ✓, Nws yog zoo heev ✗. This reverses the same-day "through yog" softening. Was:
-        // 'Words like hot, happy or big work as verbs themselves, so they do not need an “is” in front of them. Yog can be added to make it a statement with more emphasis: Tsev yog loj, the house is big.',
-        'Words like hot, happy or big work as verbs themselves, so there is no “is” in front of them. Yog (to be) is not used before a describing word: Nws zoo heev, not Nws yog zoo heev.',
-        '> Hnub no kub heev. — It is very hot today. (literally “today hot very”)',
-        '> Kuv zoo siab. — I am happy.',
-        '## Not, and asking: right before the verb',
-        'Tsis (not) and puas (the yes/no question word) both go directly before the verb:',
-        '> Kuv tsis mus. — I am not going.',
-        '> Koj puas mus? — Are you going?',
-        'Learn the verbs below, and you can already build real sentences with the pronouns you know.',
-        // Was (until 2026-09-27):
-        //   'Action verbs name the things people do — eat, go, see, work. Hmong verbs do not change form for tense or person; the same word is used regardless of who does it or when.',
-        //   'To place an action in time, Hmong adds small marker words instead of changing the verb:',
-        //   '> Kuv yuav noj. — I will eat. ("yuav" points to the future)',
-        //   '> Kuv noj lawm. — I have eaten. ("lawm" at the end shows it is done)',
-        //   'You will meet these markers properly in the Tense Markers lesson — for now, focus on learning the verbs themselves.',
+        'Action verbs tell you what someone, or something does. You use them to talk about eating, drinking, going somewhere, seeing something, speaking, working, and many other everyday activities.',
+        'Here are a few common everyday verbs to start with:',
+        '> noj — eat',
+        '> haus — drink',
+        '> mus — go',
+        '> los — come',
+        '> pom — see',
+        '> ua — do, make',
+        '> hais — say, speak',
+        '## 1. The verb stays the same',
+        'Hmong verbs do not change their form to match the person doing the action. The verb **"noj"** is still **"noj"** whether you are talking about yourself, another person, or several people.',
+        '> Kuv noj. — I eat.',
+        '> Nws noj. — He or she eats.',
+        '> Peb noj. — We eat.',
+        'The subject changes, but the verb stays the same. You do not add an English-style ending like the -s in “eats.”',
+        '## 2. A simple sentence',
+        'A common Hmong sentence pattern is subject + verb. When the action has an object, the object often follows the verb.',
+        '> Kuv mus. — I go.',
+        '> Nws los. — He or she comes.',
+        '> Kuv noj mov. — I eat a meal.',
+        '> Kuv haus dej. — I drink water.',
+        'In the last two examples, **"mov"** means rice or food, and **"dej"** means water. The verb comes before the thing being eaten or drunk.',
+        '## 3. Learn verbs in useful pairs',
+        'Some verbs are easier to remember together because their meanings contrast or complement each other.',
+        '> mus — go',
+        '> los — come',
+        '> noj — eat',
+        '> haus — drink',
+        '> pom — see',
+        '> hnov — hear, feel',
+        'For example, **"mus"** describes going, while **"los"** describes coming. Which one fits depends on the direction of movement and the context.',
+        '## 4. Verbs in everyday expressions',
+        'A verb may appear with another word to form a common expression. Learning the whole phrase helps you understand how the verb is actually used.',
+        '> noj mov — eat a meal',
+        '> haus dej — drink water',
+        '> hais lus — speak',
+        '> ua tsaug — thank you',
+        'Do not always translate each word separately. For example, **"ua tsaug"** is the everyday expression for “thank you”; its meaning is more useful to learn as a whole phrase.',
+        '## 5. Talking about time',
+        'Hmong does not change the verb itself to form past, present, and future tenses in the way English does. Other words and the surrounding context help show when an action happens or how it unfolds.',
+        '> Kuv yuav noj. — I will eat.',
+        '> Kuv tab tom noj mov. — I am eating a meal.',
+        '> Kuv noj lawm. — I have eaten / I am done eating / I already ate, depending on context.',
+        '> Kuv tau noj mov. — I have eaten.',
+        'These expressions do different jobs. **"Yuav"** can indicate a future action or intention. **"Tab tom"** marks an action in progress. **"Lawm"** context aside, **"lawm"** often signals completion or a change of state. **"Tau"** has several uses and does not simply mean “past tense” in every sentence.',
+        'You will study these markers in the Tense Markers lesson. For now, focus on recognizing the verb and learning how it combines with other words.',
+        '## 6. A useful way to practise',
+        'Start with a short sentence, then change one part at a time.',
+        '> Kuv noj mov. — I eat a meal.',
+        '> Kuv haus dej. — I drink water.',
+        '> Nws noj mov. — He or she eats a meal.',
+        '> Peb haus dej. — We drink water.',
+        'Try changing the subject, the verb, or the object. This helps you learn how to build sentences rather than memorizing isolated words.',
       ],
     },
     {
       id: 'foundations-action-verbs-examples',
       kind: 'examples',
       title: 'Common action verbs',
-      intro: 'Read each verb aloud.',
+      intro:
+        'Learn each verb with a meaning and a useful phrase. Read the verb aloud, then practise the full expression.',
       items: [
-        { hmong: 'Noj', audio: 'grammar/action-verbs/hmong-action-verbs-noj.mp3', english: 'to eat', note: '"Noj mov" — literally "eat rice" — is the everyday way to say "have a meal."' },
-        { hmong: 'Haus', audio: 'grammar/action-verbs/hmong-action-verbs-haus.mp3', english: 'to drink', note: '"Haus dej" = drink water. The final -s marks a low tone.' },
-        { hmong: 'Mus', audio: 'grammar/action-verbs/hmong-action-verbs-mus.mp3', english: 'to go', note: 'Motion away from the speaker.' },
-        { hmong: 'Los', audio: 'grammar/action-verbs/hmong-action-verbs-los.mp3', english: 'to come', note: 'Motion toward the speaker — the natural pair of "mus."' },
-        { hmong: 'Pom', audio: 'grammar/action-verbs/hmong-action-verbs-pom.mp3', english: 'to see', note: 'To see or catch sight of something.' },
-        { hmong: 'Ua', audio: 'grammar/action-verbs/hmong-action-verbs-ua.mp3', english: 'to do / make', note: 'The all-purpose verb — it appears in many set phrases, like "ua tsaug" (thank you).' },
-        { hmong: 'Hais', audio: 'grammar/action-verbs/hmong-action-verbs-hais.mp3', english: 'to say / speak', note: '"Hais lus" = to speak (literally "say words").' },
-        // Added 2026-09-27 — more everyday verbs from the Verbs set.
-        { hmong: 'Nyeem', english: 'to read', note: '"Nyeem ntawv" = to read (literally "read writing").' },
-        { hmong: 'Sau', english: 'to write', note: '"Sau ntawv" = to write.' },
-        { hmong: 'Kawm', english: 'to learn / study', note: '"Kawm lus Hmoob" = study Hmong.' },
-        { hmong: 'Saib', english: 'to look at / watch' },
-        { hmong: 'Tham', english: 'to talk', note: '"Tham nrog koj" = talk with you.' },
-        { hmong: 'Nug', english: 'to ask' },
-        { hmong: 'Zaum', english: 'to sit' },
+        {
+          hmong: 'Noj',
+          audio: 'grammar/action-verbs/hmong-action-verbs-noj.mp3',
+          english: 'to eat',
+          note: '**"Noj mov"** means “eat a meal.” **"Noj"** can also appear with other foods.',
+        },
+        {
+          hmong: 'Haus',
+          audio: 'grammar/action-verbs/hmong-action-verbs-haus.mp3',
+          english: 'to drink',
+          note: '**"Haus dej"** means “drink water.” The final s is part of the word and represents its tone.',
+        },
+        {
+          hmong: 'Mus',
+          audio: 'grammar/action-verbs/hmong-action-verbs-mus.mp3',
+          english: 'to go',
+          note: 'Describes going or moving away toward a destination. The exact direction depends on context.',
+        },
+        {
+          hmong: 'Los',
+          audio: 'grammar/action-verbs/hmong-action-verbs-los.mp3',
+          english: 'to come',
+          note: 'Often contrasts with **"mus"**. The direction is understood in relation to the speaker or the context.',
+        },
+        {
+          hmong: 'Pom',
+          audio: 'grammar/action-verbs/hmong-action-verbs-pom.mp3',
+          english: 'to see',
+          note: 'Use it when someone sees or notices a person or thing.',
+        },
+        {
+          hmong: 'Ua',
+          audio: 'grammar/action-verbs/hmong-action-verbs-ua.mp3',
+          english: 'to do, make',
+          note: 'A widely used verb. **"Ua tsaug"** is the common expression for “thank you.”',
+        },
+        {
+          hmong: 'Hais',
+          audio: 'grammar/action-verbs/hmong-action-verbs-hais.mp3',
+          english: 'to say, speak',
+          note: '**"Hais lus"** means “speak.” What is said can be made clear by the rest of the sentence.',
+        },
+        {
+          hmong: 'Hnov',
+          english: 'to hear, feel',
+          note: 'Can refer to hearing a sound or feeling a sensation. Learn the meaning from context.',
+        },
+        {
+          hmong: 'Nyeem',
+          english: 'to read',
+          note: '**"Nyeem ntawv"** means “read” or “read written material.”',
+        },
+        {
+          hmong: 'Sau',
+          english: 'to write',
+          note: '**"Sau ntawv"** means “write” or “write something down,” depending on context.',
+        },
+        {
+          hmong: 'Pw',
+          english: 'to sleep, lie down',
+          note: 'A useful everyday verb for talking about sleeping or lying down.',
+        },
+        {
+          hmong: 'Nyob',
+          english: 'to stay, live, be located',
+          note: 'Often used to talk about where someone lives or where someone or something is.',
+        },
+        {
+          hmong: 'Khiav',
+          english: 'to run',
+          note: 'An action verb used for running or moving quickly on foot.',
+        },
+        {
+          hmong: 'Ua haujlwm',
+          english: 'to work',
+          note: 'A common phrase for working; learn it as a complete expression.',
+        },
       ],
     },
     {
-      // Added 2026-09-27 — new id, so no existing progress key is reused.
       id: 'foundations-action-verbs-sentences',
       kind: 'examples',
-      title: 'Verbs in sentences',
-      intro: 'Doer, verb, then what it happens to. Read each one aloud.',
+      title: 'Put the verbs into sentences',
+      intro:
+        'See how a verb works with a subject or an object. The translations give you the general meaning; context can affect the most natural English wording.',
       items: [
-        { hmong: 'Kuv pom koj.', english: 'I see you.', note: 'doer + verb + object' },
-        { hmong: 'Kuv mus tsev.', english: 'I go home.', note: 'no word for "to"' },
-        { hmong: 'Kuv kawm lus Hmoob.', english: 'I study Hmong.' },
-        { hmong: 'Kuv tham nrog koj.', english: 'I talk with you.', note: 'nrog = with' },
-        { hmong: 'Qhib lub rooj.', english: 'Open the door.', note: 'a command: just the verb' },
-        { hmong: 'Kuv mus xyuas kuv pog.', english: 'I go check on my grandmother.', note: 'two verbs in a row' },  // TODO-VERIFY (AI example on the xyuas card)
-        { hmong: 'Hnub no kub heev.', english: 'It is very hot today.', note: 'kub (hot) is the verb — no "is"' },
-        { hmong: 'Kuv tsis mus.', english: 'I am not going.', note: 'tsis right before the verb' },
+        {
+          hmong: 'Kuv noj mov.',
+          english: 'I eat a meal.',
+          note: '**"Kuv"** = I; **"noj"** = eat; **"mov"** = rice or food.',
+        },
+        {
+          hmong: 'Kuv haus dej.',
+          english: 'I drink water.',
+          note: 'The object follows the verb: **"haus dej"**.',
+        },
+        {
+          hmong: 'Nws mus.',
+          english: 'He or she goes.',
+          note: 'The verb stays the same when the subject changes.',
+        },
+        {
+          hmong: 'Nws los.',
+          english: 'He or she comes.',
+          note: '**"Los"** is often contrasted with **"mus"**.',
+        },
+        {
+          hmong: 'Kuv pom koj.',
+          english: 'I see you.',
+          note: '**"pom"** is followed by the person being seen.',
+        },
+        {
+          hmong: 'Kuv hais lus.',
+          english: 'I speak.',
+          note: '**"Hais lus"** is a common expression for speaking.',
+        },
+        {
+          hmong: 'Kuv nyeem ntawv.',
+          english: 'I read.',
+          note: '**"Nyeem"** is the verb “read”; **"ntawv"** refers to writing or written material.',
+        },
+        {
+          hmong: 'Kuv sau ntawv.',
+          english: 'I write.',
+          note: '**"Sau ntawv"** is a useful phrase to learn as a unit.',
+        },
+        {
+          hmong: 'Kuv pw.',
+          english: 'I sleep.',
+          note: 'A short sentence with a subject and verb.',
+        },
+        {
+          hmong: 'Kuv nyob hauv tsev.',
+          english: 'I am at home.',
+          note: '**"Nyob"** works with the location phrase **"hauv tsev"**.',
+        },
+        {
+          hmong: 'Kuv ua haujlwm.',
+          english: 'I work.',
+          note: '**"Ua haujlwm"** is a common phrase meaning “work.”',
+        },
+        {
+          hmong: 'Kuv yuav noj mov.',
+          english: 'I will eat a meal.',
+          note: '**"Yuav"** appears before the main verb to express a future action or intention.',
+        },
       ],
     },
     {
-      // Added 2026-09-27 — the author's seven verb + noun pairs. New id.
-      id: 'foundations-action-verbs-pairs',
+      id: 'foundations-action-verbs-practice',
       kind: 'examples',
-      title: 'Verb + noun pairs',
-      intro: 'The verb, then its everyday noun. Together they name the activity.',
+      title: 'Change one part',
+      intro:
+        'Compare these sentences. Notice what changes and what stays the same when the subject or action changes.',
       items: [
-        { hmong: 'Taug kev', english: 'to walk', note: 'taug (walk along) + kev (road)' },
-        { hmong: 'Noj mov', english: 'to eat, to have a meal', note: 'noj (eat) + mov (food)' },
-        { hmong: 'Nyeem ntawv', english: 'to read', note: 'nyeem (read) + ntawv (writing)' },
-        { hmong: 'Sau ntawv', english: 'to write', note: 'sau (write) + ntawv (writing)' },
-        { hmong: 'Kawm ntawv', english: 'to study, to go to school', note: 'kawm (learn) + ntawv (writing)' },
-        { hmong: 'Mloog lus', english: 'to listen; to do as you are told', note: 'mloog (listen) + lus (words)' },
-        { hmong: 'Hais lus', english: 'to speak', note: 'hais (say) + lus (words)' },
+        {
+          hmong: 'Kuv noj mov.',
+          english: 'I eat a meal.',
+          note: 'Start with **"kuv"** + **"noj mov"**.',
+        },
+        {
+          hmong: 'Nws noj mov.',
+          english: 'He or she eats a meal.',
+          note: 'Change **"kuv"** to **"nws"**. No verb ending is added.',
+        },
+        {
+          hmong: 'Peb noj mov.',
+          english: 'We eat a meal.',
+          note: 'Change the subject to **"peb"** (“we”). The verb is still **"noj"**.',
+        },
+        {
+          hmong: 'Kuv haus dej.',
+          english: 'I drink water.',
+          note: 'Change the action and its object to make a new sentence.',
+        },
+        {
+          hmong: 'Kuv pom nws.',
+          english: 'I see him or her.',
+          note: '**"Pom"** is followed by the person being seen.',
+        },
+        {
+          hmong: 'Kuv yuav mus.',
+          english: 'I will go.',
+          note: '**"Yuav"** comes before **"mus"** to express a future action or intention.',
+        },
       ],
     },
     {
@@ -141,4 +278,4 @@ export const actionVerbs = {
       title: 'Quiz',
     },
   ],
-}
+};

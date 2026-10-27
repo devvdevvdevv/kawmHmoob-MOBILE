@@ -24,7 +24,7 @@ export const dates = {
         '> hnub tim — the date, the day of the month: hnub tim ob, the 2nd',
         '> xyoo — the year: xyoo ob txhiab neesnkaum rau, 2026',
         '## Western order: month, day, year',
-        'This is the order the app uses, like an American date: the month first, then the day, then the year.',
+        'This order matches an American date: the month first, then the day, then the year.',
         '> Lub ib hlis ntuj hnub tim ob, xyoo ob txhiab neesnkaum rau. — January 2, 2026',
         '> Lub xya hlis ntuj hnub tim plaub. — July 4',
         '> Lub kaum ob hlis ntuj hnub tim neesnkaum tsib. — December 25',

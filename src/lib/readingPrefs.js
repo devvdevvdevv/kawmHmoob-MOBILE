@@ -29,7 +29,19 @@ export const TEXT_SIZES = [
   { value: 'sm', label: 'Small',       body: 16, leading: 27, gloss: 13, glossLeading: 19, numeralTop: 1 },
   { value: 'md', label: 'Medium',      body: 18, leading: 30, gloss: 14, glossLeading: 21, numeralTop: 2 },
   { value: 'lg', label: 'Large',       body: 21, leading: 36, gloss: 15, glossLeading: 23, numeralTop: 6 },
-  { value: 'xl', label: 'Extra large', body: 24, leading: 40, gloss: 17, glossLeading: 25, numeralTop: 8 },
+  // ⚠️ 'xl' REMOVED FROM THE LADDER — 2026-10-14 (author: "the final huge font
+  // too big, remove that size"). Commented, not deleted: the numbers are a
+  // hand-tuned pair and re-deriving them later would be guesswork.
+  //
+  // Safe to drop because `normalize()` below already refuses a stored value the
+  // list no longer offers — anyone sitting on Extra large lands on Medium at the
+  // next read rather than on a size nothing can render. That guard was written
+  // for exactly this moment.
+  //
+  // 'lg' is now the top of the ladder, so TextSizeStepper's A+ disables there.
+  // TO RESTORE: uncomment the line. Nothing else needs changing — the stepper,
+  // the Settings picker and the path's intro all derive from this array.
+  // { value: 'xl', label: 'Extra large', body: 24, leading: 40, gloss: 17, glossLeading: 25, numeralTop: 8 },
 ]
 
 export const DEFAULT_READING_PREFS = {
@@ -59,8 +71,9 @@ function normalize(stored) {
  * Read/write the stored reading preferences.
  *
  * ⚠️ Wait for `ready` before rendering story text. The read is async; rendering
- * at the default first means someone who chose Extra large watches the whole
- * story reflow a frame later.
+ * at the default first means someone who chose Large watches the whole story
+ * reflow a frame later. (Said "Extra large" until that step was removed on
+ * 2026-10-14 — see TEXT_SIZES.)
  *
  * ⚠️ Each call holds its OWN copy. Two screens mounted at once (Settings under
  * the reader in the stack) will not see each other's changes until remount —

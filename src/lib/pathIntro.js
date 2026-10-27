@@ -46,15 +46,39 @@ export function unitIntro(unit) {
   const step = lesson?.steps?.find((s) => s.kind === 'intro')
   if (!step || !Array.isArray(step.body) || step.body.length === 0) return null
 
+  // ── ⚠️ THE DRILL, IF THE LESSON HAS ONE — 2026-10-20 ───────────────────────
+  //
+  // Author: "within the path please." The intro card already offered the whole
+  // lesson; this offers the one step a learner actually practises with, opened
+  // directly through `?step=`.
+  //
+  // ⚠️ MULTI-QUESTION PRACTICE ONLY — `step.questions` is the test, not
+  // `kind === 'practice'`. Sixteen lessons have a single-question practice step
+  // (`prompt` + `options`), and sending someone from the path into a one-tap
+  // question would be a worse offer than the lesson itself. Today exactly one
+  // lesson qualifies — pronouns — which is what "exclusively implement it just
+  // for the pronoun" asks for, enforced by the DATA rather than by naming the
+  // lesson here. Write another `questions[]` step and it appears on that unit
+  // with no code change.
+  const practice = lesson?.steps?.find(
+    (s) => s.kind === 'practice' && Array.isArray(s.questions) && s.questions.length > 0
+  ) || null
+
   return {
     lesson,
     step,
     learnUnit,
+    practice,
     // ⚠️ `?fromUnit=` — 2026-09-25. Tells the lesson it was opened FROM THIS
     // path unit, so its exits (Finish, breadcrumbs, the quiz step's buttons)
     // return here instead of to Learn. The lesson honours it only when this
     // unit's introLesson really is that lesson — see pathReturnUnit() in
     // app/learn/[unitId]/[lessonId].jsx. Was: `/learn/${learnUnit.id}/${lesson.id}`
     href: `/learn/${learnUnit.id}/${lesson.id}?fromUnit=${unit.id}`,
+    // Same link, plus the step to land on. `fromUnit` still applies, so every
+    // exit from the drill returns to this unit rather than to Learn.
+    practiceHref: practice
+      ? `/learn/${learnUnit.id}/${lesson.id}?fromUnit=${unit.id}&step=${practice.id}`
+      : null,
   }
 }

@@ -5,6 +5,8 @@ import TabScreen from '../../../src/components/TabScreen.jsx'
 import Breadcrumbs from '../../../src/components/common/Breadcrumbs.jsx'
 import Collapsible from '../../../src/components/common/Collapsible.jsx'
 import IntroBody from '../../../src/components/learn/IntroBody.jsx'
+import TextSizeStepper from '../../../src/components/common/TextSizeStepper.jsx'
+import { useReadingPrefs, textSizeStep } from '../../../src/lib/readingPrefs.js'
 import { unitIntro } from '../../../src/lib/pathIntro.js'
 import PlaceholderBadge from '../../../src/components/common/PlaceholderBadge.jsx'
 import Eyebrow from '../../../src/components/ui/Eyebrow.jsx'
@@ -234,13 +236,64 @@ const INTRO_OPEN_MAX = 8
 // opposite reason: a check-in, not the task.)
 function UnitIntro({ unit }) {
   const intro = unitIntro(unit)
+  // ⚠️ THE HOOK RUNS BEFORE THE EARLY RETURN. A unit with no intro still has to
+  // call it — bailing first would make the hook conditional, which is the one
+  // rule hooks do not bend (Lesson 02 of js-ts-course, if you want the why).
+  const { prefs, setPref } = useReadingPrefs()
+  const size = textSizeStep(prefs.textSize)
   if (!intro) return null
+  // mb-8, up from mb-5 — 2026-10-14 (author: "for the path lessons give a margin
+  // bottom"). The lesson card and the numbered steps under it are two different
+  // things, and at mb-5 the first step row read as part of the lesson rather
+  // than as step 1 of the unit.
+  //
+  // ⚠️ A PLAIN COMMENT, NOT `{/* … */}`. A JSX comment here would sit OUTSIDE
+  // the root element and count as a second child of the return — "Unexpected
+  // token className", which is what it did on the first attempt.
   return (
-    <View className="rounded-md bg-cream-50 px-4 mb-5">
+    <View className="rounded-md bg-cream-50 px-4 mb-8">
       {/* Placeholder lesson badge — 2026-09-28. */}
       {intro.lesson.placeholder ? <PlaceholderBadge className="mt-3" /> : null}
-      <Collapsible title={intro.step.title} defaultOpen={intro.step.body.length <= INTRO_OPEN_MAX}>
-        <IntroBody body={intro.step.body} />
+      {/* ⚠️ TITLE SIZED UP AND GIVEN A PROMPT — 2026-10-14 (author: "increase the
+          title size for each lesson… add a subtitle that shows 'Drop down to
+          learn more' — make it so that disappears once the lesson collapsible
+          drop downs").
+          · The size comes off the app's heading ladder (font-serif + stone-900),
+            so the lesson now reads as the section heading it is rather than as a
+            row label in clay.
+          · The prompt is only passed when the intro STARTS CLOSED. Telling a
+            learner to drop down something already open is noise, and it would
+            animate out on their first tap having never been true. */}
+      <Collapsible
+        title={intro.step.title}
+        titleClassName="font-serif text-2xl text-stone-900"
+        subtitle={intro.step.body.length > INTRO_OPEN_MAX ? 'Drop down to learn more' : undefined}
+        defaultOpen={intro.step.body.length <= INTRO_OPEN_MAX}
+      >
+        {/* ⚠️ A− / A+ INSIDE THE BODY, NOT IN THE TITLE ROW — 2026-10-14. The
+            title row is the tap target that opens and closes this; a control
+            sitting in it would be a button inside a button, and on a phone the
+            mis-tap lands on whichever one React hit-tested first. Here it only
+            exists while the intro is open, which is also the only time it is
+            useful.
+
+            It writes the SAME `readingPrefs.textSize` the reader and Settings
+            use, so a learner sets their size once for the whole app. */}
+        {/* RIGHT-ALIGNED — moved left on 2026-10-14 and BACK to the right the
+            same day, on the author's eye. Keeping the record because the left
+            argument sounded good on paper (the control sharing an edge with the
+            text it resizes) and lost in the hand: left-aligned it reads as the
+            first line of the lesson, competing with the title, where on the
+            right it reads as a tool. */}
+        <View className="flex-row items-center justify-end mb-1">
+          <TextSizeStepper
+            value={prefs.textSize}
+            onChange={(v) => setPref('textSize', v)}
+            label="lesson text"
+          />
+        </View>
+
+        <IntroBody body={intro.step.body} size={size} />
 
         {/* The intro is an excerpt — the rest of the lesson (example tables with
             audio, its own quiz) is still in Learn. A plain Link is right here:
@@ -254,6 +307,36 @@ function UnitIntro({ unit }) {
             <Icon name="arrowRight" size={14} tone="accent" />
           </Pressable>
         </Link>
+
+        {/* ── ⚠️ THE DRILL, WHEN THE LESSON HAS ONE — 2026-10-20 ───────────────
+            Author: "within the path please." Reading an intro and then hunting
+            for the practice four steps into a lesson is not practising; this
+            lands on the drill itself via `?step=`, and `fromUnit` means every
+            exit comes back to this unit.
+
+            ⚠️ A FILLED CARD, NOT A THIRD TEXT LINK. The intro card already has
+            one quiet link; a second identical one underneath would read as a
+            pair of footnotes, and this is the thing a learner should actually
+            tap. It also states the count, because "12 situations" sets an
+            expectation that "Practise" alone does not.
+
+            Appears only where `practiceHref` exists — today only the pronouns
+            lesson has a multi-question practice step. See pathIntro.js. */}
+        {intro.practiceHref ? (
+          <Link href={intro.practiceHref} asChild>
+            <Pressable className="rounded-md bg-clay-600 px-4 py-3 mt-1 mb-3 flex-row items-center justify-between gap-2 active:opacity-90">
+              <View className="flex-1">
+                <Text className="text-sm font-semibold text-cream-50">
+                  {intro.practice.title}
+                </Text>
+                <Text className="text-xs font-medium text-cream-100 mt-0.5">
+                  {intro.practice.questions.length} situations — pick the right one each time
+                </Text>
+              </View>
+              <Icon name="arrowRight" size={16} tone="onDark" />
+            </Pressable>
+          </Link>
+        ) : null}
       </Collapsible>
     </View>
   )

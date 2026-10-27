@@ -214,14 +214,15 @@ export function getQuizDataset(id) {
       // make questions with empty answers (see notes/43).
       return consonants
         .filter((c) => c.sound)
-        .map((c) => ({ prompt: c.letter, answer: c.sound, audio: c.audio }))
+        .map((c) => ({ prompt: c.letter, answer: c.sound, audio: c.audio, audioFemale: c.audioFemale }))
     case 'alphabet-vowels':
-      return vowels.map((v) => ({ prompt: v.letter, answer: v.sound, audio: v.audio }))
+      return vowels.map((v) => ({ prompt: v.letter, answer: v.sound, audio: v.audio, audioFemale: v.audioFemale }))
     case 'alphabet-tones':
       return tones.map((t) => ({
         prompt: t.marker || '(no marker)',
         answer: t.name,
         audio: t.audio,
+        audioFemale: t.audioFemale, // 2026-10-25 — QuizEngine picks by voice
         blurb: t.example2,   // the tone's Hmong name — what the recording says
       }))
     case 'tone-drill':

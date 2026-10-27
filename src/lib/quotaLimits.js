@@ -24,13 +24,21 @@
 // allowance) argues for raising it too; it was left at 3 because the ask was
 // "2 → 5" and 3 was never a 2. Raise it to 5 or more to restore the intent.
 export const QUOTA_LIMITS = {
-  speak:            { guest: 5, free: 5 },
-  quiz:             { guest: 5, free: 5 },
-  reading:          { guest: 5, free: 5 },
+  speak:            { guest: Infinity, free: Infinity },
+  // ⚠️ UNLIMITED FOR THE FREE PLAN — 2026-10-23 (author). Infinity, not a big
+  // number: useDailyQuota computes `remaining = limit - used` and
+  // `exhausted = used >= limit`, so Infinity makes exhausted permanently false
+  // and needs no special case in the hook. QuotaBadge hides itself for a
+  // non-finite limit, so nothing renders "Infinity of Infinity".
+  quiz:             { guest: Infinity, free: Infinity },
+  reading:          { guest: Infinity, free: Infinity },
   // ⚠️ SEVEN, NOT FIVE — raised 2026-09-23, one day after everything went 2 → 5.
   // A sentence-builder round is the shortest exercise in the app (one scramble,
   // a few taps), so five of them is a couple of minutes, where five quizzes or
   // five stories is a sitting. The cap should meter TIME, not rounds.
+  // ⚠️ THE ONLY DAILY CAP LEFT — 2026-10-23 (author: "keep the sentences locked
+  // under pro to be locked still"). Everything else went unlimited; this is the
+  // one place a free account still runs out, and the one daily number Pro buys.
   'sentence-builder': { guest: 7, free: 7 },
   // ⚠️ ITS OWN BUDGET, NOT SHARED WITH THE SENTENCE BUILDER — the open question
   // in notes/2026-09-16-writing-unit-and-challenge-todo.md ("do new challenge
@@ -40,14 +48,18 @@ export const QUOTA_LIMITS = {
   // who spells five words would find the sentence builder locked, which reads
   // as a bug rather than as a limit. Tightening is easy later; taking away an
   // allowance someone already had is not.
-  typing:           { guest: 5, free: 5 },
-  'search-hear':    { guest: 5, free: 5 },
+  typing:           { guest: Infinity, free: Infinity },
+  'search-hear':    { guest: Infinity, free: Infinity },
   // ⚠️ THREE, NOT TWO — the one deliberate exception. Vocabulary is BROWSING,
   // not an exercise: it is where someone looks something up mid-lesson, and two
   // lookups a day would make the rest of the app harder to use rather than
   // making Pro more attractive. Counted per CATEGORY opened, not per word — see
   // app/vocabulary/[categoryId]/index.jsx for why that distinction matters.
-  vocabulary:       { guest: 3, free: 3 },
+  // ⚠️ UNLIMITED FOR THE FREE PLAN — 2026-10-23 (author), which also settles the
+  // open question in the header above: this was the strictest number in the
+  // table after everything else went 2 → 5, and browsing a word set is not an
+  // exercise. It is counted per CATEGORY opened, so three was three lookups a day.
+  vocabulary:       { guest: Infinity, free: Infinity },
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

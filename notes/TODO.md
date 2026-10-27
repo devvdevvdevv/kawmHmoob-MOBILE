@@ -1,5 +1,13 @@
 # TODO — what is still open
 
+- [ ] **Convert the 170 bundled WAVs to mp3 (80.9 MB → ~8 MB).** 104 vowel+tone clips + 11
+      consonant redos arrived 2026-10-18 as WAV; 55 older lesson WAVs were already there.
+      `node scripts/convert-audio.mjs --write` (needs ffmpeg), then regenerate both maps and
+      MOVE THE MASTERS OUT of assets/audio. ⚠️ `--check` is the release guard — run it before
+      a release build or 80 MB of WAV ships. → notes/2026-10-18-vowel-tone-audio-wired.md
+- [ ] **Listen to aum / um / ias** — filenames label a tone that contradicts their spelling.
+      If the recording matches the LABEL it is the wrong tone. Best heard at /tone/m.
+
 ⚠️ **This file is deliberately not dated, and it is the only one in `notes/`
 that is not.** Every other note records what happened on a day and is then
 immutable — that is what makes them trustworthy to read back. A to-do list is
@@ -224,7 +232,38 @@ refers to them.
 
 ## Blocking the Play production release
 
-- [ ] **1077 dictionary entries were written by Claude and are UNREVIEWED.**
+- [ ] **⚠️ TEST PRO IN AIRPLANE MODE — added 2026-10-14.** Audio was confirmed
+      fully offline today (every clip is a static `require()`, so it ships in the
+      APK — see `notes/2026-10-14-audio-fixed-interruption-mode.md` §7). The
+      things that still need a network are auth, progress sync, the leaderboard,
+      remote Supabase stories, and **Pro entitlement verification through
+      RevenueCat.**
+      That last one is the one with teeth: a paying subscriber on a plane or with
+      no signal could come back as `isPro: false` and find their path units
+      LOCKED — a refund request, not a bug report. Nobody has tested whether
+      RevenueCat's cached entitlement survives offline on this setup.
+      **The test is five minutes:** install the standalone build, sign in as a
+      Pro account once, enable airplane mode, reopen the app, open a Pro unit.
+      If it locks, the fix is to trust the last-known-good entitlement for a
+      grace period rather than treating "cannot verify" as "not subscribed".
+
+- [ ] **1112 dictionary entries were written by Claude and are UNREVIEWED.**  <!-- 1077 → 1128 → 1112, all on 2026-10-25. See the re-count note below: only 17 of the +51 are traceable to that day's work, so this number is now the count, not an audit trail. -->
+      Re-counted 2026-10-25, later the same day: 1112 (was 1128, −16). The tone-shift deck
+      was rebuilt on the author's instruction ("archive the current ones") — the 16
+      `tone-shift-*` pattern cards are now commented out, which takes them out of the live
+      count, and the 12 phrase cards that replaced them carry no `'unreviewed'` tag because
+      their Hmong is the author's own.
+      Re-counted 2026-10-25: 1128 (was 1077, +51). Only **17** of those are traceable to
+      this date's work: the 16 `tone-shift-*` pattern cards in
+      grammar-tone-shifts-guidelines-numerical, plus gen-tua-kill. The other **34 accrued
+      between 2026-10-02 and 2026-10-25 without anyone re-running the count**, which is
+      exactly the drift the check below exists to catch — it had been failing silently
+      against a stale 1077. ⚠️ So this entry is no longer a per-entry audit trail; it is a
+      measurement. To find what is actually untagged, grep, do not read upward from here.
+      ⚠️ NOT every entry added that day carries the tag, on purpose: the four container
+      classifiers (tais, poom, rooj, tsev), `verbs-ce` and the tone-shift *lesson* text are
+      the author's own words, delivered verbatim, so tagging them 'unreviewed' would queue
+      the author to review the author.
       Re-counted 2026-09-30: 1077 — rog & tsov rog confirmed by the author (−2). Earlier the same day: 1079 (was 1020) — +7 txhais-uses, +23 intensifiers, +19 uncommon intensifiers, +10 words (author batch). Before: 1020 on 2026-09-29 (+1 tau success card). Before: 1019 on 2026-09-28 (was 1007, +12 sentence-structure pattern cards).
       Re-counted 2026-09-28: 1007 (was 1004) — +3 particle cards (thiab at the end, xwb, mas).
       Re-counted 2026-09-28: 1004 (was 1003) — +1 locprep-nram.
@@ -723,6 +762,121 @@ refers to them.
       pure functions — no UI, no mocking, cheap to cover.
 
 ## Content debt
+
+- [ ] **Open after the 2026-10-22 lesson session** (see
+      [the note](2026-10-22-lessons-that-could-not-be-reached.md)):
+      - `nov` and `nov yog` have NO dictionary entry, while
+        pronouns-demonstratives.js now teaches `Nov yog…` as the standard
+        introduction pattern. The reader’s long-press lookup finds nothing for
+        the main thing being taught. Needs a sentence apiece before they can go
+        in `demonstratives` (that category is drawn WHOLE by u-this-that, so a
+        sentence-less card there takes the unit off /path).
+      - `no yog` was added at the author’s request but their own lesson text
+        cautions against it. **Did they mean `nov yog`?**
+      - `placeholder-siab` teaches 3 of the 12 `siab + adjective` expressions in
+        its examples step; `u-siab-character` drills all 12.
+      - `family-lesson.js` still carries `placeholder: true` and four
+        TODO-VERIFY items.
+      - `u-family`, `u-family-female`, `u-food`, `u-siab-character` have no
+        `learnUnit`, so they do not appear in the Learn hub beside their lessons.
+      - Missing entries that lessons already mention: `nkauj` (song), `phav`
+        (thousand), `daus las` (dollars).
+      - Whether to raise `ALWAYS_OPEN_UNITS` so later units stop waiting on the
+        previous one — a progression-model decision, not a bug.
+
+
+- [ ] **Split `es` the `rau` way (2026-10-20 ruling, not yet done).**
+      The author: *"certain words with multiple meanings have multiple entries
+      within that particular word, rau for example, replicate the same with es."*
+      `es` went in as ONE `conjunctions` entry with three `senses`; it should be
+      one entry per meaning, each in its own category, like `rau`
+      (`wear-verbs` / `conjunctions` / `numbers`, no `senses` array).
+      - the plain connective ("so, and so") → `conjunctions` (where it is now)
+      - the result sense ("so, therefore") → `so-then`, beside `thiaj` and `yog li`
+      - ⚠️ the sequence sense ("then, and then") is the one to ask about: the
+        author's own note says `ces` is the word for that, and their example
+        sentence for it uses `ces`. A card glossed "then" on `es` would teach
+        against their own caveat.
+      Also open: `es` has no lesson — **So, Then & Therefore** covers
+      *Yog Li, Thiaj, Ces, Txawm* and never mentions it. And `nkauj` (song) has
+      no entry at all, though verb-noun.js teaches `mloog nkauj`.
+
+
+- [ ] **54 verb definitions still do not start with "to" (2026-10-20).**
+      The author: *"for all verbs, ensure that the definition is 'to (verb definition)'"*.
+      Done: **385 of 439** verb-tagged words. The whole `verbs` category (14
+      rewritten, the Core Verbs set) plus `will-permission` (9), `directions` (4),
+      `money` (2) and `nyob`.
+
+      ⚠️ **THE REST IS NOT A SCRIPT JOB.** A regex pass over the remaining 54
+      produced, verbatim: *"to sick; ill"*, *"to corn silk; to hair-like items"*,
+      *"to determined"*, *"to art; to painting"*. Four different reasons, each
+      needing a different decision:
+
+      1. **The `reading-*` multi-sense entries (31).** One string holds several
+         senses split by `·`, and they mix parts of speech:
+         `mob` = "sick; ill · pain; illness; injury · hurt; be painful" — the
+         first is an adjective, the second a noun, only the third is a verb.
+         These need per-sense work, not a prefix.
+      2. **The `(verb: to buy)` convention (10)** in `wear-verbs`,
+         `clothing-verbs`, `money`, `buildings-3`, `locations-prepositions`.
+         These ALREADY say "to" — inside a parenthetical part-of-speech label
+         that also disambiguates `yuav` (buy) from `yuav` (future marker) and
+         `rau` (put on footwear) from the other `rau`. Reformatting to a plain
+         "to buy" is a convention change and loses that label. **Author's call.**
+      3. **The copula and modal cards (8).** `yog` = "is, am, are", `kuv yog` =
+         "I am", `yuav tsum` = "must; have to", `xum` = "would rather".
+         "to is, am, are" is not a definition. **These should stay as they are** —
+         and if the rule is meant to be absolute, that is the ruling to get.
+      4. **Mis-tagged entries (2+).** `ntxhuav` = "corn silk; hair-like items"
+         carries `tags: ['verb']` and is a noun; `kos duab` = "art; painting; to
+         draw" is a noun+verb entry. Fix the tag, not the definition.
+
+      ⚠️ **`english` AND ITS PINNED SENSE MOVE TOGETHER.** Most of these words
+      carry a `senses` entry whose `en` is a copy of `english` with `context`
+      set to the word's own category. WordDetail hides a sense it has already
+      printed by comparing those two strings, so changing one alone makes the
+      card print the same definition twice — the `siab` bug of 2026-10-05. The
+      two batches that landed changed 26 + 17 = 43 strings for 30 entries, which
+      is exactly that: the definition plus its copy.
+
+
+- [ ] **Normalize the joined compounds repo-wide — the ruling is made, the data lags (2026-10-20).**
+      The author: *"combine the words that are supposed to be combined, phoojywg, tabtom, xibfwb etc"*.
+      The joined form is now the house spelling, and it settles a split the data
+      has carried for a while: `xibfwb` and `naghmo` are already joined in
+      vocabulary.js while `poj niam`, `txiv neej`, `phooj ywg` and `tab tom` are
+      spaced, and `tagkis`/`tag kis` each appear twice.
+
+      Applied so far: the new sentences step and the whole of
+      `src/data/lessons/noun-classifiers.js`. Still spaced elsewhere:
+
+      | form | files | hits |
+      |---|---|---|
+      | `tab tom` | 12 | 94 |
+      | `phooj ywg` | 10 | 68 |
+      | `tag kis` | 8 | 28 |
+      | `poj niam` | 6 | 26 |
+      | `txiv neej` | 5 | 18 |
+      | `nag hmo` | 7 | 12 |
+      | `xib hwb` | 1 | 1 |
+
+      ⚠️ **NOT A BLIND FIND-AND-REPLACE.** Three things break if it is:
+      1. `hmongRPA` is what the reader's long-press lookup and the sentence
+         builder's tokenizer match on. Changing a headword without changing the
+         sentences that use it (or the reverse) silently kills lookups —
+         re-run `check-vocabulary.mjs` and diff the builder's tokens after.
+      2. `notes/TODO.md:414` documents search behaviour with *"tab finds tab tom"*.
+         That line has to move with the data or `check-notes.mjs` goes red.
+      3. Audio filenames and word `id`s must NOT change — ids are progress keys.
+         Only the `hmongRPA` text and lesson prose change.
+
+      ⚠️ **PHRASES STAY SPACED.** The ruling was about compounds the author named
+      and their likes, not about collapsing every multiword noun. Left alone on
+      purpose: `kws kho mob`, `tsev noj mov`, `ncuav mog qab zib`, `chav kawm`,
+      `chav pw`, `qhov rooj`, `qhov rais`, `thawj coj`, `tub kawm`, `sib ntsib`,
+      `ua ntej`, `tom qab`, `ib sab`, `xyoo tas los`.
+
 
 - [ ] **1,043 of 1,351 vocabulary words have no `exampleSentence`** — and that,
       not the word count, is the bottleneck. Re-measured 2026-09-21.

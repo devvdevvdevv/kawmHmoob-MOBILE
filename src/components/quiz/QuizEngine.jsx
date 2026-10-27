@@ -9,6 +9,8 @@ import { isAdmin } from '../../lib/admin.js'
 import { useQuizState } from '../../hooks/useQuizState.js'
 import { useProgress } from '../../hooks/useProgress.js'
 import AudioButton from '../common/AudioButton.jsx'
+import { useVoicePrefs, pickVoice } from '../../lib/voicePrefs.js'
+import VoiceToggle from '../reference/VoiceToggle.jsx'
 import Breadcrumbs from '../common/Breadcrumbs.jsx'
 import PaywallGate from '../common/PaywallGate.jsx'
 import ConfirmModal from '../common/ConfirmModal.jsx'
@@ -111,6 +113,7 @@ function buildQuestions(config, dataset, prefs = {}) {
       answer: item.answer,
       options,
       audio: item.audio || null,
+      audioFemale: item.audioFemale || null,
       audioKey: item.id || item.prompt,
       audioRevealsAnswer: flipped,
     }
@@ -485,14 +488,18 @@ function Pill({ children, bg, textColor }) {
 }
 
 function MultipleChoice({ question, feedback, onPick }) {
+  // The voice set on Reference / Speak (2026-10-25). Was: audioSrc={question.audio}
+  const { voice, setVoice } = useVoicePrefs()
   return (
     <View>
+      {/* Only on a question that HAS a second voice — elsewhere it would do nothing. */}
+      {question.audioFemale ? <VoiceToggle voice={voice} onChange={setVoice} /> : null}
       <View className="flex-row items-center gap-3 mb-5">
         {/* Was: audioSrc={null} — always disabled. Now the question's own clip;
             a word with no recording still shows the greyed button, as before.
             Held until answered when the clip would give the answer away. */}
         <AudioButton
-          audioSrc={question.audio}
+          audioSrc={pickVoice(question, voice)}
           wordId={question.audioKey || question.prompt}
           disabled={question.audioRevealsAnswer && !feedback}
           size="lg"

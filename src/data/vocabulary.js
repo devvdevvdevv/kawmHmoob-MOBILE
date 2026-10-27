@@ -1186,6 +1186,67 @@ const RAW_CATEGORIES = [
         audioFile: 'grammar/classifiers/hmong-classifiers-khob.mp3',
         exampleSentence: { hmong: 'Ib khob dej.', english: 'One cup of water.' },
       },
+      // ── ⚠️ CONTAINER MEASURES — the author's ruling, 2026-10-25 ─────────────────
+      //
+      // The author: "tais is a classifier for plate or bowl; a plate/bowl of · poom,
+      // classifier for bottle / a bottle of · rooj, classifier for tables, a table of ·
+      // tsev can additionally be a classifier too, meaning house (family); a family of
+      // (people, animals, etc)".
+      //
+      // ⚠️ THESE MEASURE A QUANTITY, THEY DO NOT SORT A NOUN. `tus` and `lub` tell you
+      // what KIND of thing a noun is; these four tell you HOW MUCH of it there is — a
+      // bowl of, a bottle of, a table of, a family of. `khob` above is the one the set
+      // already had, which is why they sit together: as a block they teach the pattern,
+      // scattered they look like more of the `tus` / `lub` kind.
+      //
+      // ⚠️ EACH ONE IS ALSO A NOUN, and that is the lesson, not a complication:
+      // `lub tais` is "the bowl", `ib tais mov` is "a bowl of rice". Same word, two jobs,
+      // and the general classifier in front is what marks the noun reading. The author's
+      // own sentence shows both in one breath — see `verbs-ce` below.
+      //
+      // ⚠️ `yim` IS ALREADY "(classifier for households / families)" in this set, and
+      // `tsev` now overlaps it. Kept both, un-merged: the author named `tsev` explicitly
+      // and `yim neeg` is its own entry in common-nouns. Which one a speaker reaches for
+      // is a question for the author, not something to resolve by deleting one.
+      //
+      // Example sentences are Claude's, built from attested words (mov, dej, neeg) —
+      // hence `unreviewed`. The glosses follow the author's wording.
+      {
+        id: 'classifiers-tais',
+        hmongRPA: 'tais',
+        english: '(classifier for plates & bowls) a plate of, a bowl of',
+        category: 'classifiers',
+        tags: ['classifier', 'measure', 'unreviewed'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Ib tais mov.', english: 'A bowl of rice.' },
+      },
+      {
+        id: 'classifiers-poom',
+        hmongRPA: 'poom',
+        english: '(classifier for bottles) a bottle of',
+        category: 'classifiers',
+        tags: ['classifier', 'measure', 'unreviewed'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Ib poom dej.', english: 'A bottle of water.' },
+      },
+      {
+        id: 'classifiers-rooj',
+        hmongRPA: 'rooj',
+        english: '(classifier for tables) a table of',
+        category: 'classifiers',
+        tags: ['classifier', 'measure', 'unreviewed'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Ib rooj mov.', english: 'A table of food.' },
+      },
+      {
+        id: 'classifiers-tsev',
+        hmongRPA: 'tsev',
+        english: '(classifier for a household) a family of — people, animals',
+        category: 'classifiers',
+        tags: ['classifier', 'measure', 'unreviewed'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Ib tsev neeg.', english: 'One family.' },
+      },
       {
         id: 'classifiers-nplooj',
         hmongRPA: 'nplooj',
@@ -1388,6 +1449,12 @@ const RAW_CATEGORIES = [
       { id: 'cn-nplej', hmongRPA: 'nplej', english: 'rice, uncooked — hnab (a bag of): ib hnab nplej', category: 'common-nouns', tags: ['noun', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Niam yuav ib hnab nplej.', english: 'Mom buys a bag of rice.', source: 'ai' } },
       { id: 'cn-nqaij', hmongRPA: 'nqaij', english: 'meat — thooj (a chunk of): ib thooj nqaij', category: 'common-nouns', tags: ['noun', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Muab ib thooj nqaij rau tus aub.', english: 'Give a chunk of meat to the dog.', source: 'ai' } },
       { id: 'cn-dab-neeg', hmongRPA: 'dab neeg', english: 'story — zaj: ib zaj dab neeg', category: 'common-nouns', tags: ['noun', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Pog hais ib zaj dab neeg rau peb.', english: 'Grandma tells us a story.', source: 'ai' } },
+      // ── From the author's list of 2026-10-07 ────────────────────────────────
+      // Two entries, not one: `phiaj` is the physical thing you aim at and
+      // `hom phiaj` is the abstract goal. Keeping them apart is what lets the
+      // second one be learned as a set phrase, which is how it is used.
+      { id: 'cn-phiaj', hmongRPA: 'phiaj', english: 'a target; a board to aim at', category: 'common-nouns', tags: ['noun', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws tua raug phiaj.', english: 'He hit the target.' } },
+      { id: 'cn-hom-phiaj', hmongRPA: 'hom phiaj', english: 'a goal; an objective; a purpose', category: 'common-nouns', tags: ['noun', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv lub hom phiaj yog kawm lus Hmoob.', english: 'My goal is to learn Hmong.' } },
     ],
   },
   {
@@ -1723,6 +1790,61 @@ const RAW_CATEGORIES = [
     description: 'Hmong describes character and emotion through the liver (siab), where English uses "heart."',
     emoji: '🫀',
     words: [
+      // siab — THE NOUN, promoted out of `descriptions-tall`'s "Also means"
+      // 2026-10-02. That entry is the adjective (tall, high) and keeps it.
+      //
+      // ⚠️ THE MOST LOAD-BEARING SPLIT ON THIS LIST. This whole category is
+      // built on siab — zoo siab, nyuaj siab, chim siab — and the word the
+      // feelings are built FROM had no entry of its own: it was a footnote on
+      // "tall". A learner meeting "kuv zoo siab" and looking up siab landed on
+      // an adjective about height.
+      //
+      // `human-anatomy-internal-organs-liver` (the organ) is a third entry and
+      // stays; all three now cross-link by headword.
+      { id: 'personality-siab-noun', hmongRPA: 'siab', // ⚠️ ONE SENSE, NOT TWO. It read '… · intention; willingness; emotional
+      // state' and check-vocabulary.mjs rejected it: a `·` gloss puts EVERY
+      // clause on the flashcard, so the card would have asked for one meaning
+      // and accepted a list. Intention and emotional state are not a second
+      // meaning of siab — they are the same inner-self sense — so they fold
+      // into the one gloss instead of needing a tagged senses[] array.
+// ⚠️ "LIVER" LEADS, NOT "HEART" — corrected 2026-10-02.
+      //
+      // The first draft of this entry opened with "the heart", which is where
+      // ENGLISH puts the feelings. Hmong puts them in the LIVER: `siab` is the
+      // organ, and every feeling compound is built on it. Glossing it as "heart"
+      // first teaches the English metaphor and hides the Hmong one, and it
+      // contradicts two things already in this repo — the Adjectives lesson
+      // ("siab (heart, literally the liver)") and
+      // `human-anatomy-internal-organs-liver`, which is the same word.
+      //
+      // "where English says heart" is kept, because a learner reading `zoo siab`
+      // needs to land on "happy", not on anatomy.
+      english: 'the liver — and the seat of feeling and intention, where English says heart (noun); what the feeling words are built on: zoo siab, nyuaj siab, chim siab',
+      // ⚠️ ONE SENSE ONLY, AND ONLY BECAUSE IT HAS NO CARD — 2026-10-05.
+      //
+      // 'chest' earns a place here: `lub hauv siab` is attested (the Zong Vang
+      // glossary) and NO entry in the dictionary carries it, so without this
+      // line the meaning exists nowhere in the app.
+      //
+      // ⚠️ THE OTHER MEANINGS ARE NOT LISTED, deliberately. 'liver' and
+      // 'tall; high' each have their own entry, and spelling them out here
+      // deletes the "Other meanings of siab" links from this page — see the long
+      // note on `descriptions-tall`. `senses` is for a meaning with no card;
+      // everything else travels by link.
+      //
+      // ⚠️ TAGGED `reading`, NOT `body`. check-vocabulary.mjs rejected `body`:
+      // the liver entry IS a body card, so a second body sense made one card ask
+      // one thing and accept two. Anatomy no deck asks for belongs to the reader.
+      // ⚠️ THE OWN-DOMAIN SENSE IS REQUIRED, even though it only repeats
+      // `english`: check-vocabulary.mjs compares `english` against the senses
+      // tagged with this entry's domain, and a chest-only array failed it
+      // ("english and senses disagree"). An array without the card's own answer
+      // is not a smaller array, it is a broken one.
+      senses: [
+        { en: 'the liver — and the seat of feeling and intention, where English says heart (noun); what the feeling words are built on: zoo siab, nyuaj siab, chim siab', context: 'personality-siab' },
+        { en: 'chest — in "lub hauv siab"', context: 'reading' },
+      ],
+      category: 'personality-siab', tags: ['noun', 'feelings', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Nws muaj lub siab zoo.', english: 'He has a good heart.', source: 'ai' } },
       // ⚠️ ADDED 2026-09-12, both taught in the Speak lessons and recorded for
       // them — "zoo siab" in Greetings, "txaus siab" in Thanks & Sorry.
       //
@@ -2095,6 +2217,14 @@ const RAW_CATEGORIES = [
     description: 'Everyday Hmong tools, cookware, and household objects, with their characteristic classifiers.',
     emoji: '🧹',
     words: [
+      // tshuab — the NOUN, added 2026-10-02 (author). Its verb twin (to blow) is
+      // in reading-motion. Neither existed before today.
+      //
+      // ⚠️ THE TWO SENSES ARE RELATED AND THE LINK IS WORTH KNOWING: a machine
+      // is named for what the first ones did — blow air. Kept as separate cards
+      // anyway, because a learner looking up "engine" and a learner looking up
+      // "the wind blows" want different answers.
+      { id: 'tools-tshuab', hmongRPA: 'tshuab', english: 'a machine; an engine (noun)', category: 'tools-household', tags: ['noun', 'household', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Lub tshuab no tsis ua haujlwm lawm.', english: 'This machine does not work any more.', source: 'ai' } },
       // The author, 2026-09-30 — the set's own title word; it was not in the dictionary.
       { id: 'tools-cov-cuab-yeej', hmongRPA: 'cov cuab yeej', english: 'tools, equipment, instruments, weapons — the general phrase for objects of use; which one depends on context',  /* 'weapons' made explicit 2026-09-30 (author) */ category: 'tools-household', tags: ['noun', 'reviewed'], audioFile: null },
       { id: 'tools-cuab', hmongRPA: 'cuab', english: 'belongings, equipment, household items — "cov cuab yeej", tools, equipment, instruments, weapons; "cuab yeej tsov rog", weapons specifically', category: 'tools-household', tags: ['noun', 'household', 'reviewed'], audioFile: null },  // the author, 2026-09-30 — one of four cuab entries (the rau / tom qab pattern)
@@ -2303,6 +2433,10 @@ const RAW_CATEGORIES = [
     { id: 'wbs-ncaig', hmongRPA: 'ncaig', english: 'hot, burning charcoal', category: 'tools-household', tags: ['noun', 'reviewed'], audioFile: null },
     { id: 'wbs-nkhawb', hmongRPA: 'nkhawb', english: 'soot', category: 'tools-household', tags: ['noun', 'reviewed'], audioFile: null },
     { id: 'wbs-hluav', hmongRPA: 'hluav', english: 'burnt matter', category: 'tools-household', tags: ['noun', 'reviewed'], audioFile: null },
+    // From the author's list of 2026-10-07. The classifier stays in the headword
+    // because this set already does that — `lub xauv` (lock), `cov cuab yeej`
+    // (tools) — and because a net is counted with lub.
+    { id: 'wbs-vas', hmongRPA: 'lub vas', english: 'net', category: 'tools-household', tags: ['noun', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws muab lub vas pov rau hauv dej.', english: 'He threw the net into the water.' } },
     ],
   },
 
@@ -2666,8 +2800,8 @@ const RAW_CATEGORIES = [
       {
         id: 'money-muag',
         hmongRPA: 'muag',
-        english: 'sell',
-        senses: [{ en: 'sell', context: 'money' }, { en: 'be for sale; be sold', context: 'reading' }],
+        english: 'to sell',
+        senses: [{ en: 'to sell', context: 'money' }, { en: 'be for sale; be sold', context: 'reading' }],
         category: 'money',
         tags: ['verb', 'shopping', 'reviewed'],
         audioFile: 'vocabulary/money/hmong-money/hmong-money-muag.mp3',
@@ -2694,7 +2828,7 @@ const RAW_CATEGORIES = [
       {
         id: 'money-txo-nqi',
         hmongRPA: 'txo nqi',
-        english: 'discount; to lower the price',
+        english: 'to discount; to lower the price',
         category: 'money',
         tags: ['noun', 'verb', 'shopping'],
         audioFile: 'vocabulary/money/hmong-money/hmong-money-txo-nqi.mp3',
@@ -2989,6 +3123,15 @@ const RAW_CATEGORIES = [
       // thaum — the author, 2026-09-27: "the preposition word that sets the location of time,
       // during and when". The author wrote "thaum tsib tsuas ntuj"; written here as the full
       // clock form "thaum tsib teev tsaus ntuj" (5 p.m.) — confirm.
+      // From the author's list of 2026-10-07, written as a PATTERN like `thaum +
+      // time` below it, because that is what the list's example shows ("Txog yim
+      // teev, peb pib kawm").
+      //
+      // ⚠️ A THIRD SENSE OF `txog`, and the other two are left alone: `txog` is
+      // already "to reach; to arrive at" (verbs) and "about; concerning"
+      // (conjunctions). The clock sense is the same reaching idea pointed at a
+      // time, so it belongs with the clock patterns rather than inside either.
+      { id: 'clock-pattern-txog', hmongRPA: 'txog + time', english: 'by, at — when the clock reaches a time: "txog yim teev", by eight o\'clock', category: 'clock-time', tags: ['time', 'clock', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Txog yim teev, peb pib kawm.', english: "At eight o'clock, we start studying." } },
       { id: 'clock-pattern-thaum', hmongRPA: 'thaum + time', english: 'when, during, at — thaum sets the time of an action', category: 'clock-time', tags: ['time', 'clock', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Chai mus yos hav zoov thaum tsib teev tsaus ntuj.', english: 'Chai goes hunting at 5 p.m.' }, examples: [{ hmong: 'thaum tsib teev tsaus ntuj', english: 'at 5 p.m.' }, { hmong: 'thaum sawv ntxov', english: 'in the morning' }, { hmong: 'thaum hmo ntuj', english: 'at night' }] },
     ],
   },
@@ -3170,6 +3313,10 @@ const RAW_CATEGORIES = [
         // ],
         // note: source 'Tasnrho / Tagnrho'; standard is 'tag nrho'. Means "all / the entirety."
       },
+      // From the author's list of 2026-10-07. A quantifier because it quantifies
+      // the count that follows it — "kwv yees li kaum", about ten. `kwv yees`
+      // alone is already in the dictionary; this is the hedging form with li.
+      { id: 'quant-kwv-yees-li', hmongRPA: 'kwv yees li', english: 'approximately; about; roughly', category: 'quantifiers', tags: ['quantifier', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kwv yees li kaum tus neeg tuaj.', english: 'Approximately ten people came.' } },
     ],
   },
   // ⚠️ COMMENTED OUT 2026-09-30 (author: "comment out bisang1993 too") — Measure & Group Words, from Bisang (1993).
@@ -3325,7 +3472,7 @@ const RAW_CATEGORIES = [
       // "yes", though not a literal one' — "mm-hm" reads as a transcription of
       // a sound rather than a definition, and the hedge at the end told a
       // learner what the word is NOT before telling them what it is.
-      { id: 'ans-aws', hmongRPA: 'aws', english: 'yes; okay — used to agree or acknowledge', category: 'answering', tags: ['interjection', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Aws, kuv nkag siab.', english: 'Yes, I understand.' } },
+      { id: 'ans-aws', hmongRPA: 'aws', english: 'agreement, acknowledgement, affirmation — mm-hm, okay, that’s right; NOT a direct “yes”', category: 'answering', tags: ['interjection', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Aws, kuv nkag siab.', english: 'Mm-hm, I understand.' } },
       { id: 'ans-yog-yes', hmongRPA: 'yog', english: 'yes — that is so; usually as the answer to a question', category: 'answering', tags: ['answer', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Koj puas yog Mai? Yog.', english: 'Are you Mai? Yes.' } },
       // Added 2026-09-27 (author: yog questions with an expected yog answer). Claude's sentences, TODO-VERIFY.
       // Chai example: was 'Koj yog Chai, puas yog?' — a name takes hu ua (author, 2026-09-28).
@@ -3459,15 +3606,15 @@ const RAW_CATEGORIES = [
     emoji: '🤝',
     words: [
       { id: 'will-yeem', hmongRPA: 'yeem', english: 'willing; voluntary; consent — Agreeing freely or acting by choice', category: 'will-permission', tags: ['adjective', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv yeem pab.', english: 'I am willing to help.', source: 'ai' } },
-      { id: 'will-ntshaw', hmongRPA: 'ntshaw', english: 'long for; yearn for; strongly desire — Stronger and more emotional than xav (\'want\')', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv ntshaw mus tsev.', english: 'I long to go home.', source: 'ai' } },
-      { id: 'will-cog-lus', hmongRPA: 'cog lus', english: 'promise; make a commitment — Literally \'hold/grasp words\'; used for promises', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws cog lus tias nws yuav los.', english: 'He/she promised that they would come.', source: 'ai' } },
-      { id: 'will-tso-cai', hmongRPA: 'tso cai', english: 'permit; authorize; give permission — Used for permission, rights, or official approval', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lawv tso cai rau kuv mus.', english: 'They gave me permission to go.', source: 'ai' } },
-      { id: 'will-ntxias', hmongRPA: 'ntxias', english: 'persuade; coax; entice — Can be neutral, affectionate, or manipulative depending on context', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws ntxias kuv mus.', english: 'He/she persuaded me to go.', source: 'ai' } },
-      { id: 'will-txiav-txim-siab', hmongRPA: 'txiav txim siab', english: 'decide; make up one\'s mind — Often used for a firm or consequential decision', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv txiav txim siab mus.', english: 'I decided to go.', source: 'ai' } },
-      { id: 'will-khwv', hmongRPA: 'khwv', english: 'work hard; labor; earn a living — More than simply \'do work\'; often suggests sustained effort', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws khwv nyiaj txhua hnub.', english: 'He/she works to earn money every day.', source: 'ai' } },
-      { id: 'will-kub-siab', hmongRPA: 'kub siab', english: 'be enthusiastic; determined; eager — Literally \'hot heart\'; strong motivation or effort', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws kub siab kawm.', english: 'He/she is eager to study.', source: 'ai' } },
-      { id: 'will-tiv-taus', hmongRPA: 'tiv taus', english: 'withstand; endure; tolerate — Ability to bear pain, stress, weather, or pressure', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tiv tsis taus lawm.', english: 'I cannot endure it anymore.', source: 'ai' } },
-      { id: 'will-khib', hmongRPA: 'khib', english: 'be jealous; envy — Can describe envy or possessive jealousy', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tsis txhob khib lwm tus.', english: 'Do not envy others.', source: 'ai' } },
+      { id: 'will-ntshaw', hmongRPA: 'ntshaw', english: 'to long for; to yearn for; to strongly desire — Stronger and more emotional than xav (\'want\')', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv ntshaw mus tsev.', english: 'I long to go home.', source: 'ai' } },
+      { id: 'will-cog-lus', hmongRPA: 'cog lus', english: 'to promise; to make a commitment — Literally \'hold/grasp words\'; used for promises', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws cog lus tias nws yuav los.', english: 'He/she promised that they would come.', source: 'ai' } },
+      { id: 'will-tso-cai', hmongRPA: 'tso cai', english: 'to permit; to authorize; to give permission — Used for permission, rights, or official approval', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lawv tso cai rau kuv mus.', english: 'They gave me permission to go.', source: 'ai' } },
+      { id: 'will-ntxias', hmongRPA: 'ntxias', english: 'to persuade; to coax; to entice — Can be neutral, affectionate, or manipulative depending on context', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws ntxias kuv mus.', english: 'He/she persuaded me to go.', source: 'ai' } },
+      { id: 'will-txiav-txim-siab', hmongRPA: 'txiav txim siab', english: 'to decide; to make up one\'s mind — Often used for a firm or consequential decision', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv txiav txim siab mus.', english: 'I decided to go.', source: 'ai' } },
+      { id: 'will-khwv', hmongRPA: 'khwv', english: 'to work hard; to labor; to earn a living — More than simply \'do work\'; often suggests sustained effort', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws khwv nyiaj txhua hnub.', english: 'He/she works to earn money every day.', source: 'ai' } },
+      { id: 'will-kub-siab', hmongRPA: 'kub siab', english: 'to be enthusiastic; to be determined; to be eager — Literally \'hot heart\'; strong motivation or effort', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws kub siab kawm.', english: 'He/she is eager to study.', source: 'ai' } },
+      { id: 'will-tiv-taus', hmongRPA: 'tiv taus', english: 'to withstand; to endure; to tolerate — Ability to bear pain, stress, weather, or pressure', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tiv tsis taus lawm.', english: 'I cannot endure it anymore.', source: 'ai' } },
+      { id: 'will-khib', hmongRPA: 'khib', english: 'to be jealous; to envy — Can describe envy or possessive jealousy', category: 'will-permission', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tsis txhob khib lwm tus.', english: 'Do not envy others.', source: 'ai' } },
     ],
   },
 
@@ -3515,6 +3662,20 @@ const RAW_CATEGORIES = [
     description: 'Words for homes, moving, and real estate.',
     emoji: '🏠',
     words: [
+      {
+        // theem — the FLOOR sense, promoted out of `classifiers-theem`'s "Also
+        // means" 2026-10-02. That entry (the classifier: step, level, stage,
+        // tier) keeps it. A storey of a building is the concrete everyday use
+        // and had no card; it sits with housing rather than with classifiers
+        // because that is where a learner meets it.
+        id: 'housing-theem',
+        hmongRPA: 'theem',
+        english: 'a floor; a storey of a building (noun)',
+        category: 'housing',
+        tags: ['noun', 'housing', 'reviewed'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Lub tsev no muaj peb theem.', english: 'This building has three floors.', source: 'ai' },
+      },
       {
         id: 'housing-move',
         hmongRPA: 'tsiv',
@@ -3730,13 +3891,113 @@ const RAW_CATEGORIES = [
   },
   {
     id: 'days-of-week',
-    title: 'Days of the Week',
+    title: 'Days of the Week | Hmoob daim teev cim zwj',
     description: 'Days of the week in Hmong.',
     emoji: '📆',
     words: [
+       {
+        id: 'days-of-week-prefix-formal',
+        hmongRPA: 'Zwj',
+        english: 'Formal prefix for days of the week',
+        category: 'days-of-week',
+        tags: ['prefix', 'time', 'day-of-week'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Zwj Hli.', english: 'Monday.' },
+      }
+
+
+      ,
+
       {
-        id: 'days-of-week-monday',
-        hmongRPA: 'hnub ib',
+        id: 'days-of-week-sunday-formal',
+        hmongRPA: 'Zwj Hnub (formal)',
+        english: 'Sunday',
+        category: 'days-of-week',
+        tags: ['noun', 'time', 'day-of-week'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Zwj Hnub.', english: 'Sunday.' },
+      }     ,
+
+      {
+        id: 'days-of-week-monday-formal',
+        hmongRPA: 'Zwj Hli (formal)',
+        english: 'Monday',
+        category: 'days-of-week',
+        tags: ['noun', 'time', 'day-of-week'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Kuv ntxub cov Zwj Hli.', english: 'I hate Mondays.' },
+      }
+
+      ,
+
+
+       {
+        id: 'days-of-week-tuesday-formal',
+        hmongRPA: 'Zwj Quag (formal)',
+        english: 'Tuesday',
+        category: 'days-of-week',
+        tags: ['noun', 'time', 'day-of-week'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Hnub no Zwj Quag lov?.', english: 'Is today Tuesday?' },
+      }
+
+
+      ,
+
+
+
+      {
+        id: 'days-of-week-wednesday-formal',
+        hmongRPA: 'Zwj Feeb (formal)',
+        english: 'Wednesday',
+        category: 'days-of-week',
+        tags: ['noun', 'time', 'day-of-week'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Hnub i yog Zwj Feeb.', english: 'The other day was Wednesday.' },
+      } 
+
+
+
+
+      ,
+
+      {
+        id: 'days-of-week-thursday-formal',
+        hmongRPA: 'Zwj Teeb (formal)',
+        english: 'Thursday',
+        category: 'days-of-week',
+        tags: ['noun', 'time', 'day-of-week'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Nagkis yog Zwj Teeb lov?.', english: 'Is tommorrow Thursday?' },
+      } 
+
+
+      ,
+
+      {
+        id: 'days-of-week-friday-formal',
+        hmongRPA: 'Zwj Kuab',
+        english: 'Friday',
+        category: 'days-of-week',
+        tags: ['noun', 'time', 'day-of-week'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Kuv nyiam cov Zwj Kuab.', english: 'I like Fridays.' },
+      }
+      ,
+
+      {
+        id: 'days-of-week-saturday-formal',
+        hmongRPA: 'Zwj Cag (formal)',
+        english: 'Saturday',
+        category: 'days-of-week',
+        tags: ['noun', 'time', 'day-of-week'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Kuv nco tsis tau Zwj Cag tas los no.', english: 'I cannot remember last Saturday' },
+      },
+
+      {
+        id: 'days-of-week-monday-infomal',
+        hmongRPA: 'hnub ib (informal)',
         english: 'Monday',
         category: 'days-of-week',
         tags: ['noun', 'time', 'day-of-week'],
@@ -3744,8 +4005,8 @@ const RAW_CATEGORIES = [
         exampleSentence: { hmong: 'Hnub no yog hnub ib.', english: 'Today is Monday.' },
       },
       {
-        id: 'days-of-week-tuesday',
-        hmongRPA: 'hnub ob',
+        id: 'days-of-week-tuesday-informal',
+        hmongRPA: 'hnub ob (informal)',
         english: 'Tuesday',
         category: 'days-of-week',
         tags: ['noun', 'time', 'day-of-week'],
@@ -3753,8 +4014,8 @@ const RAW_CATEGORIES = [
         exampleSentence: { hmong: 'Hnub ob kuv mus ua haujlwm.', english: 'On Tuesday I go to work.', source: 'ai' },
       },
       {
-        id: 'days-of-week-wednesday',
-        hmongRPA: 'hnub peb',
+        id: 'days-of-week-wednesday-informal',
+        hmongRPA: 'hnub peb (informal)',
         english: 'Wednesday',
         category: 'days-of-week',
         tags: ['noun', 'time', 'day-of-week'],
@@ -3762,8 +4023,8 @@ const RAW_CATEGORIES = [
         exampleSentence: { hmong: 'Hnub peb kuv kawm lus Hmoob.', english: 'On Wednesday I study Hmong.', source: 'ai' },
       },
       {
-        id: 'days-of-week-thursday',
-        hmongRPA: 'hnub plaub',
+        id: 'days-of-week-thursday-informal',
+        hmongRPA: 'hnub plaub (informal)',
         english: 'Thursday',
         category: 'days-of-week',
         tags: ['noun', 'time', 'day-of-week'],
@@ -3771,8 +4032,8 @@ const RAW_CATEGORIES = [
         exampleSentence: { hmong: 'Hnub plaub kuv nyob tsev.', english: 'On Thursday I stay home.', source: 'ai' },
       },
       {
-        id: 'days-of-week-friday',
-        hmongRPA: 'hnub tsib',
+        id: 'days-of-week-friday-informal',
+        hmongRPA: 'hnub tsib (informal)',
         english: 'Friday',
         category: 'days-of-week',
         tags: ['noun', 'time', 'day-of-week'],
@@ -3780,8 +4041,8 @@ const RAW_CATEGORIES = [
         exampleSentence: { hmong: 'Hnub tsib peb mus noj mov.', english: 'On Friday we go out to eat.', source: 'ai' },
       },
       {
-        id: 'days-of-week-saturday',
-        hmongRPA: 'hnub rau',
+        id: 'days-of-week-saturday-informal',
+        hmongRPA: 'hnub rau (informal)',
         english: 'Saturday',
         category: 'days-of-week',
         tags: ['noun', 'time', 'day-of-week'],
@@ -3789,8 +4050,8 @@ const RAW_CATEGORIES = [
         exampleSentence: { hmong: 'Hnub rau kuv ntxuav tsev.', english: 'On Saturday I clean the house.', source: 'ai' },
       },
       {
-        id: 'days-of-week-sunday',
-        hmongRPA: 'hnub xya',
+        id: 'days-of-week-sunday-informal',
+        hmongRPA: 'hnub xya (informal)',
         english: 'Sunday',
         category: 'days-of-week',
         tags: ['noun', 'time', 'day-of-week'],
@@ -3886,6 +4147,27 @@ const RAW_CATEGORIES = [
         audioFile: 'vocabulary/verbs/txuas.wav',
         exampleSentence: { hmong: 'Kuv txuas ob txoj hlua.', english: 'I connect the two ropes.', source: 'ai' },
       },
+      // ⚠️ `ce` — THE AUTHOR'S WORD AND THE AUTHOR'S SENTENCE, 2026-10-25.
+      // Given verbatim: "ce (verb) — to scoop or draw water from a flowing source into a
+      // container", with the example "Kuv muab lub khob mus ce ib khob dej - i take the
+      // cup to get a cup of water."
+      //
+      // ⚠️ THE SENTENCE IS WHY THIS ENTRY MATTERS BEYOND ITS OWN MEANING: it uses `khob`
+      // twice, in both of its jobs — `lub khob` is the cup (a noun, marked by the general
+      // classifier `lub`), `ib khob dej` is a cup OF water (the measure). One sentence,
+      // the whole pattern. The classifiers lesson now teaches it with this line.
+      //
+      // ⚠️ NOT `source: 'ai'` and NOT `unreviewed`: the author wrote both the gloss and
+      // the sentence. Do not "improve" either.
+      {
+        id: 'verbs-ce',
+        hmongRPA: 'ce',
+        english: 'to scoop or draw water from a flowing source into a container',
+        category: 'verbs',
+        tags: ['verb', 'action', 'reviewed'],
+        audioFile: null,
+        exampleSentence: { hmong: 'Kuv muab lub khob mus ce ib khob dej.', english: 'I take the cup to get a cup of water.' },
+      },
       // ⚠️ ADDED 2026-09-12 — the component words from the Speak lessons.
       // They were taught and recorded but had no dictionary entry, so the
       // reader's long-press lookup missed them and they could not be drilled or
@@ -3895,8 +4177,8 @@ const RAW_CATEGORIES = [
       {
         id: 'verbs-meet',
         hmongRPA: 'ntsib',
-        english: 'meet; encounter',
-        senses: [{ en: 'meet; encounter', context: 'verbs' }, { en: 'face; confront', context: 'reading' }],
+        english: 'to meet; to encounter',
+        senses: [{ en: 'to meet; to encounter', context: 'verbs' }, { en: 'face; confront', context: 'reading' }],
         category: 'verbs',
         tags: ['verb', 'social', 'reviewed'],
         audioFile: 'lessons/greetings/ntsib.wav',
@@ -3917,8 +4199,8 @@ const RAW_CATEGORIES = [
       {
         id: 'verbs-have',
         hmongRPA: 'muaj',
-        english: 'have; possess',
-        senses: [{ en: 'have; possess', context: 'verbs' }, { en: 'there is; there are', context: 'reading' }, { en: 'have the opportunity, right or ability to — "muaj cai", to have the right', context: 'reading' }],
+        english: 'to have; to possess',
+        senses: [{ en: 'to have; to possess', context: 'verbs' }, { en: 'there is; there are', context: 'reading' }, { en: 'have the opportunity, right or ability to — "muaj cai", to have the right', context: 'reading' }],
         category: 'verbs',
         tags: ['verb', 'existence'],
         audioFile: 'lessons/politeness/muaj.wav',
@@ -3954,8 +4236,8 @@ const RAW_CATEGORIES = [
       {
         id: 'verbs-say',
         hmongRPA: 'hais',
-        english: 'say; speak; tell',
-        senses: [{ en: 'say; speak; tell', context: 'verbs' }, { en: 'state; explain; report', context: 'reading' }],
+        english: 'to say; to speak; to tell',
+        senses: [{ en: 'to say; to speak; to tell', context: 'verbs' }, { en: 'state; explain; report', context: 'reading' }],
         category: 'verbs',
         tags: ['verb', 'communication'],
         audioFile: 'grammar/action-verbs/hmong-action-verbs-hais.mp3',
@@ -3964,8 +4246,8 @@ const RAW_CATEGORIES = [
       {
         id: 'verbs-tell',
         hmongRPA: 'qhia',
-        english: 'tell; inform',
-        senses: [{ en: 'tell; inform', context: 'verbs' }, { en: 'teach', context: 'reading' }, { en: 'show; point out', context: 'reading' }],
+        english: 'to teach; to tell; to inform',
+        senses: [{ en: 'to teach; to tell; to inform', context: 'verbs' }, { en: 'teach', context: 'reading' }, { en: 'show; point out', context: 'reading' }],
         category: 'verbs',
         tags: ['verb', 'communication', 'education'],
         audioFile: 'grammar/action-verbs/hmong-action-verbs-qhia.mp3',
@@ -3980,11 +4262,22 @@ const RAW_CATEGORIES = [
         audioFile: 'grammar/action-verbs/hmong-action-verbs-nug.mp3',
         exampleSentence: { hmong: 'Kuv nug koj.', english: 'I ask you.' },
       },
+      // ── txog and kom, THE VERBS — promoted out of "Also means" 2026-10-02 ──
+      // Both live in `conjunctions` as grammar words (txog = about/concerning,
+      // kom = so that). Their verb senses were footnotes with no card, and a
+      // learner meets them in different lessons entirely. Originals unchanged.
+      // ⚠️ THE VERB SENSE ONLY. It carried '· until; up to, as far as' and
+      // check-vocabulary.mjs rejected it — a `·` gloss shows every clause on
+      // the flashcard. Dropped rather than tagged, because "until / up to" is
+      // the GRAMMAR sense and `conjunctions-about` already lists it; keeping it
+      // here would have put the same meaning on two cards in two domains.
+      { id: 'verbs-txog', hmongRPA: 'txog', english: 'to reach; to arrive at (verb)', category: 'verbs', tags: ['verb', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Peb txog tsev lawm.', english: 'We have arrived home.', source: 'ai' } },
+      { id: 'verbs-kom', hmongRPA: 'kom', english: 'to tell; to direct someone to do something (verb)', category: 'verbs', tags: ['verb', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Nws kom kuv mus nrog nws.', english: 'She told me to go with her.', source: 'ai' } },
       {
         id: 'verbs-answer',
         hmongRPA: 'teb',
-        english: 'answer; reply',
-        senses: [{ en: 'answer; reply', context: 'verbs' }, { en: 'respond; react', context: 'reading' }, { en: 'land; country, as in Teb Chaws Asmeskas', context: 'places' }],
+        english: 'to answer; to reply',
+        senses: [{ en: 'to answer; to reply', context: 'verbs' }, { en: 'respond; react', context: 'reading' }, { en: 'land; country, as in Teb Chaws Asmeskas', context: 'places' }],
         category: 'verbs',
         tags: ['verb', 'communication', 'reviewed'],
         audioFile: 'grammar/action-verbs/hmong-action-verbs-teb.mp3',
@@ -3993,8 +4286,8 @@ const RAW_CATEGORIES = [
       {
         id: 'verbs-explain',
         hmongRPA: 'piav',
-        english: 'explain',
-        senses: [{ en: 'explain', context: 'verbs' }, { en: 'describe; narrate', context: 'reading' }],
+        english: 'to explain',
+        senses: [{ en: 'to explain', context: 'verbs' }, { en: 'describe; narrate', context: 'reading' }],
         category: 'verbs',
         tags: ['verb', 'communication'],
         audioFile: 'grammar/action-verbs/hmong-action-verbs-piav.mp3',
@@ -4020,8 +4313,8 @@ const RAW_CATEGORIES = [
       {
         id: 'verbs-stand',
         hmongRPA: 'sawv',
-        english: 'stand',
-        senses: [{ en: 'stand', context: 'verbs' }, { en: 'get up; rise', context: 'reading' }, { en: 'wake up', context: 'reading' }, { en: 'arise; rise, including the sun rising', context: 'reading' }],
+        english: 'to stand',
+        senses: [{ en: 'to stand', context: 'verbs' }, { en: 'get up; rise', context: 'reading' }, { en: 'wake up', context: 'reading' }, { en: 'arise; rise, including the sun rising', context: 'reading' }],
         category: 'verbs',
         tags: ['verb', 'posture', 'motion', 'reviewed'],
         audioFile: 'grammar/action-verbs/hmong-action-verbs-sawv.mp3',
@@ -4039,8 +4332,8 @@ const RAW_CATEGORIES = [
       {
         id: 'verbs-close',
         hmongRPA: 'kaw',
-        english: 'close; shut',
-        senses: [{ en: 'close; shut', context: 'verbs' }, { en: 'closed; not open', context: 'reading' }, { en: 'confine; imprison', context: 'reading' }, { en: 'raug kaw = be imprisoned', context: 'reading' }],
+        english: 'to close; to shut',
+        senses: [{ en: 'to close; to shut', context: 'verbs' }, { en: 'closed; not open', context: 'reading' }, { en: 'confine; imprison', context: 'reading' }, { en: 'raug kaw = be imprisoned', context: 'reading' }],
         category: 'verbs',
         tags: ['verb', 'motion', 'action', 'reviewed'],
         audioFile: 'grammar/action-verbs/hmong-action-verbs-kaw.mp3',
@@ -4058,8 +4351,8 @@ const RAW_CATEGORIES = [
       {
         id: 'verbs-go',
         hmongRPA: 'mus',
-        english: 'go',
-        senses: [{ en: 'go', context: 'verbs' }, { en: 'leave; depart', context: 'reading' }, { en: 'go on; proceed — in serial-verb and directional use', context: 'reading' }],
+        english: 'to go',
+        senses: [{ en: 'to go', context: 'verbs' }, { en: 'leave; depart', context: 'reading' }, { en: 'go on; proceed — in serial-verb and directional use', context: 'reading' }],
         category: 'verbs',
         tags: ['verb', 'motion'],
         audioFile: 'grammar/action-verbs/hmong-action-verbs-mus.mp3',
@@ -4086,8 +4379,8 @@ const RAW_CATEGORIES = [
       {
         id: 'verbs-release',
         hmongRPA: 'tso',
-        english: 'release; let go',
-        senses: [{ en: 'put; place; set down', context: 'reading' }, { en: 'let; allow', context: 'reading' }, { en: 'release; let go', context: 'verbs' }, { en: 'leave behind; abandon', context: 'reading' }],
+        english: 'to release; to let go',
+        senses: [{ en: 'put; place; set down', context: 'reading' }, { en: 'let; allow', context: 'reading' }, { en: 'to release; to let go', context: 'verbs' }, { en: 'leave behind; abandon', context: 'reading' }],
         category: 'verbs',
         tags: ['verb', 'motion', 'action'],
         audioFile: 'grammar/action-verbs/hmong-action-verbs-tso.mp3',
@@ -4096,8 +4389,8 @@ const RAW_CATEGORIES = [
       {
         id: 'verbs-see',
         hmongRPA: 'pom',
-        english: 'see',
-        senses: [{ en: 'see', context: 'verbs' }, { en: 'find; discover', context: 'reading' }, { en: 'consider; regard; judge — "pom tias", to think that', context: 'reading' }],
+        english: 'to see',
+        senses: [{ en: 'to see', context: 'verbs' }, { en: 'find; discover', context: 'reading' }, { en: 'consider; regard; judge — "pom tias", to think that', context: 'reading' }],
         category: 'verbs',
         tags: ['verb', 'perception'],
         audioFile: 'grammar/action-verbs/hmong-action-verbs-pom.mp3',
@@ -4115,8 +4408,8 @@ const RAW_CATEGORIES = [
       {
         id: 'verbs-watch',
         hmongRPA: 'saib',
-        english: 'look at; watch',
-        senses: [{ en: 'look at; watch', context: 'verbs' }, { en: 'examine; inspect', context: 'reading' }, { en: 'care for; look after', context: 'reading' }, { en: 'consider; regard', context: 'reading' }],
+        english: 'to look at; to watch',
+        senses: [{ en: 'to look at; to watch', context: 'verbs' }, { en: 'examine; inspect', context: 'reading' }, { en: 'care for; look after', context: 'reading' }, { en: 'consider; regard', context: 'reading' }],
         category: 'verbs',
         tags: ['verb', 'perception', 'reviewed'],
         audioFile: 'grammar/action-verbs/hmong-action-verbs-saib.mp3',
@@ -4127,8 +4420,8 @@ const RAW_CATEGORIES = [
       // sentences are the lesson's own text, not newly authored.
       { id: 'verbs-eat', hmongRPA: 'noj', english: 'to eat', category: 'verbs', tags: ['verb'], audioFile: 'grammar/action-verbs/hmong-action-verbs-noj.mp3', exampleSentence: { hmong: 'Noj mov.', english: 'Eat rice / have a meal.' } },
       { id: 'verbs-drink', hmongRPA: 'haus', english: 'to drink', category: 'verbs', tags: ['verb'], audioFile: 'grammar/action-verbs/hmong-action-verbs-haus.mp3', exampleSentence: { hmong: 'Haus dej.', english: 'Drink water.' } },
-      { id: 'verbs-come', hmongRPA: 'los', english: 'come', senses: [{ en: 'come', context: 'verbs' }, { en: 'also; even; too — in certain patterns', context: 'grammar' }], category: 'verbs', tags: ['verb', 'motion', 'reviewed'], audioFile: 'grammar/action-verbs/hmong-action-verbs-los.mp3', exampleSentence: { hmong: 'Thaum nws los, kuv mus.', english: 'When he/she comes, I go.', source: 'ai' } },
-      { id: 'verbs-make', hmongRPA: 'ua', english: 'do; make', senses: [{ en: 'do; make', context: 'verbs' }, { en: 'become; act as; serve as', context: 'reading' }, { en: 'cause; make happen — "ua rau", to cause', context: 'reading' }], category: 'verbs', tags: ['verb', 'reviewed'], audioFile: 'grammar/action-verbs/hmong-action-verbs-ua.mp3', exampleSentence: { hmong: 'Ua tsaug.', english: 'Thank you (literally "do thanks").' } },
+      { id: 'verbs-come', hmongRPA: 'los', english: 'to come', senses: [{ en: 'to come', context: 'verbs' }, { en: 'also; even; too — in certain patterns', context: 'grammar' }], category: 'verbs', tags: ['verb', 'motion', 'reviewed'], audioFile: 'grammar/action-verbs/hmong-action-verbs-los.mp3', exampleSentence: { hmong: 'Thaum nws los, kuv mus.', english: 'When he/she comes, I go.', source: 'ai' } },
+      { id: 'verbs-make', hmongRPA: 'ua', english: 'to do; to make', senses: [{ en: 'to do; to make', context: 'verbs' }, { en: 'become; act as; serve as', context: 'reading' }, { en: 'cause; make happen — "ua rau", to cause', context: 'reading' }], category: 'verbs', tags: ['verb', 'reviewed'], audioFile: 'grammar/action-verbs/hmong-action-verbs-ua.mp3', exampleSentence: { hmong: 'Ua tsaug.', english: 'Thank you (literally "do thanks").' } },
       // Added 2026-09-26 — no entry of its own; found in the author's story "Mus Saib Yeeb Yam", whose line is the example.
       { id: 'verbs-like', hmongRPA: 'nyiam', english: 'to like; to love', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Mai teb kuv tias, “Yog, kuv nyiam nws.”', english: 'Mai answered me, “Yes, I like it.”' } },
       // ── VERB + ITS EVERYDAY NOUN — 2026-09-27 (author: action verbs "are almost always
@@ -4143,6 +4436,66 @@ const RAW_CATEGORIES = [
       { id: 'verbs-sau-ntawv', hmongRPA: 'sau ntawv', english: 'to write (sau = write + ntawv = writing)', category: 'verbs', tags: ['verb', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv sau ntawv.', english: 'I write.' } },
       { id: 'verbs-mloog-lus', hmongRPA: 'mloog lus', english: 'to listen; to do as you are told (mloog = listen + lus = words)', category: 'verbs', tags: ['verb', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv mloog lus.', english: 'I listen. / I do as I am told.' } },
       { id: 'verbs-hais-lus', hmongRPA: 'hais lus', english: 'to speak, to talk (hais = say + lus = words)', category: 'verbs', tags: ['verb', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv hais lus.', english: 'I speak.' } },
+      // ── ⚠️ VERB + NOUN EXPRESSIONS AS CARDS — 2026-10-20 ──────────────────
+      //
+      // Author: *"add the verb noun words to the flashcards"*. The Verb + Noun
+      // lesson taught sixteen expressions and only six of them existed as
+      // dictionary entries, so `u-verb-noun` could drill a fraction of its own
+      // lesson. These are the ten that were missing.
+      //
+      // ⚠️ `english` KEEPS THIS CATEGORY'S HOUSE STYLE: "to <natural meaning>
+      // (part = gloss + part = gloss)". That is how `noj mov`, `nyeem ntawv` and
+      // `hais lus` were already written here, and it satisfies the 2026-10-20
+      // ruling that a verb definition starts with "to" while still showing the
+      // learner how the phrase is built — which is the whole point of the lesson.
+      //
+      // ⚠️ ALL `unreviewed`. verb-noun.js carries the author's own standing note:
+      // "Review all example sentences and literal glosses with a fluent White
+      // Hmong speaker before publishing." The example sentences below are the
+      // author's from that lesson, not invented here.
+      //
+      // ⚠️ `nug lus` CARRIES THE AUTHOR'S OWN DOUBT. Their lesson note reads
+      // "Check the most natural usage for the intended dialect and context", so
+      // the doubt is written into the entry rather than lost in a lesson note.
+      { id: 'verbs-haus-dej', hmongRPA: 'haus dej', english: 'to drink water (haus = drink + dej = water)', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv haus dej.', english: 'I drink water.' } },
+      { id: 'verbs-ua-haujlwm', hmongRPA: 'ua haujlwm', english: 'to work (ua = do + haujlwm = work, task)', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv ua haujlwm.', english: 'I work.' } },
+      { id: 'verbs-mloog-nkauj', hmongRPA: 'mloog nkauj', english: 'to listen to music (mloog = listen + nkauj = song, music)', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv mloog nkauj.', english: 'I listen to music.' } },
+      // ⚠️ saib TV — COMMENTED OUT 2026-10-20 (author: "comment out saib tv").
+      // TO RESTORE: uncomment this line AND 'verbs-saib-tv' in u-verb-noun's
+      // `words` list in path.js. The lesson verb-noun.js still teaches the
+      // expression; only the card is gone.
+      // { id: 'verbs-saib-tv', hmongRPA: 'saib TV', english: 'to watch TV (saib = watch + TV, borrowed as it stands)', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv saib TV.', english: 'I watch TV.' } },
+      { id: 'verbs-tham-lus', hmongRPA: 'tham lus', english: 'to talk, to converse (tham = talk + lus = words, language)', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tham lus.', english: 'I talk.', source: 'ai' } },
+      { id: 'verbs-nug-lus', hmongRPA: 'nug lus', english: 'to ask a question (nug = ask + lus = words) — ⚠️ check the most natural usage for the dialect and context', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv nug lus.', english: 'I ask a question.', source: 'ai' } },
+      { id: 'verbs-ntxuav-tais-diav', hmongRPA: 'ntxuav tais diav', english: 'to wash the dishes (ntxuav = wash + tais diav = bowls and spoons, the dishes)', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv ntxuav tais diav.', english: 'I wash the dishes.', source: 'ai' } },
+      { id: 'verbs-ntxuav-khaub-ncaws', hmongRPA: 'ntxuav khaub ncaws', english: 'to do the laundry (ntxuav = wash + khaub ncaws = clothes)', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv ntxuav khaub ncaws.', english: 'I do the laundry.', source: 'ai' } },
+      { id: 'verbs-ua-noj', hmongRPA: 'ua noj', english: 'to cook, to prepare food (ua = do + noj = eat)', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv ua noj.', english: 'I cook.', source: 'ai' } },
+      { id: 'verbs-thaij-duab', hmongRPA: 'thaij duab', english: 'to take a photo (thaij = take a photograph + duab = picture, image)', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv thaij duab.', english: 'I take a photo.', source: 'ai' } },
+
+      // ── From the author's list of 2026-10-07 ────────────────────────────────
+      // Examples are the list's own, kept verbatim. Tagged 'unreviewed' like
+      // every other import: the words are the author's, but nobody fluent has
+      // signed off on these glosses against a source yet.
+      { id: 'verbs-tsuj', hmongRPA: 'tsuj', english: 'to step on; to tread on', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tsis txhob tsuj kuv txhais taw.', english: "Don't step on my foot." } },
+      // `tsuj raug` is its own entry rather than a note on `tsuj`: raug is what
+      // makes the step LAND on a specific target, and the pair is the pattern a
+      // learner needs (compare `tua` vs `tua raug`, "hit the target", in the
+      // list's own phiaj example).
+      { id: 'verbs-tsuj-raug', hmongRPA: 'tsuj raug', english: 'to step on something or someone — tsuj + raug, the step landing on a specific target', category: 'verbs', tags: ['verb', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tsuj raug nws txhais taw.', english: "I stepped on his foot." } },
+      { id: 'verbs-tsawv', hmongRPA: 'tsawv', english: 'to grab; to grasp; to hold onto', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws tsawv kuv txhais tes.', english: 'He grabbed my hand.' } },
+      { id: 'verbs-yos-noj', hmongRPA: 'yos noj', english: 'to hunt for food', category: 'verbs', tags: ['verb', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lawv mus yos noj tom hav zoov.', english: 'They went hunting for food in the forest.' } },
+      { id: 'verbs-mag', hmongRPA: 'mag', english: 'to get caught; to be trapped', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus nas mag rau hauv lub cuab.', english: 'The mouse got caught in the trap.' } },
+      // ⚠️ SECOND ENTRY FOR `tom`, NOT AN EDIT OF THE FIRST. The dictionary
+      // already has tom as the locative "at; over at" (reading-place). Biting is
+      // a different word that happens to be spelled the same, so it gets its own
+      // entry in its own set — the `rau` / `tom qab` pattern — and the two now
+      // reach each other through "Other meanings of tom".
+      { id: 'verbs-tom-bite', hmongRPA: 'tom', english: 'to bite', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus dev tom kuv txhais ceg.', english: 'The dog bit my leg.' } },
+      // ⚠️ SECOND ENTRY FOR `yeej`, same reasoning. The existing one is the
+      // emphatic adverb "truly, really, indeed" (reading-general); this is the
+      // verb "to win". The list glossed them together as "to win; definitely;
+      // indeed" — split here, because one card cannot ask both.
+      { id: 'verbs-yeej-win', hmongRPA: 'yeej', english: 'to win', category: 'verbs', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb yeej qhov kev ua si.', english: 'We won the game.' } },
     ],
   },
   {
@@ -4185,10 +4538,39 @@ const RAW_CATEGORIES = [
     title: 'Colors',
     description: 'Common color names in Hmong.',
     emoji: '🎨',
+    // ⚠️ THE `kob` PREFIX WAS STRIPPED FROM ALL 14 COLOR NAMES — 2026-10-14, the author:
+    // "remove the kob, and just leave the color names". So `kob liab` → `liab`.
+    //
+    // Keep the reason, because `kob` is not a mistake and somebody will want to put it back:
+    // **kob and xim both mean "colour".** `kob` is the NATIVE Hmong word (also a shade, or a
+    // group of something); `xim` is a loanword, from Thai/Lao and Chinese, and also means
+    // colour. The headwords here are the colour NAMES, so neither word belongs in front of
+    // them — `liab` is "red" on its own, and `kob liab` is "the colour red".
+    //
+    // `xim` keeps its own entry below (misc-xim, "colour"). There is no entry for `kob` yet;
+    // if one is wanted it is a word meaning "colour / shade", not a prefix on these.
+    //
+    // ⚠️ SETTLED 2026-10-15 — THE FOUR "THING-NAMED" COLOURS ARE CORRECT AS THEY STAND.
+    // Claude flagged these as possibly needing `kob` kept, since each is also a noun:
+    //     nqaij  peach   (also meat/flesh — food-meat)
+    //     nyiaj  silver  (also money — money-nyiaj)
+    //     kub    gold    (also hot — weather-kub)
+    //     kas fes  brown (also coffee)
+    // The author's ruling: *"yes thats correct, nqaij does mean peach, nyiaj is silver etc
+    // youre right"*. These are the colour names, bare, with no `kob` in front.
+    // DO NOT "FIX" THEM BACK. One word with two meanings is the normal case in this
+    // dictionary and the app already handles it the documented way: one entry PER MEANING,
+    // each in its own category, which is why `nqaij` is here as "peach" and in `food` as
+    // "meat". check-vocabulary's domain check is what keeps a flashcard in this deck from
+    // showing the food gloss.
+    // ⚠️ Six example sentences in this category still use `kob` as a noun ("Kob xiav zoo.",
+    // "Kuv nyiam kob paj yeeb."). Left alone: they are correct Hmong and they show the word
+    // being used, which is the opposite of the problem the strip fixed.
+    // TO RESTORE the prefix: put `kob ` back on the 14 `hmongRPA` values below.
     words: [
       {
         id: 'colors-red',
-        hmongRPA: 'kob liab',
+        hmongRPA: 'liab',
         english: 'red',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4197,7 +4579,7 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-blue',
-        hmongRPA: 'kob xiav',
+        hmongRPA: 'xiav',
         english: 'blue',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4206,7 +4588,7 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-green',
-        hmongRPA: 'kob ntsuab',
+        hmongRPA: 'ntsuab',
         english: 'green',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4215,16 +4597,19 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-yellow',
-        hmongRPA: 'kob daj',
+        hmongRPA: 'daj',
         english: 'yellow',
         category: 'colors',
         tags: ['color', 'adjective'],
         audioFile: null,
-        exampleSentence: { hmong: 'Paj no daj.', english: 'This flower is yellow.' },
+        // Took the retired misc-daj entry's sentence (see the ⚠️ at the foot of this
+        // category): it is the same sentence WITH the classifier — `Lub paj no daj`, not
+        // `Paj no daj`. Was: { hmong: 'Paj no daj.', english: 'This flower is yellow.' }
+        exampleSentence: { hmong: 'Lub paj no daj.', english: 'This flower is yellow.' },
       },
       {
         id: 'colors-black',
-        hmongRPA: 'kob dub',
+        hmongRPA: 'dub',
         english: 'black',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4233,7 +4618,7 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-white',
-        hmongRPA: 'kob dawb',
+        hmongRPA: 'dawb',
         english: 'white',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4242,7 +4627,7 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-brown',
-        hmongRPA: 'kob kas fes',
+        hmongRPA: 'kas fes',
         english: 'brown',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4251,7 +4636,7 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-pink',
-        hmongRPA: 'kob liab dawb muag',
+        hmongRPA: 'liab dawb muag',
         english: 'pink',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4260,7 +4645,7 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-orange',
-        hmongRPA: 'kob txiv kab ntxwv',
+        hmongRPA: 'txiv kab ntxwv',
         english: 'orange',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4269,7 +4654,7 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-purple',
-        hmongRPA: 'kob paj yeeb',
+        hmongRPA: 'paj yeeb',
         english: 'purple',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4278,7 +4663,7 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-gold',
-        hmongRPA: 'kob kub',
+        hmongRPA: 'kub',
         english: 'gold',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4287,7 +4672,7 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-gray',
-        hmongRPA: 'kob txho',
+        hmongRPA: 'txho',
         english: 'gray',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4296,7 +4681,7 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-silver',
-        hmongRPA: 'kob nyiaj',
+        hmongRPA: 'nyiaj',
         english: 'silver',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4305,7 +4690,7 @@ const RAW_CATEGORIES = [
       },
       {
         id: 'colors-peach',
-        hmongRPA: 'kob nqaij',
+        hmongRPA: 'nqaij',
         english: 'peach',
         category: 'colors',
         tags: ['color', 'adjective'],
@@ -4314,8 +4699,21 @@ const RAW_CATEGORIES = [
       },
       // ── Moved out of the misc catch-alls on 2026-09-20 ──
       { id: 'misc-xim', hmongRPA: 'xim', english: 'colour', category: 'colors', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Koj nyiam xim dab tsi?', english: 'What colour do you like?', source: 'ai' } },
-      { id: 'misc-daj', hmongRPA: 'daj', english: 'yellow', category: 'colors', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Lub paj no daj.', english: 'This flower is yellow.', source: 'ai' } },
-      { id: 'misc-liab', hmongRPA: 'liab', english: 'red', category: 'colors', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub tsheb no liab.', english: 'This car is red.', source: 'ai' } },
+      // ⚠️ COMMENTED OUT 2026-10-14 — DUPLICATE HEADWORDS, created by the `kob` strip above.
+      // These two came in with a misc import and read `daj` / `liab` already. Once
+      // `kob daj` became `daj` and `kob liab` became `liab`, this category held each word
+      // twice: two flashcards with the same front, and a quiz able to ask "yellow" with two
+      // right answers. The `colors-*` ids are the canonical set (proper tags, no draft
+      // flags), so they keep the word and these go.
+      // misc-daj's sentence was moved up to colors-yellow before this was commented out —
+      // it carried the classifier (`Lub paj no daj`) where colors-yellow's did not.
+      // misc-liab's ("Lub tsheb no liab.") was left here: colors-red already has one, and
+      // choosing between two AI-written sentences is the author's call, not a side effect
+      // of de-duplicating. ⚠️ colors-red's own sentence, `Tsho no liab`, is missing its
+      // classifier the same way `Paj no daj` was — worth a look.
+      // TO RESTORE: uncomment, and rename these headwords to something not already here.
+      // { id: 'misc-daj', hmongRPA: 'daj', english: 'yellow', category: 'colors', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Lub paj no daj.', english: 'This flower is yellow.', source: 'ai' } },
+      // { id: 'misc-liab', hmongRPA: 'liab', english: 'red', category: 'colors', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub tsheb no liab.', english: 'This car is red.', source: 'ai' } },
     ],
   },
 
@@ -4414,7 +4812,26 @@ const RAW_CATEGORIES = [
         id: 'descriptions-tall',
         hmongRPA: 'siab',
         english: 'tall; high',
-        senses: [{ en: 'heart; inner self; mind; feelings', context: 'personality-siab' }, { en: 'chest — in "lub hauv siab"', context: 'body' }, { en: 'intention; willingness; emotional state', context: 'personality-siab' }, { en: 'tall; high', context: 'descriptions' }],
+        // ⚠️ NO `senses` ARRAY, AND THAT IS DELIBERATE — 2026-10-05.
+        //
+        // This entry carried one listing every meaning of siab, and on 2026-10-04
+        // I rewrote it to match the other two entries word for word. That KILLED
+        // THE "Other meanings of siab" LINKS on all three pages:
+        // WordDetail.jsx builds `shown` from the senses it prints and then drops
+        // any other card whose definition is already in it. Spell the other
+        // cards' definitions out here and the travelling links filter themselves
+        // out — the page gains a paragraph and loses the navigation.
+        //
+        // ⚠️ THE RULE THAT FALLS OUT OF THAT: `senses` is for a meaning with NO
+        // CARD OF ITS OWN. A meaning that has its own entry is reached by the
+        // link, not copied into the neighbour. siab's three meanings each have
+        // an entry (this one, personality-siab-noun,
+        // human-anatomy-internal-organs-liver), so none of them belongs here.
+        //
+        // The stale wording that array also carried ('heart; inner self…' from
+        // before the 2026-10-02 liver-leads correction, and the
+        // intention/willingness split check-vocabulary.mjs had already rejected)
+        // is gone with it rather than fixed in place.
         category: 'descriptions',
         tags: ['adjective', 'size', 'body'],
         audioFile: 'grammar/adjectives/hmong-common-adjectives-siab.mp3',
@@ -4578,6 +4995,16 @@ const RAW_CATEGORIES = [
         audioFile: null,
         exampleSentence: { hmong: 'Koj cov khaub ncaws ntub tas lawm.', english: 'Your clothes are all wet.' },
       },
+      // ── From the author's list of 2026-10-07 ────────────────────────────────
+      { id: 'descriptions-easy', hmongRPA: 'yooj yim', english: 'easy; simple', category: 'descriptions', tags: ['adjective', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Qhov no yooj yim heev.', english: 'This is very easy.' } },
+      { id: 'descriptions-slow', hmongRPA: 'qeeb', english: 'slow', category: 'descriptions', tags: ['adjective', 'speed', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Koj tsav qeeb me ntsis.', english: 'Drive a little slower.' } },
+      // ⚠️ PUT HERE FOR WANT OF A COMPARISON SET — say if it should move. `zoo li`
+      // is not an adjective; it is the everyday comparative ("looks like",
+      // "seems like"), and the nearest relative in the dictionary is `li` in
+      // reading-speech ("like; as — comparison or manner"). Descriptions is where
+      // a learner meets it in a sentence, so it sits here until there is a better
+      // home. The alternative was reading-general, which is a holding pile.
+      { id: 'descriptions-zoo-li', hmongRPA: 'zoo li', english: 'like; similar to; seems like, looks like', category: 'descriptions', tags: ['comparison', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws zoo li nws txiv.', english: 'He looks like his father.' } },
     ],
   },
 
@@ -4587,6 +5014,11 @@ title: 'Discourse Particles',
 description: 'Sentence-final particles that indicate mood, stress, and question formation.',
 emoji: '💬',
 words: [
+// los — the PARTICLE, promoted out of `verbs-come`'s "Also means" 2026-10-02.
+// `los` = to come keeps its entry. This is the additive particle (also, even,
+// too), which is a grammar word rather than a verb and belongs with the other
+// particles a reader meets it beside.
+{ id: 'discourse-los', hmongRPA: 'los', english: 'also; even; too — an additive particle, in certain patterns', category: 'discourse-particles', tags: ['particle', 'discourse', 'reviewed'], audioFile: null },
 {
 id: 'discourse-nawb',
 hmongRPA: 'nawb',
@@ -4662,7 +5094,7 @@ exampleSentence: { hmong: 'Koj yog kuv tus phooj ywg mog.', english: 'You are my
 // Rewritten 2026-09-30 with ans-aws, same reasoning. Was '(soft agreement:
 // “oh”, “yes”, “I see”) — preferred over as'. The spelling note is kept: it is
 // a real orthographic point, not a hedge about meaning.
-{ id: 'discourse-aws', hmongRPA: 'aws', english: 'yes; I see — a soft agreement or acknowledgement (spelled aws, not as)', category: 'discourse-particles', tags: ['particle', 'discourse'], audioFile: null },
+{ id: 'discourse-aws', hmongRPA: 'aws', english: 'a soft agreement or acknowledgement — mm-hm, I see; not a direct “yes” (spelled aws, not as)', category: 'discourse-particles', tags: ['particle', 'discourse'], audioFile: null },
 { id: 'discourse-pob', hmongRPA: 'pob', english: '(uncertainty: “maybe”, “I guess”)', category: 'discourse-particles', tags: ['particle', 'discourse'], audioFile: null },
 { id: 'discourse-sas', hmongRPA: 'sas', english: '(mild emphasis, soft insistence) — preferred over sad', category: 'discourse-particles', tags: ['particle', 'discourse'], audioFile: null },
 { id: 'discourse-lauj', hmongRPA: 'lauj', english: '(mild exclamation)', category: 'discourse-particles', tags: ['particle', 'discourse'], audioFile: null },
@@ -4687,6 +5119,48 @@ category: 'conjunctions',
 tags: ['conjunction', 'sequence'],
 audioFile: 'grammar/conjunctions/hmong-conjunctions-ces.mp3',
 exampleSentence: { hmong: 'Kuv mus ces koj tuaj.', english: 'I go then you come.' },
+},
+// ── ⚠️ es — ADDED 2026-10-20 FROM THE AUTHOR'S TABLE ─────────────────────────
+//
+// Four uses were given, and the author's own note is that THEY OVERLAP:
+//   connecting ideas    so, and so   Nws tshaib plab es nws noj mov.
+//                                    They are hungry, so they eat.
+//   showing a result    so, therefore Los nag es peb nyob hauv tsev.
+//                                    It rains, so we stay home.
+//   moving a story on   then, and then Kuv sawv, ces kuv mus ua haujlwm.
+//                                    I get up, then I go to work.
+//   related action      so, and so   Nws tsis tuaj es peb mus lawm.
+//                                    They didn't come, so we left.
+//
+// ⚠️ ONE ENTRY, NOT FOUR, and the author's distinction is why: *"The grammar
+// reference supports `es` meaning 'so', while `ces` is the common connector
+// meaning 'and then'."* These are one connective read in four contexts, not four
+// meanings in four domains — so they belong in `senses` under one headword,
+// which is how `ces` next door is already written. Splitting them would put four
+// identical cards in one deck.
+//
+// ⚠️ NOTE THE THIRD EXAMPLE USES `ces`, NOT `es`. That is the author's point
+// made in a sentence: for "then", the word people reach for is `ces`. The
+// sequence sense is recorded here with that caveat attached rather than offered
+// as an equal option.
+//
+// ⚠️ `unreviewed`, AND THE AUTHOR SAID WHY: *"The example sentences above are
+// learner-oriented examples"* — built to teach the pattern, not transcribed from
+// speech. Source given: langsci-press.org. A speaker should confirm the example
+// before this loses the tag.
+{
+id: 'conjunctions-es',
+hmongRPA: 'es',
+english: 'so; and so — connecting two related clauses',
+senses: [
+{ en: 'so; and so — connecting two related clauses', context: 'conjunctions' },
+{ en: 'so; therefore — what happens as a result of the first situation', context: 'reading' },
+{ en: 'then; and then — the next event in a sequence, though "ces" is the usual choice for this', context: 'reading' },
+],
+category: 'conjunctions',
+tags: ['conjunction', 'unreviewed'],
+audioFile: null,
+exampleSentence: { hmong: 'Nws tshaib plab es nws noj mov.', english: 'They are hungry, so they eat.' },
 },
 {
 id: 'conjunctions-and',
@@ -5266,6 +5740,34 @@ exampleSentence: { hmong: 'Kuv nyuam qhuav tuaj.', english: 'I just came.' },
       { id: 'int-pattern-reduplication', hmongRPA: 'word + word (reduplication)', english: 'say it twice to make it stronger — very + the meaning, or extra feeling', category: 'intensifiers', tags: ['intensifier', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws khiav nrawm nrawm.', english: 'He runs very fast.' } },
       { id: 'int-redup-no-no', hmongRPA: 'no no', english: 'very cold (no, cold, said twice)', category: 'intensifiers', tags: ['intensifier', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Hnub no no no.', english: 'Today is very cold.' } },
       { id: 'int-redup-nrawm-nrawm', hmongRPA: 'nrawm nrawm', english: 'very fast (nrawm, fast, said twice)', category: 'intensifiers', tags: ['intensifier', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws khiav nrawm nrawm.', english: 'He runs very fast.' } },
+      // From the author's list of 2026-10-07. `tsees` follows its verb rather
+      // than standing alone, which is why it is an intensifier here and not an
+      // adverb entry: the list's own gloss pair is `sawv tsees` / `tsees`, and
+      // `sawv tsees` is ALREADY in the dictionary (reading-general, "to get up,
+      // to spring to one's feet") — so only the bare intensifier was missing.
+      { id: 'int-tsees', hmongRPA: 'tsees', english: 'immediately; suddenly; right away — after a verb: "sawv tsees", stood right up', category: 'intensifiers', tags: ['intensifier', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws sawv tsees.', english: 'He stood up immediately.' } },
+
+      // ── HELD FROM THE 2026-10-07 LIST — asked, not added ────────────────────
+      // Same treatment as the `sab sab` / `tsuag tsuag` hold above: the list is
+      // not wrong often, but when it disagrees with the dictionary the author
+      // rules, not Claude.
+      //
+      // ⚠️ `tsaug` = "tired; exhausted", with "Kuv tsaug heev hnub no."
+      // The dictionary already has `tsaug` in reading-general as "to rinse; to
+      // thank; to be numb", and the tiredness word I can find everywhere else in
+      // this repo is `tsaug zog` (sleepy) — `ua tsaug` is the thanks. So either
+      // the list means `tsaug zog` and dropped the zog, or bare `tsaug` really
+      // does carry "tired" in the author's Hmong, which would be a fourth sense
+      // worth its own entry. Not a word I will decide.
+      // { id: 'descriptions-tired', hmongRPA: 'tsaug', english: 'tired; exhausted', … }
+      //
+      // ⚠️ `lub lim tiam thib…` = "the … week; week number", with "Lub lim tiam
+      // thib ob." Held for a different reason: the ellipsis means it is a
+      // TEMPLATE, and a flashcard cannot ask "Lub lim tiam thib…". It also hides
+      // a gap — the dictionary has no entry for `lub lim tiam` (week) at all. Two
+      // ways to take it, and they are different jobs: add `lub lim tiam` as a
+      // word and let `thib` (already in the dictionary) carry the ordinal, or add
+      // it as a clock/calendar PATTERN like `txog + time`. Say which.
       // HELD — asked the author, not added: the paste gives "sab sab = exhausted" and "tsuag tsuag =
       // hurry up!", but the dictionary has sab = side and tsuag = pale / bland. Likely GPT errors.
       // { id: 'int-redup-sab-sab', hmongRPA: 'sab sab', english: 'exhausted' … },
@@ -5414,19 +5916,40 @@ words: [
         ] },
       { id: 'tense-markers-still', hmongRPA: 'tseem', english: 'still — the action has not stopped yet',  /* was 'still', 2026-09-26 */ category: 'tense-markers', tags: ['particle', 'aspect'], audioFile: 'grammar/tense-markers/hmong-tense-markers-tseem.mp3', exampleSentence: { hmong: 'Kuv tseem noj.', english: 'I am still eating.' } },
       { id: 'tense-markers-completed', hmongRPA: 'lawm', english: 'already; now — marks a change or newly relevant state', senses: [{ en: 'already; now — marks a change or newly relevant state', context: 'tense-markers' }, { en: 'finished; completed', context: 'reading' }], category: 'tense-markers', tags: ['particle', 'aspect', 'reviewed'], audioFile: 'grammar/tense-markers/hmong-tense-markers-lawm.mp3', exampleSentence: { hmong: 'Kuv noj lawm.', english: 'I ate already.' } },
+      // ── The 10 tense PATTERN cards (`tense-pattern-*`) MOVED OUT 2026-10-18
+      // (author: this set should hold the words that mark tense; the patterns are
+      // the logic). They now live in the `tense-patterns` category directly below,
+      // unchanged apart from their `category` field. u-tense lists them by id, so
+      // the unit deck is unaffected.
+    ],
+  },
+  {
+    id: 'tense-patterns',
+    title: 'Tense Patterns',
+    // ⚠️ SPLIT OUT OF `tense-markers` 2026-10-18. That set holds the WORDS that mark
+    // tense (tab tom, yuav, tau, tseem, lawm); this one holds the FORMS they build —
+    // one card per tense, every example on `noj mov` so only the pattern changes.
+    //
+    // Same split as `tau` → `tau-uses` / `tau-examples`: a word card and a pattern
+    // card answer different questions, and mixing them makes a deck that cannot be
+    // studied — half of it asks "what does this word mean", half "how is this tense
+    // built".
+    description: 'How each tense is built — one form per card, all on noj mov.',
+    emoji: '🧩',
+    words: [
       // ── TENSE PATTERNS — 2026-09-28, the author: "write the flashcards with everything verb
       // wise like tagkis + sentence, yuav + verb". One card per tense form, all with noj mov.
       // Sentences are the author's, except the past-continuous ending (Claude's, source 'ai').
-      { id: 'tense-pattern-naghmo', hmongRPA: 'naghmo + sentence', english: 'past — yesterday sets the time; the verb stays plain', category: 'tense-markers', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Naghmo, kuv noj mov ntawm tsev.', english: 'Yesterday, I ate at home.' } },
-      { id: 'tense-pattern-tau-verb', hmongRPA: 'tau + verb (past)', english: 'past — completed; often not needed, and used to set up more of the story', category: 'tense-markers', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tau noj ntawm tsev.', english: 'I ate at home.' } },
-      { id: 'tense-pattern-past-continuous', hmongRPA: 'thaum + tab tom + verb', english: 'past continuous — was …-ing; a time word puts tab tom in the past', category: 'tense-markers', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Naghmo thaum kuv tab tom noj mov, kuv niam hu xov tooj tuaj.', english: 'Yesterday, while I was eating, my mom called.', source: 'ai' } },
-      { id: 'tense-pattern-present', hmongRPA: 'subject + verb', english: 'present — a plain verb', category: 'tense-markers', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv noj mov.', english: 'I eat.' } },
-      { id: 'tense-pattern-twb-lawm', hmongRPA: 'twb + verb + lawm', english: 'present perfect — already: whether you have done it or not', category: 'tense-markers', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv twb noj mov lawm.', english: 'I already ate.' } },
-      { id: 'tense-pattern-tab-tom', hmongRPA: 'tab tom + verb', english: 'present continuous — am / is / are …-ing, currently', category: 'tense-markers', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tab tom noj mov.', english: 'I am eating.' } },
-      { id: 'tense-pattern-tagkis', hmongRPA: 'tagkis + sentence', english: 'future — tomorrow sets the time; the verb stays plain', category: 'tense-markers', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tagkis, kuv noj mov.', english: 'Tomorrow I eat.' } },
-      { id: 'tense-pattern-yuav', hmongRPA: 'yuav + verb', english: 'future — going to, will; the softer, most common future', category: 'tense-markers', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv yuav noj mov.', english: 'I am going to eat.' } },
-      { id: 'tense-pattern-mam-li', hmongRPA: 'mam li + verb', english: 'future — will, for sure: planned, determined, actually going to happen', category: 'tense-markers', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv mam li noj mov.', english: 'I will eat.' } },
-      { id: 'tense-pattern-tab-tom-yuav', hmongRPA: 'tab tom yuav + verb', english: 'future progressive — about to', category: 'tense-markers', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tab tom yuav noj mov.', english: 'I am about to eat.' } },
+      { id: 'tense-pattern-naghmo', hmongRPA: 'naghmo + sentence', english: 'past — yesterday sets the time; the verb stays plain', category: 'tense-patterns', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Naghmo, kuv noj mov ntawm tsev.', english: 'Yesterday, I ate at home.' } },
+      { id: 'tense-pattern-tau-verb', hmongRPA: 'tau + verb (past)', english: 'past — completed; often not needed, and used to set up more of the story', category: 'tense-patterns', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tau noj ntawm tsev.', english: 'I ate at home.' } },
+      { id: 'tense-pattern-past-continuous', hmongRPA: 'thaum + tab tom + verb', english: 'past continuous — was …-ing; a time word puts tab tom in the past', category: 'tense-patterns', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Naghmo thaum kuv tab tom noj mov, kuv niam hu xov tooj tuaj.', english: 'Yesterday, while I was eating, my mom called.', source: 'ai' } },
+      { id: 'tense-pattern-present', hmongRPA: 'subject + verb', english: 'present — a plain verb', category: 'tense-patterns', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv noj mov.', english: 'I eat.' } },
+      { id: 'tense-pattern-twb-lawm', hmongRPA: 'twb + verb + lawm', english: 'present perfect — already: whether you have done it or not', category: 'tense-patterns', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv twb noj mov lawm.', english: 'I already ate.' } },
+      { id: 'tense-pattern-tab-tom', hmongRPA: 'tab tom + verb', english: 'present continuous — am / is / are …-ing, currently', category: 'tense-patterns', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tab tom noj mov.', english: 'I am eating.' } },
+      { id: 'tense-pattern-tagkis', hmongRPA: 'tagkis + sentence', english: 'future — tomorrow sets the time; the verb stays plain', category: 'tense-patterns', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tagkis, kuv noj mov.', english: 'Tomorrow I eat.' } },
+      { id: 'tense-pattern-yuav', hmongRPA: 'yuav + verb', english: 'future — going to, will; the softer, most common future', category: 'tense-patterns', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv yuav noj mov.', english: 'I am going to eat.' } },
+      { id: 'tense-pattern-mam-li', hmongRPA: 'mam li + verb', english: 'future — will, for sure: planned, determined, actually going to happen', category: 'tense-patterns', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv mam li noj mov.', english: 'I will eat.' } },
+      { id: 'tense-pattern-tab-tom-yuav', hmongRPA: 'tab tom yuav + verb', english: 'future progressive — about to', category: 'tense-patterns', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tab tom yuav noj mov.', english: 'I am about to eat.' } },
     ],
   },
   {
@@ -5487,7 +6010,7 @@ words: [
     words: [
       { id: 'adj-pattern-noun-adj', hmongRPA: 'noun + adjective', english: 'the adjective comes AFTER the noun — neeg zoo, a good person', category: 'adjective-grammar', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws yog tus neeg hluas.', english: 'He is a young person.' }, examples: [{ hmong: 'neeg zoo', english: 'a good person' }, { hmong: 'tsev loj', english: 'a big house' }, { hmong: 'neeg hluas', english: 'a young person' }] },
       { id: 'adj-pattern-adj-noun-title', hmongRPA: 'adjective + noun (a title)', english: 'rare — the adjective first turns it into a title', category: 'adjective-grammar', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv niamtais yog tus laus neeg.', english: 'My grandmother is the elder.' }, examples: [{ hmong: 'tus laus neeg', english: 'the elder (a title)' }, { hmong: 'tus neeg laus', english: 'an old person' }] },
-      { id: 'adj-pattern-no-yog', hmongRPA: 'noun + adjective, no yog', english: 'the adjective is the verb itself — no yog in front'  /* restored 2026-09-28 (author); was briefly 'no yog needed' */, category: 'adjective-grammar', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub tsev no loj.', english: 'This house is big.' }, examples: [{ hmong: 'Hnub no kub heev.', english: 'It is very hot today.' }, { hmong: 'Tus aub ntawd me.', english: 'That dog is small.' }] },
+      { id: 'adj-pattern-no-yog', hmongRPA: 'noun + adjective, no yog', english: 'the adjective is the verb itself — no “to be”, no yog, nothing standing in for “is”'  /* 'no yog in front' until 2026-10-21 (author: make it specific); 'no yog needed' before 2026-09-28 */, category: 'adjective-grammar', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub tsev no loj.', english: 'This house is big.' }, examples: [{ hmong: 'Hnub no kub heev.', english: 'It is very hot today.' }, { hmong: 'Tus aub ntawd me.', english: 'That dog is small.' }] },
       { id: 'adj-pattern-full-phrase', hmongRPA: 'classifier + noun + adjective + no', english: 'this big house — the pointing word still comes last', category: 'adjective-grammar', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv nyiam lub tsheb tshiab no.', english: 'I like this new car.' }, examples: [{ hmong: 'lub tsev loj no', english: 'this big house' }, { hmong: 'tus aub me ntawd', english: 'that small dog' }, { hmong: 'phau ntawv tshiab no', english: 'this new book' }] },
       { id: 'adj-pattern-heev', hmongRPA: 'adjective + heev', english: 'very — heev comes after the adjective', category: 'adjective-grammar', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub tsev no loj heev.', english: 'This house is very big.' } },
       { id: 'adj-pattern-kawg', hmongRPA: 'adjective + kawg / kawg nkaus', english: 'extremely — kawg nkaus is stronger still', category: 'adjective-grammar', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub tsev no loj kawg.', english: 'This house is extremely big.' }, examples: [{ hmong: 'loj kawg', english: 'extremely big' }, { hmong: 'loj kawg nkaus', english: 'as big as can be' }] },
@@ -5501,6 +6024,163 @@ words: [
       { id: 'adj-pattern-siab', hmongRPA: 'adjective + siab (a feeling)', english: 'feelings built on siab (heart) — and siab zoo means kind', category: 'adjective-grammar', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv zoo siab heev.', english: 'I am very happy.' }, examples: [{ hmong: 'zoo siab', english: 'happy' }, { hmong: 'nyuaj siab', english: 'sad, troubled' }, { hmong: 'chim siab', english: 'upset, angry' }, { hmong: 'siab zoo', english: 'kind (the order changes it)' }] },
       { id: 'adj-tiag-tiag', hmongRPA: 'tiag tiag', english: 'really, truly — after the adjective', category: 'adjective-grammar', tags: ['grammar', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws zoo tiag tiag.', english: 'It is really good.' } },
       { id: 'adj-kawg-nkaus', hmongRPA: 'kawg nkaus', english: 'extremely, as … as can be — after the adjective', category: 'adjective-grammar', tags: ['grammar', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub tsev no loj kawg nkaus.', english: 'This house is as big as can be.' } },
+    ],
+  },
+  {
+    // ⚠️ THE AUTHOR'S TONE-SHIFT MATERIAL AS PATTERN CARDS — 2026-10-25.
+    //
+    // The set the lesson `tone-shifts-guidelines-numerical` declares as its `vocab`, and
+    // what path unit "Tone Shifts: Numbers" drills. Pattern cards, the same shape as
+    // `adjective-grammar`: the headword is the PATTERN, not a word you would look up.
+    //
+    // ⚠️ EVERY CARD IS THE AUTHOR'S OWN CONTENT — their six triggers, their four shift
+    // pairs, their sentences. `unreviewed` is on the cards only because the gloss wording
+    // is mine; the Hmong is theirs and should not be edited.
+    //
+    // ⚠️ THE SHIFT CARDS COME FIRST, THE TRIGGERS SECOND, and the order matters for the
+    // path unit: a unit with no `limit` takes the set in data order, so the four shifts
+    // are what a learner meets first. The author's own framing is "the key is to
+    // understand the triggers, and then the shifts" — but the SHIFTS are what you see in
+    // the wild (tug, daig), so they lead on a flashcard.
+    //
+    // ⚠️ `cuaj` CARRIES -j, NOT -b, and is kept as its own card rather than listed with
+    // the five -b numbers: it is the evidence for the author's point that this is a rule
+    // about the two tones, not about numbers.
+    id: 'grammar-tone-shifts-guidelines-numerical',
+    title: 'Tone Shifts: Numbers',
+    description: 'A word ending in -b or -j changes the tone of the word straight after it. Numbers are the common case.',
+    emoji: '🎵',
+    words: [
+      // ══ ARCHIVED 2026-10-25 — THE FIRST DECK, 16 CARDS ════════════════════════════════
+      //
+      // Author: "need to make the flashcards better, archive the current ones, need to
+      // focus on the triggers, the ones that trigger, etc."
+      //
+      // ⚠️ WHY THEY WERE CLUNKY, so the replacement does not drift back into it: every
+      // front was an abstract pattern string (`tus → tug`, `daim → daig`, `leej → leeg`)
+      // and ten of the sixteen glosses began "the -X tone becomes -g". In a generated
+      // quiz that puts four near-identical options on screen and the learner picks by
+      // elimination, learning nothing. Worse, the pattern was on the FRONT — so the card
+      // showed you the answer and asked you to recall the restatement.
+      //
+      // The live deck below inverts it: the front is a real phrase a learner would say,
+      // the back is its meaning, and the trigger is NAMED in the gloss. Distinct answers
+      // ("two people", "nine pairs", "to drown", "the first time"), real Hmong, and the
+      // trigger is the thing being practised rather than the thing being read off.
+      //
+      // RESTORE by uncommenting this block and commenting the live deck below it.
+      // { id: 'tone-shift-tus-tug', hmongRPA: 'tus → tug', english: 'after a -b or -j trigger, the -s tone becomes -g — tus becomes tug', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Ib tug tub nyob hauv tsev.', english: 'A boy is in the house.' }, examples: [{ hmong: 'Tus tub nyob hauv tsev.', english: 'The boy is in the house. (no trigger)' }, { hmong: 'Ib tug tub nyob hauv tsev.', english: 'A boy is in the house. (ib triggers it)' }] },
+      // { id: 'tone-shift-daim-daig', hmongRPA: 'daim → daig', english: 'the -m tone becomes -g — daim becomes daig', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tsib daig ntawv nyob saum rooj.', english: 'Five sheets of paper are on the table.' }, examples: [{ hmong: 'Daim ntawv nyob saum rooj.', english: 'The sheet of paper is on the table.' }, { hmong: 'Tsib daig ntawv nyob saum rooj.', english: 'Five sheets of paper are on the table.' }] },
+      // { id: 'tone-shift-cov-co', hmongRPA: 'cov → co', english: 'the -v tone becomes the mid tone, losing its letter — cov becomes co', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Ib co menyuam ua si.', english: 'A group of children is playing.' }, examples: [{ hmong: 'Cov menyuam ua si.', english: 'The children are playing.' }, { hmong: 'Ib co menyuam ua si.', english: 'A group of children is playing.' }] },
+      // { id: 'tone-shift-nkawm-nkawg', hmongRPA: 'nkawm → nkawg', english: 'the -m tone becomes -g after cuaj — nkawm becomes nkawg', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cuaj nkawg khau nyob ntawm qhov rooj.', english: 'Nine pairs of shoes are by the door.' }, examples: [{ hmong: 'Nkawm khau nyob ntawm qhov rooj.', english: 'The pair of shoes is by the door.' }, { hmong: 'Cuaj nkawg khau nyob ntawm qhov rooj.', english: 'Nine pairs of shoes are by the door.' }] },
+      // ⚠️ THE AUTHOR'S KEY, 2026-10-25 (second delivery) — the five patterns with the two
+      // worked examples each that they gave. The four cards above are the first delivery;
+      // these complete the set, and they are what make J → G and mid → -s drillable at all
+      // (the first four cards only covered -s, -m and -v).
+      //
+      // ⚠️ FOUR OF THESE ARE ESTABLISHED EXPRESSIONS, not free patterns — `thawj zaug`,
+      // `poob deg`, `nab qa` and `ib ce`. The author flagged each one, and the gloss says so
+      // on the card itself. A learner who reads `poob deg` as "the -j rule" will go and say
+      // `haus deg` for "drink water". The note is the point of the card, not decoration.
+      // { id: 'tone-shift-tais-taig', hmongRPA: 'tais → taig', english: 'the -s tone becomes -g — tais becomes taig after a trigger', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv noj ib taig mov.', english: 'I eat a bowlful of rice.' }, examples: [{ hmong: 'Lub tais no loj.', english: 'This bowl is big. (no trigger)' }, { hmong: 'Kuv noj ib taig mov.', english: 'I eat a bowlful of rice. (ib triggers it)' }] },
+      // { id: 'tone-shift-zaum-zaug', hmongRPA: 'zaum → zaug', english: 'the -m tone becomes -g after thawj — an established expression, thawj zaug, meaning the first time', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nov yog thawj zaug kuv tuaj ntawm no.', english: 'This is my first time coming here.' }, examples: [{ hmong: 'Zaum no kuv mus.', english: 'This time, I am going.' }, { hmong: 'Nov yog thawj zaug kuv tuaj ntawm no.', english: 'This is my first time coming here. (thawj triggers it)' }] },
+      // { id: 'tone-shift-leej-leeg', hmongRPA: 'leej → leeg', english: 'the -j tone becomes -g — leej becomes leeg after a trigger', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Muaj ob leeg nyob ntawm no.', english: 'There are two people here.' }, examples: [{ hmong: 'Muaj rau leej nyob ntawm no.', english: 'There are six people here. (rau is not a trigger)' }, { hmong: 'Muaj ob leeg nyob ntawm no.', english: 'There are two people here. (ob triggers it)' }] },
+      // { id: 'tone-shift-dej-deg', hmongRPA: 'dej → deg', english: 'the -j tone becomes -g after poob — poob deg means to drown, while poob dej is to fall into water', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws poob deg.', english: 'He or she drowned.' }, examples: [{ hmong: 'Kuv haus dej.', english: 'I drink water.' }, { hmong: 'Nws poob deg.', english: 'He or she drowned. (poob triggers it)' }] },
+      // { id: 'tone-shift-lo-los', hmongRPA: 'lo → los', english: 'the mid tone, with no letter, becomes -s — lo becomes los', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv hais ib los lus.', english: 'I say one word.' }, examples: [{ hmong: 'Lo lus no txhais li cas?', english: 'What does this word mean?' }, { hmong: 'Kuv hais ib los lus.', english: 'I say one word. (ib triggers it)' }] },
+      // { id: 'tone-shift-hmo-hmos', hmongRPA: 'hmo → hmos', english: 'the mid tone becomes -s — hmo becomes hmos', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv nyob ntawm no ib hmos.', english: 'I stay here for one night.' }, examples: [{ hmong: 'Hmo no kuv nyob hauv tsev.', english: 'Tonight, I am staying home.' }, { hmong: 'Kuv nyob ntawm no ib hmos.', english: 'I stay here for one night. (ib triggers it)' }] },
+      // { id: 'tone-shift-qav-qa', hmongRPA: 'qav → qa', english: 'the -v tone loses its letter and becomes the mid tone — nab qa is an established compound meaning lizard', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv pom ib tug nab qa.', english: 'I see a lizard.' }, examples: [{ hmong: 'Kuv pom tus qav.', english: 'I see the frog.' }, { hmong: 'Kuv pom ib tug nab qa.', english: 'I see a lizard. (nab triggers it)' }] },
+      // { id: 'tone-shift-cev-ce', hmongRPA: 'cev → ce', english: 'the -v tone becomes the mid tone — ib ce means the whole body, or all over the body', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv mob ib ce.', english: 'I ache all over.' }, examples: [{ hmong: 'Kuv lub cev mob.', english: 'My body hurts.' }, { hmong: 'Kuv mob ib ce.', english: 'I ache all over. (ib triggers it)' }] },
+      // { id: 'tone-shift-trigger-b', hmongRPA: 'ib, ob, peb, plaub, tsib', english: 'the -b triggers: 1 to 5, all ending in Cim Siab, the High tone', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tsib daig ntawv.', english: 'Five sheets of paper.' } },
+      // { id: 'tone-shift-trigger-j', hmongRPA: 'cuaj, thawj, poob', english: 'the other triggers: -j is Cim Ntuj, the High-falling tone, and it shifts the next word the same way -b does — a trigger need not be a number', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cuaj nkawg khau.', english: 'Nine pairs of shoes.' } },
+      // ⚠️ THE AUTHOR NAMED THESE THREE EXPLICITLY. It is as much a part of the key as the
+      // five patterns, and it is the half a learner can actually use defensively: four of
+      // the five shifts END at -g, which is part of why -g itself never moves.
+      // { id: 'tone-shift-never', hmongRPA: '-b, -g, -d', english: 'the three tones that never shift: Cim Siab (-b), Cim Neeg (-g) and Cim Tod (-d). Everything else can', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Ib tug dais.', english: 'A bear. (tug ends in -g, so nothing follows it changed)' } },
+      // { id: 'tone-shift-rule', hmongRPA: '-s → -g · -m → -g · -j → -g · mid → -s · -v → mid', english: 'the five patterns. What a word shifts to depends on the tone it started from — a pattern, not an automatic rule for every word', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Ib tug tub.', english: 'A boy. (tus → tug)' } },
+      // ══ LIVE DECK, 2026-10-25 — THE TRIGGERS ══════════════════════════════════════════
+      //
+      // Author: "need to focus on the triggers, the ones that trigger, etc."
+      //
+      // ⚠️ THE FRONT IS A PHRASE, NOT A PATTERN. Every card is a real thing a learner
+      // would say, taken from the author's own key sentences, and the gloss names the
+      // trigger that caused the shift. So the learner meets `ob leeg` and recalls "two
+      // people — ob is the trigger", instead of meeting `leej → leeg` and reciting
+      // "-j becomes -g", which is just reading the front out loud.
+      //
+      // ⚠️ EVERY ANSWER IS DISTINCT ON PURPOSE — "two people", "nine pairs", "to drown",
+      // "the first time", "one word", "a bowlful of rice". That is what the old deck got
+      // wrong: ten of its glosses started "the -X tone becomes -g", so a generated quiz
+      // showed four options that differed by one letter. Keep this property when adding.
+      //
+      // ⚠️ NO 'unreviewed' TAG. The Hmong on these cards is the author's own, delivered
+      // verbatim in the key (notes/2026-10-25-tone-shift-key.md). The tag exists to queue
+      // a speaker to check Claude's Hmong; there is nothing here for a speaker to check.
+      //
+      // ⚠️ TWO PHRASES ARE DELIBERATELY ABSENT, because they already exist with recordings
+      // and a second copy would put two correct answers in one quiz:
+      //   • `ib hmos` — time-ib-hmos in `timeframes`, "one night / all night long".
+      //   • `nab qa`  — animal-nab-qa in `animals`, "lizard". Taught here inside the
+      //     longer phrase `ib tug nab qa`, which carries TWO shifts and is the better card.
+      // The `hmo → hmos` shift is therefore already attested in the dictionary, with audio,
+      // independently of this lesson. Do not "add the missing pair".
+      // { id: 'tone-shift-ib-tug', hmongRPA: 'ib tug', english: 'one — of a person or animal. Ib (-b) shifts tus to tug', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Kuv pom ib tug dais.', english: 'I see a bear.' }, examples: [{ hmong: 'Tus dais no loj.', english: 'This bear is big.', note: 'no trigger, so tus keeps its -s' }, { hmong: 'Kuv pom ib tug dais.', english: 'I see a bear.', note: 'ib triggers it: tus → tug' }] },
+      // { id: 'tone-shift-ib-taig-mov', hmongRPA: 'ib taig mov', english: 'a bowlful of rice. Ib (-b) shifts tais to taig', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Kuv noj ib taig mov.', english: 'I eat a bowlful of rice.' }, examples: [{ hmong: 'Lub tais no loj.', english: 'This bowl is big.', note: 'the plain form, tais' }, { hmong: 'Kuv noj ib taig mov.', english: 'I eat a bowlful of rice.', note: 'ib triggers it: tais → taig' }] },
+      // { id: 'tone-shift-ob-daig-ntawv', hmongRPA: 'ob daig ntawv', english: 'two sheets of paper. Ob (-b) shifts daim to daig', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Kuv muaj ob daig ntawv.', english: 'I have two sheets of paper.' }, examples: [{ hmong: 'Daim ntawv no dawb.', english: 'This sheet of paper is white.', note: 'the plain form, daim' }, { hmong: 'Kuv muaj ob daig ntawv.', english: 'I have two sheets of paper.', note: 'ob triggers it: daim → daig' }] },
+      // { id: 'tone-shift-ob-leeg', hmongRPA: 'ob leeg', english: 'two people. Ob (-b) shifts leej to leeg', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Muaj ob leeg nyob ntawm no.', english: 'There are two people here.' }, examples: [{ hmong: 'Muaj rau leej nyob ntawm no.', english: 'There are six people here.', note: 'rau is not a trigger, so leej keeps its -j' }, { hmong: 'Muaj ob leeg nyob ntawm no.', english: 'There are two people here.', note: 'ob triggers it: leej → leeg' }] },
+      // { id: 'tone-shift-ib-los-lus', hmongRPA: 'ib los lus', english: 'one word. Ib (-b) shifts lo to los', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Kuv hais ib los lus.', english: 'I say one word.' }, examples: [{ hmong: 'Lo lus no txhais li cas?', english: 'What does this word mean?', note: 'the plain form, lo, with no tone letter' }, { hmong: 'Kuv hais ib los lus.', english: 'I say one word.', note: 'ib triggers it: lo → los' }] },
+      // { id: 'tone-shift-ib-ce', hmongRPA: 'ib ce', english: 'the whole body — aching or feeling it all over. Ib (-b) shifts cev to ce', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Kuv mob ib ce.', english: 'I ache all over.' }, examples: [{ hmong: 'Kuv lub cev mob.', english: 'My body hurts.', note: 'the plain form, cev' }, { hmong: 'Kuv mob ib ce.', english: 'I ache all over.', note: 'ib triggers it: cev → ce, losing the letter' }] },
+      // { id: 'tone-shift-cuaj-nkawg', hmongRPA: 'cuaj nkawg', english: 'nine pairs. Cuaj (-j) shifts nkawm to nkawg — a trigger does not have to end in -b', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Cuaj nkawg khau nyob ntawm qhov rooj.', english: 'Nine pairs of shoes are by the door.' }, examples: [{ hmong: 'Nkawm khau nyob ntawm qhov rooj.', english: 'The pair of shoes is by the door.', note: 'the plain form, nkawm' }, { hmong: 'Cuaj nkawg khau nyob ntawm qhov rooj.', english: 'Nine pairs of shoes are by the door.', note: 'cuaj triggers it: nkawm → nkawg' }] },
+      // { id: 'tone-shift-thawj-zaug', hmongRPA: 'thawj zaug', english: 'the first time. Thawj (-j) shifts zaum to zaug — an established expression, not a counting rule', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Nov yog thawj zaug kuv tuaj ntawm no.', english: 'This is my first time coming here.' }, examples: [{ hmong: 'Zaum no kuv mus.', english: 'This time, I am going.', note: 'the plain form, zaum' }, { hmong: 'Nov yog thawj zaug kuv tuaj ntawm no.', english: 'This is my first time coming here.', note: 'thawj triggers it: zaum → zaug' }] },
+      // { id: 'tone-shift-poob-deg', hmongRPA: 'poob deg', english: 'to drown. Poob (-b) shifts dej to deg — and poob dej, unshifted, means to fall into water', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Nws poob deg.', english: 'He or she drowned.' }, examples: [{ hmong: 'Kuv poob dej.', english: 'I fell into the water.', note: 'unshifted — dej keeps its -j' }, { hmong: 'Nws poob deg.', english: 'He or she drowned.', note: 'shifted: dej → deg. The meaning changes with it' }] },
+      // ⚠️ TWO TRIGGERS IN ONE PHRASE, which is why this card exists at all — it is the
+      // only place in the deck where a learner sees the rule apply twice in a row.
+      // { id: 'tone-shift-ib-tug-nab-qa', hmongRPA: 'ib tug nab qa', english: 'a lizard — with two shifts in one phrase: ib shifts tus to tug, and nab shifts qav to qa', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Kuv pom ib tug nab qa.', english: 'I see a lizard.' }, examples: [{ hmong: 'Kuv pom tus qav.', english: 'I see the frog.', note: 'both plain: tus and qav' }, { hmong: 'Kuv pom ib tug nab qa.', english: 'I see a lizard.', note: 'ib → tug, nab → qa' }] },
+      // ⚠️ -b IS IN BOTH OF THESE CARDS, AND THAT IS THE POINT. Cim Siab triggers a shift
+      // in the word after it and never shifts itself. A learner who notices the overlap
+      // has understood the asymmetry; the glosses state it rather than leaving it to luck.
+      // { id: 'tone-shift-triggers', hmongRPA: '-b thiab -j', english: 'the two tones that TRIGGER a shift — Cim Siab and Cim Ntuj. Only these two change the word straight after them', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Ib tug tub.', english: 'A boy.' } },
+      // { id: 'tone-shift-never', hmongRPA: '-b, -g, -d', english: 'the three tones that never shift themselves — Cim Siab, Cim Neeg and Cim Tod. Every other tone can', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Ib tug dais.', english: 'A bear.' } },
+      // ══ LIVE DECK, 2026-10-25 (third) — ONE CARD PER TONE ═════════════════════════════
+      //
+      // Author: "trigger shifted verision, so for example — What is the trigger shifted
+      // version of V tone? -> no tone, etc etc. then what are the trigger tones? but in
+      // card format. what you have is good. comment that one, might keep some."
+      //
+      // So the question is asked at the TONE level, not the phrase level: the front is the
+      // tone a word starts on, the back is the tone it shifts to. The phrase deck above is
+      // archived rather than deleted because the author may keep some of those cards.
+      //
+      // ⚠️ THE EXAMPLE PAIR STAYS ON THE BACK, NOT THE FRONT. Putting `tus → tug` on the
+      // front is what made the FIRST deck unlearnable — it showed the answer and asked for
+      // a restatement. Here the front is `-s` alone, so recall is genuine, and the pair is
+      // on the back as the proof.
+      //
+      // ⚠️⚠️ THREE OF THESE SHARE ONE ANSWER — -s, -m and -j ALL shift to -g. That is the
+      // content, not a mistake (it is why -g itself never shifts: four of the five patterns
+      // end there). For FLASHCARDS, where the learner self-rates, that is fine and is in
+      // fact the point. For the GENERATED MULTIPLE-CHOICE QUIZ it is a hazard: a question
+      // for `-s` can draw `-g (daim → daig)` and `-g (leej → leeg)` as distractors, and
+      // both are substantively correct answers to a different question.
+      //   • Mitigated here by making each gloss lead with the destination tone and carry
+      //     its own example, so no two `english` strings are equal and the quiz checker
+      //     passes.
+      //   • NOT fully solvable in data. The real fix is either one combined `-s, -m, -j →
+      //     -g` card (loses the author's per-tone question format) or a quiz that excludes
+      //     same-destination siblings as distractors. Author's call — see
+      //     notes/2026-10-25-tone-shift-key.md.
+      { id: 'tone-shift-from-s', hmongRPA: '-s', english: 'shifts to -g — Cim Mus (low) becomes Cim Neeg (mid-falling with air). tus → tug', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Kuv pom ib tug dais.', english: 'I see a bear. (tus → tug)' }, examples: [{ hmong: 'Tus dais no loj.', english: 'This bear is big.', note: 'no trigger, so tus keeps its -s' }, { hmong: 'Kuv pom ib tug dais.', english: 'I see a bear.', note: 'ib triggers it: tus → tug' }] },
+      { id: 'tone-shift-from-m', hmongRPA: '-m', english: 'shifts to -g — Cim Niam (low-falling) becomes Cim Neeg (mid-falling with air). daim → daig', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Kuv muaj ob daig ntawv.', english: 'I have two sheets of paper. (daim → daig)' }, examples: [{ hmong: 'Daim ntawv no dawb.', english: 'This sheet of paper is white.', note: 'the plain form, daim' }, { hmong: 'Kuv muaj ob daig ntawv.', english: 'I have two sheets of paper.', note: 'ob triggers it: daim → daig' }] },
+      { id: 'tone-shift-from-j', hmongRPA: '-j', english: 'shifts to -g — Cim Ntuj (high-falling) becomes Cim Neeg (mid-falling with air). leej → leeg', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Muaj ob leeg nyob ntawm no.', english: 'There are two people here. (leej → leeg)' }, examples: [{ hmong: 'Muaj rau leej nyob ntawm no.', english: 'There are six people here.', note: 'rau is not a trigger, so leej keeps its -j' }, { hmong: 'Muaj ob leeg nyob ntawm no.', english: 'There are two people here.', note: 'ob triggers it: leej → leeg' }] },
+      // ⚠️ -j IS ON BOTH SIDES OF THE SUBJECT, and this is the card where that lands: a -j
+      // word TRIGGERS a shift in the word after it, and a -j word also SHIFTS when a
+      // trigger comes before it. `thawj zaug` is both at once. Do not "resolve" this.
+      { id: 'tone-shift-from-mid', hmongRPA: 'no tone', english: 'shifts to -s — Cim Ua (mid, no letter) becomes Cim Mus (low). lo → los', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Kuv hais ib los lus.', english: 'I say one word. (lo → los)' }, examples: [{ hmong: 'Lo lus no txhais li cas?', english: 'What does this word mean?', note: 'the plain form, lo, with no tone letter' }, { hmong: 'Kuv hais ib los lus.', english: 'I say one word.', note: 'ib triggers it: lo → los' }] },
+      { id: 'tone-shift-from-v', hmongRPA: '-v', english: 'shifts to no tone — Cim Kuv (rising) becomes Cim Ua (mid), losing its letter. cev → ce', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Kuv mob ib ce.', english: 'I ache all over. (cev → ce)' }, examples: [{ hmong: 'Kuv lub cev mob.', english: 'My body hurts.', note: 'the plain form, cev' }, { hmong: 'Kuv mob ib ce.', english: 'I ache all over.', note: 'ib triggers it: cev → ce. The only pattern that removes a letter' }] },
+      // The two cards the author asked for alongside the patterns: which tones trigger, and
+      // which never move. -b is on both because it triggers and never shifts — the glosses
+      // say so outright rather than leaving the overlap to look like a bug.
+      { id: 'tone-shift-triggers', hmongRPA: '-b thiab -j', english: 'the two TRIGGER tones — Cim Siab (high) and Cim Ntuj (high-falling). A word ending in one of these shifts the word straight after it, and keeps its own tone', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Ib tug tub.', english: 'A boy. (ib is the trigger)' } },
+      { id: 'tone-shift-never', hmongRPA: '-b, -g, -d', english: 'the three tones that never shift themselves — Cim Siab (high), Cim Neeg (mid-falling with air) and Cim Tod (low-rising). Every other tone can', category: 'grammar-tone-shifts-guidelines-numerical', tags: ['grammar', 'pattern', 'tone'], audioFile: null, exampleSentence: { hmong: 'Ib tug dais.', english: 'A bear. (tug ends in -g and goes no further)' } },
     ],
   },
   {
@@ -5562,11 +6242,12 @@ words: [
       { id: 'yog-to-be-is-not', hmongRPA: 'tsis yog', english: 'is not / no', category: 'yog-to-be', tags: ['verb', 'copula', 'negation'], audioFile: 'grammar/yog-to-be/hmong-yog-to-be-tsis-yog.mp3', exampleSentence: { hmong: 'Nws tsis yog kuv tus kwv.', english: 'He is not my younger brother.', source: 'ai' } },
       { id: 'yog-to-be-question', hmongRPA: 'puas yog?', english: 'is it? / right?', category: 'yog-to-be', tags: ['verb', 'copula', 'question'], audioFile: 'grammar/yog-to-be/hmong-yog-to-be-puas-yog.mp3' },
       // moreExamples added 2026-09-28 — u-nyob needs five sentences to drill. From the Nyob lesson; Claude's, TODO-VERIFY.
-      { id: 'yog-to-be-located', hmongRPA: 'nyob', english: 'be located; live; stay', senses: [{ en: 'be located; live; stay', context: 'yog-to-be' }, { en: 'remain; continue to be', context: 'reading' }, { en: 'be alive — in "ua neej nyob"', context: 'reading' }], category: 'yog-to-be', tags: ['verb', 'location', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv nyob hauv tsev.', english: 'I am at home.' }, moreExamples: [{ hmong: 'Kuv nyob hauv lub nroog no.', english: 'I live in this city.', source: 'ai' }, { hmong: 'Nws nyob tom khw.', english: 'She is at the market.', source: 'ai' }] },
+      { id: 'yog-to-be-located', hmongRPA: 'nyob', english: 'to be located; to live; to stay', senses: [{ en: 'to be located; to live; to stay', context: 'yog-to-be' }, { en: 'remain; continue to be', context: 'reading' }, { en: 'be alive — in "ua neej nyob"', context: 'reading' }], category: 'yog-to-be', tags: ['verb', 'location', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv nyob hauv tsev.', english: 'I am at home.' }, moreExamples: [{ hmong: 'Kuv nyob hauv lub nroog no.', english: 'I live in this city.', source: 'ai' }, { hmong: 'Nws nyob tom khw.', english: 'She is at the market.', source: 'ai' }] },
       // ── Added 2026-09-27 for path unit u-yog (To Be: Yog & Nyob). The author: yog is
       // the essence (a lasting state), nyob the condition — location, a physical state
       // ("kuv nyob kub", never "kuv kub"), and optionally emotions ("kuv zoo siab" =
       // "kuv nyob zoo siab"). Age and having take muaj.
+      { id: 'yog-no-yog', hmongRPA: 'no yog', english: 'this is — identifying something; the standard pattern is “nov yog”, so confirm “no yog” in context before relying on it', category: 'yog-to-be', tags: ['grammar', 'unreviewed'], audioFile: null, exampleSentence: null },
       { id: 'yog-pattern-essence', hmongRPA: 'noun + yog + noun', english: 'what something IS — its essence, a lasting state', category: 'yog-to-be', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub no yog lub tsev.', english: 'This is the house.' }, examples: [{ hmong: 'kuv yog Hmoob', english: 'I am Hmong' }, { hmong: 'lub no yog lub tsev', english: 'this is the house' }] },
       // Added 2026-09-28 (author): describing through yog vs directly. Same meaning, different
       // grammar and emphasis. The author's examples.
@@ -5579,6 +6260,11 @@ words: [
       { id: 'yog-pattern-feeling', hmongRPA: 'feeling, nyob optional', english: 'an emotion — the adjective alone is most common; nyob can be added', category: 'yog-to-be', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv zoo siab.', english: 'I am happy.' }, examples: [{ hmong: 'kuv zoo siab', english: 'I am happy' }, { hmong: 'kuv nyob zoo siab', english: 'I am happy (with nyob)' }, { hmong: 'kuv nyuaj siab', english: 'I am sad' }] },
       // moreExamples added 2026-09-28 — u-nyob needs five sentences to drill. From the Nyob lesson; Claude's, TODO-VERIFY.
       { id: 'yog-nyob-li-cas', hmongRPA: 'koj nyob li cas?', english: 'how are you doing?', category: 'yog-to-be', tags: ['phrase', 'greeting', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Koj nyob li cas?', english: 'How are you doing?' }, moreExamples: [{ hmong: 'Kuv nyob zoo.', english: 'I am well.', source: 'ai' }] },
+      { id: 'yog-pattern-muaj-how-many', hmongRPA: 'muaj pes tsawg + classifier + noun', english: 'asking how many someone has', category: 'yog-to-be', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Koj niam muaj pes tsawg tus menyuam?', english: 'How many children does your mother have?' } },
+      { id: 'yog-pattern-muaj-only', hmongRPA: 'muaj + number + classifier + noun + xwb', english: 'having only that many — xwb closes the phrase', category: 'yog-to-be', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv niam muaj ob tug ntxhais xwb.', english: 'My mother has only two daughters.' } },
+      { id: 'yog-pattern-muaj-not', hmongRPA: 'subject + tsis muaj', english: 'not having any — tsis goes before muaj', category: 'yog-to-be', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tsis muaj.', english: 'I do not have any.' } },
+      { id: 'yog-pattern-muaj-have', hmongRPA: 'subject + muaj + noun', english: 'to have something — muaj, not yog', category: 'yog-to-be', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv muaj ib tug aub.', english: 'I have a dog.' } },
+      { id: 'yog-pattern-muaj-exist', hmongRPA: 'muaj + noun', english: 'there is; there are — something exists', category: 'yog-to-be', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Thaum ub, muaj ib tug tsov.', english: 'Once upon a time, there was a tiger.' } },
       { id: 'yog-pattern-muaj-age', hmongRPA: 'muaj + number + xyoo', english: 'age — muaj (have), not yog', category: 'yog-to-be', tags: ['grammar', 'pattern', 'construction', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv muaj neesnkaum xyoo.', english: 'I am twenty years old.' } },
       /* was english 'if — yog opening a condition, not "to be"' (author, 2026-09-28) */ { id: 'yog-tias', hmongRPA: 'yog tias', english: 'if — yog opening a condition; yog hais tias is the usual, clearer form', category: 'yog-to-be', tags: ['grammar', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Yog tias nag los, peb nyob tsev.', english: 'If it rains, we stay home.' } },
       { id: 'yog-lawm', hmongRPA: 'yog lawm', english: 'that\'s right', category: 'yog-to-be', tags: ['grammar', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Yog lawm, koj hais yog.', english: 'That\'s right, you are correct.' } },
@@ -5623,7 +6309,7 @@ words: [
       { id: 'question-words-who', hmongRPA: 'leej twg?', english: 'who?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null, exampleSentence: { hmong: 'Tus neeg ntawd yog leej twg?', english: 'Who is that person?', source: 'ai' } },
       { id: 'question-words-where', hmongRPA: 'qhov twg?', english: 'where?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null, exampleSentence: { hmong: 'Koj nyob qhov twg?', english: 'Where are you?', source: 'ai' } },
       { id: 'question-words-when', hmongRPA: 'thaum twg?', english: 'when?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null, exampleSentence: { hmong: 'Koj yuav tuaj thaum twg?', english: 'When will you come?', source: 'ai' } },
-      { id: 'question-words-why', hmongRPA: 'vim li cas?', english: 'why?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null, exampleSentence: { hmong: 'Koj tsis tuaj vim li cas?', english: 'Why did you not come?', source: 'ai' } },
+      { id: 'question-words-why', hmongRPA: 'vim li cas?', english: 'why?', category: 'question-words', tags: ['question', 'phrase'], audioFile: null, exampleSentence: { hmong: 'Vim Licas koj tsis tuaj?', english: 'Why did you not come?', source: 'ai' } },
       // ⚠️ AUDIO WIRED 2026-09-12. The clip is the bare "li cas" recorded for
       // "Tsis ua li cas" in the Thanks & Sorry lesson — the same word, said
       // without the question intonation this entry's "?" implies. Good enough
@@ -5704,6 +6390,19 @@ words: [
     description: 'Everyday things you say — hungry, thirsty, tired.',
     emoji: '🌤️',
     words: [
+      // ── tua, THE EVERYDAY SENSE — added 2026-10-02 (author: "also fix tua") ──
+      //
+      // ⚠️ NOTHING WAS TAKEN OUT OF THE EXISTING ENTRIES. `misc-tua`
+      // (reading-motion) keeps its full `·` list — it is the READING glossary
+      // entry, where a tap on an unknown word should show every sense at once —
+      // and `war-tua` keeps shoot/fire. This adds the card a learner browsing
+      // the dictionary actually needs, because "turn off the light" is the
+      // commonest everyday use of `tua` and it was reachable only by reading to
+      // the fourth item of a five-sense list.
+      //
+      // That is the split this batch is about: one comprehensive entry for
+      // lookup, separate entries for browsing, cross-linked by headword.
+      { id: 'daily-life-tua', hmongRPA: 'tua', english: 'to turn off; to put out, to extinguish — a light, a fire (transitive verb): "tua teeb", "tua hluav taws"', category: 'daily-life', tags: ['verb', 'daily', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tua lub teeb ua ntej pw.', english: 'I turn off the light before sleeping.', source: 'ai' } },
       { id: 'daily-life-eaten', hmongRPA: 'koj noj mov tau?', english: 'have you eaten?', category: 'daily-life', tags: ['daily', 'question', 'phrase'], audioFile: null },
       { id: 'daily-life-hungry', hmongRPA: 'kuv tshaib plab', english: "I'm hungry", category: 'daily-life', tags: ['daily', 'phrase'], audioFile: null },
       { id: 'daily-life-thirsty', hmongRPA: 'kuv nqhis dej', english: "I'm thirsty", category: 'daily-life', tags: ['daily', 'phrase'], audioFile: null },
@@ -5722,6 +6421,12 @@ words: [
   description: "Parts of the head and face. Several are compounds: qhov ('opening') and plaub ('hair') each build three of these.",
   emoji: "👤",
   words: [
+    // plaub — HAIR, promoted out of `numbers-4`'s "Also means" 2026-10-02.
+    // `plaub` = four keeps its entry; four and hair are a pure homophone and
+    // share nothing. This category already teaches the compound `plaub hau`
+    // (below) — the element it is built from now has a card too, so a learner
+    // meeting bare `plaub` is not sent to a number.
+    { id: "human-anatomy-face-plaub", hmongRPA: "plaub", english: "hair; fur (noun) — the element in “plaub hau”, the hair of the head", category: "human-anatomy-face", tags: ["anatomy", "body", "head", "plaub-compound"], audioFile: null, exampleSentence: { hmong: 'Tus aub cov plaub ntev heev.', english: "The dog's fur is very long.", source: 'ai' } },
     { id: "human-anatomy-face-head", hmongRPA: "taub hau", english: "head", category: "human-anatomy-face", tags: ["anatomy", "body", "head"], audioFile: null, exampleSentence: { hmong: 'Kuv lub taub hau mob.', english: 'My head hurts.' } },
     { id: "human-anatomy-face-hair", hmongRPA: "plaub hau", english: "hair", category: "human-anatomy-face", tags: ["anatomy", "body", "head", "plaub-compound"], audioFile: null, exampleSentence: { hmong: 'Nws cov plaub hau ntev.', english: 'Her hair is long.' } },
     { id: "human-anatomy-face-forehead", hmongRPA: "hauv pliaj", english: "forehead", category: "human-anatomy-face", tags: ["anatomy", "body", "face"], audioFile: null, exampleSentence: { hmong: 'Kuv lub hauv pliaj mob.', english: 'My forehead hurts.' } },
@@ -5840,7 +6545,18 @@ words: [
   emoji: "🫀",
   words: [
     { id: "human-anatomy-internal-organs-heart", hmongRPA: "plawv", english: "heart", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null, exampleSentence: { hmong: 'Kuv plawv dhia ceev thaum khiav.', english: 'My heart beats fast when I run.', source: 'ai' } },
-    { id: "human-anatomy-internal-organs-liver", hmongRPA: "siab", english: "liver", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null, exampleSentence: { hmong: 'Kuv siab ua haujlwm zoo.', english: 'My liver is working well.', source: 'ai' } },
+    // ⚠️ EXAMPLE CORRECTED 2026-10-02 — it read "Kuv siab ua haujlwm zoo."
+    // without the classifier, which does not say "my liver": bare `kuv siab`
+    // reads as the ADJECTIVE (I am tall / high). An organ is a thing and takes
+    // `lub`. Same classifier rule as lub tsev, lub taub hau.
+    //
+    // This is the entry a learner reaches from `zoo siab` wanting anatomy, so
+    // the one sentence on it has to be right.
+    // The organ entry for `siab`. Carries ONLY the chest sense, which has no card
+    // of its own; the inner-self and "tall" meanings are reached by the "Other
+    // meanings of siab" links, not copied here — listing them removes those links
+    // (see the note on `descriptions-tall`, 2026-10-05).
+    { id: "human-anatomy-internal-organs-liver", hmongRPA: "siab", english: "liver", senses: [{ en: 'liver', context: 'body' }, { en: 'chest — in "lub hauv siab"', context: 'reading' }], category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null, exampleSentence: { hmong: 'Kuv lub siab ua haujlwm zoo.', english: 'My liver is working well.', source: 'ai' } },
     { id: "human-anatomy-internal-organs-lung", hmongRPA: "ntsws", english: "lung", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null, exampleSentence: { hmong: 'Kuv ntsws xav tau huab cua huv.', english: 'My lungs need clean air.', source: 'ai' } },
     { id: "human-anatomy-internal-organs-kidney", hmongRPA: "raum", english: "kidney", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null, exampleSentence: { hmong: 'Tus kws kho mob kuaj kuv raum.', english: 'The doctor examines my kidneys.', source: 'ai' } },
     { id: "human-anatomy-internal-organs-stomach", hmongRPA: "plab", english: "stomach", category: "human-anatomy-internal-organs", tags: ["anatomy", "body", "organ"], audioFile: null, exampleSentence: { hmong: 'Kuv plab mob vim kuv noj ntau dhau lawm.', english: 'My stomach hurts because I ate too much.', source: 'ai' } },
@@ -6220,6 +6936,12 @@ words: [
     description: 'Creative work, visual arts, literature, and cultural vocabulary.',
     emoji: '🎨',
     words: [
+      // tua — the MUSIC sense, added 2026-10-02 (author). Striking an
+      // instrument shares the headword with killing, shooting and
+      // extinguishing; nothing links them for a learner, which is exactly why
+      // it gets its own card rather than staying buried as the fifth item of
+      // misc-tua’s list. That entry is unchanged.
+      { id: 'arts-tua', hmongRPA: 'tua', english: 'to beat; to strike an instrument (transitive verb)', category: 'arts-culture', tags: ['verb', 'culture', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Nws tua nruas hauv kev lom zem.', english: 'He beats the drum at the celebration.', source: 'ai' } },
       // ⚠️ needs-review. Probably a typo for `kos vaj tse`: `koj` is "you", and `kos` (draw,
       // design) is what an AI batch reached for — "tus kws kos vaj tse", architect. Same class
       // as `plab jlaub` for `plab hlaub`.
@@ -6351,7 +7073,18 @@ words: [
       { id: 'wpn-txuas', hmongRPA: 'txuas', english: 'sickle', category: 'weapons', tags: ['noun', 'war', 'reviewed'], audioFile: null },
       { id: 'wpn-tuam-tsuam', hmongRPA: 'tuam tsuam', english: 'battle axe', category: 'weapons', tags: ['noun', 'war', 'reviewed'], audioFile: null },
       { id: 'wpn-cuab-yeej-tsov-rog', hmongRPA: 'cuab yeej tsov rog', english: 'weapons, specifically', category: 'weapons', tags: ['noun', 'war', 'reviewed'], audioFile: null },  // the author, 2026-09-30 — cf. cov cuab yeej (tools-household)
-      { id: 'wpn-kuv', hmongRPA: 'kuv', english: 'spear', category: 'weapons', tags: ['noun', 'war', 'reviewed'], audioFile: null },
+      // ⚠️ REMOVED 2026-10-02 — the author: `kuv` is NOT spear, that is incorrect.
+      // `kuv` is the pronoun "I" and nothing else here. The spear is `hmuv`
+      // (wbs-hmuv, same category), which is already correct.
+      //
+      // It entered on 2026-09-30 from the author's weapons list and was flagged
+      // at the top of this category as a homonym to confirm — this is that
+      // confirmation, and the answer was no. The `hais` = "to stab" entry from
+      // the same list is still unconfirmed; see notes/TODO.md.
+      //
+      // ⚠️ KEPT AS A COMMENT so the same word is not re-added from the same
+      // list later. TO RESTORE (do not, unless the author reverses this):
+      // { id: 'wpn-kuv', hmongRPA: 'kuv', english: 'spear', category: 'weapons', tags: ['noun', 'war', 'reviewed'], audioFile: null },
       { id: 'wpn-maum-nphoo', hmongRPA: 'maum nphoo', english: 'slingshot', category: 'weapons', tags: ['noun', 'war', 'reviewed'], audioFile: null },
       { id: 'wpn-phom-luv', hmongRPA: 'phom luv', english: 'handgun', category: 'weapons', tags: ['noun', 'war', 'reviewed'], audioFile: null },
       { id: 'wpn-phom-ntev', hmongRPA: 'phom ntev', english: 'rifle; shotgun; long gun', category: 'weapons', tags: ['noun', 'war', 'reviewed'], audioFile: null },
@@ -6762,6 +7495,12 @@ words: [
     description: 'Breathing, hearing, touching — what the body DOES, plus health terms. The parts themselves live in the four anatomy categories.',
     emoji: '🫀',
     words: [
+      // kiav — the NOUN. Its verb twin (to turn, to veer) is in reading-motion.
+      // The author gave the scar sense as the one already known ("apart from
+      // scar…"), but no `kiav` entry existed in the dictionary at all, so both
+      // senses were created on 2026-10-02 rather than one being added to the
+      // other. Flagged in notes/2026-10-02-multi-entry-dictionary-batch.md.
+      { id: 'body-kiav', hmongRPA: 'kiav', english: 'a scar (noun)', category: 'body-health', tags: ['noun', 'health', 'body', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Nws muaj ib qho kiav ntawm nws txhais tes.', english: 'He has a scar on his hand.', source: 'ai' } },
       { id: 'body-ua-pa', hmongRPA: 'ua pa', english: 'to breathe', category: 'body-health', tags: ['verb','health','body','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws ua pa tob tob kom nws tus kheej nqig.', english: 'They breathe deeply to calm themselves.', source: 'ai' } },
       { id: 'body-hnoos', hmongRPA: 'hnoos', english: 'to cough', category: 'body-health', tags: ['verb','health','body','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws hnoos ntau heev vim nws mob khaub thuas.', english: 'He is coughing a lot because he has a cold.', source: 'ai' } },
       { id: 'body-hnov-tau', hmongRPA: 'hnov tau', english: 'to feel', category: 'body-health', tags: ['verb','senses','body','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv hnov tau mob hauv kuv xub pwg.', english: 'I feel pain in my shoulder.', source: 'ai' } },
@@ -6848,7 +7587,13 @@ words: [
       // ("one of those words where we can combine"). Was hmongRPA 'teb chaws' (spaced,
       // per the 09-20 note above, now superseded). It goes before a country's name the
       // way a classifier goes before a noun.
-      { id: 'country-teb-chaws', hmongRPA: 'Tebchaws', english: 'country, nation — said before a country’s name, like a classifier: "Tebchaws Nplog", the country of Laos', category: 'countries', tags: ['noun', 'country', 'classifier-like'], audioFile: null, exampleSentence: { hmong: 'Lawv mus ncig Tebchaws Iyi.', english: 'They traveled around Egypt.', source: 'ai' } },
+      // ⚠️ ARCHIVED 2026-10-23 — superseded by the author's correction pass below.
+      // Dropped on correction: the classifier explanation ("said before a
+      // country's name, like a classifier…") and this example sentence
+      // (Lawv mus ncig Tebchaws Iyi. — They traveled around Egypt.). RESTORE by
+      // uncommenting if the longer gloss or the example is wanted back.
+      // { id: 'country-teb-chaws', hmongRPA: 'Tebchaws', english: 'country, nation — said before a country’s name, like a classifier: "Tebchaws Nplog", the country of Laos', category: 'countries', tags: ['noun', 'country', 'classifier-like'], audioFile: null, exampleSentence: { hmong: 'Lawv mus ncig Tebchaws Iyi.', english: 'They traveled around Egypt.', source: 'ai' } },
+      { id: 'country-teb-chaws', hmongRPA: 'Tebchaws', english: 'country; nation', category: 'countries', tags: ['noun', 'country', 'geography'], audioFile: null },
       { id: 'country-meskas', hmongRPA: 'Meskas', english: 'United States; America', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null },
       // ⚠️ REPEAT, commented out 2026-09-26 (author: "comment out the repeating ones") — repeats "Meskas" (country-meskas) once the prefix is gone. RESTORE by uncommenting.
       // { id: 'country-teb-chaws-meskas', hmongRPA: 'Teb Chaws Meskas', english: 'the United States', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null },
@@ -6856,17 +7601,29 @@ words: [
       // The country is 'Teb Chaws Fabkis', below.
       // 2026-09-26: "Teb Chaws" prefix removed (author) — the name alone; teb chaws is its own entry. Id kept.
       { id: 'country-teb-chaws-fabkis', hmongRPA: 'Fabkis', english: 'France', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null },
-      { id: 'country-nplog', hmongRPA: 'Nplog', english: 'Laos', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tsev neeg tuaj Nplog teb.', english: 'My family came from Laos.', source: 'ai' } },
+      // ⚠️ ARCHIVED 2026-10-23 — superseded by the author's correction pass below.
+      // Dropped on correction: this example sentence (Kuv tsev neeg tuaj Nplog
+      // teb. — My family came from Laos.). RESTORE by uncommenting if wanted back.
+      // { id: 'country-nplog', hmongRPA: 'Nplog', english: 'Laos', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tsev neeg tuaj Nplog teb.', english: 'My family came from Laos.', source: 'ai' } },
+      { id: 'country-nplog', hmongRPA: 'Nplog', english: 'Laos', category: 'countries', tags: ['noun', 'country', 'geography', 'unreviewed'], audioFile: null },
       // ⚠️ REPEAT, commented out 2026-09-26 (author: "comment out the repeating ones") — repeats "Nplog" (country-nplog) once the prefix is gone. RESTORE by uncommenting.
       // { id: 'country-teb-chaws-nplog', hmongRPA: 'Teb Chaws Nplog', english: 'Laos', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null },
       // 'Thaib' MOVED to the `ethnicities` category — it names the PEOPLE.
       // The country is 'Teb Chaws Thaib', below.
       // 2026-09-26: "Teb Chaws" prefix removed (author) — the name alone; teb chaws is its own entry. Id kept.
-      { id: 'country-teb-chaws-thaib', hmongRPA: 'Thaib', english: 'Thailand', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv xav mus ncig Thaib teb.', english: 'I want to travel around Thailand.', source: 'ai' } },
+      // ⚠️ ARCHIVED 2026-10-23 — superseded by the author's correction pass below.
+      // Dropped on correction: this example sentence (Kuv xav mus ncig Thaib
+      // teb. — I want to travel around Thailand.). RESTORE by uncommenting.
+      // { id: 'country-teb-chaws-thaib', hmongRPA: 'Thaib', english: 'Thailand', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv xav mus ncig Thaib teb.', english: 'I want to travel around Thailand.', source: 'ai' } },
+      { id: 'country-teb-chaws-thaib', hmongRPA: 'Thaib', english: 'Thailand', category: 'countries', tags: ['noun', 'country', 'geography', 'unreviewed'], audioFile: null },
       // 'Suav' MOVED to the `ethnicities` category — it names the PEOPLE.
       // The country is 'Teb Chaws Suav', below.
       // 2026-09-26: "Teb Chaws" prefix removed (author) — the name alone; teb chaws is its own entry. Id kept.
-      { id: 'country-teb-chaws-suav', hmongRPA: 'Suav', english: 'China', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv txiv tau mus Suav teb.', english: 'My father went to China.', source: 'ai' } },
+      // ⚠️ ARCHIVED 2026-10-23 — superseded by the author's correction pass below.
+      // Dropped on correction: this example sentence (Kuv txiv tau mus Suav
+      // teb. — My father went to China.). RESTORE by uncommenting.
+      // { id: 'country-teb-chaws-suav', hmongRPA: 'Suav', english: 'China', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv txiv tau mus Suav teb.', english: 'My father went to China.', source: 'ai' } },
+      { id: 'country-teb-chaws-suav', hmongRPA: 'Suav', english: 'China', category: 'countries', tags: ['noun', 'country', 'geography', 'unreviewed'], audioFile: null },
       // 'Nyab Laj' MOVED to the `ethnicities` category — it names the PEOPLE.
       // The country is 'Teb Chaws Nyab Laj', below.
       // 2026-09-26: "Teb Chaws" prefix removed (author) — the name alone; teb chaws is its own entry. Id kept.
@@ -6889,6 +7646,21 @@ words: [
       // The country is 'Teb Chaws Kaus Lim', below.
       // 2026-09-26: "Teb Chaws" prefix removed (author) — the name alone; teb chaws is its own entry. Id kept.
       { id: 'country-teb-chaws-kaus-lim', hmongRPA: 'Kaus Lim', english: 'Korea', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null },
+      // ⚠️ THE ONE MISSING COUNTRY — added 2026-10-02. Seven of the eight
+      // ethnicity entries (Suav, Fabkis, Thaib, Nyab Laj, Qhab Meem, Nyij Pooj,
+      // Kaus Lim) already had a matching `countries` entry; Askiv had only the
+      // ethnicity one, so "United Kingdom" lived solely in its "Also means"
+      // footnote and no card existed for the country.
+      //
+      // ⚠️ NO "Teb Chaws" FORM, unlike its siblings — the ethnicity entry says
+      // none is recorded here, so the headword stays bare `Askiv` rather than
+      // inventing "Teb Chaws Askiv". Worth a speaker's confirmation.
+      // ⚠️ ARCHIVED 2026-10-23 — superseded by the author's correction pass below.
+      // Was glossed "the United Kingdom; England — the country"; the correction
+      // narrows it to "England" alone. RESTORE by uncommenting if the broader
+      // gloss is wanted back.
+      // { id: 'country-askiv-country', hmongRPA: 'Askiv', english: 'the United Kingdom; England — the country', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null },
+      { id: 'country-askiv-country', hmongRPA: 'Askiv', english: 'England', category: 'countries', tags: ['noun', 'country', 'geography', 'unreviewed'], audioFile: null },
       { id: 'country-kaus-lim-qaum-teb', hmongRPA: 'Kaus Lim Qaum Teb', english: 'North Korea', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null },
       { id: 'country-kaus-lim-qab-teb', hmongRPA: 'Kaus Lim Qab Teb', english: 'South Korea', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null },
       { id: 'country-lav-xias', hmongRPA: 'Lav Xias', english: 'Russia', category: 'countries', tags: ['noun','country','geography','unreviewed'], audioFile: null },
@@ -7121,10 +7893,10 @@ words: [
       { id: 'dir-lem', hmongRPA: 'lem', english: 'to turn', category: 'directions', tags: ['verb','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Koj lem sab laug ntawm no.', english: 'Turn left here.', source: 'ai' } },
       { id: 'dir-ncaj-qha', hmongRPA: 'ncaj qha', english: 'straight', category: 'directions', tags: ['adjective','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Mus ncaj qha txog lub teeb.', english: 'Go straight to the light.', source: 'ai' } },
       { id: 'dir-dhau', hmongRPA: 'dhau', english: 'past; to pass', category: 'directions', tags: ['preposition','verb','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Mus dhau lub khw ces lem.', english: 'Pass the store, then turn.', source: 'ai' } },
-      { id: 'dir-nres', hmongRPA: 'nres', english: 'stop', category: 'directions', tags: ['verb','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nres ntawm lub teeb liab.', english: 'Stop at the red light.', source: 'ai' } },
-      { id: 'dir-pib', hmongRPA: 'pib', english: 'start; begin', category: 'directions', tags: ['verb','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Pib taug kev ntawm no.', english: 'Start walking from here.', source: 'ai' } },
-      { id: 'dir-tawm', hmongRPA: 'tawm', english: 'exit; go out', category: 'directions', tags: ['verb','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tawm ntawm lub qhov rooj no.', english: 'Exit through this door.', source: 'ai' } },
-      { id: 'dir-nkag', hmongRPA: 'nkag', english: 'enter; go in', category: 'directions', tags: ['verb','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nkag ntawm lub qhov rooj loj.', english: 'Enter through the main door.', source: 'ai' } },
+      { id: 'dir-nres', hmongRPA: 'nres', english: 'to stop', category: 'directions', tags: ['verb','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nres ntawm lub teeb liab.', english: 'Stop at the red light.', source: 'ai' } },
+      { id: 'dir-pib', hmongRPA: 'pib', english: 'to start; to begin', category: 'directions', tags: ['verb','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Pib taug kev ntawm no.', english: 'Start walking from here.', source: 'ai' } },
+      { id: 'dir-tawm', hmongRPA: 'tawm', english: 'to exit; to go out', category: 'directions', tags: ['verb','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tawm ntawm lub qhov rooj no.', english: 'Exit through this door.', source: 'ai' } },
+      { id: 'dir-nkag', hmongRPA: 'nkag', english: 'to enter; to go in', category: 'directions', tags: ['verb','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nkag ntawm lub qhov rooj loj.', english: 'Enter through the main door.', source: 'ai' } },
       { id: 'dir-kev-tshuam', hmongRPA: 'kev tshuam', english: 'intersection', category: 'directions', tags: ['noun','directions','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb ntsib ntawm kev tshuam ntawd.', english: 'We will meet at that intersection.', source: 'ai' } },
     ],
   },
@@ -7222,6 +7994,13 @@ words: [
       // Now the will-permission batch's line. Was: hmong 'tias nws yuav yuam cev thiab tua Amanda G.;'
       { id: 'rw-yuam', hmongRPA: 'yuam', english: 'to force, to compel', category: 'reading-law', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tsis txhob yuam kuv.', english: 'Do not force me.', source: 'ai' } },
       { id: 'rw-tswv', hmongRPA: 'tswv', english: 'authority, boss, leader · owner, master; lord — "tswv cuab", a member', category: 'reading-law', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Ninham yog ib tug tswv cuab ntawm Menominee Indian Tribe, thiab nws hais tias nws nyuam qhuav muaj kev txaus siab tshiab rau Native American kev ntseeg.', english: 'Ninham, a member of the Menominee Indian Tribe, claimed to have a newfound interest in Native American spirituality.' } },
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'misc-pub', hmongRPA: 'pub', english: 'to allow, to let — "txwv tsis pub", would not let', category: 'reading-law', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
+      { id: 'wbs-kheev', hmongRPA: 'kheev', english: 'to allow', category: 'reading-law', tags: ['verb', 'reviewed'], audioFile: null },
+      { id: 'phr-hwj-chim', hmongRPA: 'hwj chim', english: 'power, authority', category: 'reading-law', tags: ['noun','reading','unreviewed'], audioFile: null },
+      { id: 'wbs-vaj-huam', hmongRPA: 'vaj huam', english: 'human rights', category: 'reading-law', tags: ['noun', 'reviewed'], audioFile: null },
     ],
   },
   {
@@ -7234,9 +8013,7 @@ words: [
     description: 'The body, illness and healing, and being born, alive or dead.',
     emoji: '🫁',
     words: [
-      { id: 'phr-hauv-paus', hmongRPA: 'hauv paus', english: 'the base, the foot of something', category: 'reading-body', tags: ['noun','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws zaum ntawm hauv paus ntoo.', english: 'He sat at the base of the tree.', source: 'ai' } },
       { id: 'phr-mob-siab', hmongRPA: 'mob siab', english: 'grief; to be heartsick', category: 'reading-body', tags: ['noun','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws mob siab tom qab poob nws txiv.', english: 'She grieved after losing her father.', source: 'ai' } },
-      { id: 'phr-rov-qab', hmongRPA: 'rov qab', english: 'back; to return, to go back', category: 'reading-body', tags: ['adverb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb yuav rov qab los tagkis.', english: 'We will come back tomorrow.', source: 'ai' } },
       { id: 'misc-muab', hmongRPA: 'muab', english: 'give; hand over · put; place · use; take — introducing the tool or object of an action', category: 'reading-body', tags: ['verb', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv muab phau ntawv rau nws.', english: 'I give the book to her.', source: 'ai' } },
       // ══════════════════════════════════════════════════════════════════
       // ⚠️⚠️ DRAFT GLOSSES — WRITTEN BY CLAUDE, NOT CHECKED BY ANYONE FLUENT.
@@ -7308,14 +8085,11 @@ words: [
       // vocabulary one, and it would cost nothing in accuracy.
       { id: 'misc-dab', hmongRPA: 'dab', english: 'spirit; ghost; supernatural being (noun) · dab tsi = what; anything (compound interrogative expression) — ⚠ “what” is not a standalone sense of dab', category: 'reading-body', tags: ['bound', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Lawv hais tias muaj dab nyob hauv tsev.', english: 'They say there is a ghost in the house.', source: 'ai' } },  // Was: 'Lawv hais tias muaj dab hauv tsev.' — a being somewhere takes nyob (author, 2026-09-28)
       { id: 'misc-pw', hmongRPA: 'pw', english: 'to sleep, to lie down', category: 'reading-body', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Kuv pw ntxov txhua hmo.', english: 'I go to bed early every night.', source: 'ai' } },
-      { id: 'misc-taug', hmongRPA: 'taug', english: 'to walk along; in "taug kev", to travel on foot', category: 'reading-body', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Peb taug kev mus tom khw.', english: 'We walk to the market.', source: 'ai' } },
       { id: 'misc-lub-siab', hmongRPA: 'lub siab', english: 'inner intention, desire, resolve — literally the heart or liver', category: 'reading-body', tags: ['phrase', 'reading'], audioFile: null, exampleSentence: { hmong: 'Kuv lub siab xav kawm ntxiv.', english: 'I am determined to keep learning.', source: 'ai' } },
       { id: 'misc-tso-siab', hmongRPA: 'tso siab', english: 'to trust; to put one\'s heart at ease', category: 'reading-body', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tso siab rau kuv tus phooj ywg.', english: 'I trust my friend.', source: 'ai' } },
       { id: 'misc-nraub-qaum', hmongRPA: 'nraub qaum', english: 'back (of the body)', category: 'reading-body', tags: ['noun', 'body', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv nraub qaum mob heev.', english: 'My back hurts badly.', source: 'ai' } },
       { id: 'misc-hlab-ntsha', hmongRPA: 'hlab ntsha', english: 'blood vessel; pulse', category: 'reading-body', tags: ['noun', 'body', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus kws kho mob kuaj kuv hlab ntsha.', english: 'The doctor checked my pulse.', source: 'ai' } },
-      { id: 'misc-ntiaj-teb', hmongRPA: 'ntiaj teb', english: 'the world, the earth', category: 'reading-body', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb txhua tus nyob hauv ntiaj teb.', english: 'We all live on Earth.', source: 'ai' } },
       { id: 'misc-ntsuj-plig', hmongRPA: 'ntsuj plig', english: 'spirit, soul', category: 'reading-body', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lawv ntseeg tias ntsuj plig tseem nyob.', english: 'They believe the soul remains.', source: 'ai' } },
-      { id: 'misc-ntuj', hmongRPA: 'ntuj', english: 'sky (noun) · heaven; upper spiritual realm (noun) · hmo ntuj = night (compound noun) · tsaus ntuj = evening; nighttime; darkness (compound time expression)', category: 'reading-body', tags: ['noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Huab dawb nyob saum ntuj.', english: 'White clouds are in the sky.', source: 'ai' } },
       { id: 'misc-mob', hmongRPA: 'mob', english: 'sick; ill · pain; illness; injury · hurt; be painful', category: 'reading-body', tags: ['verb', 'noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv mob taub hau hnub no.', english: 'I have a headache today.', source: 'ai' } },
       // Single words the dictionary had never reached, found by auditing which
       // taps in a real text returned nothing. Multi-word phrases went to the
@@ -7324,22 +8098,36 @@ words: [
       // ⚠️ Rewritten for a dictionary: a story gloss may say "here, concrete";
       // a dictionary has no "here". Where a word only lives inside a compound
       // the entry NAMES the compound rather than inventing a bare meaning.
-      { id: 'misc-yoj', hmongRPA: 'yoj', english: 'to swing, to sway back and forth', category: 'reading-body', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus menyuam yoj ntawm lub rooj zaum.', english: 'The child swings on the chair.', source: 'ai' } },
-      { id: 'misc-dhia', hmongRPA: 'dhia', english: 'to jump; to dance — and of a pulse or a heart, to beat.', category: 'reading-body', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus menyuam nyiam dhia ua si.', english: 'The child likes to jump while playing.', source: 'ai' } },
       { id: 'misc-kho', hmongRPA: 'kho', english: 'repair; fix · treat; heal · improve; revise; amend', category: 'reading-body', tags: ['verb', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kws kho mob kho kuv txhais tes.', english: 'The doctor treated my hand.', source: 'ai' } },
       { id: 'misc-neej', hmongRPA: 'neej', english: 'life · livelihood; way of living · entire lifetime — in "tas sim neej"', category: 'reading-body', tags: ['noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Peb yuav saib xyuas peb lub neej.', english: 'We should take care of our lives.', source: 'ai' } },
       { id: 'misc-cev', hmongRPA: 'cev', english: 'body (noun) · physical self; bodily form (noun) · hand over; pass something, as in cev tes (transitive verb)', category: 'reading-body', tags: ['noun', 'body', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv cev tseem mob tom qab poob.', english: 'My body still hurts after the fall.', source: 'ai' } },
       { id: 'misc-rov', hmongRPA: 'rov', english: 'back; again — returning to a previous place or state · again; once more · restore; revive — "sawv rov los", stood up again', category: 'reading-body', tags: ['particle', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Nws rov los tsev yav tsaus ntuj.', english: 'He came back home in the evening.', source: 'ai' } },
-      { id: 'misc-ho', hmongRPA: 'ho', english: 'emphatic in a question — "ua cas koj ho…", why on earth did you…', category: 'reading-body', tags: ['particle','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Ua cas koj ho tsis tuaj?', english: "Why didn't you come?", source: 'ai' } },
       { id: 'gen-sia', hmongRPA: 'sia', english: 'life', category: 'reading-body', tags: ['noun','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Txhua tus muaj sia thiab muaj kev cia siab.', english: 'Everyone is alive and has hope.', source: 'ai' } },
       { id: 'gen-tuag', hmongRPA: 'tuag', english: 'dead; to die', category: 'reading-body', tags: ['adjective','verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus noog me tuag lawm.', english: 'The little bird has died.', source: 'ai' } },
-      { id: 'gen-ceeb-laj', hmongRPA: 'ceeb laj', english: 'sick and tired of something; exhausting', category: 'reading-body', tags: ['adjective','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv ceeb laj ua haujlwm txhua hnub.', english: 'I am exhausted from working every day.', source: 'ai' } },
+      // ⚠️ `tua` = TO KILL, ITS OWN ENTRY — 2026-10-25 (the author: "tua — need to update
+      // this so that it has it's 'to kill' verb form within the dictionary").
+      //
+      // It had four entries and none of them was this one: turn off/extinguish
+      // (daily-life), beat an instrument (arts-culture), fire/shoot (war-conflict), and a
+      // five-sense pile in the reader's glossary (misc-tua, reading-motion) where "kill"
+      // was the first item in a ` · ` list. So the commonest meaning of the word was
+      // reachable only by reading a crammed gloss — never as a card you could study.
+      // One entry PER MEANING, each in its own set: the rau / tom qab pattern.
+      //
+      // ⚠️ IT GOES HERE, IN "Body, Life & Death", AND DIRECTLY BESIDE `tuag` ON PURPOSE.
+      // tua (kill) and tuag (die) are one letter apart and are the transitive/intransitive
+      // pair — you kill something, something dies. Shown together they teach each other;
+      // in separate sets they are a trap. war-conflict was the other candidate and already
+      // holds `tua` (to shoot) plus `sib tua`, and two cards with the same headword in one
+      // set is the ambiguity check-vocabulary exists to stop.
+      //
+      // ⚠️ `unreviewed`: the example sentence is Claude's, built from attested words
+      // (`tus` + `tsiaj`) and settled grammar. The author writes the real one.
+      { id: 'gen-tua-kill', hmongRPA: 'tua', english: 'to kill; to slaughter (an animal)', category: 'reading-body', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws tua tus tsiaj.', english: 'He killed the animal.' } },
       { id: 'gen-dab-ntub', hmongRPA: 'dab ntub', english: 'sleep; alternative term', category: 'reading-body', tags: ['noun','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus menyuam dab ntub ntxov txhua hmo.', english: 'The child sleeps early every night.', source: 'ai' } },
       { id: 'gen-fab-seeb', hmongRPA: 'fab seeb', english: 'reincarnation', category: 'reading-body', tags: ['noun','culture','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lawv ntseeg txog fab seeb.', english: 'They believe in reincarnation.', source: 'ai' } },
       { id: 'gen-laj-muam', hmongRPA: 'laj muag', english: 'to side-glance; cross-eyed', category: 'reading-body', tags: ['verb','adjective','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws laj muag thaum saib ib sab.', english: 'He looks sideways with crossed eyes.', source: 'ai' } },
       { id: 'gen-looj-hlias', hmongRPA: 'looj hlias', english: 'to doze off', category: 'reading-body', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv looj hlias thaum zaum tos.', english: 'I dozed off while waiting.', source: 'ai' } },
-      { id: 'gen-pauj', hmongRPA: 'pauj', english: 'to take revenge; to pay back', category: 'reading-body', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws tsis xav pauj rau nws.', english: 'He does not want revenge.', source: 'ai' } },
-      { id: 'gen-sablaj', hmongRPA: 'sablaj', english: 'to brainstorm; to discuss; to plan', category: 'reading-body', tags: ['verb','work','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb sablaj ua ntej pib haujlwm.', english: 'We discuss before starting work.', source: 'ai' } },
       { id: 'gen-yajceeb', hmongRPA: 'yajceeb', english: 'life on earth', category: 'reading-body', tags: ['noun','nature','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb yuav saib xyuas yajceeb kom zoo.', english: 'We should care for life on earth.', source: 'ai' } },
       // ── STANDALONE WORDS FROM THE STORIES, 2026-09-25 ─────────────────────
       // Each of these only resolved through a longer compound before ("tswj" only
@@ -7349,6 +8137,20 @@ words: [
       { id: 'rw-da-dej', hmongRPA: 'da dej', english: 'to bathe, to take a bath or shower — "dab da dej", a bathtub', category: 'reading-body', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv txhuam lub dab da dej.', english: 'I scrub the bathtub.' } },
       // Added 2026-09-30 — the author's dictionary batch (Heimbach-based paste; loj hlob is the author's own gloss).
       { id: 'misc-loj-hlob', hmongRPA: 'loj hlob', english: 'to grow up, grow big — physical growth and/or maturity', category: 'reading-body', tags: ['reading', 'unreviewed'], audioFile: null },
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'wbs-yaj-ceeb', hmongRPA: 'yaj ceeb', english: 'life on earth', category: 'reading-body', tags: ['noun', 'reviewed'], audioFile: null },
+      { id: 'wbs-laj-muam', hmongRPA: 'laj muam', english: 'to side glance; (adjective) to be cross-eyed', category: 'reading-body', tags: ['verb', 'reviewed'], audioFile: null },
+      { id: 'rw-tshuaj', hmongRPA: 'tshuaj', english: 'medicine; chemical; drug — "tshuaj lom", poison', category: 'reading-body', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
+      { id: 'rw-lom', hmongRPA: 'lom', english: 'poisonous; to poison — "tshuaj lom", poison', category: 'reading-body', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
+      { id: 'phr-tshuaj-lom', hmongRPA: 'tshuaj lom', english: 'poison; toxic chemicals', category: 'reading-body', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
+      { id: 'phr-yeeb-tshuaj', hmongRPA: 'yeeb tshuaj', english: 'drugs, narcotics', category: 'reading-body', tags: ['noun','reading','unreviewed'], audioFile: null },
+      { id: 'rw-yeeb', hmongRPA: 'yeeb', english: 'opium; a narcotic — "yeeb tshuaj", drugs · the spirit world — "yeeb ceeb", the world of spirits and the dead, opposite "yaj ceeb", the world of the living · "yeeb koob", reputation, glory, honor · "pob yeeb", the Adam\'s apple · "luam yeeb", tobacco',  /* was 'opium; a narcotic — …' — non-opium senses added 2026-09-30 (author). NOT added: the paste's "yeeb yaj kiab = abode of the dead" — asked the author (modern usage: a movie). */ category: 'reading-body', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Richard Crapeau thov kom rov hais nws rooj plaub dua, hais tias nws tsis nyob ntawm lub chaw nres tsheb hmo ntawd, tab sis nyob lwm qhov haus yeeb tshuaj.', english: 'Richard Crapeau asked for a new trial, claiming he was not at the parking ramp that night and was instead elsewhere smoking marijuana.' } },
+      { id: 'rw-pa', hmongRPA: 'pa', english: 'breath; steam, vapour, fumes — "ua pa", to breathe', category: 'reading-body', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
+      { id: 'misc-nqus', hmongRPA: 'nqus', english: 'to suck in, to inhale; of a drug, to snort', category: 'reading-body', tags: ['verb','reading','unreviewed'], audioFile: null },
+      { id: 'gen-daug', hmongRPA: 'daug', english: 'to hatch', category: 'reading-body', tags: ['verb','everyday','unreviewed'], audioFile: null },
+      { id: 'gen-qaug-quav', hmongRPA: 'qaug quav', english: 'to be addicted to something', category: 'reading-body', tags: ['verb','health','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws qaug quav rau kev twv txiaj.', english: 'He is addicted to gambling.', source: 'ai' } },
     ],
   },
   {
@@ -7361,9 +8163,32 @@ words: [
     description: 'Thought, memory, intention and judgement.',
     emoji: '🧠',
     words: [
+      // ⚠️ CORRECTED AND MOVED HERE 2026-10-02 — the author: the old gloss was
+      // simply wrong. It read 'to grab or claw at' and sat in reading-motion as
+      // a verb. `ntsiab` is not a verb of grabbing: it is the MAIN / CENTRAL
+      // thing — the core, the point, the meaning. It belongs with thinking and
+      // knowing.
+      //
+      // ⚠️ MOVED, NOT RELABELLED. `category` has to match the array the entry
+      // lives in — it decides both the card's context tag and which senses
+      // render, and scripts/check-vocabulary.mjs enforces it. Changing the field
+      // alone would have left it in reading-motion claiming to be reading-mind.
+      //
+      // ⚠️ THE ONE ENTRY ON THE 2026-10-02 LIST THAT WAS REPLACED. Every other
+      // word that day gained entries; this one was wrong and had to lose its old
+      // meaning. Nothing is kept as a restore hint because there is nothing
+      // worth restoring.
+      //
+      // ONE entry, not several: the senses all circle a single idea (what is
+      // central). The split pattern — rau, tom qab, nplooj — is for meanings a
+      // learner meets in unrelated lessons, which these are not.
+      //
+      // `lub ntsiab lus` is the form actually heard. It is in the gloss because
+      // looking up bare `ntsiab` and getting only an abstract noun would not
+      // tell a reader what they had just tapped.
+      { id: 'wbs-ntsiab', hmongRPA: 'ntsiab', english: 'main; central; key, essential (adjective) · the main point; the core, the gist (noun) · lub ntsiab lus = the meaning, the main idea, the central message, the theme · ntsiab cai = a fundamental principle, a core rule · kernel; core — the inner part of something, in concrete use', category: 'reading-mind', tags: ['noun', 'adjective', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Lub ntsiab lus ntawm lo lus no yog dab tsi?', english: 'What is the meaning of this word?', source: 'author' } },
       { id: 'phr-nco-txog', hmongRPA: 'nco txog', english: 'to remember, to think of', category: 'reading-mind', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv nco txog kuv pog txhua hnub.', english: 'I think of my grandmother every day.', source: 'ai' } },
       { id: 'phr-kwv-yees', hmongRPA: 'kwv yees', english: 'to estimate, to reckon — "kwv yees li", about or roughly', category: 'reading-mind', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv kwv yees tias nws muaj peb caug xyoo.', english: 'I estimate that he is thirty years old.', source: 'ai' } },
-      { id: 'misc-taub', hmongRPA: 'taub', english: 'squash, gourd; separately, in "to taub", to understand', category: 'reading-mind', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Peb cog taub hauv vaj.', english: 'We grow squash in the garden.', source: 'ai' } },
       { id: 'misc-ua-ib-siab', hmongRPA: 'ua ib siab', english: "to make up one's mind; to steel oneself", category: 'reading-mind', tags: ['phrase', 'reading'], audioFile: null, exampleSentence: { hmong: 'Kuv ua ib siab pib dua tshiab.', english: 'I made up my mind to start again.', source: 'ai' } },
       { id: 'misc-paub-li-mas', hmongRPA: 'paub li mas', english: '"I should have known" — an expression of realisation or regret', category: 'reading-mind', tags: ['phrase', 'reading'], audioFile: null, exampleSentence: { hmong: 'Paub li mas, kuv yuav tsum tau nug.', english: 'I should have known to ask.', source: 'ai' } },
       { id: 'misc-nco', hmongRPA: 'nco', english: 'to miss, to remember', category: 'reading-mind', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv nco kuv tsev neeg heev.', english: 'I miss my family very much.', source: 'ai' } },
@@ -7377,7 +8202,6 @@ words: [
       { id: 'misc-cim', hmongRPA: 'cim', english: 'a mark, a sign, an emblem — and to memorise, to fix in mind: "cim tseg".', category: 'reading-mind', tags: ['noun','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv cim nws lub npe tseg.', english: 'I memorized his name.', source: 'ai' } },
       { id: 'gen-cim-xeeb', hmongRPA: 'cim xeeb', english: 'mind; memory', category: 'reading-mind', tags: ['noun','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws lub cim xeeb zoo heev.', english: 'Her memory is very good.', source: 'ai' } },
       { id: 'gen-kwv-yees', hmongRPA: 'kwv yees', english: 'to estimate; approximately', category: 'reading-mind', tags: ['verb','adjective','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv kwv yees li kaum feeb.', english: 'I estimate about ten minutes.', source: 'ai' } },
-      { id: 'gen-keeb', hmongRPA: 'keeb', english: 'origin; starting point', category: 'reading-mind', tags: ['noun','everyday','unreviewed'], audioFile: null },
       { id: 'gen-meej-pem', hmongRPA: 'meej pem', english: 'clear; understandable', category: 'reading-mind', tags: ['adjective','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws piav meej pem heev.', english: 'She explains things very clearly.', source: 'ai' } },
       { id: 'gen-qauv', hmongRPA: 'qauv', english: 'pattern; role model', category: 'reading-mind', tags: ['noun','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws yog ib qho qauv zoo.', english: 'She is a good role model.', source: 'ai' } },
       { id: 'gen-ras', hmongRPA: 'ras', english: 'to recall; to remember', category: 'reading-mind', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv ras tsis tau nws lub npe.', english: 'I cannot recall his name.', source: 'ai' } },
@@ -7392,10 +8216,8 @@ words: [
       { id: 'phr-kev-tawm-tswv-yim', hmongRPA: 'kev tawm tswv yim', english: 'forming and expressing one’s own views', category: 'reading-mind', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Txij li thaum cov kws tshawb fawb pib tshawb txog lub hlwb tib neeg nyob rau xyoo pua 19, lawv tau pom tias tib neeg txoj kev xav, kev coj cwj pwm, thiab kev tawm tswv yim tsis yog los ntawm ib qho xwb.', english: 'Ever since researchers began studying the human brain in the 19th century, they have observed that human thought, behavior, and independent reasoning do not come from only one source.' } },
       { id: 'phr-rov-xav-dua', hmongRPA: 'rov xav dua', english: 'to reconsider; to think again', category: 'reading-mind', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tiamsis, yog tias feem ntau ntawm tib neeg txoj kev coj ua yog raug txiav txim los ntawm yam nws yug los nrog, ces cov thawj coj hauv zej zog yuav tsum rov xav dua txog lawv txoj hau kev los pab cov neeg uas raug kev nyuaj siab los ntawm lawv tus kheej lub xeev siab.', english: 'However, if most human behavior is determined by what a person is born with, then community leaders must reconsider their approach to helping people who suffer difficulties because of their own psychological state.' } },
       { id: 'phr-to-taub', hmongRPA: 'to taub', english: 'to understand; to see through', category: 'reading-mind', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus nas twb to taub tus miv lub siab tas.', english: 'The mouse already understands the cat\'s intentions.' } },
-      { id: 'phr-hwm', hmongRPA: 'hwm', english: 'to respect; to honor', category: 'reading-mind', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Yog li kev hwm thiab tu ib puag ncig yog ib feem ntawm peb li kab lis kev cai uas peb yuav tsum coj mus rau yav pem suab.', english: 'Therefore, respecting and caring for the environment is part of our cultural heritage that we must carry forward into the future.' } },
       // Added 2026-09-30 — the author's dictionary batch (Heimbach-based paste; loj hlob is the author's own gloss).
       { id: 'misc-xyaum', hmongRPA: 'xyaum', english: 'to practice, rehearse, learn by doing · to imitate; to follow, obey (customs, rules, laws)', category: 'reading-mind', tags: ['reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-to-2', hmongRPA: 'to', english: 'having a hole, pierced — "to qhov"; "to ntshua", broken through · open, permitted — "to kev ua", all right to do; "tsis to kev ua", not permitted · to understand, in compounds — "to taub" (= nkag siab), "to siab"; "tsis to ntsej", can\'t understand · silent, still; ineffective (of medicine); sometimes deep', category: 'reading-mind', tags: ['reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub hnab to qhov.', english: 'The sack has a hole in it.' } },
       // Added 2026-09-30 (the author). A homonym of yim, eight (numbers-8).
       { id: 'misc-yim', hmongRPA: 'yim', english: 'the mind, thoughts, intentions, a state of being — an abstract root, used mostly in compound words', category: 'reading-mind', tags: ['noun', 'reading', 'reviewed'], audioFile: null },
       // ── Added 2026-09-30 — from the author's word list (was "Words by Sound").
@@ -7405,10 +8227,20 @@ words: [
     { id: 'wbs-xij-peem', hmongRPA: 'xij peem', english: 'to not stress about it', category: 'reading-mind', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-xeeb-ceem', hmongRPA: 'xeeb ceem', english: 'personality', category: 'reading-mind', tags: ['noun', 'reviewed'], audioFile: null },
     { id: 'wbs-phim', hmongRPA: 'phim', english: 'to be similar/match', category: 'reading-mind', tags: ['adjective', 'reviewed'], audioFile: null },
-    { id: 'wbs-tshua', hmongRPA: 'tshua', english: 'to miss or think of dearly', category: 'reading-mind', tags: ['verb', 'reviewed'], audioFile: null },
-    { id: 'wbs-dhuav', hmongRPA: 'dhuav', english: 'to be tired of, sick of', category: 'reading-mind', tags: ['adjective', 'reviewed'], audioFile: null },
     { id: 'wbs-nyoo', hmongRPA: 'nyoo', english: 'to give up', category: 'reading-mind', tags: ['verb', 'reviewed'], audioFile: null },
-    { id: 'wbs-nqhis', hmongRPA: 'nqhis', english: 'to crave for', category: 'reading-mind', tags: ['verb', 'reviewed'], audioFile: null },
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'misc-kawm-ntawv', hmongRPA: 'kawm ntawv', english: 'to study; to go to school', category: 'reading-mind', tags: ['phrase', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv kawm ntawv txhua hnub.', english: 'I study every day.', source: 'ai' } },
+      { id: 'gen-sablaj', hmongRPA: 'sablaj', english: 'to brainstorm; to discuss; to plan', category: 'reading-mind', tags: ['verb','work','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb sablaj ua ntej pib haujlwm.', english: 'We discuss before starting work.', source: 'ai' } },
+      { id: 'phr-npau-suav', hmongRPA: 'npau suav', english: 'to dream', category: 'reading-mind', tags: ['verb','reading','unreviewed'], audioFile: null },
+      { id: 'misc-peev-xwm', hmongRPA: 'peev xwm', english: 'ability; can, to be able to', category: 'reading-mind', tags: ['phrase', 'reading'], audioFile: null },
+      { id: 'misc-xaiv', hmongRPA: 'xaiv', english: 'to choose, to pick out', category: 'reading-mind', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
+      { id: 'misc-xav-pom', hmongRPA: 'xav pom', english: 'to want to see', category: 'reading-mind', tags: ['phrase', 'reading'], audioFile: null },
+      { id: 'misc-ceev-faj', hmongRPA: 'ceev faj', english: 'to be careful, to watch out', category: 'reading-mind', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
+      { id: 'misc-laj-thawj', hmongRPA: 'laj thawj', english: 'a reason, a cause', category: 'reading-mind', tags: ['noun', 'reading', 'unreviewed'], audioFile: null },
+      { id: 'phr-txoj-hau-kev', hmongRPA: 'txoj hau kev', english: 'an approach; a method; a way of doing something', category: 'reading-mind', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tiamsis, yog tias feem ntau ntawm tib neeg txoj kev coj ua yog raug txiav txim los ntawm yam nws yug los nrog, ces cov thawj coj hauv zej zog yuav tsum rov xav dua txog lawv txoj hau kev los pab cov neeg uas raug kev nyuaj siab los ntawm lawv tus kheej lub xeev siab.', english: 'However, if most human behavior is determined by what a person is born with, then community leaders must reconsider their approach to helping people who suffer difficulties because of their own psychological state.' } },
+      { id: 'phr-tuaj-yeem', hmongRPA: 'tuaj yeem', english: 'can; to be able to; to be possible', category: 'reading-mind', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Yog tias tib neeg txoj kev coj ua tuaj yeem hloov tau los ntawm kev kawm thiab kev sib cuam tshuam nrog ib puag ncig, ces lub zej zog muaj lub luag haujlwm loj heev los tsim ib lub ib puag ncig uas txhawb nqa txoj kev xav zoo thiab kev coj cwj pwm muaj txiaj ntsig.', english: 'If human behavior can be changed through learning and interaction with the environment, then the community has a great responsibility to create an environment that nurtures positive thinking and beneficial behavior.' } },
     ],
   },
   {
@@ -7437,11 +8269,9 @@ words: [
       // means nobody fluent has checked the gloss, and here somebody fluent
       // wrote it.
       { id: 'misc-npau-taws', hmongRPA: 'npau taws', english: 'anger, angry; metaphorical description of "boiling over" like fire or hot liquid, leading to anger or emotional instability · provocation (in certain circumstances)', category: 'reading-emotion', tags: ['reading'], audioFile: null, exampleSentence: { hmong: 'Nws npau taws thaum hnov xov ntawd.', english: 'He became angry when he heard that news.', source: 'ai' } },
-      { id: 'misc-kaj', hmongRPA: 'kaj', english: 'bright, light; in "kaj siab", content', category: 'reading-emotion', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Lub hnub kaj heev hnub no.', english: 'The sun is very bright today.', source: 'ai' } },
       { id: 'misc-tu', hmongRPA: 'tu', english: 'to care for, look after, maintain, tend · to stop, break off, cease (by context) · in "tu siab", sad',  /* was 'to care for; to break off, to cease; in "tu siab", sad' — 2026-09-30 */ category: 'reading-emotion', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Nws tu siab tom qab hnov xov ntawd.', english: 'She was sad after hearing that news.', source: 'ai' } },
       { id: 'misc-luab-lim', hmongRPA: 'luab lim', english: 'to tease, to mock, to make fun of', category: 'reading-emotion', tags: ['phrase', 'reading'], audioFile: null, exampleSentence: { hmong: 'Tsis txhob luab lim koj tus phooj ywg.', english: 'Do not make fun of your friend.', source: 'ai' } },
       { id: 'misc-hlub', hmongRPA: 'hlub', english: 'to love', category: 'reading-emotion', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv hlub kuv tsev neeg heev.', english: 'I love my family very much.', source: 'ai' } },
-      { id: 'misc-khiav', hmongRPA: 'khiav', english: 'run · operate; function — of a machine or process · flee; escape', category: 'reading-emotion', tags: ['verb', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Tus menyuam khiav mus tom tsev.', english: 'The child ran home.', source: 'ai' } },
       { id: 'misc-ntshai', hmongRPA: 'ntshai', english: 'fear; be afraid · frightening; scary — in "txaus ntshai"', category: 'reading-emotion', tags: ['verb', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv ntshai thaum tsaus ntuj.', english: 'I am afraid at night.', source: 'ai' } },
       { id: 'gen-dai-siab', hmongRPA: 'dai siab', english: 'to miss dearly', category: 'reading-emotion', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv dai siab kuv niam thaum nws mus lawm.', english: 'I miss my mother dearly when she is away.', source: 'ai' } },
       { id: 'gen-peem', hmongRPA: 'peem', english: 'to endure', category: 'reading-emotion', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws peem dhau lub sijhawm nyuaj.', english: 'She endured the difficult period.', source: 'ai' } },
@@ -7452,6 +8282,16 @@ words: [
     { id: 'wbs-rhiab', hmongRPA: 'rhiab', english: 'to be ticklish; to be grossed out by', category: 'reading-emotion', tags: ['adjective', 'reviewed'], audioFile: null },
     { id: 'wbs-khaum', hmongRPA: 'khaum', english: 'to be cursed for doing bad deeds', category: 'reading-emotion', tags: ['adjective', 'reviewed'], audioFile: null },
     { id: 'wbs-npam', hmongRPA: 'npam', english: 'to be cursed', category: 'reading-emotion', tags: ['adjective', 'reviewed'], audioFile: null },
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'wbs-tshua', hmongRPA: 'tshua', english: 'to miss or think of dearly', category: 'reading-emotion', tags: ['verb', 'reviewed'], audioFile: null },
+      { id: 'wbs-dhuav', hmongRPA: 'dhuav', english: 'to be tired of, sick of', category: 'reading-emotion', tags: ['adjective', 'reviewed'], audioFile: null },
+      { id: 'wbs-nqhis', hmongRPA: 'nqhis', english: 'to crave for', category: 'reading-emotion', tags: ['verb', 'reviewed'], audioFile: null },
+      { id: 'gen-ceeb-laj', hmongRPA: 'ceeb laj', english: 'sick and tired of something; exhausting', category: 'reading-emotion', tags: ['adjective','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv ceeb laj ua haujlwm txhua hnub.', english: 'I am exhausted from working every day.', source: 'ai' } },
+      { id: 'gen-pauj', hmongRPA: 'pauj', english: 'to take revenge; to pay back', category: 'reading-emotion', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws tsis xav pauj rau nws.', english: 'He does not want revenge.', source: 'ai' } },
+      { id: 'misc-quaj', hmongRPA: 'quaj', english: 'to cry, to weep', category: 'reading-emotion', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
+      { id: 'phr-ua-pauj', hmongRPA: 'ua pauj', english: 'to take revenge; a vendetta', category: 'reading-emotion', tags: ['verb','reading','unreviewed'], audioFile: null },
     ],
   },
   {
@@ -7464,6 +8304,18 @@ words: [
     description: 'Saying, asking, answering and arguing.',
     emoji: '🗣️',
     words: [
+      // txhais — the VERB, promoted out of `classifiers-txhais`'s "Also means"
+      // 2026-10-02. That entry is the classifier for ONE of a paired body part
+      // (a hand, an arm); translating is an unrelated word to a learner and had
+      // no card of its own. The classifier entry is unchanged.
+      { id: 'phr-txhais-translate', hmongRPA: 'txhais', english: 'to translate; to interpret (verb) · to mean; to explain — "txhais li cas?", what does it mean?', category: 'reading-speech', tags: ['verb', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Koj puas txhais tau cov lus no?', english: 'Can you translate these words?', source: 'ai' } },
+      // tshaj — the SPEECH sense, added 2026-10-02 (author). `misc-tshaj`
+      // (reading-motion) keeps pass / exceed / the comparative, which is a
+      // different word to a learner even though it is written the same. Split
+      // rather than appended for exactly that reason: someone meeting "tshaj" in
+      // "loj tshaj" (biggest) and someone meeting it in "tshaj tawm" (announce)
+      // are not looking for the same card.
+      { id: 'phr-tshaj-announce', hmongRPA: 'tshaj', english: 'to spread, to broadcast, to announce information (verb) — "tshaj tawm", to announce or publish', category: 'reading-speech', tags: ['verb', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Lawv tshaj tawm cov xov xwm tshiab.', english: 'They broadcast the new news.', source: 'ai' } },
       { id: 'phr-sib-cav', hmongRPA: 'sib cav', english: 'to argue, to contend', category: 'reading-speech', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Ob tus kwv tij sib cav txog nyiaj.', english: 'The two brothers argued about money.', source: 'ai' } },
       { id: 'phr-lo-lus', hmongRPA: 'lo lus', english: 'a word; a remark or a question', category: 'reading-speech', tags: ['noun','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv tsis nkag siab lo lus no.', english: 'I do not understand this word.', source: 'ai' } },
       { id: 'phr-hu-npe', hmongRPA: 'hu npe', english: 'to be named, to be called', category: 'reading-speech', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus menyuam hu npe hu ua Nplooj.', english: 'The child is named Nplooj.', source: 'ai' } },
@@ -7491,14 +8343,12 @@ words: [
       },
       { id: 'misc-cog', hmongRPA: 'cog', english: 'to plant — and to make a promise: "cog lus".', category: 'reading-speech', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb cog pob kws hauv vaj.', english: 'We plant corn in the garden.', source: 'ai' } },
       { id: 'misc-hu', hmongRPA: 'hu', english: 'to call, to summon — and to sing: "hu nkauj". Also "hu ua", called or named.', category: 'reading-speech', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv hu kuv tus phooj ywg tuaj.', english: 'I called my friend to come.', source: 'ai' } },
-      { id: 'misc-hlis', hmongRPA: 'hlis', english: 'month (noun) · month-name element (proper-name element) · Peb Hlis = March (proper noun) · Cuaj Hlis = September (proper noun)', category: 'reading-speech', tags: ['noun', 'time', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Ib hlis muaj ntau hnub.', english: 'A month has many days.', source: 'ai' } },
       { id: 'misc-npe', hmongRPA: 'npe', english: 'a name', category: 'reading-speech', tags: ['noun','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Koj lub npe hu li cas?', english: 'What is your name?', source: 'ai' } },
       { id: 'misc-lus', hmongRPA: 'lus', english: 'word · speech; words; statement · language', category: 'reading-speech', tags: ['noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv kawm lus Hmoob txhua hnub.', english: 'I study the Hmong language every day.', source: 'ai' } },
       { id: 'misc-laj', hmongRPA: 'laj', english: 'bound word: "laj thawj", a reason — not used alone', category: 'reading-speech', tags: ['bound','reading','unreviewed'], audioFile: null },
       { id: 'misc-ntaub', hmongRPA: 'ntaub', english: 'bound word here: "ntaub ntawv", documents or records', category: 'reading-speech', tags: ['bound','reading','unreviewed'], audioFile: null },
       { id: 'misc-kheej', hmongRPA: 'kheej', english: 'bound word: "tus kheej", oneself — not used alone', category: 'reading-speech', tags: ['bound','reading','unreviewed'], audioFile: null },
       { id: 'misc-txwm', hmongRPA: 'txwm', english: 'bound word — not used alone: txhob txwm = deliberately; intentionally; on purpose (compound adverb)', category: 'reading-speech', tags: ['bound', 'reading', 'reviewed'], audioFile: null },
-      { id: 'misc-caug', hmongRPA: 'caug', english: 'bound word in numbers: "-ty", as in "tsib caug" fifty', category: 'reading-speech', tags: ['number','bound','reading','unreviewed'], audioFile: null },
       { id: 'misc-sib', hmongRPA: 'sib', english: 'each other; one another (reciprocal marker) · mutual action marker placed before a verb (verbal prefix / grammatical marker) · sib ntaus = fight each other (reciprocal verb) · sib cav = argue with each other (reciprocal verb)', category: 'reading-speech', tags: ['particle', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Ob tus menyuam sib cav tsis tu.', english: 'The two children keep arguing with each other.', source: 'ai' } },
       { id: 'gen-ceeb-toom', hmongRPA: 'ceeb toom', english: 'to warn; to notify', category: 'reading-speech', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv ceeb toom nws ua ntej tawm mus.', english: 'I warned him before leaving.', source: 'ai' } },
       { id: 'gen-lees', hmongRPA: 'lees', english: 'to confess; to admit', category: 'reading-speech', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws lees tias nws ua txhaum.', english: 'He admits that he did wrong.', source: 'ai' } },
@@ -7522,6 +8372,16 @@ words: [
     { id: 'wbs-ntshoo', hmongRPA: 'ntshoo', english: 'to be noisy, to be boisterous', category: 'reading-speech', tags: ['adjective', 'reviewed'], audioFile: null },
     { id: 'wbs-txhaub', hmongRPA: 'txhaub', english: 'to instigate, incite', category: 'reading-speech', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-xyu', hmongRPA: 'xyu', english: 'to sigh', category: 'reading-speech', tags: ['verb', 'reviewed'], audioFile: null },
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'rw-nyob-twj-ywm', hmongRPA: 'nyob twj ywm', english: 'to be quiet, to fall silent', category: 'reading-speech', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Thaum yeeb yam yuav pib, lawv tsib leeg nyob twj ywm, thiab lawv kuj saib yeeb yam.', english: 'When the movie was about to start, the five of them went quiet, and they watched the movie too.' } },
+      { id: 'misc-ho', hmongRPA: 'ho', english: 'emphatic in a question — "ua cas koj ho…", why on earth did you…', category: 'reading-speech', tags: ['particle','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Ua cas koj ho tsis tuaj?', english: "Why didn't you come?", source: 'ai' } },
+      { id: 'gen-las-mees', hmongRPA: 'las mees', english: 'to ignore; to not respond', category: 'reading-speech', tags: ['verb','everyday','unreviewed'], audioFile: null },
+      { id: 'gen-tabkaum', hmongRPA: 'tabkaum', english: 'to interrupt; to annoy', category: 'reading-speech', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tsis txhob tabkaum kuv thaum kuv kawm.', english: 'Do not bother me while I study.', source: 'ai' } },
+      { id: 'wbs-tab-kaum', hmongRPA: 'tab kaum', english: 'to interrupt; to annoy', category: 'reading-speech', tags: ['verb', 'reviewed'], audioFile: null },
+      { id: 'gen-haub', hmongRPA: 'haub', english: 'to entice; to lure; to persuade', category: 'reading-speech', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv haub nws kom kawm.', english: 'I encouraged him/her to study.', source: 'ai' } },
+      { id: 'misc-ntawv', hmongRPA: 'ntawv', english: 'paper · writing; document; letter · book; reading material', category: 'reading-speech', tags: ['noun', 'reading', 'reviewed'], audioFile: null },
     ],
   },
   {
@@ -7534,6 +8394,22 @@ words: [
     description: 'Going, coming, and moving things about.',
     emoji: '🚶',
     words: [
+      // ── 2026-10-02, the author's multi-entry batch ────────────────────────
+      // Each of these shares a headword with an entry elsewhere in the
+      // dictionary, and WordDetail cross-links them automatically through
+      // headwordOf() — so a learner landing on one can jump to the other. None
+      // of them replaces anything; the originals are untouched.
+      //
+      // kwv — the VERB. `family-m-kwv` and `relatives-kwv` (younger brother)
+      // are unrelated nouns and stay as they are.
+      { id: 'phr-kwv-carry', hmongRPA: 'kwv', english: 'to carry something on your shoulder (transitive verb)', category: 'reading-motion', tags: ['verb', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Nws kwv ib lub hnab rau saum xub pwg.', english: 'He carries a bag on his shoulder.', source: 'ai' } },
+      // tshuab — the VERB. Its noun twin (machine/engine) is in tools-household.
+      // Neither existed before today.
+      { id: 'phr-tshuab-blow', hmongRPA: 'tshuab', english: 'to blow — air, with the mouth, a fan, or the wind (verb)', category: 'reading-motion', tags: ['verb', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Cua tshuab heev hnub no.', english: 'The wind blows hard today.', source: 'ai' } },
+      // kiav — the VERB. Its noun twin (a scar) is in body-health. Neither
+      // existed before today; the author gave the scar sense as the known one
+      // and this as the addition, so both were created.
+      { id: 'phr-kiav-turn', hmongRPA: 'kiav', english: 'to turn; to veer, to change direction (verb)', category: 'reading-motion', tags: ['verb', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Nws kiav mus rau sab laug.', english: 'He turned to the left.', source: 'ai' } },
       { id: 'misc-dua', hmongRPA: 'dua', english: 'again; another time · more; additional · pass; go past · than — comparative marker', category: 'reading-motion', tags: ['reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv yuav sim dua tagkis.', english: 'I will try again tomorrow.', source: 'ai' } },
       { id: 'misc-poob', hmongRPA: 'poob', english: 'fall; drop · lose; misplace · fail; be defeated', category: 'reading-motion', tags: ['reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv poob kuv tus yuam sij lawm.', english: 'I lost my key.', source: 'ai' } },
       { id: 'misc-puag', hmongRPA: 'puag', english: 'to hug, to hold; also far over, away', category: 'reading-motion', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Niam puag tus menyuam pw.', english: 'Mother holds the sleeping child.', source: 'ai' } },
@@ -7565,7 +8441,6 @@ words: [
       // a taxonomy that needs the author present.
       { id: 'misc-caum', hmongRPA: 'caum', english: 'chase; pursue · follow after', category: 'reading-motion', tags: ['verb', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Tus aub caum tus miv hauv vaj.', english: 'The dog chased the cat in the yard.', source: 'ai' } },
       // Example added 2026-09-28 for u-verb-noun. Claude's, TODO-VERIFY.
-      { id: 'misc-kawm-ntawv', hmongRPA: 'kawm ntawv', english: 'to study; to go to school', category: 'reading-motion', tags: ['phrase', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv kawm ntawv txhua hnub.', english: 'I study every day.', source: 'ai' } },
       { id: 'misc-khiav-ceev', hmongRPA: 'khiav ceev', english: 'to run fast', category: 'reading-motion', tags: ['phrase', 'reading', 'unreviewed'], audioFile: null },
       { id: 'misc-thawb', hmongRPA: 'thawb', english: 'push; shove (transitive verb) · promote; urge forward (transitive verb)', category: 'reading-motion', tags: ['verb', 'reading', 'reviewed'], audioFile: null },
       { id: 'misc-rub', hmongRPA: 'rub', english: 'to pull, to draw toward oneself', category: 'reading-motion', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
@@ -7614,7 +8489,6 @@ words: [
       { id: 'gen-raus', hmongRPA: 'raus', english: 'to dip into; to participate', category: 'reading-motion', tags: ['verb','everyday','unreviewed'], audioFile: null },
       { id: 'gen-rawm', hmongRPA: 'rawm', english: 'to be in a rush', category: 'reading-motion', tags: ['verb','everyday','unreviewed'], audioFile: null },
       { id: 'gen-tauv-pem', hmongRPA: 'tauv pem', english: 'to visit; to hang out with friends and family', category: 'reading-motion', tags: ['verb','social','unreviewed'], audioFile: null },
-      { id: 'gen-xabnagkis', hmongRPA: 'xabnagkis', english: 'days ahead; days to come', category: 'reading-motion', tags: ['noun','time','unreviewed'], audioFile: null },
       { id: 'gen-yais', hmongRPA: 'yais', english: 'to distribute; to pass out', category: 'reading-motion', tags: ['verb','everyday','unreviewed'], audioFile: null },
       // ── STANDALONE WORDS FROM THE STORIES, 2026-09-25 ─────────────────────
       // Each of these only resolved through a longer compound before ("tswj" only
@@ -7631,7 +8505,6 @@ words: [
       // Added 2026-09-26 — no entry of its own; found in the author's story "Mus Saib Yeeb Yam", whose line is the example.
       { id: 'rw-nrug', hmongRPA: 'nrug', english: 'to be apart — "sib nrug", separated from each other', category: 'reading-motion', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws qhia wb tias, “Kuv xav kom lawv tsis txhob sib nrug thaum yeeb yam pib.”', english: 'He explained to the two of us, “I do not want them to be separated when the movie starts.”' } },
       // Added 2026-09-26 — no entry of its own; found in the author's story "Mus Saib Yeeb Yam", whose line is the example.
-      { id: 'rw-nyob-twj-ywm', hmongRPA: 'nyob twj ywm', english: 'to be quiet, to fall silent', category: 'reading-motion', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Thaum yeeb yam yuav pib, lawv tsib leeg nyob twj ywm, thiab lawv kuj saib yeeb yam.', english: 'When the movie was about to start, the five of them went quiet, and they watched the movie too.' } },
       // Added 2026-09-27 — the hunting words in the author's thaum example.
       { id: 'rw-yos-hav-zoov', hmongRPA: 'yos hav zoov', english: 'to go hunting (in the forest)', category: 'reading-motion', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Chai mus yos hav zoov thaum tsib teev tsaus ntuj.', english: 'Chai goes hunting at 5 p.m.' } },
       { id: 'rw-tua-tsiaj', hmongRPA: 'tua tsiaj', english: 'to hunt, to kill animals', category: 'reading-motion', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Chai mus tua tsiaj thaum tsib teev tsaus ntuj.', english: 'Chai goes hunting at 5 p.m.' } },
@@ -7649,7 +8522,7 @@ words: [
     { id: 'wbs-ntiab', hmongRPA: 'ntiab', english: 'to force out; evict; expel', category: 'reading-motion', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-nyas', hmongRPA: 'nyas', english: 'to stalk; to track or follow behind', category: 'reading-motion', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-ntsaub', hmongRPA: 'ntsaub', english: 'to dive down; to come together', category: 'reading-motion', tags: ['verb', 'reviewed'], audioFile: null },
-    { id: 'wbs-ntsiab', hmongRPA: 'ntsiab', english: 'to grab or claw at', category: 'reading-motion', tags: ['verb', 'reviewed'], audioFile: null },
+    // ⚠️ CORRECTED 2026-10-02 — the author: the old gloss was simply wrong.
     { id: 'wbs-ntsauv', hmongRPA: 'ntsauv', english: 'to crowd around', category: 'reading-motion', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-ntswj', hmongRPA: 'ntswj', english: 'to twist', category: 'reading-motion', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-ntsawm', hmongRPA: 'ntsawm', english: 'to slam', category: 'reading-motion', tags: ['verb', 'reviewed'], audioFile: null },
@@ -7682,6 +8555,28 @@ words: [
       { id: 'misc-vov', hmongRPA: 'vov', english: 'to cover something — like covering with a blanket', category: 'reading-motion', tags: ['verb', 'reading', 'reviewed'], audioFile: null },  // the author, 2026-09-30; the war sense (take cover, ambush) is war-vov
       { id: 'motion-thoj', hmongRPA: 'thoj', english: 'to escape, to flee', category: 'reading-motion', tags: ['verb', 'reading', 'reviewed'], audioFile: null },  // the author, 2026-09-30 — one of two thoj entries (the rau / tom qab pattern)
       { id: 'motion-cuab', hmongRPA: 'cuab', english: 'to trap, to snare — setting up a trap, or the trap itself, especially for catching animals: "cuab quav qaib", to set up a bird trap; "cuab ntses", to trap or catch fish', category: 'reading-motion', tags: ['verb', 'reading', 'reviewed'], audioFile: null },  // the author, 2026-09-30 — one of four cuab entries (the rau / tom qab pattern)
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'misc-khiav', hmongRPA: 'khiav', english: 'run · operate; function — of a machine or process · flee; escape', category: 'reading-motion', tags: ['verb', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Tus menyuam khiav mus tom tsev.', english: 'The child ran home.', source: 'ai' } },
+      { id: 'misc-taug', hmongRPA: 'taug', english: 'to walk along; in "taug kev", to travel on foot', category: 'reading-motion', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Peb taug kev mus tom khw.', english: 'We walk to the market.', source: 'ai' } },
+      { id: 'misc-dhia', hmongRPA: 'dhia', english: 'to jump; to dance — and of a pulse or a heart, to beat.', category: 'reading-motion', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus menyuam nyiam dhia ua si.', english: 'The child likes to jump while playing.', source: 'ai' } },
+      { id: 'misc-yoj', hmongRPA: 'yoj', english: 'to swing, to sway back and forth', category: 'reading-motion', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus menyuam yoj ntawm lub rooj zaum.', english: 'The child swings on the chair.', source: 'ai' } },
+      { id: 'phr-rov-qab', hmongRPA: 'rov qab', english: 'back; to return, to go back', category: 'reading-motion', tags: ['adverb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb yuav rov qab los tagkis.', english: 'We will come back tomorrow.', source: 'ai' } },
+      { id: 'misc-khaws', hmongRPA: 'khaws', english: 'to keep, to save up — and to pick something up off the ground.', category: 'reading-motion', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv khaws nyiaj cia txhua hli.', english: 'I save money every month.', source: 'ai' } },
+      { id: 'misc-nkaum', hmongRPA: 'nkaum', english: 'hide; conceal oneself (verb) · be hidden (stative verb) · nees nkaum = twenty (compound numeral) — ⚠ distinct from kaum = ten (numeral)', category: 'reading-motion', tags: ['verb', 'reading', 'reviewed'], audioFile: null },
+      { id: 'wbs-nthos', hmongRPA: 'nthos', english: 'to walk limply (ceg ntheeb)', category: 'reading-motion', tags: ['adjective', 'reviewed'], audioFile: null },
+      { id: 'phr-sawv-tsees', hmongRPA: 'sawv tsees', english: 'to get up, to spring to one’s feet', category: 'reading-motion', tags: ['verb','reading','unreviewed'], audioFile: null },
+      { id: 'misc-tsoo', hmongRPA: 'tsoo', english: 'to strike, to smash into, to collide with · to bump into; to crash — "tseb tsoo", a car crash; "tsoo qhov rooj", to bump into the door',  /* 2026-09-30 (author): + bump into / crash with examples; the battle sense removed here — it lives only on war-tsoo. Was: '… · to clash, to meet the enemy in battle' */ category: 'reading-motion', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
+      { id: 'misc-txais', hmongRPA: 'txais', english: 'to receive, to accept', category: 'reading-motion', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
+      { id: 'misc-tiv-thaiv', hmongRPA: 'tiv thaiv', english: 'to defend; a defence · to parry',  /* 'to parry' added 2026-09-30 (author) */ category: 'reading-motion', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
+      { id: 'phr-tso-tseg', hmongRPA: 'tso tseg', english: 'to drop, to dismiss, to abandon', category: 'reading-motion', tags: ['verb','reading','unreviewed'], audioFile: null },
+      { id: 'phr-kev-sib-xyaw', hmongRPA: 'kev sib xyaw', english: 'a mixture; a combination; blending', category: 'reading-motion', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws yog qhov tshwm sim los ntawm kev sib xyaw ntawm yam uas yug los nrog thiab yam uas ib tus neeg tau ntsib thiab kawm los hauv nws lub neej.', english: 'They are the result of a combination of what a person is born with and what that person encounters and learns during life.' } },
+      { id: 'rw-tsheb', hmongRPA: 'tsheb', english: 'a car, a vehicle — with lub: lub tsheb', category: 'reading-motion', tags: ['noun', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub tsheb no tshiab.', english: 'This car is new.' } },
+      { id: 'gen-nuam-yaj', hmongRPA: 'nuam yaj', english: 'to sightsee', category: 'reading-motion', tags: ['verb','travel','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb mus nuam yaj thaum so.', english: 'We go sightseeing during vacation.', source: 'ai' } },
+      { id: 'gen-nog', hmongRPA: 'nog', english: 'to strap onto something', category: 'reading-motion', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws nog lub hnab rau nws nraub qaum.', english: 'He straps the bag onto his back.', source: 'ai' } },
+      { id: 'gen-puab', hmongRPA: 'puab', english: 'to make by molding', category: 'reading-motion', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lawv puab lub lauj kaub av.', english: 'They mold a clay pot.', source: 'ai' } },
+      { id: 'gen-sawblawj', hmongRPA: 'sawblawj', english: 'to take everything', category: 'reading-motion', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lawv sawblawj cov khoom hauv tsev.', english: 'They took everything in the house.', source: 'ai' } },
     ],
   },
   {
@@ -7701,7 +8596,6 @@ words: [
       // creating a rival headword. Without this, "pab hluas" reads as "helping
       // young people".
       { id: 'misc-sense-pab', hmongRPA: 'pab', english: 'a group, a band — the classifier for a group of people or animals: "pab hluas", a group of young people', category: 'reading-people', tags: ['sense', 'classifier', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-kev', hmongRPA: 'kev', english: 'road; path; route; way · way; method; manner · abstract-concept marker, forming nouns from verbs and qualities', category: 'reading-people', tags: ['reading', 'reviewed'], audioFile: null },
       { id: 'misc-leeg', hmongRPA: 'leeg', english: 'classifier for people — "ob leeg", both of them · person; individual — "ib leeg", alone · muscle; tendon; sinew', category: 'reading-people', tags: ['reading', 'reviewed'], audioFile: null },
       { id: 'misc-luag', hmongRPA: 'luag', english: 'to laugh; also others, other people', category: 'reading-people', tags: ['draft', 'unreviewed', 'reading'], audioFile: null },
       { id: 'misc-tug', hmongRPA: 'tug', english: 'classifier for people and animals — a form used in some writing traditions. ⚠️ NOT simply a misspelling of "tus": preserve whichever form the source uses.', category: 'reading-people', tags: ['draft', 'unreviewed', 'reading'], audioFile: null },
@@ -7745,16 +8639,20 @@ words: [
       { id: 'misc-nom-tswv', hmongRPA: 'nom tswv', english: 'the government; the authorities; officials', category: 'reading-people', tags: ['noun', 'reading', 'reviewed'], audioFile: null },
       // ── Added 2026-09-30 — from the author's word list (was "Words by Sound").
     { id: 'wbs-pej-xeem', hmongRPA: 'pej xeem', english: 'citizens, people', category: 'reading-people', tags: ['noun', 'reviewed'], audioFile: null },
-    { id: 'wbs-vaj-huam', hmongRPA: 'vaj huam', english: 'human rights', category: 'reading-people', tags: ['noun', 'reviewed'], audioFile: null },
     { id: 'wbs-qhua', hmongRPA: 'qhua', english: 'a guest', category: 'reading-people', tags: ['noun', 'reviewed'], audioFile: null },
     { id: 'wbs-nkauj-xwb', hmongRPA: 'nkauj xwb', english: 'unmarried girls', category: 'reading-people', tags: ['noun', 'reviewed'], audioFile: null },
     { id: 'wbs-nqag', hmongRPA: 'nqag', english: 'a team, group based on common grounds', category: 'reading-people', tags: ['noun', 'reviewed'], audioFile: null },
     { id: 'wbs-khav-theeb', hmongRPA: 'khav theeb', english: 'to show off', category: 'reading-people', tags: ['verb', 'reviewed'], audioFile: null },
-    { id: 'wbs-plees', hmongRPA: 'plees', english: 'to be silly', category: 'reading-people', tags: ['adjective', 'reviewed'], audioFile: null },
-    { id: 'wbs-phom-moj', hmongRPA: 'phom moj', english: 'to be mischievous; overly playful', category: 'reading-people', tags: ['adjective', 'reviewed'], audioFile: null },
-    { id: 'wbs-yaj-ceeb', hmongRPA: 'yaj ceeb', english: 'life on earth', category: 'reading-people', tags: ['noun', 'reviewed'], audioFile: null },
       { id: 'wbs-phaum', hmongRPA: 'phaum', english: 'a generation, a group of the same season or period', category: 'reading-people', tags: ['noun', 'reviewed'], audioFile: null },  // re-added 2026-09-30 when the Bisang set holding it was commented out
       { id: 'people-cuab', hmongRPA: 'cuab', english: 'a family line or household — in a cultural or clan context, a specific household, extended family unit or generational line: "cuab tsav", the head of a household, a family-line leader; "ib cuab tsev", an entire household', category: 'reading-people', tags: ['noun', 'reading', 'reviewed'], audioFile: null },  // the author, 2026-09-30 — one of four cuab entries (the rau / tom qab pattern)
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'gen-hawm', hmongRPA: 'hawm', english: 'to worship; to pay respect', category: 'reading-people', tags: ['verb','culture','unreviewed'], audioFile: null },
+      { id: 'phr-hwm', hmongRPA: 'hwm', english: 'to respect; to honor', category: 'reading-people', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Yog li kev hwm thiab tu ib puag ncig yog ib feem ntawm peb li kab lis kev cai uas peb yuav tsum coj mus rau yav pem suab.', english: 'Therefore, respecting and caring for the environment is part of our cultural heritage that we must carry forward into the future.' } },
+      { id: 'wbs-ncawg', hmongRPA: 'ncawg', english: 'to have a close relationship with, be used to, familiar with', category: 'reading-people', tags: ['adjective', 'reviewed'], audioFile: null },
+      { id: 'rw-pawg', hmongRPA: 'pawg', english: 'group, crowd; a pile', category: 'reading-people', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Hnub tim nees nkaum plaub, lub Peb Hlis, xyoo ob txhiab, pawg neeg txiav txim tau txiav txim tias Omer Ninham ua txhaum kev tua neeg txhob txwm thawj theem thiab kev ua phem rau menyuam yaus.', english: 'On 24 March 2000, the jury found Omer Ninham guilty of first-degree intentional homicide and physical abuse of a child.' } },
+      { id: 'rw-tshoob-kos', hmongRPA: 'tshoob kos', english: 'a wedding, the wedding ceremonies', category: 'reading-people', tags: ['noun', 'unreviewed'], audioFile: null },
     ],
   },
   {
@@ -7767,9 +8665,14 @@ words: [
     description: 'Where things are — villages, roads, and the words that locate them.',
     emoji: '📍',
     words: [
+      // vaj loog — the KINGDOM sense, promoted out of `ag-vaj-loog`'s "Also
+      // means" 2026-10-02. That entry (garden; enclosed property, in
+      // agriculture) keeps it. A garden and a kingdom are the same metaphor —
+      // an enclosed domain — but a reader meeting it in a story about a realm
+      // was being sent to a farming set.
+      { id: 'phr-vaj-loog-kingdom', hmongRPA: 'vaj loog', english: 'a kingdom; a realm or domain (noun)', category: 'reading-place', tags: ['noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Lub vaj loog ntawd loj heev.', english: 'That kingdom is very large.', source: 'ai' } },
       { id: 'phr-npoo-av', hmongRPA: 'npoo av', english: 'ground level — "saum npoo av", above the ground', category: 'reading-place', tags: ['noun','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub pob nyob saum npoo av.', english: 'The ball is above ground level.', source: 'ai' } },
       { id: 'misc-hoob', hmongRPA: 'hoob', english: 'room', category: 'reading-place', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Muaj ob lub hoob hauv tsev.', english: 'There are two rooms in the house.', source: 'ai' } },
-      { id: 'misc-kawg', hmongRPA: 'kawg', english: 'end; last (noun / adjective) · finish; end (verb) · ultimate; topmost (adjective) · very; extremely, as an intensifier following an adjective (intensifier)', category: 'reading-place', tags: ['reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Peb mus txog qhov kawg lawm.', english: 'We have reached the end.', source: 'ai' } },
       { id: 'misc-qab', hmongRPA: 'qab', english: 'under; below; beneath · behind; at the rear of · delicious; tasty', category: 'reading-place', tags: ['reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Tus miv nkaum qab lub rooj.', english: 'The cat hides under the table.', source: 'ai' } },
       { id: 'misc-sab', hmongRPA: 'sab', english: 'side', category: 'reading-place', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Nws sawv ntawm sab qhov rooj.', english: 'She is standing beside the door.', source: 'ai' } },
       { id: 'misc-tom', hmongRPA: 'tom', english: 'at; over at; located at (locative marker / preposition) · bite (transitive verb) · tom qab = after; later; behind (compound preposition / temporal expression) · separately (adverb)', category: 'reading-place', tags: ['reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv nyob tom tsev hnub no.', english: 'I am at home today.', source: 'ai' } },
@@ -7786,12 +8689,10 @@ words: [
       // family left. Only names I can attest are here; a guessed transliteration
       // of a country name is worse than its absence.
       { id: 'misc-teb-chaws', hmongRPA: 'teb chaws', english: 'a country, a nation — preferred spelling Tebchaws, joined (author, 2026-09-26); this spaced form stays so older text still resolves', category: 'reading-place', tags: ['noun', 'place'], audioFile: null, exampleSentence: { hmong: 'Kuv xav mus txawv teb chaws.', english: 'I want to travel abroad.', source: 'ai' } },
-      { id: 'misc-haujlwm', hmongRPA: 'haujlwm', english: 'work; job; employment (noun) · task; duty; responsibility (noun) · activity; operation; undertaking (noun)', category: 'reading-place', tags: ['noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv muaj haujlwm ntau hnub no.', english: 'I have a lot of work today.', source: 'ai' } },
       { id: 'rv-ntsa', hmongRPA: 'ntsa', english: 'wall (noun) · cliff; steep wall-like surface (noun) — ⚠ phab ntsa = wall (compound noun)', category: 'reading-place', tags: ['reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Muaj ntsa siab nyob ntawm no.', english: 'There is a high wall here.', source: 'ai' } },
       { id: 'rv-phab', hmongRPA: 'phab', english: 'side (noun) · wall, especially in phab ntsa (compound-noun element) · party; side; faction (noun)', category: 'reading-place', tags: ['reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Nws sawv ntawm phab tsev.', english: 'He is standing beside the house.', source: 'ai' } },
       { id: 'misc-saum', hmongRPA: 'saum', english: 'on; on top of · above; over · upper; top — "saum toj", on top', category: 'reading-place', tags: ['preposition', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Phau ntawv nyob saum rooj.', english: 'The book is on the table.', source: 'ai' } },
       { id: 'misc-nroog', hmongRPA: 'nroog', english: 'a city — "Lub Nroog Green Bay"', category: 'reading-place', tags: ['noun', 'place', 'reading'], audioFile: null, exampleSentence: { hmong: 'Lub nroog no muaj neeg coob.', english: 'This city has many people.', source: 'ai' } },
-      { id: 'misc-khaws', hmongRPA: 'khaws', english: 'to keep, to save up — and to pick something up off the ground.', category: 'reading-place', tags: ['verb','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv khaws nyiaj cia txhua hli.', english: 'I save money every month.', source: 'ai' } },
       { id: 'misc-ntug', hmongRPA: 'ntug', english: 'the edge, the rim', category: 'reading-place', tags: ['noun','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws zaum ntawm ntug txaj.', english: 'She sits on the edge of the bed.', source: 'ai' } },
       { id: 'misc-chaw', hmongRPA: 'chaw', english: 'place; location; space · place for; site for — in compounds · opportunity; occasion', category: 'reading-place', tags: ['noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Qhov chaw no zoo nkauj heev.', english: 'This place is very beautiful.', source: 'ai' } },
       { id: 'misc-qhov', hmongRPA: 'qhov', english: 'place; spot; point · thing; matter; aspect · nominalizer — turns a clause into a thing, event or matter', category: 'reading-place', tags: ['classifier', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Qhov no yog kuv qhov chaw.', english: 'This is my place.', source: 'ai' } },
@@ -7816,6 +8717,24 @@ words: [
     { id: 'wbs-nqaim', hmongRPA: 'nqaim', english: 'to be narrow', category: 'reading-place', tags: ['adjective', 'reviewed'], audioFile: null },
     { id: 'wbs-khab-seeb', hmongRPA: 'khab seeb', english: 'to be spacious, roomy', category: 'reading-place', tags: ['adjective', 'reviewed'], audioFile: null },
     { id: 'wbs-khuam-kev', hmongRPA: 'khuam kev', english: 'to be in the way, to be underfoot', category: 'reading-place', tags: ['adjective', 'reviewed'], audioFile: null },
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'misc-kev', hmongRPA: 'kev', english: 'road; path; route; way · way; method; manner · abstract-concept marker, forming nouns from verbs and qualities', category: 'reading-place', tags: ['reading', 'reviewed'], audioFile: null },
+      { id: 'misc-ntiaj-teb', hmongRPA: 'ntiaj teb', english: 'the world, the earth', category: 'reading-place', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb txhua tus nyob hauv ntiaj teb.', english: 'We all live on Earth.', source: 'ai' } },
+      { id: 'misc-ntuj', hmongRPA: 'ntuj', english: 'sky (noun) · heaven; upper spiritual realm (noun) · hmo ntuj = night (compound noun) · tsaus ntuj = evening; nighttime; darkness (compound time expression)', category: 'reading-place', tags: ['noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Huab dawb nyob saum ntuj.', english: 'White clouds are in the sky.', source: 'ai' } },
+      { id: 'phr-hauv-paus', hmongRPA: 'hauv paus', english: 'the base, the foot of something', category: 'reading-place', tags: ['noun','reading','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws zaum ntawm hauv paus ntoo.', english: 'He sat at the base of the tree.', source: 'ai' } },
+      { id: 'misc-xeev', hmongRPA: 'xeev', english: 'a state or province — "Xeev Wisconsin"', category: 'reading-place', tags: ['noun', 'place', 'reading'], audioFile: null },
+      { id: 'misc-tim', hmongRPA: 'tim', english: 'at; over at, dialect/construction-sensitive (locative marker) · tim li cas = cause; reason; why, dialect-sensitive (compound interrogative expression)', category: 'reading-place', tags: ['draft', 'unreviewed', 'reading', 'needs-source-review'], audioFile: null },
+      { id: 'rw-npoo', hmongRPA: 'npoo', english: 'edge, rim, border', category: 'reading-place', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nkawd yoj Zong mus mus los los hla saum ntug phab ntsa pob zeb, uas siab li plaub caum tsib feet saum npoo av.', english: 'The two of them swung Zong back and forth out over the edge of the concrete wall, about forty-five feet above the ground.' } },
+      { id: 'rw-ntsis', hmongRPA: 'ntsis', english: 'the tip, the peak, the very end of something (noun) — "me ntsis", a little', category: 'reading-place', tags: ['noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Cov neeg pab cawm neeg, uas raug xa tuaj thaum yim teev peb feeb tsaus ntuj, pom tias Zong txoj hlab ntsha tseem dhia me ntsis.', english: 'Rescue personnel, dispatched at 8:03 p.m., detected a faint pulse from Zong.' } },
+      { id: 'phr-rooj-zaum', hmongRPA: 'rooj zaum', english: 'a seat, a bench', category: 'reading-place', tags: ['noun','reading','unreviewed'], audioFile: null },
+      { id: 'rw-tom-kos', hmongRPA: 'tom kos', english: 'over there, on that side', category: 'reading-place', tags: ['place', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws nyob tom kos.', english: 'He is over there.', source: 'ai' } },
+      { id: 'gen-samthiaj', hmongRPA: 'samthiaj', english: 'stage', category: 'reading-place', tags: ['noun','places','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov neeg hu nkauj nyob saum samthiaj.', english: 'The singers are on the stage.', source: 'ai' } },
+      { id: 'gen-faj-suab', hmongRPA: 'faj suab', english: 'haze; heat mist', category: 'reading-place', tags: ['noun','nature','unreviewed'], audioFile: null },
+      { id: 'phr-nag-xob-nag-cua', hmongRPA: 'nag xob nag cua', english: 'a thunderstorm; a severe storm', category: 'reading-place', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kev hloov pauv ntawm huab cua yuav ua rau nag xob nag cua loj tuaj ntxiv.', english: 'Changes in the weather will make storms grow larger and more severe.' } },
+      { id: 'phr-hnub-ci', hmongRPA: 'hnub ci', english: 'sunlight; solar', category: 'reading-place', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb yuav ua tau li ntawd los ntawm tsis ua khoom pov tseg ntau, cog ntoo ntxiv, thiab siv hluav taws xob los ntawm hnub ci thiab cua.', english: 'We can do this by producing less waste, planting more trees, and using energy from the sun and wind.' } },
+      { id: 'gen-qaim-hli', hmongRPA: 'qaim hli', english: 'moonlit', category: 'reading-place', tags: ['adjective','nature','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Hmo no qaim hli zoo nkauj heev.', english: 'Tonight is beautifully moonlit.', source: 'ai' } },
     ],
   },
   {
@@ -7882,6 +8801,16 @@ words: [
     { id: 'wbs-cheem', hmongRPA: 'cheem', english: 'to halt, stop; (preposition) while, during', category: 'reading-time', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-ncua', hmongRPA: 'ncua', english: 'to pause; (adjective) far, distant', category: 'reading-time', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-pheej', hmongRPA: 'pheej', english: 'to keep/continue an action', category: 'reading-time', tags: ['verb', 'reviewed'], audioFile: null },
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'misc-hlis', hmongRPA: 'hlis', english: 'month (noun) · month-name element (proper-name element) · Peb Hlis = March (proper noun) · Cuaj Hlis = September (proper noun)', category: 'reading-time', tags: ['noun', 'time', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Ib hlis muaj ntau hnub.', english: 'A month has many days.', source: 'ai' } },
+      { id: 'misc-thaum-ub', hmongRPA: 'thaum ub', english: 'long ago', category: 'reading-time', tags: ['phrase', 'reading', 'unreviewed'], audioFile: null },
+      { id: 'misc-kawg', hmongRPA: 'kawg', english: 'end; last (noun / adjective) · finish; end (verb) · ultimate; topmost (adjective) · very; extremely, as an intensifier following an adjective (intensifier)', category: 'reading-time', tags: ['reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Peb mus txog qhov kawg lawm.', english: 'We have reached the end.', source: 'ai' } },
+      { id: 'misc-tos', hmongRPA: 'tos', english: 'to wait', category: 'reading-time', tags: ['verb', 'reading'], audioFile: null },
+      { id: 'misc-tib-kaug', hmongRPA: 'tib kaug', english: 'suddenly; immediately; in one quick motion', category: 'reading-time', tags: ['phrase', 'reading'], audioFile: null },
+      { id: 'gen-keeb', hmongRPA: 'keeb', english: 'origin; starting point', category: 'reading-time', tags: ['noun','everyday','unreviewed'], audioFile: null },
+      { id: 'gen-xabnagkis', hmongRPA: 'xabnagkis', english: 'days ahead; days to come', category: 'reading-time', tags: ['noun','time','unreviewed'], audioFile: null },
     ],
   },
   {
@@ -7919,7 +8848,6 @@ words: [
       { id: 'misc-ntxiv', hmongRPA: 'ntxiv', english: 'more; additional · further; furthermore; in addition', category: 'reading-quantity', tags: ['particle', 'reading', 'reviewed', 'needs-source-review'], audioFile: null },
       { id: 'misc-tshaj-plaws', hmongRPA: 'tshaj plaws', english: 'the most, -est — "hnyav tshaj plaws", the heaviest', category: 'reading-quantity', tags: ['phrase', 'reading', 'unreviewed'], audioFile: null },
       { id: 'misc-sense-nees', hmongRPA: 'nees', english: 'twenty — only in "nees nkaum"', category: 'reading-quantity', tags: ['sense', 'number', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-nkaum', hmongRPA: 'nkaum', english: 'hide; conceal oneself (verb) · be hidden (stative verb) · nees nkaum = twenty (compound numeral) — ⚠ distinct from kaum = ten (numeral)', category: 'reading-quantity', tags: ['verb', 'reading', 'reviewed'], audioFile: null },
       { id: 'rv-txhia', hmongRPA: 'txhia', english: 'some; various; different (indefinite determiner) · distributive or variety element in expressions such as txhua txhia (grammatical element)', category: 'reading-quantity', tags: ['reading', 'needs-source-review'], audioFile: null },
       { id: 'gen-hauj-sim', hmongRPA: 'hauj sim', english: 'a little; somewhat; so-so', category: 'reading-quantity', tags: ['adjective','adverb','everyday','unreviewed'], audioFile: null },
       { id: 'gen-haj-yam', hmongRPA: 'haj yam', english: 'even more or less', category: 'reading-quantity', tags: ['adverb','everyday','unreviewed'], audioFile: null },
@@ -7936,6 +8864,14 @@ words: [
       { id: 'rw-nrab', hmongRPA: 'nrab', english: 'middle; half — "ib nrab", half, halfway (the middle point); "nruab nrab", in the middle', category: 'reading-quantity', tags: ['noun', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Thaum zaj yeeb yam mus txog ib nrab, kuv saib Fong thiab nug nws tias, “Koj puas tseem xav zaum ntawm no?”', english: 'When the movie was about halfway through, I looked at Fong and asked him, “Do you still want to sit here?”' } },
       // Added 2026-09-30 — the author's dictionary batch (Heimbach-based paste; loj hlob is the author's own gloss).
       { id: 'misc-qib', hmongRPA: 'qib', english: 'level, rank, grade, stage — a school grade, a level of ability', category: 'reading-quantity', tags: ['reading', 'unreviewed'], audioFile: null },
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'misc-caug', hmongRPA: 'caug', english: 'bound word in numbers: "-ty", as in "tsib caug" fifty', category: 'reading-quantity', tags: ['number','bound','reading','unreviewed'], audioFile: null },
+      { id: 'misc-lwm', hmongRPA: 'lwm', english: 'another; other · else — "lwm tus", anyone else', category: 'reading-quantity', tags: ['particle', 'reading', 'reviewed'], audioFile: null },
+      { id: 'rw-feem', hmongRPA: 'feem', english: 'part, portion, share — "feem ntau", mostly, the majority', category: 'reading-quantity', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Yog li kev hwm thiab tu ib puag ncig yog ib feem ntawm peb li kab lis kev cai uas peb yuav tsum coj mus rau yav pem suab.', english: 'Therefore, respecting and caring for the environment is part of our cultural heritage that we must carry forward into the future.' } },
+      { id: 'phr-tiav', hmongRPA: 'tiav', english: 'complete; finished; fully — "kom tiav", all the way', category: 'reading-quantity', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tib neeg lub xeev siab yog ib yam uas nyuaj kawg nkaus rau cov kws tshawb fawb los nkag siab kom tiav, vim nws muaj ntau txheej ntau theem uas sib cuam tshuam loj heev.', english: 'Human psychological state is something that is extremely difficult for researchers to fully understand, because it has many layers and levels that are deeply interconnected.' } },
+      { id: 'rw-yeej', hmongRPA: 'yeej', english: 'truly, really, indeed — stresses the verb after it: "yeej nyiam", really like', category: 'reading-quantity', tags: ['adverb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv pom tias peb plaub leeg yeej nyiam yeeb yam no.', english: 'I saw that all four of us really liked this movie.' } },
     ],
   },
   {
@@ -7957,7 +8893,6 @@ words: [
       { id: 'misc-tshuav', hmongRPA: 'tshuav', english: 'to remain, to be left over — and to owe: "tshuav nqi".', category: 'reading-work', tags: ['verb','reading','unreviewed'], audioFile: null },
       { id: 'misc-muas', hmongRPA: 'muas', english: 'to buy', category: 'reading-work', tags: ['verb','reading','unreviewed'], audioFile: null },
       { id: 'gen-lag-luam', hmongRPA: 'lag luam', english: 'business; trade', category: 'reading-work', tags: ['noun','business','unreviewed'], audioFile: null },
-      { id: 'gen-hawm', hmongRPA: 'hawm', english: 'to worship; to pay respect', category: 'reading-work', tags: ['verb','culture','unreviewed'], audioFile: null },
       { id: 'gen-sawv-cev', hmongRPA: 'sawv cev', english: 'to represent; on behalf of', category: 'reading-work', tags: ['verb','everyday','unreviewed'], audioFile: null },
       // ── HARVESTED FROM THE SOCIETY STORIES, 2026-09-24 ──────────────────
       // From the glossaries of story-kev-tswj-ib-puag-ncig and
@@ -7981,6 +8916,14 @@ words: [
       { id: 'misc-nuj-nqis', hmongRPA: 'nuj nqis', english: 'value, worth, importance; cost, price — something valued highly (also nuj nqe)', category: 'reading-work', tags: ['reading', 'unreviewed'], audioFile: null },
       // ── Added 2026-09-30 — from the author's word list (was "Words by Sound").
     { id: 'wbs-tshom', hmongRPA: 'tshom', english: 'to dig, plow', category: 'reading-work', tags: ['verb', 'reviewed'], audioFile: null },
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'misc-haujlwm', hmongRPA: 'haujlwm', english: 'work; job; employment (noun) · task; duty; responsibility (noun) · activity; operation; undertaking (noun)', category: 'reading-work', tags: ['noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv muaj haujlwm ntau hnub no.', english: 'I have a lot of work today.', source: 'ai' } },
+      { id: 'phr-tshawb-nrhiav', hmongRPA: 'tshawb nrhiav', english: 'to investigate, to search out', category: 'reading-work', tags: ['verb','reading','unreviewed'], audioFile: null },
+      { id: 'phr-khoom-muaj-nuj-nqis', hmongRPA: 'khoom muaj nuj nqis', english: 'valuable things; resources of value', category: 'reading-work', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub ntiajteb no muaj ntau yam khoom muaj nuj nqis xws li dej huv, huab cua zoo, hav zoov ntsuab, thiab tsiaj txhu ntau hom.', english: 'This world has many valuable things such as clean water, good air, green forests, and many species of animals.' } },
+      { id: 'rw-npaj-txhij', hmongRPA: 'npaj txhij', english: 'all ready, fully prepared — "Neb npaj txhij lawm los?", are you two ready?', category: 'reading-work', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Mai teb kuv tias, “Yog, wb npaj txhij lawm.”', english: 'Mai answered me, “Yes, the two of us are ready.”' } },
+      { id: 'wbs-nkim', hmongRPA: 'nkim', english: 'to waste', category: 'reading-work', tags: ['verb', 'reviewed'], audioFile: null },
     ],
   },
   {
@@ -8004,7 +8947,6 @@ words: [
       { id: 'misc-kiag', hmongRPA: 'kiag', english: 'right away, immediately — an emphatic particle', category: 'reading-qualities', tags: ['draft', 'unreviewed', 'reading'], audioFile: null },
       { id: 'misc-tsuag', hmongRPA: 'tsuag', english: 'pale, faint, bland; in "nroj tsuag", plants or vegetation', category: 'reading-qualities', tags: ['bound', 'draft', 'unreviewed', 'reading'], audioFile: null },
       { id: 'misc-xis', hmongRPA: 'xis', english: 'comfortable, pleasant; in "xis siab", pleased', category: 'reading-qualities', tags: ['draft', 'unreviewed', 'reading'], audioFile: null },
-      { id: 'misc-thaum-ub', hmongRPA: 'thaum ub', english: 'long ago', category: 'reading-qualities', tags: ['phrase', 'reading', 'unreviewed'], audioFile: null },
       { id: 'misc-tsim-txom', hmongRPA: 'tsim txom', english: 'to torture; to mistreat cruelly', category: 'reading-qualities', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
       { id: 'misc-ib-yam-li', hmongRPA: 'ib yam li', english: 'the same as, just like', category: 'reading-qualities', tags: ['phrase', 'reading', 'unreviewed'], audioFile: null },
       { id: 'misc-hloov', hmongRPA: 'hloov', english: 'to change — and to replace, to swap one thing for another.', category: 'reading-qualities', tags: ['verb','reading','unreviewed'], audioFile: null },
@@ -8012,7 +8954,6 @@ words: [
       { id: 'misc-ruaj', hmongRPA: 'ruaj', english: 'firm, secure, steady — and lasting, permanent: "ruaj khov".', category: 'reading-qualities', tags: ['adjective','reading','unreviewed'], audioFile: null },
       { id: 'misc-tib', hmongRPA: 'tib', english: 'same; one and the same (adjective / determiner) · tib neeg = human being; humanity (compound noun) · tib txoj = the same one; same route/rule depending on the following noun (determiner phrase)', category: 'reading-qualities', tags: ['particle', 'reading', 'reviewed'], audioFile: null },
       { id: 'misc-txhob', hmongRPA: 'txhob', english: 'do not; don’t (prohibitive negative particle) · txhob txwm = deliberately; intentionally; on purpose (compound adverb)', category: 'reading-qualities', tags: ['particle', 'bound', 'reading', 'reviewed'], audioFile: null },
-      { id: 'misc-yam', hmongRPA: 'yam', english: 'thing; kind; type; matter · anything; something — "yam twg", "yam dab tsi" · without; lacking — in "yam tsis muaj"', category: 'reading-qualities', tags: ['classifier', 'reading', 'reviewed'], audioFile: null },
       { id: 'gen-suab-ncha-famous', hmongRPA: 'suab ncha', english: 'famous', category: 'reading-qualities', tags: ['adjective','everyday','unreviewed'], audioFile: null },
       { id: 'gen-huv', hmongRPA: 'huv', english: 'clean', category: 'reading-qualities', tags: ['adjective','everyday','unreviewed'], audioFile: null },
       { id: 'gen-lo-phem', hmongRPA: 'lo phem', english: 'dirty', category: 'reading-qualities', tags: ['adjective','everyday','unreviewed'], audioFile: null },
@@ -8038,7 +8979,7 @@ words: [
       { id: 'rw-ncaj', hmongRPA: 'ncaj', english: 'straight; honest, upright', category: 'reading-qualities', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tab sis Wisconsin Lub Tsev Hais Plaub Siab Tshaj hais tias txoj cai ntawd tsis ncaj qha siv tau rau Ninham, vim Ninham raug txim rau kev tua neeg txhob txwm.', english: 'But the Wisconsin Supreme Court said that rule did not apply directly to Ninham, because Ninham was convicted of intentional homicide.' } },
       { id: 'rw-khov', hmongRPA: 'khov', english: 'hard, firm; frozen, solid', category: 'reading-qualities', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Zong tus tij laug, Nhee, piav nws tias yog ib tug “neeg ua haujlwm khov kho” uas tau khaws nyiaj tau ib txhiab tsib puas duas las los ntawm nws txoj haujlwm xa ntawv.', english: 'Zong’s older brother, Nhee, described him as a “strong worker” who had saved $1,500 from his paper route.' } },
       { id: 'rw-txawv', hmongRPA: 'txawv', english: 'different; strange, unusual', category: 'reading-qualities', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub tsev hais plaub kuj siv nws tus kheej txoj kev txiav txim thiab hais tias lub txim ntawd tsis yog kev rau txim nyaum thiab txawv txav rau rooj plaub no, thiab tsis lees txais qhov kev sib cav tias lub txim hnyav dhau.', english: 'The court also exercised its own independent judgment and determined that the punishment was not cruel and unusual in this context, and it rejected the claim that the sentence was unduly harsh or excessive.' } },
-      { id: 'rw-ruam', hmongRPA: 'ruam', english: 'foolish, stupid', category: 'reading-qualities', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tom qab qhov kev txiav txim kawg, Zong tus tij laug Seng Vang hais tias qhov ntawd zoo li yog ib kauj ruam loj rau tsev neeg los kho lawv txoj kev mob siab uas plam lawv tus kwv.', english: 'After the final ruling, Zong’s older brother Seng Vang said it felt like a large step for the family toward healing the grief of losing their younger brother.' } },
+      { id: 'rw-ruam', hmongRPA: 'ruam', english: 'foolish, stupid', category: 'reading-qualities', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Ntsej muag ruam.', english: 'Stupid face.' }  /* was a story sentence whose only 'ruam' was inside 'kauj ruam', a STEP — the wrong word on a card glossed foolish, stupid (author 2026-10-19) */ },
       { id: 'rw-ntse', hmongRPA: 'ntse', english: 'sharp; clever, smart — "txawj ntse", intelligent', category: 'reading-qualities', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Qhov no tau ua rau cov kws txawj ntse sib cav hnyav tias puas yog ib tus neeg txoj kev xav thiab nws txoj kev coj ua yog yam uas nws xaiv tau, lossis puas yog nws raug txiav txim los ntawm yam uas nws tsis muaj peev xwm tswj tau.', english: 'This has led intellectuals to debate intensely whether a person’s thoughts and behavior are things they can choose, or whether they are determined by things beyond their ability to control.' } },
       { id: 'rw-laus', hmongRPA: 'laus', english: 'old (of people); elder', category: 'reading-qualities', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tom qab Jeffrey thiab Amanda qhia txog qhov xwm txheej, Lub Nroog Green Bay tub ceev xwm thiaj ntes Richard thiab Omer, thiab nkawd raug coj mus hais plaub sib cais ib yam li neeg laus rau kev tua Zong Vang—kev tua neeg txhob txwm thawj theem.', english: 'After Jeffrey and Amanda reported the incident, both Richard and Omer were arrested by the Green Bay police and were both tried separately as adults for the first-degree murder of Zong Vang.' } },
       { id: 'rw-ntsuab', hmongRPA: 'ntsuab', english: 'green; fresh, unripe (of plants)', category: 'reading-qualities', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub ntiajteb no muaj ntau yam khoom muaj nuj nqis xws li dej huv, huab cua zoo, hav zoov ntsuab, thiab tsiaj txhu ntau hom.', english: 'This world has many valuable things such as clean water, good air, green forests, and many species of animals.' } },
@@ -8067,8 +9008,21 @@ words: [
     { id: 'wbs-xyeej', hmongRPA: 'xyeej', english: 'to be available; (verb) to not be agreeable to', category: 'reading-qualities', tags: ['adjective', 'reviewed'], audioFile: null },
     { id: 'wbs-nrawm', hmongRPA: 'nrawm', english: 'to be fast; to be quick', category: 'reading-qualities', tags: ['adjective', 'reviewed'], audioFile: null },
     { id: 'wbs-pluas', hmongRPA: 'pluas', english: 'to be tart, (noun) classifier for meals', category: 'reading-qualities', tags: ['adjective', 'reviewed'], audioFile: null },
-    { id: 'wbs-nthos', hmongRPA: 'nthos', english: 'to walk limply (ceg ntheeb)', category: 'reading-qualities', tags: ['adjective', 'reviewed'], audioFile: null },
-    { id: 'wbs-ncawg', hmongRPA: 'ncawg', english: 'to have a close relationship with, be used to, familiar with', category: 'reading-qualities', tags: ['adjective', 'reviewed'], audioFile: null },
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'misc-kaj', hmongRPA: 'kaj', english: 'bright, light; in "kaj siab", content', category: 'reading-qualities', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Lub hnub kaj heev hnub no.', english: 'The sun is very bright today.', source: 'ai' } },
+      { id: 'misc-to-2', hmongRPA: 'to', english: 'having a hole, pierced — "to qhov"; "to ntshua", broken through · open, permitted — "to kev ua", all right to do; "tsis to kev ua", not permitted · to understand, in compounds — "to taub" (= nkag siab), "to siab"; "tsis to ntsej", can\'t understand · silent, still; ineffective (of medicine); sometimes deep', category: 'reading-qualities', tags: ['reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub hnab to qhov.', english: 'The sack has a hole in it.' } },
+      { id: 'wbs-plees', hmongRPA: 'plees', english: 'to be silly', category: 'reading-qualities', tags: ['adjective', 'reviewed'], audioFile: null },
+      { id: 'wbs-phom-moj', hmongRPA: 'phom moj', english: 'to be mischievous; overly playful', category: 'reading-qualities', tags: ['adjective', 'reviewed'], audioFile: null },
+      { id: 'phr-lwj', hmongRPA: 'lwj', english: 'to rot, to decay; rotten, spoiled — of food, wood, anything gone bad (verb / adjective) · ruined, corrupt, reckless — "ua lwj ua liam", to make a mess of things', category: 'reading-qualities', tags: ['verb', 'adjective', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Cov zaub lwj lawm.', english: 'The vegetables have gone rotten.', source: 'ai' } },
+      { id: 'gen-meem-txom', hmongRPA: 'meem txom', english: 'uncomfortable', category: 'reading-qualities', tags: ['adjective','everyday','unreviewed'], audioFile: null },
+      { id: 'misc-lam', hmongRPA: 'lam', english: 'casually, idly, just for the sake of it', category: 'reading-qualities', tags: ['draft', 'unreviewed', 'reading'], audioFile: null },
+      { id: 'misc-tsim-nyog', hmongRPA: 'tsim nyog', english: 'to deserve; to be fitting', category: 'reading-qualities', tags: ['phrase', 'reading', 'unreviewed'], audioFile: null },
+      { id: 'misc-tab-meeg', hmongRPA: 'tab meeg', english: 'openly, in front of everyone', category: 'reading-qualities', tags: ['adverb', 'reading', 'unreviewed'], audioFile: null },
+      { id: 'phr-kev-hloov-pauv', hmongRPA: 'kev hloov pauv', english: 'change; transformation', category: 'reading-qualities', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Qhov uas ua rau qhov no tseem ceeb tshaj yog thaum peb los xam txog seb kev hloov pauv lub xeev siab cuam tshuam li cas rau kev tsim kho lub zej zog.', english: 'What makes this especially important is considering how changes in psychological state affect the development of communities.' } },
+      { id: 'wbs-tsau', hmongRPA: 'tsau', english: 'to soak; (adjective) to be full', category: 'reading-qualities', tags: ['verb', 'reviewed'], audioFile: null },
+      { id: 'wbs-ntxaum', hmongRPA: 'ntxaum', english: 'to soak through', category: 'reading-qualities', tags: ['verb', 'reviewed'], audioFile: null },
     ],
   },
   {
@@ -8081,34 +9035,46 @@ words: [
     description: 'Reader-support vocabulary that has not sorted into a group yet. A waiting room — moving a word OUT is the point.',
     emoji: '🧩',
     words: [
-      { id: 'phr-hwj-chim', hmongRPA: 'hwj chim', english: 'power, authority', category: 'reading-general', tags: ['noun','reading','unreviewed'], audioFile: null },
+      // ── "Also means" SPLITS — 2026-10-02 ──────────────────────────────────
+      // Each of these was a sense living only in another entry's "Also means"
+      // footnote (WordDetail's `elsewhere`, from senses[] whose context is
+      // outside the entry's domain). A footnote is fine for a shading of the
+      // same word; it is wrong for a word a learner meets in a different lesson
+      // entirely, because the dictionary then has no card for it and search
+      // cannot reach it. Promoted to entries; the originals keep their senses[]
+      // untouched, so the footnote still shows AND the card now exists.
+      //
+      // lwj — the rot sense. `animal-lwj` (deer) keeps its entry; deer and
+      // rotten share nothing but a spelling.
+      // pob — the noun. `classifiers-pob` (classifier) and `discourse-pob`
+      // ("right?") already exist; the plain object had no card.
+      { id: 'phr-pob', hmongRPA: 'pob', english: 'a ball; a round lump, a rounded object (noun)', category: 'reading-general', tags: ['noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Cov menyuam ncaws pob.', english: 'The children play football.', source: 'ai' } },
+      // ── nplooj, THE NOUN — added 2026-10-02 (author) ──────────────────────
+      // ⚠️ A SECOND ENTRY, NOT A REPLACEMENT. `classifiers-nplooj` stays exactly
+      // as it is: nplooj is also the classifier for flat things ("ib nplooj
+      // ntawv", one page). This is the word used as a noun in its own right,
+      // and the two cross-link automatically because they share a headword —
+      // the rau / tom qab / hnub pattern.
+      //
+      // Leaf and page are one entry rather than two: it is the same noun (a
+      // flat thing) and a learner meets them together, unlike the
+      // classifier-vs-noun split above, which is a different part of speech.
+      { id: 'phr-nplooj', hmongRPA: 'nplooj', english: 'a leaf — on a plant or a tree (noun, singular) · a page — in a book or on paper (noun, singular)', category: 'reading-general', tags: ['noun', 'reading', 'reviewed'], audioFile: null, exampleSentence: { hmong: 'Nplooj ntoo poob rau hauv av.', english: 'The tree leaf fell to the ground.', source: 'ai' } },
       { id: 'phr-pob-zeb', hmongRPA: 'pob zeb', english: 'stone, rock', category: 'reading-general', tags: ['noun','reading','unreviewed'], audioFile: null },
-      { id: 'phr-rooj-zaum', hmongRPA: 'rooj zaum', english: 'a seat, a bench', category: 'reading-general', tags: ['noun','reading','unreviewed'], audioFile: null },
       { id: 'phr-kab-raub-ris', hmongRPA: 'kab raub ris', english: 'a scorpion', category: 'reading-general', tags: ['noun','animal','reading','unreviewed'], audioFile: null },
       { id: 'phr-xwm-txheej', hmongRPA: 'xwm txheej', english: 'an event, an incident, what happened', category: 'reading-general', tags: ['noun','reading','unreviewed'], audioFile: null },
-      { id: 'phr-yeeb-tshuaj', hmongRPA: 'yeeb tshuaj', english: 'drugs, narcotics', category: 'reading-general', tags: ['noun','reading','unreviewed'], audioFile: null },
-      { id: 'phr-npau-suav', hmongRPA: 'npau suav', english: 'to dream', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
       { id: 'phr-ua-si', hmongRPA: 'ua si', english: 'to play; a game', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
-      { id: 'phr-ua-pauj', hmongRPA: 'ua pauj', english: 'to take revenge; a vendetta', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
-      { id: 'phr-sawv-tsees', hmongRPA: 'sawv tsees', english: 'to get up, to spring to one’s feet', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
-      { id: 'phr-tshawb-nrhiav', hmongRPA: 'tshawb nrhiav', english: 'to investigate, to search out', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
       { id: 'phr-cuam-tshuam', hmongRPA: 'cuam tshuam', english: 'to affect, to have an impact on', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
-      { id: 'phr-tso-tseg', hmongRPA: 'tso tseg', english: 'to drop, to dismiss, to abandon', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
       { id: 'phr-raws-li', hmongRPA: 'raws li', english: 'according to; following', category: 'reading-general', tags: ['conjunction','reading','unreviewed'], audioFile: null },
-      { id: 'misc-peev-xwm', hmongRPA: 'peev xwm', english: 'ability; can, to be able to', category: 'reading-general', tags: ['phrase', 'reading'], audioFile: null },
       // ⚠️ CORRECTED 2026-09-13 by the author: the headword is 'xov', NOT
       // 'tus xov', and its classifier is LUB — "lub xov". The id still says
       // tus-xov on purpose: ids are the key the notebook and the due-words
       // queue save against, so renaming it would orphan anyone who has already
       // saved this word. Read the id as an address, not a spelling.
       { id: 'misc-tus-xov', hmongRPA: 'xov', english: 'string, thread, cord — classifier lub: "lub xov"', category: 'reading-general', tags: ['noun', 'reading'], audioFile: null },
-      { id: 'misc-xav-pom', hmongRPA: 'xav pom', english: 'to want to see', category: 'reading-general', tags: ['phrase', 'reading'], audioFile: null },
-      { id: 'misc-lam', hmongRPA: 'lam', english: 'casually, idly, just for the sake of it', category: 'reading-general', tags: ['draft', 'unreviewed', 'reading'], audioFile: null },
-      { id: 'misc-lwm', hmongRPA: 'lwm', english: 'another; other · else — "lwm tus", anyone else', category: 'reading-general', tags: ['particle', 'reading', 'reviewed'], audioFile: null },
       { id: 'misc-nroj', hmongRPA: 'nroj', english: 'weeds; in "nroj tsuag", plants or vegetation', category: 'reading-general', tags: ['draft', 'unreviewed', 'reading'], audioFile: null },
       { id: 'misc-ntoo', hmongRPA: 'ntoo', english: 'tree, wood', category: 'reading-general', tags: ['draft', 'unreviewed', 'reading'], audioFile: null },
       { id: 'misc-sim', hmongRPA: 'sim', english: 'try; attempt (verb) · test; examine (verb) · taste; sample (verb)', category: 'reading-general', tags: ['reading', 'reviewed'], audioFile: null },
-      { id: 'misc-tim', hmongRPA: 'tim', english: 'at; over at, dialect/construction-sensitive (locative marker) · tim li cas = cause; reason; why, dialect-sensitive (compound interrogative expression)', category: 'reading-general', tags: ['draft', 'unreviewed', 'reading', 'needs-source-review'], audioFile: null },
       // The author's glossary for the cat-and-mouse story, plus `tos` (already
       // glossed by the Speak lessons). Nothing here was translated by me.
       //
@@ -8119,8 +9085,6 @@ words: [
       //     miv lub siab" means the mouse understands what the cat intends.
       //   • `ua ib siab` is to make up one's mind, not "to be sad".
       // A learner who reads those two literally gets the story backwards.
-      { id: 'misc-tos', hmongRPA: 'tos', english: 'to wait', category: 'reading-general', tags: ['verb', 'reading'], audioFile: null },
-      { id: 'misc-tib-kaug', hmongRPA: 'tib kaug', english: 'suddenly; immediately; in one quick motion', category: 'reading-general', tags: ['phrase', 'reading'], audioFile: null },
       // ══ PHRASES ══════════════════════════════════════════════════════════
       // Multi-word entries. These are why tier 2 of lookupWord exists — a
       // learner tapping "zos" gets "lub zos" — but tier 2 only searches the
@@ -8136,20 +9100,9 @@ words: [
       },
       // Ordinary Hmong found missing by auditing every word tap in a real text.
       // See notes/2026-09-14-zong-vang-day-two.md.
-      { id: 'misc-quaj', hmongRPA: 'quaj', english: 'to cry, to weep', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-xaiv', hmongRPA: 'xaiv', english: 'to choose, to pick out', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-tsoo', hmongRPA: 'tsoo', english: 'to strike, to smash into, to collide with · to bump into; to crash — "tseb tsoo", a car crash; "tsoo qhov rooj", to bump into the door',  /* 2026-09-30 (author): + bump into / crash with examples; the battle sense removed here — it lives only on war-tsoo. Was: '… · to clash, to meet the enemy in battle' */ category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
       { id: 'misc-plam', hmongRPA: 'plam', english: 'to lose, to be deprived of', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-txais', hmongRPA: 'txais', english: 'to receive, to accept', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-pub', hmongRPA: 'pub', english: 'to allow, to let — "txwv tsis pub", would not let', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-ceev-faj', hmongRPA: 'ceev faj', english: 'to be careful, to watch out', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-laj-thawj', hmongRPA: 'laj thawj', english: 'a reason, a cause', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null },
       { id: 'misc-cwj-pwm', hmongRPA: 'cwj pwm', english: 'character; behaviour', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-tab-meeg', hmongRPA: 'tab meeg', english: 'openly, in front of everyone', category: 'reading-general', tags: ['adverb', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-tsim-nyog', hmongRPA: 'tsim nyog', english: 'to deserve; to be fitting', category: 'reading-general', tags: ['phrase', 'reading', 'unreviewed'], audioFile: null },
       { id: 'misc-tshwm-sim', hmongRPA: 'tshwm sim', english: 'to happen, to occur', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-tiv-thaiv', hmongRPA: 'tiv thaiv', english: 'to defend; a defence · to parry',  /* 'to parry' added 2026-09-30 (author) */ category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null },
-      { id: 'misc-xeev', hmongRPA: 'xeev', english: 'a state or province — "Xeev Wisconsin"', category: 'reading-general', tags: ['noun', 'place', 'reading'], audioFile: null },
       { id: 'rv-vab', hmongRPA: 'vab', english: 'net; web (noun) · tsheb kauj vab = bicycle (compound noun)', category: 'reading-general', tags: ['reading', 'needs-source-review'], audioFile: null },
       { id: 'rv-tsum', hmongRPA: 'tsum', english: 'must; have to; need to (modal verb) · necessity or obligation marker (modal particle)', category: 'reading-general', tags: ['reading', 'needs-source-review'], audioFile: null },
       {
@@ -8162,32 +9115,17 @@ words: [
       },
       { id: 'misc-tshaws', hmongRPA: 'tshaws', english: 'to sting', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
       { id: 'misc-cawm', hmongRPA: 'cawm', english: 'to rescue, to save — "pab cawm", to rescue', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
-      { id: 'misc-nqus', hmongRPA: 'nqus', english: 'to suck in, to inhale; of a drug, to snort', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
       { id: 'misc-tsom', hmongRPA: 'tsom', english: 'to aim at, to focus on', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
       { id: 'misc-txhawb', hmongRPA: 'txhawb', english: 'to encourage, to support, to egg on', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
       { id: 'misc-tseg', hmongRPA: 'tseg', english: 'to stop, to leave off — and to set aside, to keep: "khaws tseg".', category: 'reading-general', tags: ['verb','reading','unreviewed'], audioFile: null },
-      { id: 'misc-ntawv', hmongRPA: 'ntawv', english: 'paper · writing; document; letter · book; reading material', category: 'reading-general', tags: ['noun', 'reading', 'reviewed'], audioFile: null },
       { id: 'gen-hom', hmongRPA: 'hom', english: 'type; kind; class; category; variety', category: 'reading-general', tags: ['noun','everyday','unreviewed'], audioFile: null },
       { id: 'gen-cawm', hmongRPA: 'cawm', english: 'to rescue; to save', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null },
       { id: 'gen-cwj-pwm', hmongRPA: 'cwj pwm', english: 'attitude; behavior', category: 'reading-general', tags: ['noun','everyday','unreviewed'], audioFile: null },
       { id: 'gen-dab-muag', hmongRPA: 'dab muag', english: 'souvenir', category: 'reading-general', tags: ['noun','everyday','unreviewed'], audioFile: null },
-      { id: 'gen-daug', hmongRPA: 'daug', english: 'to hatch', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null },
-      { id: 'gen-faj-suab', hmongRPA: 'faj suab', english: 'haze; heat mist', category: 'reading-general', tags: ['noun','nature','unreviewed'], audioFile: null },
-      { id: 'gen-haub', hmongRPA: 'haub', english: 'to entice; to lure; to persuade', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv haub nws kom kawm.', english: 'I encouraged him/her to study.', source: 'ai' } },
-      { id: 'gen-las-mees', hmongRPA: 'las mees', english: 'to ignore; to not respond', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null },
-      { id: 'gen-meem-txom', hmongRPA: 'meem txom', english: 'uncomfortable', category: 'reading-general', tags: ['adjective','everyday','unreviewed'], audioFile: null },
       { id: 'gen-moj-zeej', hmongRPA: 'moj zeej', english: 'scarecrow; statue', category: 'reading-general', tags: ['noun','everyday','unreviewed'], audioFile: null },
       { id: 'gen-nuv', hmongRPA: 'nuv', english: 'to bow; to fish', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv txiv nyiam nuv ntses.', english: 'My father likes fishing.', source: 'ai' } },
-      { id: 'gen-nuam-yaj', hmongRPA: 'nuam yaj', english: 'to sightsee', category: 'reading-general', tags: ['verb','travel','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb mus nuam yaj thaum so.', english: 'We go sightseeing during vacation.', source: 'ai' } },
-      { id: 'gen-nog', hmongRPA: 'nog', english: 'to strap onto something', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws nog lub hnab rau nws nraub qaum.', english: 'He straps the bag onto his back.', source: 'ai' } },
-      { id: 'gen-puab', hmongRPA: 'puab', english: 'to make by molding', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lawv puab lub lauj kaub av.', english: 'They mold a clay pot.', source: 'ai' } },
-      { id: 'gen-qaim-hli', hmongRPA: 'qaim hli', english: 'moonlit', category: 'reading-general', tags: ['adjective','nature','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Hmo no qaim hli zoo nkauj heev.', english: 'Tonight is beautifully moonlit.', source: 'ai' } },
-      { id: 'gen-qaug-quav', hmongRPA: 'qaug quav', english: 'to be addicted to something', category: 'reading-general', tags: ['verb','health','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws qaug quav rau kev twv txiaj.', english: 'He is addicted to gambling.', source: 'ai' } },
       { id: 'gen-rauv', hmongRPA: 'rauv', english: 'to burn firewood', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv txiv rauv taws ua mov.', english: 'My father burns firewood for cooking.', source: 'ai' } },
       { id: 'gen-rais', hmongRPA: 'rais', english: 'to become', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws xav rais ua kws kho mob.', english: 'She wants to become a doctor.', source: 'ai' } },
-      { id: 'gen-samthiaj', hmongRPA: 'samthiaj', english: 'stage', category: 'reading-general', tags: ['noun','places','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov neeg hu nkauj nyob saum samthiaj.', english: 'The singers are on the stage.', source: 'ai' } },
-      { id: 'gen-sawblawj', hmongRPA: 'sawblawj', english: 'to take everything', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lawv sawblawj cov khoom hauv tsev.', english: 'They took everything in the house.', source: 'ai' } },
-      { id: 'gen-tabkaum', hmongRPA: 'tabkaum', english: 'to interrupt; to annoy', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tsis txhob tabkaum kuv thaum kuv kawm.', english: 'Do not bother me while I study.', source: 'ai' } },
       { id: 'gen-xawb', hmongRPA: 'xawb', english: 'to search for; to look through', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv xawb lub hnab nrhiav tus yuam sij.', english: 'I search through the bag for the key.', source: 'ai' } },
       { id: 'gen-zes', hmongRPA: 'zes', english: 'to bother; to ignite a fire', category: 'reading-general', tags: ['verb','everyday','unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws zes kuv thaum kuv ua haujlwm.', english: 'He bothers me while I work.', source: 'ai' } },
       // ── HARVESTED FROM THE SOCIETY STORIES, 2026-09-24 ──────────────────
@@ -8195,47 +9133,33 @@ words: [
       // story-kev-hloov-pauv-lub-xeev-siab. Each example sentence is the story's
       // own line, not new Hmong. Names and one-off phrases stayed glossary-only.
       // ⚠️ 'unreviewed' — the glosses are rewritten for general use.
-      { id: 'phr-khoom-muaj-nuj-nqis', hmongRPA: 'khoom muaj nuj nqis', english: 'valuable things; resources of value', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub ntiajteb no muaj ntau yam khoom muaj nuj nqis xws li dej huv, huab cua zoo, hav zoov ntsuab, thiab tsiaj txhu ntau hom.', english: 'This world has many valuable things such as clean water, good air, green forests, and many species of animals.' } },
       { id: 'phr-tsiaj-txhu', hmongRPA: 'tsiaj txhu', english: 'animals; wildlife; livestock', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub ntiajteb no muaj ntau yam khoom muaj nuj nqis xws li dej huv, huab cua zoo, hav zoov ntsuab, thiab tsiaj txhu ntau hom.', english: 'This world has many valuable things such as clean water, good air, green forests, and many species of animals.' } },
-      { id: 'phr-tshuaj-lom', hmongRPA: 'tshuaj lom', english: 'poison; toxic chemicals', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
       { id: 'phr-pa-roj-avgas', hmongRPA: 'pa roj avgas', english: 'exhaust fumes; vehicle emissions', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
       { id: 'phr-khoom-pov-tseg', hmongRPA: 'khoom pov tseg', english: 'waste; rubbish; discarded things', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
-      { id: 'phr-nag-xob-nag-cua', hmongRPA: 'nag xob nag cua', english: 'a thunderstorm; a severe storm', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kev hloov pauv ntawm huab cua yuav ua rau nag xob nag cua loj tuaj ntxiv.', english: 'Changes in the weather will make storms grow larger and more severe.' } },
       { id: 'phr-hluav-taws-xob', hmongRPA: 'hluav taws xob', english: 'electricity', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb yuav ua tau li ntawd los ntawm tsis ua khoom pov tseg ntau, cog ntoo ntxiv, thiab siv hluav taws xob los ntawm hnub ci thiab cua.', english: 'We can do this by producing less waste, planting more trees, and using energy from the sun and wind.' } },
-      { id: 'phr-hnub-ci', hmongRPA: 'hnub ci', english: 'sunlight; solar', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Peb yuav ua tau li ntawd los ntawm tsis ua khoom pov tseg ntau, cog ntoo ntxiv, thiab siv hluav taws xob los ntawm hnub ci thiab cua.', english: 'We can do this by producing less waste, planting more trees, and using energy from the sun and wind.' } },
-      { id: 'phr-kev-hloov-pauv', hmongRPA: 'kev hloov pauv', english: 'change; transformation', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Qhov uas ua rau qhov no tseem ceeb tshaj yog thaum peb los xam txog seb kev hloov pauv lub xeev siab cuam tshuam li cas rau kev tsim kho lub zej zog.', english: 'What makes this especially important is considering how changes in psychological state affect the development of communities.' } },
       { id: 'phr-kev-cuam-tshuam', hmongRPA: 'kev cuam tshuam', english: 'impact; influence; effect', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kev Hloov Pauv Ntawm Tib Neeg Lub Xeev Siab Thiab Kev Cuam Tshuam Rau Kev Tsim Kho Lub Zej Zog', english: 'Changes in Human Psychological States and Their Impact on Community Development' } },
       { id: 'phr-sib-cuam-tshuam', hmongRPA: 'sib cuam tshuam', english: 'to interact; to affect one another', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tib neeg lub xeev siab yog ib yam uas nyuaj kawg nkaus rau cov kws tshawb fawb los nkag siab kom tiav, vim nws muaj ntau txheej ntau theem uas sib cuam tshuam loj heev.', english: 'Human psychological state is something that is extremely difficult for researchers to fully understand, because it has many layers and levels that are deeply interconnected.' } },
-      { id: 'phr-kev-sib-xyaw', hmongRPA: 'kev sib xyaw', english: 'a mixture; a combination; blending', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws yog qhov tshwm sim los ntawm kev sib xyaw ntawm yam uas yug los nrog thiab yam uas ib tus neeg tau ntsib thiab kawm los hauv nws lub neej.', english: 'They are the result of a combination of what a person is born with and what that person encounters and learns during life.' } },
       { id: 'phr-txhawb-nqa', hmongRPA: 'txhawb nqa', english: 'to support; to nurture; to encourage', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Yog tias tib neeg txoj kev coj ua tuaj yeem hloov tau los ntawm kev kawm thiab kev sib cuam tshuam nrog ib puag ncig, ces lub zej zog muaj lub luag haujlwm loj heev los tsim ib lub ib puag ncig uas txhawb nqa txoj kev xav zoo thiab kev coj cwj pwm muaj txiaj ntsig.', english: 'If human behavior can be changed through learning and interaction with the environment, then the community has a great responsibility to create an environment that nurtures positive thinking and beneficial behavior.' } },
-      { id: 'phr-txoj-hau-kev', hmongRPA: 'txoj hau kev', english: 'an approach; a method; a way of doing something', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tiamsis, yog tias feem ntau ntawm tib neeg txoj kev coj ua yog raug txiav txim los ntawm yam nws yug los nrog, ces cov thawj coj hauv zej zog yuav tsum rov xav dua txog lawv txoj hau kev los pab cov neeg uas raug kev nyuaj siab los ntawm lawv tus kheej lub xeev siab.', english: 'However, if most human behavior is determined by what a person is born with, then community leaders must reconsider their approach to helping people who suffer difficulties because of their own psychological state.' } },
-      { id: 'phr-tiav', hmongRPA: 'tiav', english: 'complete; finished; fully — "kom tiav", all the way', category: 'reading-general', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tib neeg lub xeev siab yog ib yam uas nyuaj kawg nkaus rau cov kws tshawb fawb los nkag siab kom tiav, vim nws muaj ntau txheej ntau theem uas sib cuam tshuam loj heev.', english: 'Human psychological state is something that is extremely difficult for researchers to fully understand, because it has many layers and levels that are deeply interconnected.' } },
-      { id: 'phr-tuaj-yeem', hmongRPA: 'tuaj yeem', english: 'can; to be able to; to be possible', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Yog tias tib neeg txoj kev coj ua tuaj yeem hloov tau los ntawm kev kawm thiab kev sib cuam tshuam nrog ib puag ncig, ces lub zej zog muaj lub luag haujlwm loj heev los tsim ib lub ib puag ncig uas txhawb nqa txoj kev xav zoo thiab kev coj cwj pwm muaj txiaj ntsig.', english: 'If human behavior can be changed through learning and interaction with the environment, then the community has a great responsibility to create an environment that nurtures positive thinking and beneficial behavior.' } },
       // ── STANDALONE WORDS FROM THE STORIES, 2026-09-25 ─────────────────────
       // Each of these only resolved through a longer compound before ("tswj" only
       // via "kev tswj xyuas"). Examples are story lines, verbatim. Glosses: Claude.
       { id: 'rw-khoom', hmongRPA: 'khoom', english: 'thing, object; goods, belongings', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
-      { id: 'rw-tshuaj', hmongRPA: 'tshuaj', english: 'medicine; chemical; drug — "tshuaj lom", poison', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
-      { id: 'rw-lom', hmongRPA: 'lom', english: 'poisonous; to poison — "tshuaj lom", poison', category: 'reading-general', tags: ['adjective', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
       { id: 'rw-roj', hmongRPA: 'roj', english: 'oil; fuel, gas; fat', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
-      { id: 'rw-pa', hmongRPA: 'pa', english: 'breath; steam, vapour, fumes — "ua pa", to breathe', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.', english: 'Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted.' } },
-      { id: 'rw-yeeb', hmongRPA: 'yeeb', english: 'opium; a narcotic — "yeeb tshuaj", drugs · the spirit world — "yeeb ceeb", the world of spirits and the dead, opposite "yaj ceeb", the world of the living · "yeeb koob", reputation, glory, honor · "pob yeeb", the Adam\'s apple · "luam yeeb", tobacco',  /* was 'opium; a narcotic — …' — non-opium senses added 2026-09-30 (author). NOT added: the paste's "yeeb yaj kiab = abode of the dead" — asked the author (modern usage: a movie). */ category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Richard Crapeau thov kom rov hais nws rooj plaub dua, hais tias nws tsis nyob ntawm lub chaw nres tsheb hmo ntawd, tab sis nyob lwm qhov haus yeeb tshuaj.', english: 'Richard Crapeau asked for a new trial, claiming he was not at the parking ramp that night and was instead elsewhere smoking marijuana.' } },
       { id: 'rw-kab', hmongRPA: 'kab', english: 'insect, bug · line, row', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus kab raub ris thiab tus qav', english: 'The scorpion and the frog' } },
-      { id: 'rw-npoo', hmongRPA: 'npoo', english: 'edge, rim, border', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nkawd yoj Zong mus mus los los hla saum ntug phab ntsa pob zeb, uas siab li plaub caum tsib feet saum npoo av.', english: 'The two of them swung Zong back and forth out over the edge of the concrete wall, about forty-five feet above the ground.' } },
-      { id: 'rw-ntsis', hmongRPA: 'ntsis', english: 'tip, end — "me ntsis", a little', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Cov neeg pab cawm neeg, uas raug xa tuaj thaum yim teev peb feeb tsaus ntuj, pom tias Zong txoj hlab ntsha tseem dhia me ntsis.', english: 'Rescue personnel, dispatched at 8:03 p.m., detected a faint pulse from Zong.' } },
-      { id: 'rw-pawg', hmongRPA: 'pawg', english: 'group, crowd; a pile', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Hnub tim nees nkaum plaub, lub Peb Hlis, xyoo ob txhiab, pawg neeg txiav txim tau txiav txim tias Omer Ninham ua txhaum kev tua neeg txhob txwm thawj theem thiab kev ua phem rau menyuam yaus.', english: 'On 24 March 2000, the jury found Omer Ninham guilty of first-degree intentional homicide and physical abuse of a child.' } },
-      { id: 'rw-feem', hmongRPA: 'feem', english: 'part, portion, share — "feem ntau", mostly, the majority', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Yog li kev hwm thiab tu ib puag ncig yog ib feem ntawm peb li kab lis kev cai uas peb yuav tsum coj mus rau yav pem suab.', english: 'Therefore, respecting and caring for the environment is part of our cultural heritage that we must carry forward into the future.' } },
+      // ⚠️ WIDENED, NOT REPLACED — 2026-10-02 (author). Was 'tip, end — "me
+      // ntsis", a little'. "Peak" and "the very end" were missing, and they are
+      // what makes the word usable for a mountain top or the end of a branch
+      // rather than only an abstract endpoint. `me ntsis` is kept because it is
+      // the form a reader meets most often and it would be unfindable
+      // otherwise. tags: unreviewed → reviewed, the author having ruled on it.
       { id: 'rw-mas', hmongRPA: 'mas', english: '(topic / emphasis particle) as for…; indeed', category: 'reading-general', tags: ['particle', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus nas mam xav tias paub li mas.', english: 'The mouse thinks, "I should have known."' } },
       { id: 'rw-tsam', hmongRPA: 'tsam', english: 'lest, in case — "ntshai tsam", afraid that', category: 'reading-general', tags: ['conjunction', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus kab raub ris thov tus qav thauj nws hla tus dej loj. Tus qav ntshai tsam raug tshaws.', english: 'The scorpion asked the frog to carry it across the river. The frog was afraid of being stung.' } },
       { id: 'rw-npau', hmongRPA: 'npau', english: 'to boil, to bubble — "npau taws", to be angry', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws nco txog Zong tias yog ib tug tub uas “muab siab rau txhua yam nws ua” thiab tau npau suav xav ua kws kho mob.', english: 'He remembered Zong as a boy who “put so much desire into everything he did,” and who had once dreamed of becoming a doctor.' } },
       { id: 'rw-ris', hmongRPA: 'ris', english: 'trousers, pants — "kab raub ris" (scorpion) is a separate word', category: 'reading-general', tags: ['noun', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Tus kab raub ris thiab tus qav', english: 'The scorpion and the frog' } },
       // Added 2026-09-26 — the only two words in story-mus-saib-yeeb-yam a tap could not resolve. Examples are the author's lines.
-      { id: 'rw-npaj-txhij', hmongRPA: 'npaj txhij', english: 'all ready, fully prepared — "Neb npaj txhij lawm los?", are you two ready?', category: 'reading-general', tags: ['verb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Mai teb kuv tias, “Yog, wb npaj txhij lawm.”', english: 'Mai answered me, “Yes, the two of us are ready.”' } },
-      { id: 'rw-yeej', hmongRPA: 'yeej', english: 'truly, really, indeed — stresses the verb after it: "yeej nyiam", really like', category: 'reading-general', tags: ['adverb', 'reading', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Kuv pom tias peb plaub leeg yeej nyiam yeeb yam no.', english: 'I saw that all four of us really liked this movie.' } },
       // Added 2026-09-26 with the tau set — the gift in "Nws tau khoom plig" had no entry.
       { id: 'rw-khoom-plig', hmongRPA: 'khoom plig', english: 'a gift, a present', category: 'reading-general', tags: ['noun', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws tau khoom plig.', english: 'He received a gift.' } },
       // Added 2026-09-27 — the car in the Describing Words examples had no entry.
-      { id: 'rw-tsheb', hmongRPA: 'tsheb', english: 'a car, a vehicle — with lub: lub tsheb', category: 'reading-general', tags: ['noun', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Lub tsheb no tshiab.', english: 'This car is new.' } },
       // ── kos — 2026-09-27, from a model-written paste. ADDED: draw / mark a line (fits
       // the existing 'kos duab' = to draw), kos npe (to sign), tshoob kos (wedding).
       // HELD for the author (not added): "to scratch / scrape"; "thov kos" = the bill;
@@ -8246,24 +9170,21 @@ words: [
       // ntawm kos = over there). Tripod (medium confidence) left out. NOT "bill" — the author,
       // 2026-09-27: a bill is daim nqi or daim ntawv them nyiaj (money set).
       { id: 'rw-kos-scrape', hmongRPA: 'kos', english: 'to scrape, to graze — a glancing scrape', category: 'reading-general', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws ntog thiab kos caj npab.', english: 'He fell and scraped his arm.', source: 'ai' } },
-      { id: 'rw-tom-kos', hmongRPA: 'tom kos', english: 'over there, on that side', category: 'reading-general', tags: ['place', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Nws nyob tom kos.', english: 'He is over there.', source: 'ai' } },
       { id: 'rw-kos-npe', hmongRPA: 'kos npe', english: 'to sign your name (literally "mark the name")', category: 'reading-general', tags: ['verb', 'unreviewed'], audioFile: null, exampleSentence: { hmong: 'Thov kos npe ntawm no.', english: 'Please sign here.' } },
-      { id: 'rw-tshoob-kos', hmongRPA: 'tshoob kos', english: 'a wedding, the wedding ceremonies', category: 'reading-general', tags: ['noun', 'unreviewed'], audioFile: null },
       // ── Added 2026-09-30 — from the author's word list (was "Words by Sound").
-    { id: 'wbs-laj-muam', hmongRPA: 'laj muam', english: 'to side glance; (adjective) to be cross-eyed', category: 'reading-general', tags: ['verb', 'reviewed'], audioFile: null },
-    { id: 'wbs-tab-kaum', hmongRPA: 'tab kaum', english: 'to interrupt; to annoy', category: 'reading-general', tags: ['verb', 'reviewed'], audioFile: null },
-    { id: 'wbs-nkim', hmongRPA: 'nkim', english: 'to waste', category: 'reading-general', tags: ['verb', 'reviewed'], audioFile: null },
-    { id: 'wbs-kheev', hmongRPA: 'kheev', english: 'to allow', category: 'reading-general', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-rhawv', hmongRPA: 'rhawv', english: 'to create, make; a bathtub; large cement or stone pot', category: 'reading-general', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-phov', hmongRPA: 'phov', english: 'to make a ruckus, make noise; to torch off hair, fur, etc.', category: 'reading-general', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-ntxuag', hmongRPA: 'ntxuag', english: 'with, along with', category: 'reading-general', tags: ['preposition', 'reviewed'], audioFile: null },
-    { id: 'wbs-tsau', hmongRPA: 'tsau', english: 'to soak; (adjective) to be full', category: 'reading-general', tags: ['verb', 'reviewed'], audioFile: null },
-    { id: 'wbs-ntxaum', hmongRPA: 'ntxaum', english: 'to soak through', category: 'reading-general', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-tsaug', hmongRPA: 'tsaug', english: 'to rinse; to thank (adjective) to be numb', category: 'reading-general', tags: ['verb', 'reviewed'], audioFile: null },
     { id: 'wbs-phaub', hmongRPA: 'phaub', english: 'the cover or shell', category: 'reading-general', tags: ['noun', 'reviewed'], audioFile: null },
       { id: 'general-cuab', hmongRPA: 'cuab', english: 'to mimic, to pose — to position oneself or pretend, as in deception: pretending to be something one is not; also to boast, boast falsely, show off, or pretend to be high status', category: 'reading-general', tags: ['verb', 'reading', 'reviewed'], audioFile: null },  // the author, 2026-09-30 — one of four cuab entries (the rau / tom qab pattern)
       // ⚠️ SPLIT 2026-09-30 into the cuab-uses set, one card per sense (author: "separate the cuab entries, like rau is"). Was:
       // { id: 'misc-cuab', hmongRPA: 'cuab', english: 'belongings, equipment, household items — "cov cuab yeej", tools, equipment, instruments, weapons; "cuab yeej tsov rog", weapons specifically · to trap, to snare — setting up a trap, or the trap itself, especially for catching animals: "cuab quav qaib", to set up a bird trap; "cuab ntses", to trap or catch fish · a family line or household (noun) — in a cultural or clan context, a specific household, extended family unit or generational line: "cuab tsav", the head of a household, a family-line leader; "ib cuab tsev", an entire household · to mimic, to pose (verb) — to position oneself or pretend, as in deception, pretending to be something one is not; also to boast, boast falsely, show off, or pretend to be high status', category: 'reading-general', tags: ['noun', 'reading', 'reviewed'], audioFile: null },  // the author, 2026-09-30
+      // ── Regrouped here 2026-10-19 — these came from other Reading Support sets,
+      //    moved on what their gloss says they are. Ids keep their original prefix:
+      //    an id is identity, and renaming one would orphan every pin and progress key.
+      { id: 'misc-taub', hmongRPA: 'taub', english: 'squash, gourd; separately, in "to taub", to understand', category: 'reading-general', tags: ['draft', 'unreviewed', 'reading'], audioFile: null, exampleSentence: { hmong: 'Peb cog taub hauv vaj.', english: 'We grow squash in the garden.', source: 'ai' } },
+      { id: 'misc-yam', hmongRPA: 'yam', english: 'thing; kind; type; matter · anything; something — "yam twg", "yam dab tsi" · without; lacking — in "yam tsis muaj"', category: 'reading-general', tags: ['classifier', 'reading', 'reviewed'], audioFile: null },
     ],
   },
 ]
@@ -8382,6 +9303,12 @@ export const SET_SPLITS = [
         'country-teb-chaws-nyab-laj', 'country-teb-chaws-qhab-meem', 'country-mias-mas',
         'country-teb-chaws-fabkis', 'country-kas-nas-das', 'country-austalaslias',
         'country-yelemees', 'country-teb-chaws-nyij-pooj', 'country-teb-chaws-kaus-lim',
+        // ⚠️ REGISTERED HERE DELIBERATELY — added 2026-10-02 with the entry.
+        // SET_SPLITS is a hand-typed id list, so a new word silently falls into
+        // the LAST part unless it is named. check-splits.mjs warns about that
+        // ("is in no part — it landed in part 3"), which is how this was caught.
+        // Askiv belongs with its siblings in part 1, not stranded in Europe.
+        'country-askiv-country',
       ] },
       { blurb: 'Asia and the Pacific, and the Americas.', words: [
         'country-kaus-lim-qaum-teb', 'country-kaus-lim-qab-teb', 'country-lav-xias', 'country-nyu-xis-las',
@@ -8442,12 +9369,24 @@ export const SET_SPLITS = [
   },
 ]
 
-// Sets that are not split but are still SECONDARY — specialised or niche,
-// shown below the primaries on their theme page. Everything else is primary.
+// Sets that are not split but still sit in the LOWER tier — specialised or niche, shown
+// under the everyday sets on their theme page. Everything else is in the upper tier.
+//
+// ⚠️ FAMILY: BOTH SPEAKER SETS SIT TOGETHER — 2026-10-21, the author: "keep male and
+// female family terms within the same category, and move relatives into the secondary".
+// `family-female-perspective` was in here, so the two halves of one subject were split
+// across two tiers with a heading between them — a learner saw "Family (Male Speaker)" up
+// top and found the female set below a "more specialised" label, as if a woman's kinship
+// words were the niche case. They are the same lesson from the other side.
+// Was: 'family-female-perspective' listed below 'clothing-verbs'.
+//
+// ⚠️ `relatives` MOVED DOWN IN ITS PLACE. 31 words of extended and in-law kinship
+// (txheeb ze) is real vocabulary and not where anyone starts: the immediate family is the
+// everyday set, the extended family is what you reach for later.
 export const SECONDARY_SETS = new Set([
   'war-conflict', 'weapons', 'arts-culture', 'ethnicities', 'botany', 'geography',  // weapons added 2026-09-30
   'human-anatomy-internal-organs', 'seasons-time', 'calendar', 'clothing-verbs',
-  'family-female-perspective',
+  'relatives',  // 2026-10-21 — extended family, below the two immediate-family sets
 ])
 
 function applySplits(raw) {
@@ -8530,6 +9469,10 @@ const CATEGORY_THEMES = [
       'tense-markers', 'tau-uses', 'tau-examples', 'grammar', 'negation', 'answering', 'question-words', 'conjunctions', 'rau-uses', 'txhais-uses', /* 'cuab-uses' — commented out 2026-09-30 */ 'intensifiers', 'intensifiers-uncommon', 'so-then', 'reciprocals',  // txhais-uses + intensifiers added 2026-09-30
        // tau-uses added 2026-09-26
       'quantifiers', /* 'measure-words' — Bisang, commented out 2026-09-30 */ 'locations-prepositions', 'discourse-particles',
+      // 2026-10-25 — the author's tone-shift material. In Grammar Essentials rather than
+      // with the alphabet: a shift is a grammatical relationship between two words (a
+      // trigger and what follows it), not a fact about a letter.
+      'grammar-tone-shifts-guidelines-numerical',
     ],
   },
   {
@@ -8552,7 +9495,12 @@ const CATEGORY_THEMES = [
     emoji: '👪',
     blurb: 'Kinship terms — which change depending on who is speaking.',
     // Was: …'relatives', 'relatives-2', … — relatives un-split 2026-09-26.
-    ids: ['family-male-perspective', 'relatives', 'family-female-perspective'],
+    // ⚠️ THE TWO SPEAKER SETS ARE ADJACENT — 2026-10-21. `relatives` sat between them, so
+    // the data read male → extended → female for the one subject. The renderer groups by
+    // tier, so the screen was already right; this makes the list say the same thing as
+    // the screen, for anything that reads it in order (search, the index, a future export).
+    // Was: ['family-male-perspective', 'relatives', 'family-female-perspective']
+    ids: ['family-male-perspective', 'family-female-perspective', 'relatives'],
   },
   {
     id: 'time-numbers',

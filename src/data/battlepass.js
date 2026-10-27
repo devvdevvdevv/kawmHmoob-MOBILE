@@ -25,7 +25,16 @@ export const PASS = {
   title: 'Season 1 Pass',
   freeTrackLabel: 'Free',
   premiumTrackLabel: 'Pro Pass',
-  premiumPrice: '$9.99 / season',
+  // 7.99, down from 9.99 on 2026-10-04 (author: "change the 9.99 price to
+  // 7.99") — it now matches Pro's monthly price rather than undercutting or
+  // topping it with a second number.
+  //
+  // ⚠️ THIS STRING IS DISPLAY ONLY, AND IT IS NOT THE PAYWALL. Nothing charges
+  // from here: app/paywall.jsx reads every price from the store via
+  // `priceString`, which is why no 7.99 or 9.99 is written there. If a device
+  // shows the wrong price on the paywall, the fix is in Play Console /
+  // RevenueCat, not in this repo.
+  premiumPrice: '$7.99 / season',
 }
 
 // Invented storefronts. Hmong-American small-business flavored, none real.

@@ -24,7 +24,7 @@
       ],
       [
         {
-          "hmong": "Tus miv xav tau tias tus nas xis noj heev.",
+          "hmong": "Tus miv xav tias tus nas xis noj heev.",
           "english": "The cat thinks that the mouse would be very tasty to eat."
         },
         {
@@ -38,7 +38,7 @@
       ],
       [
         {
-          "hmong": "Tus nas ua lub suab me’ li nws tawm los xwb.",
+          "hmong": "Tus nas ua lub suab me li nws tawm los xwb.",
           "english": "The mouse makes a small sound as if it is coming out."
         },
         {
@@ -50,7 +50,7 @@
           "english": "The mouse is only testing the cat's patience, so that the cat stays eager."
         },
         {
-          "hmong": "Tus nas maj mam ua lub suab me’ li nws yuav tawm los tiag.",
+          "hmong": "Tus nas maj mam ua lub suab me li nws yuav tawm los tiag.",
           "english": "The mouse slowly makes a little sound, as if it really is about to come out."
         }
       ],
@@ -60,7 +60,7 @@
           "english": "The cat thinks it is about to eat the mouse."
         },
         {
-          "hmong": "Nws tos tus nas tau ob peb teev los tus nas kuj ua suab xuav’ kom tus miv muaj’ siab xwb.",
+          "hmong": "Nws tos tus nas tau ob peb teev los tus nas kuj ua suab xuav kom tus miv muaj siab xwb.",
           "english": "It waits several hours, but the mouse keeps whistling only to keep the cat interested."
         },
         {
@@ -70,7 +70,7 @@
       ],
       [
         {
-          "hmong": "Tus miv ua ib siab li nws tu siab mus pw tib tug no’ ib leeg tim nws lub hoob.",
+          "hmong": "Tus miv ua ib siab li nws tu siab mus pw tib tug no ib leeg tim nws lub hoob.",
           "english": "The cat makes up its mind, feels sad, and goes to sleep alone in its room."
         },
         {
@@ -80,7 +80,7 @@
       ],
       [
         {
-          "hmong": "Tus nas mas niam mus’ los’, haus miv tais mis, taug kev ua si tom tej ua li nws kaj siab heev.",
+          "hmong": "Tus nas mas niam mus los, haus miv tais mis, taug kev ua si tom tej ua li nws kaj siab heev.",
           "english": "The mouse goes back and forth, drinks the milk from the cat's bowl, and walks around playing; it feels very peaceful and happy."
         },
         {
@@ -98,6 +98,10 @@
       ]
     ],
     "glossary": [
+      {
+        "hmong": "tiam sis",
+        "english": "but; however — also spelled \"tiamsis\""
+      },
       {
         "hmong": "luab lim",
         "english": "to tease, to mock, to make fun of"

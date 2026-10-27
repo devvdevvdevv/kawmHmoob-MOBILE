@@ -26,7 +26,8 @@ import { GENRES, stories } from '../../../../src/data/stories.js'
 import { defineToken } from '../../../../src/lib/defineToken.js'
 import { headwordOf } from '../../../../src/lib/wordLookup.js'
 import WordModal, { useSheetPalette } from '../../../../src/components/reading/WordSheet.jsx'
-import { useReadingPrefs, textSizeStep, TEXT_SIZES } from '../../../../src/lib/readingPrefs.js'
+import { useReadingPrefs, textSizeStep } from '../../../../src/lib/readingPrefs.js'
+import TextSizeStepper from '../../../../src/components/common/TextSizeStepper.jsx'
 import { loadStoryProgress, saveStoryProgress } from '../../../../src/lib/readingProgress.js'
 // These two fed the quota only — both go back in with it.
 // import { useAuth } from '../../../../src/context/AuthContext.jsx'
@@ -1056,50 +1057,10 @@ function EnglishGloss({ text, size }) {
   )
 }
 
-/**
- * A− / A+ for the story text, stepping through TEXT_SIZES.
- *
- * Two big-and-small "A"s rather than −/+ glyphs: the pair is the reading-app
- * convention for text size, and it says WHAT gets bigger, which a plus does not.
- *
- * ⚠️ The ends DISABLE rather than wrap. Wrapping from Extra large back to Small
- * turns "one more tap" into the text suddenly shrinking, which reads as a bug.
- */
-function TextSizeStepper({ value, onChange }) {
-  const i = Math.max(0, TEXT_SIZES.findIndex((s) => s.value === value))
-  const canShrink = i > 0
-  const canGrow = i < TEXT_SIZES.length - 1
-
-  return (
-    <View className="flex-row items-center gap-1 rounded-md bg-cream-100 p-0.5">
-      <Pressable
-        onPress={() => onChange(TEXT_SIZES[i - 1].value)}
-        disabled={!canShrink}
-        // Vertical slop only — horizontal would overlap the neighbouring button
-        // and make a tap between them a coin toss.
-        hitSlop={{ top: 8, bottom: 8 }}
-        accessibilityRole="button"
-        accessibilityLabel="Smaller story text"
-        className={`h-8 w-9 items-center justify-center rounded active:bg-cream-200 ${canShrink ? '' : 'opacity-40'}`}
-      >
-        {/* maxFontSizeMultiplier: these are control glyphs in a fixed-height
-            box, not text to be read — see the dynamic-type item in TODO.md. */}
-        <Text maxFontSizeMultiplier={1.3} className="font-serif text-[13px] text-stone-800">A</Text>
-      </Pressable>
-
-      <Pressable
-        onPress={() => onChange(TEXT_SIZES[i + 1].value)}
-        disabled={!canGrow}
-        hitSlop={{ top: 8, bottom: 8 }}
-        accessibilityRole="button"
-        accessibilityLabel="Larger story text"
-        className={`h-8 w-9 items-center justify-center rounded active:bg-cream-200 ${canGrow ? '' : 'opacity-40'}`}
-      >
-        <Text maxFontSizeMultiplier={1.3} className="font-serif text-[19px] text-stone-800">A</Text>
-      </Pressable>
-    </View>
-  )
-}
+// ⚠️ TextSizeStepper MOVED OUT — 2026-10-14. It now lives in
+// src/components/common/TextSizeStepper.jsx, because the beginner path needed
+// the same control and two copies of a stepper drift the moment one is edited.
+// The bar below imports it; nothing about its behaviour changed.
 
 /**
  * One control in the fixed bar.

@@ -11,6 +11,9 @@ import { useThemeColor } from '../src/lib/themeColor.js'
 import Icon from '../src/components/ui/Icon.jsx'
 import { useAuth } from '../src/context/AuthContext.jsx'
 import { useCelebration } from '../src/context/CelebrationContext.jsx'
+import { categories } from '../src/data/vocabulary.js'
+import { livePath } from '../src/data/path.js'
+import { stories } from '../src/data/stories.js'
 
 
 // ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
@@ -79,6 +82,21 @@ const PRO_FEATURES = [
     body: 'Upgrading adds; it never resets. Cancel and you keep everything you learned.',
   },
 ]
+
+// What is in the app right now, counted from the data rather than typed in —
+// see the ⚠️ note where it renders, in the Early access card. Categories are
+// deduped by id first, the way app/(tabs)/index.jsx and app/about.jsx do it;
+// placeholder stories (stories.js explains them) are not finished reading and
+// are not counted.
+const CATALOGUE = (() => {
+  const byId = new Map()
+  for (const c of categories) if (!byId.has(c.id)) byId.set(c.id, c)
+  return {
+    words: [...byId.values()].reduce((n, c) => n + c.words.length, 0),
+    units: livePath().length,
+    stories: stories.filter((s) => !s.placeholder).length,
+  }
+})()
 
 const TERMS_URL = 'https://kawmhmoob.com/terms'
 const PRIVACY_URL = 'https://kawmhmoob.com/privacy'
@@ -510,17 +528,35 @@ export default function Paywall() {
       <View className="rounded-md bg-cream-50 shadow-warm p-5 mb-6">
         <Eyebrow tone="accent" dot className="mb-2">Early access</Eyebrow>
         <Text className="font-serif text-2xl text-stone-900 leading-snug mb-2">
-          Built by one developer, and growing
+          Built by a single developer, and actively in development
         </Text>
         <Text className="text-stone-700 text-sm leading-relaxed">
-          KawmHmong is made by a single developer. What you see today is the
-          start: new stories, course units, speaking lessons and words are added
-          as they are finished — more stories are being written right now.
+          KawmHmong is built single-handedly, by one developer. What is in the app
+          today is only the beginning of it.
         </Text>
         <Text className="text-stone-700 text-sm leading-relaxed mt-2">
+          More stories, lessons and course paths are coming as development goes on,
+          along with Hmong that keeps getting corrected and checked by speakers.
+        </Text>
+
+        {/* ⚠️ DERIVED COUNTS, AND ONLY OF WHAT EXISTS TODAY. The card's claim is
+            "this is the beginning", and a number makes that honest in both
+            directions: it shows the catalogue is real, and it shows it is small.
+            Typed-in numbers would be a lie within a fortnight — these are read
+            off the data at launch, the same as app/about.jsx.
+            ⚠️ Still NO DATES, NO FUTURE COUNTS, NO PRICE PROMISE. "Soon" and "a
+            hundred more stories" are things a learner will hold you to. */}
+        <View className="flex-row flex-wrap gap-x-4 gap-y-1 mt-3.5 pt-3.5 border-t border-cream-200">
+          <Text className="text-stone-500 text-xs">In the app today:</Text>
+          <Text className="text-stone-600 text-xs font-semibold">{CATALOGUE.units} course units</Text>
+          <Text className="text-stone-600 text-xs font-semibold">{CATALOGUE.words.toLocaleString()} words</Text>
+          <Text className="text-stone-600 text-xs font-semibold">{CATALOGUE.stories} stories</Text>
+        </View>
+
+        <Text className="text-stone-700 text-sm leading-relaxed mt-3.5">
           {isPro
-            ? 'Thank you for subscribing — it is what pays for the next batch, and you get every addition as it lands.'
-            : 'Subscribing now supports that work directly, and you get every addition as it lands.'}
+            ? 'Thank you for supporting the development of KawmHmong. Your subscription pays for this work directly and speeds it up, and you get new content as soon as it is published.'
+            : 'Subscribing supports the work directly, speeds up development, and helps keep our language going. Subscribers get new content as soon as it is published.'}
         </Text>
       </View>
 

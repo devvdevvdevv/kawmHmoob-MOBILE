@@ -61,6 +61,11 @@ const FREE_CATEGORY_IDS_BEFORE = new Set([
   // Added 2026-09-27 with path units u-hu-ua and u-adjectives — grammar, so free.
   'names',
   'adjective-grammar',
+  // ⚠️ FREE — 2026-10-25, with the path unit "Tone Shifts: Numbers". Tone shifts are
+  // grammar, and the tones themselves are already free; a learner who can hear the eight
+  // tones but cannot find out why `tus` became `tug` is stuck behind a paywall on the
+  // thing the free content just taught them.
+  'grammar-tone-shifts-guidelines-numerical',
   // Added 2026-09-27 with u-answers and u-rau — grammar, so free.
   'answering',
   'rau-uses',

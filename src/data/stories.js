@@ -2675,12 +2675,12 @@ export const stories = [
         id: 'q-zong-26',
         prompt: 'Zong niam nws txiv hais li cas hauv Omer rooj plaub? — What did Zong’s parents testify at Omer Ninham’s trial?',
         options: [
-          'That they fled Laos and Thailand for a safer life for their children, and had lost their faith in people’s goodness',
-          'That they had been allies of the Pathet Lao in Laos',
-          'That they knew the families of the boys who killed Zong',
-          'That Zong had been in trouble before that evening',
+          'That they fled Laos and Thailand for a safer life for their children, only to find the exact same evil they were fleeing from in another country, and had lost their faith in people’s goodness',
+          'That they had been allies of the Pathet Lao in Laos, and that the years of fighting they lived through there had taught them to expect cruelty from strangers long before they ever reached Green Bay',
+          'That they had recognized the boys from their own neighborhood and warned the police about them months earlier, only to be told that nothing could be done until something actually happened',
+          'That they had begged Zong not to go out that evening, and that he had promised them he would be home before dark, a promise they would go on repeating to themselves for years',
         ],
-        answer: 'That they fled Laos and Thailand for a safer life for their children, and had lost their faith in people’s goodness',
+        answer: 'That they fled Laos and Thailand for a safer life for their children, only to find the exact same evil they were fleeing from in another country, and had lost their faith in people’s goodness',
         because: 'Paragraph 26 — "…lawv tau khiav tawm hauv Nplog teb thiab Thaib teb… lawv poob siab rau tib neeg txoj kev siab zoo, thiab cov menyuam uas tseem tshuav ntshai tsis kam tawm hauv tsev mus."',
       },
       {

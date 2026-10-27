@@ -32,7 +32,12 @@ for (const [path, data] of Object.entries(contours)) {
 export function getContour(audioPath) {
   if (!audioPath) return null
   const hit = contours[audioPath] || byFilename.get(audioPath.split('/').pop())
-  return hit?.points || null
+  if (hit) return hit.points || null
+  // ⚠️ A .wav THAT SHIPS AS .wav — 2026-10-25. extract-contours.mjs keys every .wav
+  // master by its future .mp3 path. Emily's consonants (and the male redos) ship
+  // unconverted, so their .wav path missed. Same clip, so try the .mp3 key.
+  if (/\.wav$/i.test(audioPath)) return getContour(audioPath.replace(/\.wav$/i, '.mp3'))
+  return null
 }
 
 export function contourCount() {

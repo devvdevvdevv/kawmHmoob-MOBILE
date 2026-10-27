@@ -27,15 +27,23 @@ export const time = {
       kind: 'intro',
       title: 'Days and the time of day',
       body: [
-        'Hmong talks about time in several ways, and this app teaches each on its own: the part of the day (this lesson), which day it is (Yesterday & Tomorrow), the days of the week and months (Days & Months), and the clock (Telling the Time).',
-        'They are related: a clock time ends with the part of the day you learn here, so learn these first.',
+        'Hmong does not treat time as one system. Four separate sets of words do the work: the part of the day, which day it is, the days of the week and the months, and the clock.',
+
+        'This lesson covers the first of them: the part of the day.',
+
+        'It also has to come first. A Hmong clock time ENDS with the part of the day, so “seven in the morning” cannot be built until these words are in place. Learn them here, and the clock becomes a matter of adding numbers in front.',
+
+        'The other three sets are taught on their own: which day it is in Yesterday & Tomorrow, the days of the week and the months in Days & Months, and the clock itself in Telling the Time.',
         '## Parts of the day',
         'Everyday Hmong often marks time by the part of the day rather than the clock.',
         '> Sawv ntxov — morning (literally “rise early”); after a clock time it means a.m.',
-        '> Tav su — noon, midday · Tav su dua — afternoon (“past noon”)',
-        '> Tsaus ntuj — evening, night (literally “the sky darkens”); after a clock time it means p.m. · Hmo ntuj — nighttime',
+        '> Tav su — noon, midday',
+        '> Tav su dua — afternoon (“past noon”)',
+        '> Tsaus ntuj — evening, night (literally “the sky darkens”); after a clock time it means p.m.',
+        '> Hmo ntuj — nighttime',
         'Yav in front means “the period of”: yav sawv ntxov, in the morning.',
-        '> Yav sawv ntxov. — In the morning. · Yav tsaus ntuj. — In the evening.',
+        '> Yav sawv ntxov. — In the morning.',
+        '> Yav tsaus ntuj. — In the evening.',
         // Moved 2026-09-27: which day → Yesterday & Tomorrow (day-frames.js); the days of the week →
         // Days & Months (calendar.js); how often → Yesterday & Tomorrow. Kept here, commented:
         // '## Which day',

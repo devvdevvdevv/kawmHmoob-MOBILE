@@ -152,7 +152,10 @@ function CategoryTag({ label, t }) {
 // `advanceOnKnown` — 2026-09-28 (author: "if the word is already known or learning have the user
 // move forward for review"). Review passes it, so BOTH marks move on there; every other caller
 // keeps the 2026-09-25 rule (Known stays on the card).
-export default function Flashcard({ word, onAdvance, advanceOnKnown = false }) {
+// `advanceOnLearning` — 2026-10-14 (author: "for daily flashcards, comment out the logic that
+// makes the flashcards go forward when mark learning is hit"). Defaults to the old behaviour so
+// only the caller that asked for it changes: words/session passes false.
+export default function Flashcard({ word, onAdvance, advanceOnKnown = false, advanceOnLearning = true }) {
   const [flipped, setFlipped] = useState(false)
   const anim = useRef(new Animated.Value(0)).current
   const { vocabProgress, setVocabStatus } = useProgress()
@@ -199,14 +202,30 @@ export default function Flashcard({ word, onAdvance, advanceOnKnown = false }) {
   const mark = (next) => {
     if (Date.now() - mountedAt.current < 400) return
     setVocabStatus(word.id, next)
-    // ⚠️ "MARK KNOWN" NO LONGER MOVES TO THE NEXT CARD — commented out
-    // 2026-09-25 at the author's request. Marking a word Known now stays on the
-    // card; the screen's own Next / Skip button moves on (every caller has one:
-    // words/session, review, path flashcards). "Mark Learning" still advances.
-    // RESTORE by replacing the line below with the original:
+    // ⚠️ NEITHER MARK MOVES THE CARD ON IN THE DAILY SESSION. Two separate
+    // author requests, both kept as props rather than deletions because the
+    // callers disagree on purpose:
+    //
+    //   2026-09-25  "Mark Known" stopped advancing everywhere. The screen's own
+    //               Next / Skip moves on; every caller has one (words/session,
+    //               review, path flashcards).
+    //   2026-09-28  /review asked for the opposite — BOTH marks advance there —
+    //               which is what `advanceOnKnown` is for.
+    //   2026-10-14  "Mark Learning" stopped advancing in the daily session
+    //               (words/session passes advanceOnLearning={false}). Review,
+    //               the path deck, the category deck and the notebook are
+    //               untouched: they still move on when a word is marked
+    //               Learning.
+    //
+    // RESTORE "Learning advances" for the daily session: delete
+    // `advanceOnLearning={false}` at the call site in app/words/session.jsx.
+    // RESTORE it for everyone: drop advanceOnLearning from the prop list and
+    // from the line below, leaving
+    //   if (onAdvance && (next !== 'known' || advanceOnKnown)) setTimeout(onAdvance, 250)
+    // RESTORE the original pre-2026-09-25 behaviour (any mark advances):
     //   if (onAdvance) setTimeout(onAdvance, 250)
-    // Was: if (onAdvance && next !== 'known') setTimeout(onAdvance, 250)
-    if (onAdvance && (next !== 'known' || advanceOnKnown)) setTimeout(onAdvance, 250)
+    const advances = next === 'known' ? advanceOnKnown : advanceOnLearning
+    if (onAdvance && advances) setTimeout(onAdvance, 250)
   }
 
   return (

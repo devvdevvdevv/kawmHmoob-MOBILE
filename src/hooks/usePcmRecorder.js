@@ -3,6 +3,7 @@ import { Platform } from 'react-native'
 import { useAudioRecorder, AudioStudioModule } from '@siteed/audio-studio'
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio'
 import * as FileSystem from 'expo-file-system/legacy'
+import { claimPlayback, releasePlayback, PLAYBACK_INTERRUPTION_MODE } from '../lib/audioOwner.js'
 
 // Records REAL 16-bit PCM WAV — on Android too.
 //
@@ -79,6 +80,8 @@ export function usePcmRecorder() {
   // Playback watchdog — kept apart from timerRef, which is the RECORDING
   // ceiling. One ref for both would let a playback timeout cancel an auto-stop.
   const playTimerRef = useRef(null)
+  // This instance's claim on the speaker — 2026-10-09. See src/lib/audioOwner.js.
+  const speakerRef = useRef({})
   const uriRef = useRef(null)
   // ⚠️ A REF, NOT A DIRECT CALL. The recording ceiling inside start() needs to
   // invoke stop(), but stop is declared BELOW start — naming it in start's deps
@@ -99,6 +102,8 @@ export function usePcmRecorder() {
       try { playerRef.current.remove() } catch {}
       playerRef.current = null
     }
+    // Hand the speaker back if this instance still holds it — 2026-10-09.
+    releasePlayback(speakerRef.current)
     setPlaying(false)
   }, [])
 
@@ -139,7 +144,9 @@ export function usePcmRecorder() {
       // play() returns, no exception is thrown, no sound comes out — and
       // because nothing plays, `didJustFinish` never fires. That is the
       // "audio sticks after recording and only a restart fixes it" report.
-      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true })
+      // 'doNotMix' while recording too: other apps must stop, not duck, or they
+      // bleed into the take. (interruptionMode added 2026-10-14 — see _layout.jsx.)
+      await setAudioModeAsync({ interruptionMode: 'doNotMix', allowsRecording: true, playsInSilentMode: true })
 
       await startRecording(CONFIG)
       setStatus('recording')
@@ -160,6 +167,26 @@ export function usePcmRecorder() {
       console.warn('[pcm] start failed', e)
       setError(e?.message || String(e))
       setStatus('error')
+      // ⚠️ RESTORE THE SESSION ON A FAILED START TOO — 2026-10-07. The 09-30
+      // pass put the restore in stop()'s finally, which covers a recording that
+      // began and then failed. It does NOT cover this path: the mode is flipped
+      // to allowsRecording:true a few lines above, so anything that throws
+      // between there and 'recording' — a permission refusal, a busy mic,
+      // startRecording itself — leaves the session in RECORDING mode and never
+      // calls stop(). Every clip afterwards plays into the earpiece or not at
+      // all, with no error anywhere, until the app is restarted.
+      //
+      // Identical to the finally in stop(); the two must not drift.
+      try {
+        await setAudioModeAsync({
+          interruptionMode: PLAYBACK_INTERRUPTION_MODE,
+          allowsRecording: false,
+          playsInSilentMode: true,
+          shouldRouteThroughEarpiece: false,
+        })
+      } catch (e2) {
+        console.warn('[pcm] audio mode restore after failed start failed', e2)
+      }
     }
   }, [startRecording, releasePlayer, clearTimer])
 
@@ -206,6 +233,7 @@ export function usePcmRecorder() {
       // session left behind.
       try {
         await setAudioModeAsync({
+          interruptionMode: PLAYBACK_INTERRUPTION_MODE,
           allowsRecording: false,
           playsInSilentMode: true,
           shouldRouteThroughEarpiece: false,
@@ -244,6 +272,9 @@ export function usePcmRecorder() {
       const player = createAudioPlayer({ uri })
       playerRef.current = player
       setPlaying(true)
+      // Take the speaker, so a word clip still sounding does not play over the
+      // take — 2026-10-09.
+      claimPlayback(speakerRef.current, releasePlayer)
 
       // Armed before play(): a take that fails instantly still needs something
       // waiting to free the button.

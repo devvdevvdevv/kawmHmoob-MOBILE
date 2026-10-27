@@ -9,9 +9,12 @@ import { hmongWordStructure } from './lessons/hmong-word-structure'
 import { SingleVowels } from './lessons/vowels'
 import { DoubleVowels } from './lessons/double-vowels'
 import { Tones } from './lessons/tones'
+// 2026-10-25 — the author's tone-shift material; the first of four shift categories.
+import { toneShiftsGuidelinesNumerical } from './lessons/tone-shifts-guidelines-numerical'
 import { sibReciprocals } from './lessons/sib-reciprocals'
-import { greetingsFarewells } from './lessons/greetings-farewells'
+import { everydayPhrases } from './lessons/everyday-phrases'
 import { actionVerbs } from './lessons/action-verbs'
+import { verbNouns } from './lessons/verb-noun'
 import { nounClassifiers } from './lessons/noun-classifiers'
 import { pronounsDemonstratives } from './lessons/pronouns-demonstratives'
 import { possessivePronouns } from './lessons/possessive-pronouns'
@@ -19,6 +22,7 @@ import { yogToBe } from './lessons/yog-to-be'
 import { huUa } from './lessons/hu-ua'
 import { quantifiers } from './lessons/quantifiers'
 import { adjectives } from './lessons/adjectives'
+import { colors } from './lessons/colors'  // 2026-10-15 — u-colors had no lesson
 import { describingPeople } from './lessons/describing-people'
 import { conjunctions } from './lessons/conjunctions'
 // ⚠️ WRITING UNIT — ALL PLACEHOLDERS, scaffolded 2026-09-16. Structure only, no
@@ -57,10 +61,28 @@ import { dayFrames } from './lessons/day-frames'
 import { sentenceStructure } from './lessons/sentence-structure'
 import { nounPurpose } from './lessons/noun-purpose'
 import { nyob } from './lessons/nyob'
+import { muaj } from './lessons/muaj'
 import { soThen } from './lessons/so-then'
 import { wearing } from './lessons/wearing'
 import { body } from './lessons/body'
-import { locationPlaceholder, particlesPlaceholder, familyPlaceholder, foodPlaceholder, siabPlaceholder, commonNounsPlaceholder } from './lessons/placeholders'
+
+// The six placeholder lessons, one file each as of 2026-10-21 (they used to
+// share ./lessons/placeholders, which is now an empty signpost).
+import { locationPlaceholder } from './lessons/placeholder-location'
+import { particlesPlaceholder } from './lessons/placeholder-particles'
+// ⚠️ familyLesson, NOT a placeholder, since 2026-10-22 — the author's upgraded
+// family lesson replaced it. The placeholder import that was here pointed at an
+// export that no longer exists.
+import { familyLesson } from './lessons/family-lesson'
+// ⚠️ foodLesson, NOT a placeholder, since 2026-10-22 — the author's upgraded food
+// lesson replaced it, the same way familyLesson did.
+import { foodLesson } from './lessons/food-lesson'
+import { siabPlaceholder } from './lessons/placeholder-siab'
+// ⚠️ grammar-siab IS GONE — 2026-10-22. The second siab lesson was retired when
+// the reauthored one landed in placeholder-siab.js; siab-feelings.js is a
+// signpost now, so there is nothing to import.
+import { commonNouns } from './lessons/common-nouns'
+import { commonNounsPlaceholder } from './lessons/placeholder-common-nouns'
 // ⚠️ THE LEARN MODULE'S READINGS ARE RETIRED — 2026-09-13. Commented out, not
 // deleted; the three lesson files are untouched on disk.
 //
@@ -187,6 +209,10 @@ const foundations = {
       blurb: 'Cov cim — the pitch that changes meaning. The hardest piece.',
       lessons: [
         Tones,
+        // ⚠️ RIGHT AFTER Tones, 2026-10-25: a shift is a change BETWEEN tones, so it reads
+        // as nonsense before the eight tones themselves. The group comment below already
+        // asked for contrast lessons here.
+        toneShiftsGuidelinesNumerical,
         // Add contrast lessons here: high vs high-falling, the breathy -g,
         // the creaky -m, minimal-pair drills. One idea per lesson.
       ],
@@ -232,7 +258,9 @@ const grammarUnit = {
       // answering added 2026-09-27 (path unit u-answers) — right after negation: the
       // answer to a puas question is the verb, or tsis + the verb.
       // sentenceStructure added 2026-09-28 (path unit u-sentence-structure), right after Action Verbs.
-      lessons: [actionVerbs, sentenceStructure, tenseMarkers, tauLesson, tsisNegation, answering],
+      // verbNouns — ⚠️ RE-ADDED 2026-10-21. It was registered on 2026-10-20 and an
+      // editor save dropped it again; the lesson is unreachable without it.
+      lessons: [actionVerbs, verbNouns, sentenceStructure, tenseMarkers, tauLesson, tsisNegation, answering],
     },
     {
       id: 'naming-and-describing',
@@ -250,7 +278,14 @@ const grammarUnit = {
       // nounPurpose added 2026-09-28 (path unit u-noun-purpose) — right after classifiers,
       // because the classifier stays in front: lub rooj noj mov.
       // nyob added 2026-09-28 — split from the Yog lesson; the three "to be" lessons in a row.
-      lessons: [nounClassifiers, nounPurpose, yogToBe, huUa, nyob, adjectives, quantifiers, describingPeople],
+      // colors added 2026-10-15 for path unit u-colors, which had NO lesson at all: it
+      // used to borrow `adjectives`, and that borrowing was removed when Colors was
+      // separated from Describing. It sits immediately after `adjectives` because it
+      // applies that lesson's one rule (noun first, no yog) to one set of words, and
+      // reads as nonsense before it.
+      // muaj added 2026-10-21 (src/data/lessons/muaj.js) — the fourth "to be", right after
+      // nyob so the four sit together. All three full lessons point at it.
+      lessons: [nounClassifiers, nounPurpose, yogToBe, huUa, nyob, muaj, adjectives, colors, quantifiers, describingPeople],
     },
     {
       // ⚠️ THE GROUP ID IS KEPT ('asking-and-joining') — only the title changed.
@@ -336,7 +371,7 @@ const conversational = {
   title: 'Conversational',
   description: 'Everyday words and phrases — greetings, reciprocals, and more.',
   lessons: [
-    greetingsFarewells,
+    everydayPhrases,  // Everyday Phrases — file + export renamed 2026-10-22
     politeness,
     introductions,
     dailyLife,
@@ -344,7 +379,10 @@ const conversational = {
     body,     // Body & Health, 2026-09-28 — placeholder lesson
     wearing,  // Clothes & Wearing, 2026-09-28 — placeholder lesson
     // Placeholder lessons for the path units that had none (2026-09-28) — lessons/placeholders.js.
-    locationPlaceholder, particlesPlaceholder, familyPlaceholder, foodPlaceholder, siabPlaceholder,
+    familyLesson,  // Family — a FULL lesson as of 2026-10-22 (was familyPlaceholder)
+    foodLesson,  // Food & Drinks — a FULL lesson as of 2026-10-22 (was foodPlaceholder)
+    commonNouns,   // ⚠️ registered 2026-10-22 — the full lesson; the placeholder is below
+    locationPlaceholder, particlesPlaceholder, siabPlaceholder,
     commonNounsPlaceholder,  // 2026-09-28 — Common Nouns had borrowed the Classifiers lesson
     // Drop new Conversational lessons here, in the order you want them shown.
   ],

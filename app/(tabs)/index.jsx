@@ -1,6 +1,7 @@
 import { View, Text, Pressable } from 'react-native'
 import { Link } from 'expo-router'
 import TabScreen from '../../src/components/TabScreen.jsx'
+import PageIntro from '../../src/components/ui/PageIntro.jsx'
 import Icon from '../../src/components/ui/Icon.jsx'
 import TodayCard from '../../src/components/home/TodayCard.jsx'
 import Footer from '../../src/components/Footer.jsx'
@@ -102,15 +103,16 @@ export default function Home() {
 
   return (
     <TabScreen>
-      {/* Hero */}
-      <View className="mb-8 mt-2">
+      {/* Hero — on a PageIntro card, 2026-10-25 (contrast placeholder; see PageIntro.jsx).
+          Was: <View className="mb-8 mt-2"> … </View>, subtitle text-stone-700. */}
+      <PageIntro className="mb-8 mt-2">
         <Eyebrow tone="accent" className="mb-3">{user.isGuest ? 'Welcome' : `Welcome back, ${user.username}`}</Eyebrow>
-        
+
         <Text className="font-serif text-4xl text-stone-900 mb-3">Nyob zoo.</Text>
-        <Text className="text-base font-medium text-stone-700 leading-relaxed">
+        <Text className="text-base font-medium text-stone-800 leading-relaxed">
           Learn to read, speak, and understand Hmong.
         </Text>
-      </View>
+      </PageIntro>
 
       {/* ── The beginner path — FIRST, above everything else. ──────────────────
           The complaint that started the path was "everything is available at
@@ -130,9 +132,15 @@ export default function Home() {
       <View className="mb-4">
         <ContinueCard progress={progress} hasPro={isPro} />
 
+        {/* ⚠️ MOVED DOWN — 2026-10-25, the author: "move the next path directly
+            underneath the today information, above explore". The upcoming-units list
+            and the See-the-whole-path button now sit under TodayCard; Continue stays
+            here at the top. TO RESTORE: uncomment these and the button below, and
+            remove the "Next on the path" block above Explore.
         <View className="mt-3">
           <PathList progress={progress} hasPro={isPro} units={pathPreview} />
         </View>
+        */}
 
         {/* A real button — 2026-09-28 (author: "see the whole path button make it have better
             ui"). Was a bare line of clay text:
@@ -142,8 +150,10 @@ export default function Home() {
               </Text>
               <Icon name="arrowRight" size={14} tone="accent" />
             </Pressable> */}
-        {/* Now the shared component (so Words matches), 2026-09-28. */}
+        {/* Now the shared component (so Words matches), 2026-09-28.
+            Moved below TodayCard with the list, 2026-10-25:
         <SeeWholePathButton progress={progress} />
+        */}
       </View>
 
       {/* Phrase of the day — links into a Speak drill, so hide while Speak is off. */}
@@ -183,9 +193,16 @@ export default function Home() {
         <SeasonStrip />
       </View>
 
-      {/* Today's suggestions */}
-      <View className="mb-12">
+      {/* Today's suggestions. Was mb-12 — the gap before Explore — now that the path
+          list follows it, the big gap moved to the path block (2026-10-25). */}
+      <View className="mb-4">
         <TodayCard />
+      </View>
+
+      {/* Next on the path — moved here from under Continue, 2026-10-25 (see there). */}
+      <View className="mb-12">
+        <PathList progress={progress} hasPro={isPro} units={pathPreview} />
+        <SeeWholePathButton progress={progress} />
       </View>
 
       {/* Explore the rest */}

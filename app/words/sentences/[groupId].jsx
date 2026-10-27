@@ -26,6 +26,7 @@ import {
   pointsForExercise,
   PERFECT_BONUS,
   exercisesInGroup,
+  UNLOCKED_MIXED,
   sentenceGroupTitle,
   MIXED,
   SESSION_LENGTH,
@@ -84,9 +85,18 @@ export default function SentenceBuilder() {
   // 'mixed' is the dojo — everything shuffled together. Any other id drills one
   // theme. The route is the ONLY difference between the two: every screen below
   // is identical either way, which is why there is one file rather than two.
-  const { groupId } = useLocalSearchParams()
+  // ⚠️ `?units=u-greetings,u-pronouns` — SCOPED MIXED REVIEW, 2026-10-19. The hub stopped
+  // offering the whole app at once, so its review button pools ONLY the units the learner
+  // has unlocked and names them in the URL. Every other group ignores this param.
+  // Without it, `/words/sentences/unlocked` has an empty pool and the screen says so,
+  // rather than silently falling back to everything — which is the bug this replaced.
+  const { groupId, units } = useLocalSearchParams()
   const group = groupId || MIXED
-  const groupTitle = sentenceGroupTitle(group)
+  const unitIds = useMemo(
+    () => String(units || '').split(',').map((s) => s.trim()).filter(Boolean),
+    [units]
+  )
+  const groupTitle = group === UNLOCKED_MIXED ? 'Mixed review' : sentenceGroupTitle(group)
 
   // A beginner-path unit (`path-<unitId>`, src/data/path.js) drills that unit's
   // words, and finishing a session completes the unit's sentence step.
@@ -201,7 +211,7 @@ export default function SentenceBuilder() {
   const [wordStats, setWordStats] = useState({ correct: 0, total: 0 })
   const [wordResult, setWordResult] = useState(null)
 
-  const available = useMemo(() => exercisesInGroup(group, { freeOnly }).length, [group, freeOnly])
+  const available = useMemo(() => exercisesInGroup(group, { freeOnly, unitIds }).length, [group, freeOnly, unitIds])
   const exercise = session[index]
 
   // ── FULL vs TASTE — 2026-09-25 ─────────────────────────────────────────────
@@ -226,7 +236,7 @@ export default function SentenceBuilder() {
     const ok = await quota.consume()
     if (!ok) return
     // Was: buildSentenceSession(SESSION_LENGTH, group)
-    setSession(buildSentenceSession(sessionLength, group, { freeOnly }))
+    setSession(buildSentenceSession(sessionLength, group, { freeOnly, unitIds }))
     setIndex(0)
     setPlaced([])
     setResult(null)
@@ -470,19 +480,31 @@ export default function SentenceBuilder() {
 
           flex-wrap rather than a fixed row: on a narrow phone the badge drops
           to its own line instead of squeezing the counters. */}
+      {/* ⚠️ TRIMMED TO TWO THINGS — 2026-10-19 (the author: "everything is disorganized …
+          duolingo style"). It carried FIVE: "Sentence 3 of 5 · 2 correct · 1/3 misses ·
+          40 pts · [2 left today]", wrapped onto two or three lines on a phone — and
+          because the numbers grow (9→10 correct, 40→100 pts) the wrap point MOVED between
+          sentences, so the header visibly rearranged itself mid-drill.
+          What is left is what a learner needs WHILE PLAYING: how far through they are,
+          and how close they are to failing. `score` and `points` were duplication — the
+          results card at the end shows Sentences, Word accuracy and Points as its three
+          stats, which is where a number you cannot act on belongs.
+          Was: counters row (5 items, flex-wrap) + ProgressBar underneath.
+          ⚠️ The quota badge was deliberately mid-drill (2026-09-12: "seeing '1 left today'
+          while playing is what makes the cap legible instead of a surprise"), so it stays
+          — just on the same line as the counter rather than competing in the middle. */}
       <View className="mb-4">
-        <View className="flex-row flex-wrap items-center justify-center gap-x-3 gap-y-1 mb-2">
+        <View className="flex-row items-center justify-between gap-3 mb-2">
           <Text className="text-sm font-semibold text-stone-800">
-            Sentence {index + 1} of {session.length}
+            {index + 1} / {session.length}
           </Text>
-          <Text className="text-sm font-bold text-clay-700">· {score} correct</Text>
-          {/* The fail rule, visible while playing (2026-09-26): the third miss ends it. */}
-          <Text className={`text-sm font-bold ${misses >= MAX_MISSES ? 'text-clay-700' : 'text-stone-600'}`}>· {misses}/{MAX_MISSES} misses</Text>
-          {/* lime-900, not lime-700 — this app's lime scale only defines 200 and
-              900 (tailwind.config.js); lime-700 isn't a generated class and was
-              rendering with no color at all. */}
-          <Text className="text-sm font-bold text-lime-900">· {points} pts</Text>
-          <QuotaBadge {...quota} label="left today" />
+          <View className="flex-row items-center gap-3">
+            {/* The fail rule, visible while playing (2026-09-26): the third miss ends it. */}
+            <Text className={`text-sm font-bold ${misses >= MAX_MISSES ? 'text-clay-700' : 'text-stone-600'}`}>
+              {misses}/{MAX_MISSES} misses
+            </Text>
+            <QuotaBadge {...quota} label="left today" />
+          </View>
         </View>
         <ProgressBar value={index} max={session.length} size="sm" />
       </View>
@@ -618,11 +640,26 @@ export default function SentenceBuilder() {
             {exercise.english}
           </Text>
 
+          {/* ⚠️ CONTINUE SITS DIRECTLY UNDER THE ANSWER — reordered 2026-10-19.
+              The panel used to run: verdict · partial credit · Hmong · English · source
+              line · grammar hint card · words dropdown · button. Seven blocks, so the
+              button landed at a different height every time and often below the fold —
+              on a wrong answer with a grammar hint, off-screen entirely.
+              Now the answer and the way forward are one unit, and everything optional
+              moved BELOW the button: the source line, the rule, the word-by-word
+              breakdown. Nothing was removed, and the reading order still works — you
+              read the answer, you continue, or you stay and look at why. */}
+          <View className="mt-4 w-full">
+            <Button size="xl" onPress={next}>
+              {index + 1 >= session.length ? 'Finish' : 'Next sentence'}
+            </Button>
+          </View>
+
           {/* Moved here from the prompt card — see the comment there. AFTER the
               answer this is context ("so that was the Animals set, and the word
               it was teaching is miv"); BEFORE it, it was a free hint. */}
           <Text
-            className={`text-xs font-medium mt-2 text-center ${
+            className={`text-xs font-medium mt-4 text-center ${
               result === 'correct' ? 'text-lime-900/70' : 'text-stone-600'
             }`}
           >
@@ -634,12 +671,6 @@ export default function SentenceBuilder() {
           {/* The words of THIS sentence, in order, each with its meaning and a link to
               its dictionary page — a dropdown, closed by default (2026-09-27). */}
           <SentenceWords tokens={exercise.tokens} tone={result === 'correct' ? 'correct' : 'neutral'} />
-
-          <View className="mt-5">
-            <Button size="xl" onPress={next}>
-              {index + 1 >= session.length ? 'Finish' : 'Next sentence'}
-            </Button>
-          </View>
         </View>
       )}
       </View>
@@ -729,11 +760,18 @@ function FlashingInfo({ theme }) {
   const pulse = useRef(new Animated.Value(1)).current
 
   useEffect(() => {
+    // ⚠️ THREE PULSES, THEN IT SETTLES — 2026-10-19. It used to loop forever, so it was
+    // still blinking while the learner read the answer underneath it: an element that
+    // never stops moving stops meaning "look here" and starts meaning "something is
+    // wrong with this app". Three cycles is enough to catch the eye on arrival, which is
+    // the job the comment above describes.
+    // Was: Animated.loop(sequence) with no iteration count.
     const loop = Animated.loop(
       Animated.sequence([
         Animated.timing(pulse, { toValue: 0.3, duration: 650, useNativeDriver: true }),
         Animated.timing(pulse, { toValue: 1, duration: 650, useNativeDriver: true }),
-      ])
+      ]),
+      { iterations: 3 }
     )
     loop.start()
     return () => loop.stop()

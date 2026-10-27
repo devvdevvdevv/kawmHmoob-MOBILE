@@ -1,5 +1,13 @@
 import { createAudioPlayer } from 'expo-audio'
 import { resolveAudioSrc } from './audioBase.js'
+import { claimPlayback, releasePlayback } from './audioOwner.js'
+
+// One token for this module — 2026-10-09. Consecutive playToEnd() calls are a
+// SEQUENCE (the A/B compare plays the reference, then the take), never
+// simultaneous, so they can share a claim: each call's finish() releases before
+// the next one claims. A per-call token would work too; this makes it obvious in
+// a log that the compare is one owner rather than a new one per clip.
+const SPEAKER_TOKEN = {}
 
 // Play one clip and RESOLVE WHEN IT FINISHES.
 //
@@ -67,6 +75,7 @@ export function playToEnd(source, { isRecording = false, timeoutMs = 15000 } = {
       // remove() can throw if the player is already gone; swallowing keeps a
       // teardown error from masking the real outcome.
       try { player?.remove() } catch {}
+      releasePlayback(SPEAKER_TOKEN)
       resolve()
     }
 
@@ -76,6 +85,9 @@ export function playToEnd(source, { isRecording = false, timeoutMs = 15000 } = {
       // the asset directly but needs a string wrapped as { uri }. Mirrors
       // useAudio.js:38.
       player = createAudioPlayer(typeof resolved === 'string' ? { uri: resolved } : resolved)
+      // Claimed AFTER the player exists, so a failed construction cannot stop a
+      // clip another owner is playing on its way out — same order as useAudio.
+      claimPlayback(SPEAKER_TOKEN, finish)
 
       timer = setTimeout(finish, timeoutMs)
 

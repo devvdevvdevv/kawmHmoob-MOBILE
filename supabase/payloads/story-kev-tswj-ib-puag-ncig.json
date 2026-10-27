@@ -1,0 +1,287 @@
+{
+  "id": "story-kev-tswj-ib-puag-ncig",
+  "version": 1,
+  "status": "published",
+  "min_app_version": "1.0.0",
+  "title": "Kev Tswj Xyuas Ib Puag Ncig Thiab Lub Luag Haujlwm Ntawm Tib Neeg",
+  "english": "Environmental Protection and Human Responsibility",
+  "blurb": "Clean water, forests, animals, and the shared responsibility to protect the world for future generations.",
+  "genre": "society",
+  "level": "intermediate",
+  "minutes": 5,
+  "tier": "free",
+  "payload": {
+    "paragraphs": [
+      [
+        {
+          "hmong": "Lub ntiajteb no muaj ntau yam khoom muaj nuj nqis xws li dej huv, huab cua zoo, hav zoov ntsuab, thiab tsiaj txhu ntau hom.",
+          "english": "This world has many valuable things such as clean water, good air, green forests, and many species of animals."
+        },
+        {
+          "hmong": "Txij li thaum tib neeg pib tsim kho vaj tse thiab cog qoob loo ntau zog, ib puag ncig tau raug kev puas tsuaj ntau heev.",
+          "english": "Ever since people began building and farming more intensively, the environment has suffered a great deal of damage."
+        }
+      ],
+      [
+        {
+          "hmong": "Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.",
+          "english": "Chemicals, exhaust fumes, and waste have caused the land and water to become seriously polluted."
+        },
+        {
+          "hmong": "Cov kws tshawb fawb tau ceeb toom tias yog peb tsis hloov peb txoj kev coj ua sai sai, ntau hom tsiaj txhu yuav ploj ntais mus ib txhis.",
+          "english": "Researchers have warned that if we do not change our ways quickly, many species of animals will disappear forever."
+        },
+        {
+          "hmong": "Kev hloov pauv ntawm huab cua yuav ua rau nag xob nag cua loj tuaj ntxiv.",
+          "english": "Changes in the weather will make storms grow larger and more severe."
+        }
+      ],
+      [
+        {
+          "hmong": "Yog li ntawd, txhua tus neeg muaj lub luag haujlwm los tiv thaiv ib puag ncig rau peb cov tub ki xeeb ntxwv.",
+          "english": "Therefore, every person has a responsibility to protect the environment for our future generations and descendants."
+        },
+        {
+          "hmong": "Tsoom fwv kuj yuav tsum muab kev cai lij choj los tswj cov koom haum lag luam kom tsis txhob pov tseg cov khoom uas ua rau ib puag ncig puas tsuaj.",
+          "english": "Governments must also establish laws to regulate businesses so they do not dispose of materials that harm the environment."
+        }
+      ],
+      [
+        {
+          "hmong": "Tiamsis, kev hloov pib los ntawm txhua tus neeg ib leeg ib leeg.",
+          "english": "However, change begins with each individual person."
+        },
+        {
+          "hmong": "Peb yuav ua tau li ntawd los ntawm tsis ua khoom pov tseg ntau, cog ntoo ntxiv, thiab siv hluav taws xob los ntawm hnub ci thiab cua.",
+          "english": "We can do this by producing less waste, planting more trees, and using energy from the sun and wind."
+        }
+      ],
+      [
+        {
+          "hmong": "Peb haiv neeg Hmoob suav daws tau nyob ze rau ib puag ncig los ntev lawm.",
+          "english": "All of us Hmong people have lived close to nature for a long time."
+        },
+        {
+          "hmong": "Yog li kev hwm thiab tu ib puag ncig yog ib feem ntawm peb li kab lis kev cai uas peb yuav tsum coj mus rau yav pem suab.",
+          "english": "Therefore, respecting and caring for the environment is part of our cultural heritage that we must carry forward into the future."
+        }
+      ]
+    ],
+    "glossary": [
+      {
+        "hmong": "ntiajteb",
+        "english": "the world, the earth — also spelled \"ntiaj teb\""
+      },
+      {
+        "hmong": "ib puag ncig",
+        "english": "the environment; surroundings; the natural world around us"
+      },
+      {
+        "hmong": "kev tswj xyuas",
+        "english": "management, care, protection, or stewardship"
+      },
+      {
+        "hmong": "lub luag haujlwm",
+        "english": "responsibility; duty; obligation"
+      },
+      {
+        "hmong": "khoom muaj nuj nqis",
+        "english": "valuable things; resources of value"
+      },
+      {
+        "hmong": "huab cua",
+        "english": "air; atmosphere; weather, depending on context"
+      },
+      {
+        "hmong": "hav zoov",
+        "english": "forest; woods"
+      },
+      {
+        "hmong": "tsiaj txhu",
+        "english": "animals; wildlife; livestock, depending on context"
+      },
+      {
+        "hmong": "tsim kho",
+        "english": "to build, develop, construct, or improve"
+      },
+      {
+        "hmong": "cog qoob loo",
+        "english": "to farm; to plant crops"
+      },
+      {
+        "hmong": "raug kev puas tsuaj",
+        "english": "to suffer damage; to be harmed or destroyed"
+      },
+      {
+        "hmong": "tshuaj lom",
+        "english": "poisonous chemicals; toxic substances"
+      },
+      {
+        "hmong": "pa roj avgas",
+        "english": "exhaust fumes; vehicle emissions"
+      },
+      {
+        "hmong": "khoom pov tseg",
+        "english": "waste; rubbish; discarded materials"
+      },
+      {
+        "hmong": "qias neeg",
+        "english": "dirty; polluted; contaminated"
+      },
+      {
+        "hmong": "kws tshawb fawb",
+        "english": "researcher; scientist"
+      },
+      {
+        "hmong": "ceeb toom",
+        "english": "to warn; warning"
+      },
+      {
+        "hmong": "ploj ntais mus ib txhis",
+        "english": "to disappear completely forever; to become extinct"
+      },
+      {
+        "hmong": "nag xob nag cua",
+        "english": "a thunderstorm; severe storm with lightning and wind"
+      },
+      {
+        "hmong": "tub ki xeeb ntxwv",
+        "english": "children, grandchildren, and future descendants"
+      },
+      {
+        "hmong": "tsoom fwv",
+        "english": "government"
+      },
+      {
+        "hmong": "kev cai lij choj",
+        "english": "law; legal rules or regulations"
+      },
+      {
+        "hmong": "koom haum lag luam",
+        "english": "business organization; company; corporation"
+      },
+      {
+        "hmong": "txhob",
+        "english": "do not; should not; so that something does not happen"
+      },
+      {
+        "hmong": "hluav taws xob",
+        "english": "electricity; electrical energy"
+      },
+      {
+        "hmong": "hnub ci",
+        "english": "sunlight; solar"
+      },
+      {
+        "hmong": "haiv neeg Hmoob",
+        "english": "the Hmong people; Hmong ethnic community"
+      },
+      {
+        "hmong": "kab lis kev cai",
+        "english": "culture; customs; cultural tradition"
+      },
+      {
+        "hmong": "yav pem suab",
+        "english": "the future; the time ahead"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-puag-ncig-1",
+        "prompt": "Lub ntiajteb no muaj yam khoom muaj nuj nqis dab tsi? — What valuable things does the world have?",
+        "options": [
+          "Clean water, good air, forests, and many animals",
+          "Only cities and roads",
+          "Only factories and machines",
+          "Only food and houses"
+        ],
+        "answer": "Clean water, good air, forests, and many animals",
+        "because": "Paragraph 1 — “Lub ntiajteb no muaj ntau yam khoom muaj nuj nqis xws li dej huv, huab cua zoo, hav zoov ntsuab, thiab tsiaj txhu ntau hom.”"
+      },
+      {
+        "id": "q-puag-ncig-2",
+        "prompt": "Dab tsi ua rau av thiab dej qias neeg? — What causes the land and water to become polluted?",
+        "options": [
+          "Chemicals, exhaust fumes, and waste",
+          "Rain and wind",
+          "Trees and animals",
+          "Clean water and sunlight"
+        ],
+        "answer": "Chemicals, exhaust fumes, and waste",
+        "because": "Paragraph 2 — “Cov tshuaj lom, pa roj avgas, thiab khoom pov tseg tau ua rau av thiab dej qias neeg kawg.”"
+      },
+      {
+        "id": "q-puag-ncig-3",
+        "prompt": "Yog peb tsis hloov peb txoj kev coj ua, yuav muaj dab tsi tshwm sim rau tsiaj txhu? — If we do not change our ways, what may happen to animals?",
+        "options": [
+          "Many species may disappear forever",
+          "They will all move into cities",
+          "They will become larger",
+          "They will stop needing water"
+        ],
+        "answer": "Many species may disappear forever",
+        "because": "Paragraph 2 — “Ntau hom tsiaj txhu yuav ploj ntais mus ib txhis.”"
+      },
+      {
+        "id": "q-puag-ncig-4",
+        "prompt": "Leej twg muaj lub luag haujlwm los tiv thaiv ib puag ncig? — Who has a responsibility to protect the environment?",
+        "options": [
+          "Every person",
+          "Only scientists",
+          "Only the government",
+          "Only farmers"
+        ],
+        "answer": "Every person",
+        "because": "Paragraph 3 — “Txhua tus neeg muaj lub luag haujlwm los tiv thaiv ib puag ncig.”"
+      },
+      {
+        "id": "q-puag-ncig-5",
+        "prompt": "Tsoom fwv yuav tsum ua dab tsi rau cov koom haum lag luam? — What should governments do regarding businesses?",
+        "options": [
+          "Create laws to stop harmful waste disposal",
+          "Give all businesses more waste",
+          "Tell businesses to cut down forests",
+          "Stop all people from planting trees"
+        ],
+        "answer": "Create laws to stop harmful waste disposal",
+        "because": "Paragraph 3 — “Tsoom fwv kuj yuav tsum muab kev cai lij choj los tswj cov koom haum lag luam kom tsis txhob pov tseg cov khoom uas ua rau ib puag ncig puas tsuaj.”"
+      },
+      {
+        "id": "q-puag-ncig-6",
+        "prompt": "Kev hloov pib los ntawm leej twg? — Who does change begin with?",
+        "options": [
+          "Each individual person",
+          "Only large companies",
+          "Only future generations",
+          "Only people in government"
+        ],
+        "answer": "Each individual person",
+        "because": "Paragraph 4 — “Kev hloov pib los ntawm txhua tus neeg ib leeg ib leeg.”"
+      },
+      {
+        "id": "q-puag-ncig-7",
+        "prompt": "Ib txoj kev pab tiv thaiv ib puag ncig yog dab tsi? — What is one way to help protect the environment?",
+        "options": [
+          "Plant more trees",
+          "Produce more waste",
+          "Pollute rivers",
+          "Use more harmful chemicals"
+        ],
+        "answer": "Plant more trees",
+        "because": "Paragraph 4 — “Cog ntoo ntxiv.”"
+      },
+      {
+        "id": "q-puag-ncig-8",
+        "prompt": "Kev hwm thiab tu ib puag ncig yog ib feem ntawm dab tsi? — Respecting and caring for the environment is part of what?",
+        "options": [
+          "Hmong cultural heritage",
+          "A business law",
+          "A type of storm",
+          "A farming machine"
+        ],
+        "answer": "Hmong cultural heritage",
+        "because": "Paragraph 5 — “Kev hwm thiab tu ib puag ncig yog ib feem ntawm peb li kab lis kev cai.”"
+      }
+    ]
+  }
+}

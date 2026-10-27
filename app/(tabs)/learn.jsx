@@ -1,6 +1,7 @@
 import { View, Text, Pressable } from 'react-native'
 import { Link } from 'expo-router'
 import TabScreen from '../../src/components/TabScreen.jsx'
+import PageIntro from '../../src/components/ui/PageIntro.jsx'
 import LessonCard from '../../src/components/learn/LessonCard.jsx'
 import Eyebrow from '../../src/components/ui/Eyebrow.jsx'
 import Icon from '../../src/components/ui/Icon.jsx'
@@ -82,7 +83,9 @@ export default function Learn() {
         </Pressable>
       </Link>
 
-      <View className="mb-8">
+      {/* On a PageIntro card, 2026-10-25 (contrast placeholder; see PageIntro.jsx).
+          Was: <View className="mb-8"> … </View>, subtitle text-stone-700. */}
+      <PageIntro className="mb-8">
 
         {/* The dot is seafoam-500 — Learn's own tab-indicator token, so the
             mark up here and the highlighted tab down there are the same fact. */}
@@ -90,7 +93,7 @@ export default function Learn() {
 
         <Text className="font-serif text-4xl text-stone-900 mb-3">One step at a time.</Text>
 
-        <Text className="text-base font-medium text-stone-700 leading-relaxed">
+        <Text className="text-base font-medium text-stone-800 leading-relaxed">
           Structured units: intro, examples, a quick check, a mini-quiz.
         </Text>
 
@@ -105,7 +108,7 @@ export default function Learn() {
             {done} of {lessons.length} lessons done
           </Text>
         </View>
-      </View>
+      </PageIntro>
 
       <View className="gap-8">
         {/* Readings unit is hidden in release builds (still WIP) — dev-only.

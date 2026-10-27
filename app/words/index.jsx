@@ -1,6 +1,7 @@
 import { View, Text, Pressable } from 'react-native'
 import { Link } from 'expo-router'
 import TabScreen from '../../src/components/TabScreen.jsx'
+import PageIntro from '../../src/components/ui/PageIntro.jsx'
 import Button from '../../src/components/ui/Button.jsx'
 import Icon from '../../src/components/ui/Icon.jsx'
 import Collapsible from '../../src/components/common/Collapsible.jsx'
@@ -65,14 +66,16 @@ export default function Words() {
 
   return (
     <TabScreen>
-      <View className="mb-4">
+      {/* On a PageIntro card, 2026-10-25 (contrast placeholder; see PageIntro.jsx).
+          Was: <View className="mb-4"> … </View>, subtitle text-stone-700. */}
+      <PageIntro className="mb-4">
         <Eyebrow dot="bg-blush-500" className="mb-1.5">Words</Eyebrow>
         <Text className="font-serif text-4xl text-stone-900 mb-1.5">A few words a day.</Text>
-        <Text className="font-sans text-sm text-stone-700">
+        <Text className="font-sans text-sm text-stone-800">
           Short, game-like reps. Your review queue is spaced so words come back right
           before you'd forget them.
         </Text>
-      </View>
+      </PageIntro>
 
       {/* Stats — collapsed by default so the session card sits near the top.
           The streak rides in the title so the number survives being closed. */}

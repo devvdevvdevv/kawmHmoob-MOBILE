@@ -39,6 +39,16 @@ const C = {
 const MONO = Platform.select({ ios: 'Menlo', android: 'monospace', default: 'monospace' })
 
 const TOOLS = [
+  // ⚠️ ADDED 2026-10-16 so the sourcing spike is REACHABLE. It was written as
+  // /path/u-colors/demo and handed over as "open that URL" — which a native app has no
+  // way to do: there is no address bar. A dev page with no link in is a dev page that
+  // does not exist. (The other way in is '/_sitemap' below, which lists every route.)
+  // TO REMOVE: delete this entry and app/path/[unitId]/demo.jsx.
+  {
+    href: '/path/u-colors/demo',
+    title: '🧭 How a unit is sourced',
+    blurb: 'Six numbered boxes: URL → param string → getUnit → unit.categories → getCategory → unitWords. Tap any unit at the bottom and all six re-run with a different string. Teaching spike; nothing else links to it.',
+  },
   {
     href: '/admin-users',
     title: '📊 Users & progress',

@@ -1,0 +1,17 @@
+{
+  // Type-checks ONLY the TypeScript practice files (p11, p12).
+  // Run from kawmHmoob-MOBILE:   npx tsc -p js-ts-course/practice
+  // No output = no type errors. Lesson 11 §8 explains how to read the errors.
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "types": ["node"]
+  },
+  "include": ["*.mts"]
+}

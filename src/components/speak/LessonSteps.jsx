@@ -7,7 +7,7 @@ import ToneCurve from "./ToneCurve.jsx"
 import { useAudio } from "../../hooks/useAudio.js"
 import { useRecorder } from "../../hooks/useRecorder.js"
 import { useAbCompare } from "../../hooks/useAbCompare.js"
-import { scoreTake, REASON_TEXT, scoreBand } from "../../lib/pronounceScore.js"
+import { scoreTake, REASON_TEXT, scoreBand, SCORE_CAVEAT } from "../../lib/pronounceScore.js"
 
 
 // ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
@@ -548,6 +548,11 @@ function RecallStep({ step, onReady }) {
               </Text>
               <Text className="text-[10px] text-cream-200 opacity-60 mt-1">
                 {result.score}/100
+              </Text>
+              {/* The same caveat PronounceStep shows, from the same constant —
+                  cream-200 here because this card sits on the dark step. */}
+              <Text className="text-[10px] text-cream-200 opacity-80 text-center leading-snug mt-2">
+                {SCORE_CAVEAT}
               </Text>
             </View>
           ) : (

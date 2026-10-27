@@ -47,19 +47,40 @@ import { consonantGroups, vowelGroups } from './reference.js'
 //
 // These replace the `mini-quiz` step the consonant lessons used to end on: a
 // multiple-choice question can't show you can *say* a consonant.
+// ⚠️ LETTERS ARE CAPITALISED FOR DISPLAY — 2026-10-15 (author: "Capitalize
+// everything"). reference.js is inconsistent at source: single consonants are
+// lowercase ('c', 'd') while doubles and triples are already capitalised ('Ch',
+// 'Hml'), so the Speak drills showed "c d f h" in one card and "Ch Dh Hl Hm" in
+// the next. One rule here fixes every surface at once — the family cards, the
+// letter tiles, the big letter on the drill, the prev/next buttons and the
+// accessibility labels all read `hmong`.
+//
+// ⚠️ IT IS APPLIED TO `hmong` ONLY, NEVER TO `id` OR `audio`. The ids are
+// progress keys (`family-consonant-c`) and the audio paths are filenames; both
+// must stay exactly as they are or a learner's practised letters and every clip
+// detach. Capitalising a DISPLAY string is safe — nothing in the app matches on
+// this field, which was checked before the change.
+const cap = (s) => {
+  const str = String(s || '')
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 const consonantFamilies = consonantGroups.map((g) => ({
   id: `family-consonant-${g.id}`,
   kind: 'consonant',
   focus: g.id,
   // g.title is like 'Single | Cov Tsiaj Ntawv Txiv Tab' — keep the Hmong half.
-  title: `${g.title.split('|')[0].trim()} consonants`,
+  title: `${g.title.split('|')[0].trim()} Consonants`,
   description: `Say each ${g.id} consonant. ${g.blurb} Listen first, then record yourself.`,
   pattern: g.blurb,
   words: g.items.map((c) => ({
     id: `family-consonant-${c.letter}`,
-    hmong: c.letter,
+    hmong: cap(c.letter),
     english: c.sound || '',
     audio: c.audio || '',
+    // The second voice, carried so the Speak screen can pick at RENDER time — this
+    // file runs once at load and can't see the preference (2026-10-25).
+    audioFemale: c.audioFemale || '',
     example: c.exampleWord || '',  // shown on the family screen's letter card, 2026-09-28
     // A bare consonant has no vowel/tone — the breakdown is skipped for these.
   })),
@@ -82,14 +103,15 @@ const vowelFamilies = vowelGroups.map((g) => ({
   kind: 'vowel',
   focus: g.id,
   // g.title is like 'Single | Cov Tab' — keep the Hmong half.
-  title: `${g.title.split('|')[0].trim()} vowels`,
+  title: `${g.title.split('|')[0].trim()} Vowels`,
   description: `Say each ${g.id} vowel. ${g.blurb} Listen first, then record yourself.`,
   pattern: g.blurb,
   words: g.items.map((v) => ({
     id: `family-vowel-${g.id}-${v.letter}`,
-    hmong: v.letter,
+    hmong: cap(v.letter),
     english: v.sound || '',
     audio: v.audio || '',
+    audioFemale: v.audioFemale || '', // Emily's no-tone syllable, 2026-10-25
     example: v.exampleWord || '',  // shown on the family screen's letter card, 2026-09-28
     // A bare vowel has no consonant/tone — the breakdown is skipped for these.
   })),

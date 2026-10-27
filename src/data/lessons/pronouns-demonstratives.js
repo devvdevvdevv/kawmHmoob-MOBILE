@@ -32,6 +32,92 @@ export const pronounsDemonstratives = {
         '> Tus aub no. — This dog.',
         'So the full pattern is classifier + noun + pointing word. The classifier is not optional: “tsev no” alone sounds unfinished.',
         // The author's definitions, 2026-09-27 (they replace the TODO-VERIFY ko/ntawd split).
+        // ── ⚠️ "NOV YOG…" — THE AUTHOR'S SECTIONS, ADDED 2026-10-22 ───────────
+        //
+        // Placed directly after "They come LAST" on purpose. That section teaches
+        // `classifier + noun + no`, and these four are the OTHER pattern — the one
+        // where the pointing word comes FIRST — so the contrast lands while the
+        // first rule is still on screen. Their §3 is built to be read exactly
+        // there.
+        //
+        // ⚠️ THEIR §2 OVERLAPS "They come LAST" by design: both teach
+        // `noun phrase + no`. It is kept because §3 and §4 compare the two
+        // patterns and need both stated side by side — but if this lesson is ever
+        // tightened, that is the paragraph to merge upward.
+        //
+        // ⚠️ `nov` HAS NO DICTIONARY ENTRY. The lesson now teaches `Nov yog…` as
+        // the standard introduction pattern, and neither `nov` nor `nov yog` is in
+        // vocabulary.js — so the reader's long-press lookup finds nothing. Raised
+        // with the author; `no yog` was added to the `yog-to-be` set the same day.
+        '## 1. How do you say “This is…”?',
+
+        'When you introduce someone or identify something, use **“Nov yog…”**. It means “This is…” and tells the listener who or what you are identifying.',
+
+        '> Nov yog kuv poj niam. — This is my wife.',
+
+        '> Nov yog kuv tus txiv. — This is my husband.',
+
+        'The pattern is **Nov + yog + noun phrase**.',
+
+        '- **“Nov”** — this, referring to the person or thing you are identifying.',
+
+        '- **“Yog”** — links that person or thing to the identity that follows.',
+
+        '- The noun phrase tells the listener who or what it is.',
+
+        '**When to use it:** Use **“Nov yog…”** when introducing a family member, identifying a person, or pointing something out by telling someone what it is.',
+
+        'Remember that **“yog”** identifies or classifies the subject here. It is not a general word to put before every English “is.”',
+
+        '## 2. How do you say “this house” or “this person”?',
+
+        'When you want to identify which person or thing you mean, put **“no”** at the end of the noun phrase.',
+
+        '> Lub tsev no — this house',
+
+        '> Tus neeg no — this person',
+
+        'The pattern is **noun phrase + no**.',
+
+        'The word **“no”** points to a particular person or thing. It does not introduce that thing as a new sentence; it forms part of the phrase naming it.',
+
+        '**When to use it:** Use this pattern when identifying a particular item or person, especially when you want to describe it or say something about it afterward.',
+
+        'For example:',
+
+        '> Lub tsev no loj. — This house is big.',
+
+        'Here, **“lub tsev no”** identifies the house, and **“loj”** describes it. You do not need **“yog”** before the adjective.',
+
+        '## 3. Why aren’t “Nov yog…” and “noun + no” the same?',
+
+        'Compare these two patterns:',
+
+        '> Nov yog kuv poj niam. — This is my wife.',
+
+        '> Tus neeg no siab zoo. — This person is kind-hearted.',
+
+        'In the first sentence, **“Nov”** introduces what you are identifying. In the second, **“tus neeg no”** means “this person”; the word **“no”** belongs at the end of the noun phrase.',
+
+        'The difference is what the phrase is doing:',
+
+        '- **“Nov yog…”** identifies someone or something: “This is…”',
+
+        '- **“Noun phrase + no”** identifies which person or thing: “this person,” “this house.”',
+
+        'The two patterns are related because both can refer to something near or relevant in the conversation. But they have different structures, so do not swap **“nov”** and **“no”** freely.',
+
+        '## 4. Can you use “no yog…” to mean “This is…”?',
+
+        'For a beginner learning introductions, use **“Nov yog…”** as the standard pattern.',
+
+        'The word **“no”** is commonly used after a noun phrase, as in **“lub tsev no.”** Although similar-looking forms can occur in Hmong demonstrative expressions, you should not treat **“no yog…”** as a freely interchangeable replacement for **“Nov yog…”** without confirming its use in the particular context.',
+
+        'The safest rule to remember:',
+
+        '- **Introducing or identifying:** “Nov yog…”',
+
+        '- **Pointing out which noun:** “Noun phrase + no.”',
         '## Three distances',
         'No, ko and ntawd say where the thing is, measured from yourself or from another person:',
         '> Tus aub no. — This dog. (right here: you are focusing on it directly)',
@@ -47,16 +133,24 @@ export const pronounsDemonstratives = {
         '> Lub paj ntawd yog nws lub paj. — That flower is his / her flower.',
         '> Lub ntawd yog nws lub paj. — That one is his / her flower.',
         '> Tus ntawd yog leej twg? — Who is that (one)?',
-        '## Qhov no: “this one”, “this thing”',
-        'Qhov no can stand by itself when the noun is understood from context. It means this, this one, or this thing:',
-        '> Kuv xav tau qhov no. — I want this one.',
-        '> Qhov no zoo. — This one is good.',
-        'Qhov ntawd is the same for that: that one, that matter.',
-        '> Yaj, vim li cas koj ho nug wb txog qhov ntawd? — Yaj, why did you ask us about that?',
-        'Qhov can also take a noun, as the classifier for places and matters: qhov + noun + no.',
-        '> Qhov chaw no — this place',
-        '> Qhov teeb meem no — this problem',
-        'Don’t think of qhov as always meaning “thing”. Its exact role depends on what follows it: with no noun it stands for the thing itself; with a noun it is that noun’s classifier.',
+  
+'## Qhov no: “this,” “this one,” or “this thing”',
+'When the noun is clear from context, “qhov no” can stand alone. Depending on what you are talking about, it can mean “this,” “this one,” or “this thing.”',
+'> Kuv xav tau qhov no. — I want this one.',
+'> Qhov no zoo. — This one is good.',
+'“Qhov ntawd” works similarly for something being referred to as “that,” “that one,” or “that matter.”',
+'> Yaj, vim li cas koj ho nug wb txog qhov ntawd? — Yaj, why did you ask us about that?',
+'## Qhov before a noun',
+'“Qhov” can also come before a noun, especially in phrases referring to places or matters. The demonstrative comes after the noun: qhov + noun + no.',
+'> Qhov chaw no — this place',
+'> Qhov teeb meem no — this problem',
+
+'It is often used to point out a specific place or matter',
+'## **Examples** ',
+'> “Txog qhov ntawd” - (about that matter)',
+
+'> “Mus txog qhov ntawd” - (go to that (specific) place).',
+'Do not assume “**qhov**” always means “thing.” It can refer to a thing or place, and its meaning depends on the phrase and context. When it stands alone, the noun may be understood rather than spoken; when a noun follows it, as in **“qhov chaw no”** (Literally: This (specific) place),  the phrase names what is being referred to.',
         '## These and those: cov',
         'Cov is the classifier for a group, so cov + noun + no means these:',  // TODO-VERIFY
         '> Cov menyuam no. — These children.',

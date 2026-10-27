@@ -60,6 +60,42 @@ export const PATH_SENTENCES = {
     { word: 'nyob li cas', hmong: 'Nej nyob li cas tagkis no?', english: 'How are you all this morning?' },
     { word: 'nyob', hmong: 'Wb nyob nrog peb niam txiv.', english: 'We two live with our parents.' },
   ],
+  // ── ⚠️ u-muaj — AUTHOR-SUPPLIED, 2026-10-21 ─────────────────────────────────
+  //
+  // Unlike the blocks above, these are NOT GPT-written: they are the author's own
+  // fifteen sentences from the Muaj lesson (grammar-muaj-sentences), added here so
+  // the unit's builder has something to drill. `pathUnitExercises` still marks
+  // every sentence in this file `unreviewed: true`, which is correct — no speaker
+  // has read them.
+  //
+  // ⚠️ ORDERED FOR VARIETY, because only the first FULL_SESSION_LENGTH (10) are
+  // used in a session. The three near-identical "Koj niam muaj pes tsawg tus …?"
+  // questions sit last on purpose; leading with them would fill half a session
+  // with one frame.
+  //
+  // ⚠️ "Kuv tsis muaj." IS DELIBERATELY ABSENT. It tokenizes to two chips
+  // (`Kuv` / `tsis muaj` — tsis muaj is one phrase chip), under MIN_TOKENS of 3,
+  // so the builder skips it. Listing it would look like a sentence that silently
+  // never appears.
+  //
+  // ⚠️ `daus las` (dollars) IS NOT A DICTIONARY HEADWORD in any spelling — see the
+  // same flag in muaj.js. Its sentence is here as the author wrote it.
+  'u-muaj': [
+    { word: 'muaj', hmong: 'Kuv muaj ib tug aub.', english: 'I have a dog.' },
+    { word: 'xyoo', hmong: 'Kuv muaj neesnkaum xyoo.', english: 'I am twenty years old.' },
+    { word: 'muaj', hmong: 'Thaum ub, muaj ib tug tsov.', english: 'Once upon a time, there was a tiger.' },
+    { word: 'nyob', hmong: 'Muaj peb leej neeg nyob hauv lub tsev.', english: 'There are three people in the house.' },
+    { word: 'muaj pes tsawg', hmong: 'Koj muaj pes tsawg xyoo lawm?', english: 'How old are you?' },
+    { word: 'muaj', hmong: 'Kuv muaj ob tug menyuam.', english: 'I have two children.' },
+    { word: 'xwb', hmong: 'Kuv niam muaj ob tug ntxhais xwb.', english: 'My mother has only two daughters.' },
+    { word: 'muaj', hmong: 'Kuv muaj haujlwm ntau.', english: 'I have a lot of work.' },
+    { word: 'xyoo', hmong: 'Kuv muaj plaub caug xyoo.', english: 'I am forty years old.' },
+    { word: 'muaj', hmong: 'Kuv muaj neesnkaum daus las.', english: 'I have twenty dollars.' },
+    { word: 'xwb', hmong: 'Kuv niam muaj peb tug tub xwb.', english: 'My mother has only three sons.' },
+    { word: 'muaj pes tsawg', hmong: 'Koj niam muaj pes tsawg tus menyuam?', english: 'How many children does your mother have?' },
+    { word: 'muaj pes tsawg', hmong: 'Koj niam muaj pes tsawg tus ntxhais?', english: 'How many daughters does your mother have?' },
+    { word: 'muaj pes tsawg', hmong: 'Koj niam muaj pes tsawg tus tub?', english: 'How many sons does your mother have?' },
+  ],
   'u-verbs': [
     { word: 'noj', hmong: 'Kuv noj mov thaum sawv ntxov.', english: 'I eat in the morning.', was: 'english: "I eat rice"' },
     { word: 'haus', hmong: 'Koj haus dej nrog kuv thiab.', english: 'You drink water with me too.' },

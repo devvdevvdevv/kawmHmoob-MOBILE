@@ -159,23 +159,110 @@ caller supplies what's inside. That's how most accordion/menu components work.
 
 ---
 
-## 7. Optional: a smooth open/close animation
+## 7. A smooth open/close animation
 
-The version above snaps open instantly (totally fine for v1). For a smooth height
-animation, add ONE line right before you toggle:
+### The cheap version, and why it was replaced
+
 ```js
 import { LayoutAnimation, Platform, UIManager } from 'react-native'
-// once, at module load, for old-arch Android:
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true)
 }
 // in onPress, BEFORE setOpen:
 LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
-setOpen(o => !o)
+setOpen((o) => !o)
 ```
-`configureNext` tells RN "animate the next layout change." Cheap and effective. (If
-you're on the New Architecture and it misbehaves, skip it or use `react-native-
-reanimated` instead — not worth blocking v1 over.)
+
+One line, and it eases the surrounding layout. `src/components/common/Collapsible.jsx`
+shipped like this until **2026-10-14**, when the author's verdict was "too basic".
+Three reasons it feels that way, worth understanding before reaching for it again:
+
+- **It animates the next layout pass, not your element.** Every sibling that
+  re-lays-out in the same pass is dragged into the same curve, and you cannot set
+  a different duration per element.
+- **It is a no-op on react-native-web**, so the same component snaps there.
+- **⚠️ `{open && children}` leaves nothing to animate FROM.** This is the real
+  one. The body does not exist until the tap, so its height goes 0 → full in a
+  single frame; only the page around it eases. The panel itself never slides.
+
+### The version that actually slides (what ships now)
+
+One animated value, and everything derives from it:
+
+```jsx
+import Reanimated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
+
+const DURATION = 240
+const CURVE = Easing.out(Easing.cubic)
+
+const [height, setHeight] = useState(0)      // measured, in JS
+const progress = useSharedValue(0)           // 0 = closed, 1 = open, on the UI thread
+
+const toggle = () => setOpen((wasOpen) => {
+  progress.value = withTiming(wasOpen ? 0 : 1, { duration: DURATION, easing: CURVE })
+  return !wasOpen
+})
+
+const bodyStyle = useAnimatedStyle(() => ({
+  height: progress.value * height,
+  opacity: progress.value * progress.value,   // lags the height slightly
+}))
+const chevronStyle = useAnimatedStyle(() => ({
+  transform: [{ rotate: `${progress.value * 90}deg` }],
+}))
+```
+
+```jsx
+<Reanimated.View style={[{ overflow: 'hidden' }, bodyStyle]}>
+  <View
+    onLayout={(e) => {
+      const next = Math.round(e.nativeEvent.layout.height)
+      if (next > 0 && next !== height) setHeight(next)
+    }}
+    style={{ position: 'absolute', width: '100%' }}
+  >
+    {children}
+  </View>
+</Reanimated.View>
+```
+
+**Why each piece is there — none of it is decoration:**
+
+| piece | job |
+|---|---|
+| `progress` as ONE shared value | height, opacity and chevron read the same number, so they cannot drift out of step the way three timings would |
+| `240ms`, `Easing.out(cubic)` | fast then settling — "falls into place" rather than "is dragged". Long enough to read, short enough to open four in a row |
+| `opacity: progress²` | text would otherwise look fully formed inside a half-open box |
+| `overflow: 'hidden'` | crops the body mid-slide instead of letting it spill over what is below |
+| **two** nested views | the outer is the animated window; the inner is measured |
+| `position: 'absolute'` on the inner | lets it report its NATURAL height without pushing the page down before the animation runs |
+| `width: '100%'` | an absolute child otherwise shrinks to its content |
+| the `next !== height` guard | `onLayout` fires every pass; setting state to the value it already holds re-renders for nothing |
+
+### ⚠️ The two traps
+
+**Measuring the view you are resizing is circular.** If `onLayout` sits on the
+same view whose height the animation sets, it reports back whatever the animation
+just did, and the panel settles at some arbitrary height (or 0). Hence the inner
+view: one view is measured, a different one is animated.
+
+**`style`, never `className`, on a `Reanimated.View`.** NativeWind does not
+process `className` on third-party animated components — the classes are silently
+dropped and you are left wondering why padding vanished. Keep layout classes on a
+plain `View` inside. See [[nativewind-classname-on-third-party]].
+
+### If the content can change size while open
+
+Re-target the animation when the measurement changes, or a body that grows (an
+image loading, a longer gloss arriving) stays clipped to its old height:
+
+```js
+useEffect(() => {
+  if (open) progress.value = withTiming(1, { duration: DURATION, easing: CURVE })
+}, [height, open, progress])
+```
+
+Costs nothing while closed, because the target is 0 either way.
 
 ---
 
@@ -189,6 +276,10 @@ reanimated` instead — not worth blocking v1 over.)
 - [x] Placed in the `user.isGuest` branch of ProfilePage.
 - [~] `<Collapsible>` component EXISTS and compiles (src/components/common/Collapsible.jsx),
       but ProfilePage still runs its own inline copy — not actually swapped over yet.
+      ⚠️ The shared one is now the REANIMATED version (§7, 2026-10-14), so the
+      inline copy in ProfilePage is both a duplicate AND the older feel. Three
+      screens use the shared one: the path unit intro, the Words hub stats, and
+      SentenceWords.
 - [x] Styles are className / static objects — never a `style` FUNCTION.
 
 ## Gotchas

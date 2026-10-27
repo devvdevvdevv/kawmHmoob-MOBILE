@@ -49,11 +49,20 @@ import { View, Text, Pressable } from 'react-native'   // Pressable: for the gra
 import { useState, useEffect } from 'react'
 import { Link, useLocalSearchParams } from 'expo-router'  // Link + deep-link tab param
 import TabScreen from '../../src/components/TabScreen.jsx'
+import PageIntro from '../../src/components/ui/PageIntro.jsx'
 import Tabs from '../../src/components/Tabs.jsx'
 // Data — the grouped/tone/grammar exports from reference.js
-import { consonantGroups, vowelGroups, tones, grammar } from '../../src/data/reference.js'
+import { consonantGroups, vowelGroups, vowels, tones, grammar } from '../../src/data/reference.js'
 import LetterGrid from '../../src/components/reference/LetterGrid.jsx'
-import ToneRows from '../../src/components/reference/ToneRows.jsx'
+import VoiceToggle from '../../src/components/reference/VoiceToggle.jsx'
+import { useVoicePrefs } from '../../src/lib/voicePrefs.js'
+// ToneRows (the unlinked rows) is still used by app/alphabet/[tab].jsx — this
+// screen renders the linked variant instead (2026-10-14).
+import { ToneRowsLinked } from '../../src/components/reference/ToneRows.jsx'
+import VowelToneGrid from '../../src/components/reference/VowelToneGrid.jsx'
+import ToneAudioNote from '../../src/components/reference/ToneAudioNote.jsx'
+import { useAuth } from '../../src/context/AuthContext.jsx'
+import { isAdmin } from '../../src/lib/admin.js'
 import GlobalSearch from '../../src/components/common/GlobalSearch.jsx'   // the Search tab (mirrors the drawer)
 import Icon from '../../src/components/ui/Icon.jsx'                 // the mic on the practice links
 import { wordFamilies } from '../../src/data/wordFamilies.js'       // to verify a drill exists before linking
@@ -68,6 +77,10 @@ const TABS = [
   { id: 'consonants', label: 'Consonants' },
   { id: 'vowels', label: 'Vowels' },
   { id: 'tones', label: 'Tones' },
+  // Vowel × tone — the spelling table (2026-10-14). Its own tab rather than a
+  // section inside Vowels or Tones: it belongs to BOTH, and burying a
+  // horizontally-scrolling 13×8 table under either one hides it.
+  { id: 'vowel-tones', label: 'Vowel + tone' },
   { id: 'grammar', label: 'Grammar' },
   { id: 'search', label: 'Search' },
 ]
@@ -95,6 +108,27 @@ export default function Reference() {
   // A `?tab=` param (e.g. from search deep-links) picks the starting tab.
   const { tab: tabParam } = useLocalSearchParams()
   const [tab, setTab] = useState(validTab(tabParam) || 'consonants')
+  // Which recorded speaker LetterGrid's audio buttons play — 2026-10-24.
+  const { voice, setVoice } = useVoicePrefs()
+
+  // ── ⚠️ THE FULL 13×8 GRID IS DEV-ONLY — 2026-10-14 ─────────────────────────
+  //
+  // Author: "Keep what you have, but keep it only accessible for dev accounts."
+  // A learner reaches the same material through the Tones and Vowels tabs now,
+  // one tone or one vowel at a time; the whole grid is the author's overview.
+  //
+  // `isAdmin(user)`, NOT `__DEV__` — the same choice the reading library and
+  // "Spell it out" made: a real device signed in as an admin account should see
+  // it, not only a dev build.
+  //
+  // ⚠️ THE TAB IS FILTERED FROM THE LIST **AND** THE RENDER IS GUARDED. Hiding
+  // only the tab leaves `/reference?tab=vowel-tones` working for anyone with the
+  // link, and hiding only the render leaves a tab that shows nothing. The route
+  // itself is not gated — the destination guard is the tab body, which is the
+  // same pattern AdminGate.jsx documents.
+  const { user } = useAuth()
+  const showGrid = isAdmin(user)
+  const visibleTabs = TABS.filter((t) => t.id !== 'vowel-tones' || showGrid)
 
   // If the param changes while this screen is already mounted (e.g. tapping an
   // alphabet result while on the Reference → Search tab), follow it.
@@ -111,26 +145,54 @@ export default function Reference() {
           letters" would invent a goal nobody has, and make a dictionary feel
           like homework. The eyebrow and the heading step are what it shares
           with the others; the progress bar is what it correctly does not. */}
-      <View className="mb-8">
+      {/* On a PageIntro card, 2026-10-25 (contrast placeholder; see PageIntro.jsx).
+          Was: <View className="mb-8"> … </View>, subtitle text-stone-700. */}
+      <PageIntro className="mb-8">
         <Eyebrow dot="bg-cream-600" className="mb-2">Reference</Eyebrow>
 
         <Text className="font-serif text-4xl text-stone-900 mb-3">Look it up.</Text>
 
-        <Text className="text-base font-medium text-stone-700 leading-relaxed">
+        <Text className="text-base font-medium text-stone-800 leading-relaxed">
           Letters, tones, and grammar at a glance.
         </Text>
-      </View>
+      </PageIntro>
 
-      <Tabs tabs={TABS} active={tab} onChange={setTab} />
+      <Tabs tabs={visibleTabs} active={tab} onChange={setTab} />
 
       {/* One section per tab. consonants + vowels share GroupedLetters. */}
-      {tab === 'consonants' && <GroupedLetters groups={consonantGroups} kind="consonant" />}
-      {tab === 'vowels' && <GroupedLetters groups={vowelGroups} kind="vowel" />}
+      {tab === 'consonants' && (
+        <>
+          <VoiceToggle voice={voice} onChange={setVoice} />
+          <GroupedLetters groups={consonantGroups} kind="consonant" />
+        </>
+      )}
+      {/* Toggle added 2026-10-25 — Emily's no-tone syllables are her bare vowels.
+          Was: {tab === 'vowels' && <GroupedLetters groups={vowelGroups} kind="vowel" />} */}
+      {tab === 'vowels' && (
+        <>
+          <VoiceToggle voice={voice} onChange={setVoice} />
+          <GroupedLetters groups={vowelGroups} kind="vowel" />
+        </>
+      )}
       {tab === 'tones' && (
         <View>
-          <ToneRows items={tones} />
+          {/* ⚠️ ABOVE the rows, not under them — 2026-10-18. This is the tab where someone
+              first hears a Hmong tone, and the flag only does its job if it is read BEFORE
+              the clips, not after. */}
+          <ToneAudioNote className="mb-4" />
+          {/* Toggle added 2026-10-25 — Emily recorded the eight Cim names. */}
+          <VoiceToggle voice={voice} onChange={setVoice} />
+          {/* Linked rows — each tone offers "see it on every vowel" (2026-10-14). */}
+          <ToneRowsLinked items={tones} />
           <PracticeLink href="/speak/group/speak-tones" label="the eight tones" />
         </View>
+      )}
+      {/* Toggle added 2026-10-25 — Emily recorded the single vowels in all eight tones. */}
+      {tab === 'vowel-tones' && showGrid && (
+        <>
+          <VoiceToggle voice={voice} onChange={setVoice} />
+          <VowelToneGrid vowels={vowels} tones={tones} />
+        </>
       )}
       {tab === 'grammar' && <GrammarTables sections={grammar} />}
       {tab === 'search' && <GlobalSearch />}
@@ -160,6 +222,12 @@ function GroupedLetters({ groups, kind }) {
             <Text className="text-sm font-medium text-stone-600">{g.blurb}</Text>
           </View>
           <LetterGrid items={g.items} />
+          {/* ⚠️ VOWELS ONLY — 2026-10-14 (author: "each vowel would get their own
+              page, containing everything for that vowel"). Consonants have no
+              per-letter page, so they get no row of links. The links sit UNDER
+              the grid rather than making the tiles tappable: a tile already holds
+              an audio button, and a link wrapping a button is a coin-toss tap. */}
+          {kind === 'vowel' ? <VowelLinks items={g.items} /> : null}
           <PracticeLink href={familyHref(kind, g.id)} label={practiceLabel(kind, g.id)} />
         </View>
       ))}
@@ -195,14 +263,39 @@ function PracticeLink({ href, label }) {
   // No route, no drill, or Speak switched off → render nothing at all.
   if (!href || !SPEAK_ENABLED) return null
   return (
-    <Link href={href} asChild>
-      <Pressable className="flex-row items-center justify-between gap-3 rounded-md bg-cream-100 px-4 py-3 mt-3 active:bg-cream-200">
-        <Text className="text-sm font-semibold text-stone-800 flex-1">
-          Try practising {label}
-        </Text>
-        <Icon name="mic" size={18} tone="accent" />
-      </Pressable>
-    </Link>
+    // ⚠️ RESTYLED 2026-10-15 (author: "for the speak section in the alphabet page, we
+    // need to make the ui better there"). It was a thin cream-100 strip with the mic on
+    // the RIGHT, directly under the cream-50 cards of VowelLinks and the cream-50 tiles
+    // of LetterGrid — the only navigation element on the page that did not look like the
+    // others, and the mic sat exactly where every other row in this app puts its "go"
+    // arrow, so it read as a status icon rather than a destination.
+    //
+    // Now the app's standard row: icon chip left, title + what-happens-next line,
+    // arrow right (Home's Explore list, About's footer links, the paywall's features).
+    // ⚠️ ONLY THIS COMPONENT CHANGED. The letter grids, the groups and their order are
+    // untouched — the complaint was that this row was weak, not that the page was wrong.
+    <View className="mt-4">
+      {/* The dot is clay-600, Speak's own tab-indicator token (see Eyebrow.jsx): the
+          mark here and the highlighted tab this leads to are the same fact. */}
+      <Eyebrow dot="bg-clay-600" className="mb-2">Speak</Eyebrow>
+      <Link href={href} asChild>
+        <Pressable className="rounded-md bg-cream-50 shadow-warm p-4 flex-row items-center gap-4 active:bg-cream-100">
+          <View className="h-11 w-11 rounded-full bg-clay-600/12 items-center justify-center">
+            <Icon name="mic" size={20} tone="accent" />
+          </View>
+          <View className="flex-1">
+            <Text className="text-base font-semibold text-stone-900">
+              Practise saying {label}
+            </Text>
+            {/* What actually happens there. "Try practising" never said. */}
+            <Text className="text-sm font-medium text-stone-600 mt-0.5">
+              Record yourself, compare to a native speaker.
+            </Text>
+          </View>
+          <Icon name="arrowRight" size={18} tone="muted" />
+        </Pressable>
+      </Link>
+    </View>
   )
 }
 
@@ -329,3 +422,51 @@ function GrammarEssentials({ arrowColor }) {
 // the drawer's /search route, so they mirror.)
 
 
+
+// VowelLinks — one chip per vowel, each opening that vowel's own page
+// (app/vowel/[letter].jsx) with all eight tones on it. Added 2026-10-14.
+// ⚠️ REWORKED 2026-10-14 (author: "Open the vowels to see it in all eight tones,
+// we need that ui to be a bit better").
+//
+// What was wrong with the first version, which was a row of bare letters:
+//
+//   · A chip saying just `a` repeated the grid directly above it, so the row
+//     read as the same letters twice rather than as a different offer.
+//   · It said nothing about WHAT you get by tapping. Each chip now previews the
+//     set it opens — `ab aj av…` — which is the actual answer to "see it in all
+//     eight tones".
+//   · The chips were px-3 py-2 around a 16px glyph, under the 44px minimum tap
+//     target. Now a full-width row per vowel, which also gives the preview room.
+//
+// Rows, not chips: a preview needs horizontal space, and thirteen wrapped chips
+// of uneven width made a ragged block. One row per vowel reads as a list of
+// doors, which is what it is.
+function VowelLinks({ items }) {
+  return (
+    <View className="mt-4">
+      <Eyebrow className="mb-2">In all eight tones</Eyebrow>
+      <View className="gap-2">
+        {items.map((v) => (
+          <Link key={v.letter} href={`/vowel/${v.letter}`} asChild>
+            <Pressable className="rounded-md bg-cream-50 px-4 py-3 flex-row items-center gap-3 active:bg-cream-100">
+              <Text className="font-serif text-2xl text-clay-700 w-10">{v.letter}</Text>
+              <View className="flex-1">
+                {/* The preview IS the point: it shows the eight written forms
+                    this vowel takes, which is what the page behind it holds. */}
+                <Text className="font-serif text-sm text-stone-800" numberOfLines={1}>
+                  {tones.map((t) => v.letter + t.marker).join('  ')}
+                </Text>
+                {v.sound ? (
+                  <Text className="text-[11px] font-medium text-stone-600 mt-0.5">
+                    sounds like “{v.sound}”
+                  </Text>
+                ) : null}
+              </View>
+              <Icon name="arrowRight" size={16} tone="muted" />
+            </Pressable>
+          </Link>
+        ))}
+      </View>
+    </View>
+  )
+}

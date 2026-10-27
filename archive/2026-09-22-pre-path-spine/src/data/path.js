@@ -75,8 +75,8 @@ export const path = [
     order: 1,
     categories: ['greetings', 'politeness', 'introductions'],
     free: true,
-    blurb: 'Nyob zoo, ua tsaug — your first real exchange.',
-    why: 'First conversation. Free, so it sets the tone for the whole app.',
+    blurb: 'Nyob zoo, ua tsaug — Everyday Hmong Phrases.',
+    why: 'Learn Everyday Hmong Phrases!',
   },
   {
     id: 'u-pronouns',

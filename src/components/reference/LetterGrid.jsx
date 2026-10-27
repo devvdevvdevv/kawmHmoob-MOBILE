@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { View, Text } from 'react-native'
 import AudioButton from '../common/AudioButton.jsx'
+import { useVoicePrefs, pickVoice } from '../../lib/voicePrefs.js'
 
 
 // ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
@@ -28,6 +29,11 @@ const MIN_TILE = 90
 // The letter tile grid — consonants and vowels. items: [{ letter, sound?, audio? }]
 export default function LetterGrid({ items }) {
   const [rowWidth, setRowWidth] = useState(0)
+  // ⚠️ VOICE PICK — 2026-10-24. `pickVoice` falls back to `it.audio` (the
+  // original, only voice) whenever `it.audioFemale` doesn't exist for this
+  // letter, so vowels and every consonant Emily hasn't recorded yet are
+  // unaffected — see src/lib/voicePrefs.js for why the fallback is deliberate.
+  const { voice } = useVoicePrefs()
 
   // ⚠️ OVERRIDE REMOVED — 2026-09-14. It made every letter INVISIBLE on the
   // dark and neon themes, which is the opposite of what it was written to do.
@@ -72,7 +78,7 @@ export default function LetterGrid({ items }) {
           className="rounded-md bg-cream-50 px-2 py-2 items-center justify-center"
         >
           <View className="self-end">
-            <AudioButton audioSrc={it.audio} wordId={it.letter} />
+            <AudioButton audioSrc={pickVoice(it, voice)} wordId={it.letter} />
           </View>
           <Text className="font-serif text-2xl text-clay-700">
             {it.letter}

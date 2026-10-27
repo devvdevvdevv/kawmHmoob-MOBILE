@@ -3,6 +3,10 @@
 Teaching-style guides for building/understanding parts of the app — grouped by topic.
 Most are written to be *implemented yourself*, not copy-pasted.
 
+> 🎓 **The language underneath these guides** (JavaScript → TypeScript, taught
+> from this app's own code, with runnable practice) is a separate course:
+> [`../js-ts-course/README.md`](../js-ts-course/README.md).
+
 ## 💳 monetization/
 Subscriptions, the paywall, and free-tier gating.
 - **revenuecat-integration-guide.md** — the whole RevenueCat subscription system.
@@ -43,14 +47,23 @@ Reusable UI/interaction patterns.
 
 ## 🧠 feature-logic/
 How existing app features work (explainers + a conversion guide).
+- **auth-context-explained.md**: who the user is: Supabase Auth (the ID card) vs the
+  `profiles` table (the file), the startup flow, each function, what `getSession()`
+  returns, and a quick check.
 - **notebook-logic-explained.md**
 - **quiz-engine-explained.md** — the one engine behind every quiz: id → config + dataset,
   prefs, `buildQuestions`, the four gates, the reducer, one tap end to end. Exercises at the end.
+- **theme-logic-explained.md** — HOW THE THEME CHANGE WORKS, and the checklist for
+  adding a fourth theme: the token engine (why there is no `dark:` in this app), the two
+  paths colour travels, the four files a new theme touches, and ⚠️ the missing-token trap
+  that `check-theme` does not catch. Exercises at the end.
 - **search-logic-explained.md**
 - **words-page-logic-explained.md**
 - **reference-page-conversion-guide.md**
-- **path-spine-explained.md** — the Beginner Path: units vs categories, derived completion,
-  positional unlocking, reusing screens with a scoping id. Exercises at the end.
+- **path-spine-explained.md** — HOW THE PATHS WORK, kept current: the 41 units field by
+  field, introLesson and placeholder lessons, the five steps, derived completion and
+  positional unlocking, access rules, and ⚠️ which fields a rewrite may change vs which
+  ids destroy progress. Exercises at the end.
 - **path-into-learn-guide.md** — DRAFT build guide: putting the path inside the Learn tab,
   with a "Lesson" step linking each unit to its Learn lessons. You build it.
 - **notebook-quiz-guide.md** — BUILD IT YOURSELF: a quiz made only from the learner's
@@ -66,6 +79,11 @@ How existing app features work (explainers + a conversion guide).
 - **fill-the-blank-drill-guide.md** — FUTURE, not built: a fill-the-blank drill that puts
   learned words back into sentences (pick the right conjunction, the right pronoun), with 3
   strikes. Measured readiness, the "secretly right wrong answer" problem, where to start.
+- **second-voice-audio-guide.md** — how Emily's (female) recordings were wired in: files
+  into `assets/`, why the audio map needs a literal `require` per file, an ADDED
+  `audioFemale` field rather than a rename, `pickVoice` and when a fallback is honest,
+  ⚠️ the "I cannot hear Emily" bug (two copies of one preference) and its shared-store fix,
+  and why the Speak drill isn't voice-aware yet. You wire the singles yourself at the end.
 
 ## 📐 concepts/
 General, transferable programming patterns (not app-specific).
@@ -78,6 +96,11 @@ General, transferable programming patterns (not app-specific).
   fallback. From the "every tus meant tus xov" bug.
 - **stored-null-guard-pattern.md** — read-with-fallback + `&&` guard + create-on-first-write.
 - **useref-vs-usestate.md** — which one to reach for, and why a ref survives a render.
+- **hook-state-vs-one-device-resource.md** — a hook CREATES state, it does not share it:
+  why 30 audio buttons meant 30 native players, one speaker, and audio that died until
+  restart. When state belongs at module scope instead. Now also covers the second time
+  it happened (2026-10-24): a PREFERENCE, not a device — the voice toggle wrote one copy
+  and the letter grid read another. Exercises at the end.
 - **arrow-function-bodies-and-handlers.md** — `() => x` vs `() => { x }`, and event handlers.
 - **nativewind-classname-on-third-party.md** — why `className` is silently dropped on
   an Animated.View or any component NativeWind does not map.

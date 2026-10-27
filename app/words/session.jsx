@@ -113,7 +113,13 @@ export default function WordsSession() {
         </View>
       </View>
 
-      <Flashcard word={word} key={word.id} onAdvance={advance} />
+      {/* ⚠️ NEITHER MARK ADVANCES HERE — 2026-10-14 (author: "comment out the
+          logic that makes the flashcards go forward when mark learning is
+          hit"). Marking Learning now stays on the card, the same way Marking
+          Known has since 2026-09-25; the → arrow below is the way on, which is
+          what the hint under the card already says.
+          TO RESTORE: remove advanceOnLearning. See mark() in Flashcard.jsx. */}
+      <Flashcard word={word} key={word.id} onAdvance={advance} advanceOnLearning={false} />
 
       <View className="flex-row justify-between items-center mt-5 gap-3">
         <Pressable

@@ -123,9 +123,23 @@ export default function VocabGroup() {
 }
 
 // The two tiers, in display order. See `tier` in applySplits (vocabulary.js).
+//
+// ⚠️ RELABELLED 2026-10-21 — the author: "do not call it 'primary' and 'secondary' please
+// refer to a more accurate title."
+// Was: 'Primary' / 'The everyday words — start here.'
+//      'Secondary' / 'More specialised words, and the later parts of big sets.'
+//
+// The old labels named the app's internal ranking, not the thing a learner is looking at.
+// "Secondary" also reads as second-rate, which is wrong for a 31-word set of extended
+// kinship or the back half of Animals — those words are not lesser, they are later.
+//
+// ⚠️ THE `id`s STAY 'primary' / 'secondary'. They are render keys, matched against the
+// `tier` field set in applySplits and against SECONDARY_SETS by name; renaming them means
+// touching three files to change two strings nobody sees. Only the labels are
+// user-facing, and only the labels changed.
 const TIERS = [
-  { id: 'primary', label: 'Primary', blurb: 'The everyday words — start here.' },
-  { id: 'secondary', label: 'Secondary', blurb: 'More specialised words, and the later parts of big sets.' },
+  { id: 'primary', label: 'Everyday words', blurb: 'The ones you will use first. Start here.' },
+  { id: 'secondary', label: 'Less common', blurb: 'Specialised sets, and the rest of the bigger ones.' },
 ]
 
 function CategoryRow({ category, accent, best, unlock, studied, groupId }) {

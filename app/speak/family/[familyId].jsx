@@ -10,6 +10,7 @@ import PronounceStep from '../../../src/components/speak/PronounceStep.jsx'
 import { getWordFamily } from '../../../src/data/wordFamilies.js'
 import { useProgress } from '../../../src/hooks/useProgress.js'
 import { useAudio } from '../../../src/hooks/useAudio.js'
+import { useVoicePrefs, pickVoice } from '../../../src/lib/voicePrefs.js'
 import Eyebrow from '../../../src/components/ui/Eyebrow.jsx'
 
 // ⚠️ REDESIGNED 2026-09-28 (author: "make the word families for the alphabet ui better and not super
@@ -37,6 +38,9 @@ export default function SpeakFamily() {
   const family = getWordFamily(familyId)
   const { completedSteps, markStepComplete } = useProgress()
   const { play, playing } = useAudio()
+  // Male / Female, 2026-10-25 — the tiles and the letter card follow the same voice
+  // PronounceStep plays and scores against.
+  const { voice } = useVoicePrefs()
   const [index, setIndex] = useState(0)
 
   if (!family) {
@@ -59,6 +63,7 @@ export default function SpeakFamily() {
     hmong: word.hmong,
     english: word.english,
     audio: word.audio,
+    audioFemale: word.audioFemale,
     tip: word.vowel
       ? `${word.consonant} + ${word.vowel} + ${word.tone || '(no tone)'}`
       : family.pattern,
@@ -68,13 +73,24 @@ export default function SpeakFamily() {
   const choose = (i) => {
     setIndex(i)
     const w = words[i]
-    if (w?.audio) play(w.audio, w.id)
+    const src = pickVoice(w, voice)
+    if (src) play(src, w.id)
   }
 
-  // The next letter not yet practised, looking forward first, then from the start.
-  const after = words.findIndex((w, i) => i > index && !completedSteps.includes(w.id))
-  const before = words.findIndex((w, i) => i < index && !completedSteps.includes(w.id))
-  const nextOpen = after >= 0 ? after : before
+  // ⚠️ COMMENTED OUT WITH THE BUTTON IT FED — 2026-10-15. These three lines
+  // existed only for the "Next one you haven't practised" button, which the
+  // arrows replaced; leaving them computing on every render would be work
+  // nothing reads. Restore them together.
+  //
+  // ⚠️ `handleDone` BELOW DOES NOT USE THEM. It finds its own next-unpractised
+  // letter after a recording, so advancing on success still works with these
+  // gone. (An earlier version of this comment claimed handleDone depended on
+  // them; it does not, and lint caught it.)
+  //
+  // // The next letter not yet practised, looking forward first, then from the start.
+  // const after = words.findIndex((w, i) => i > index && !completedSteps.includes(w.id))
+  // const before = words.findIndex((w, i) => i < index && !completedSteps.includes(w.id))
+  // const nextOpen = after >= 0 ? after : before
 
   const handleDone = () => {
     if (!done) markStepComplete(word.id)
@@ -144,7 +160,7 @@ export default function SpeakFamily() {
       </View>
 
       {/* THE LETTER CARD */}
-      <LetterCard family={family} word={word} onHear={() => word.audio && play(word.audio, word.id)} hearing={playing === word.id} />
+      <LetterCard family={family} word={word} onHear={() => pickVoice(word, voice) && play(pickVoice(word, voice), word.id)} hearing={playing === word.id} />
 
       {/* Record yourself */}
       <View className="rounded-md bg-cream-50 shadow-warm p-6 mt-4">
@@ -152,9 +168,54 @@ export default function SpeakFamily() {
       </View>
 
       <View className="mt-6 gap-3">
+        {/* ⚠️ REPLACED BY THE ARROWS BELOW — 2026-10-15 (author: "replace the
+            Next one you haven't practised: h, comment it out, and replace it
+            with the left / right arrow buttons").
+            Commented, not deleted. Restoring it means uncommenting BOTH this and
+            the `nextOpen` block near the top of the component — they were one
+            feature. Finishing a recording still advances to the next
+            unpractised letter either way: `handleDone` works that out itself.
         {nextOpen >= 0 && nextOpen !== index && (
           <Button onPress={() => choose(nextOpen)}>{`Next one you haven't practised: ${words[nextOpen].hmong}`}</Button>
-        )}
+        )} */}
+
+        {/* ── Prev / next through the family, in the order it is taught ───────
+            The old button jumped to the next UNPRACTISED letter, which meant
+            the destination moved as you worked and going BACK to one you had
+            already done was only possible from the tile grid. Arrows walk the
+            list in order, both ways, so the letter you want is at most a few
+            taps away and never in a surprising place.
+
+            ⚠️ THE ENDS DISABLE RATHER THAN WRAP — the same rule as the text-size
+            stepper: wrapping from the last letter to the first turns "one more
+            tap" into a silent jump across the whole family, which reads as a
+            bug. The tile grid above is how you leap. */}
+        <View className="flex-row items-center gap-3">
+          <Button
+            variant="secondary"
+            className="flex-1"
+            disabled={index === 0}
+            onPress={() => choose(index - 1)}
+          >
+            {`←  ${index > 0 ? words[index - 1].hmong : ''}`}
+          </Button>
+
+          {/* Where you are in the family. Without it the arrows are two buttons
+              with no sense of a list behind them. */}
+          <Text className="text-xs font-medium text-stone-600 w-16 text-center">
+            {index + 1} of {words.length}
+          </Text>
+
+          <Button
+            variant="secondary"
+            className="flex-1"
+            disabled={index === words.length - 1}
+            onPress={() => choose(index + 1)}
+          >
+            {`${index < words.length - 1 ? words[index + 1].hmong : ''}  →`}
+          </Button>
+        </View>
+
         <Button variant="secondary" onPress={() => router.push('/speak')}>Back to Speak</Button>
       </View>
     </TabScreen>

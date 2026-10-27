@@ -1,5 +1,8 @@
-import { View, Text } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
+import { Link } from 'expo-router'
+import Icon from '../ui/Icon.jsx'
 import AudioButton from '../common/AudioButton.jsx'
+import { useVoicePrefs, pickVoice } from '../../lib/voicePrefs.js'
 
 
 // ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
@@ -16,6 +19,8 @@ import AudioButton from '../common/AudioButton.jsx'
 // See the bottom of this file for the original hand-written version (archived)
 // and a detailed changelog of what was wrong and why the fix works.
 export default function ToneRows({ items }) {
+  // Male / Female — 2026-10-25, Emily's Cim names. Was: audioSrc={t.audio}
+  const { voice } = useVoicePrefs()
   return (
     <View className="gap-2">
       {items.map((t) => (
@@ -36,12 +41,25 @@ export default function ToneRows({ items }) {
             <Text className="text-sm font-medium text-stone-700 italic">{t.example2}</Text>
           </View>
 
-          <AudioButton audioSrc={t.audio} wordId={t.name} />
+          <AudioButton audioSrc={pickVoice(t, voice)} wordId={t.name} />
         </View>
       ))}
     </View>
   )
 }
+
+// ⚠️ THE ROW IS NOT THE LINK — 2026-10-14 (author: "there would be another
+// button like 'check out the other tones ->'").
+//
+// The row already holds an audio button, and wrapping the whole row in a Link
+// would put a button inside a button: on a phone the tap goes to whichever React
+// hit-tested first, so "hear the tone" and "open the tone" would fight. The link
+// is its own row underneath instead — see ToneRowsLinked below, which is what
+// the Reference screen renders.
+//
+// Kept as a separate component rather than a prop on ToneRows because the
+// alphabet screen (app/alphabet/[tab].jsx) renders the plain rows and should
+// stay that way until someone decides it needs the links too.
 
 // ─────────────────────────────────────────────────────────────────────────────
 // CHANGELOG — what the first (hand-written) attempt got wrong, and the fix.
@@ -122,3 +140,47 @@ export default function ToneRows({ items }) {
 //         </View>
 //     );
 // }
+
+/**
+ * The tone rows, each followed by a link to that tone on every vowel.
+ *
+ * Renders ToneRows' own row markup rather than reusing the component, because a
+ * row and its link have to sit inside ONE card — a separate card per link would
+ * double the height of the Tones tab.
+ */
+export function ToneRowsLinked({ items }) {
+  // Male / Female — 2026-10-25, Emily's Cim names. Was: audioSrc={t.audio}
+  const { voice } = useVoicePrefs()
+  return (
+    <View className="gap-2">
+      {items.map((t) => (
+        <View key={t.name} className="rounded-md bg-cream-50 overflow-hidden">
+          <View className="flex-row items-center gap-4 p-4">
+            <Text className="w-10 font-serif text-2xl text-clay-700 text-center">
+              {t.marker || '–'}
+            </Text>
+
+            <View className="flex-1">
+              <Text className="font-semibold text-stone-800">{t.name}</Text>
+              <Text className="text-sm font-medium text-stone-600">{t.description}</Text>
+              <Text className="text-sm font-medium text-stone-700 italic">{t.example2}</Text>
+            </View>
+
+            <AudioButton audioSrc={pickVoice(t, voice)} wordId={t.name} />
+          </View>
+
+          {/* The link row. Its own tap target, visually tied to the row above by
+              sharing the card and sitting on a tinted strip. */}
+          <Link href={`/tone/${t.marker || 'mid'}`} asChild>
+            <Pressable className="flex-row items-center justify-between gap-2 px-4 py-3 bg-cream-100 active:bg-cream-200">
+              <Text className="text-sm font-semibold text-clay-700">
+                See “{t.marker || 'no marker'}” on every vowel
+              </Text>
+              <Icon name="arrowRight" size={16} tone="accent" />
+            </Pressable>
+          </Link>
+        </View>
+      ))}
+    </View>
+  )
+}

@@ -179,6 +179,46 @@ export function shuffle(arr) {
 // regardless, flip this to true. This is the ONE line to change.
 export const INCLUDE_UNREVIEWED_AI = false
 
+// ⚠️ THE UNVERIFIED GROUP — 2026-10-25, the author: "bring them back, but i will verify
+// them … still 'seperate' the unverified ones for now". INCLUDE_UNREVIEWED_AI stays
+// false, so NOTHING unreviewed reaches a topic group, a grammar drill, a path unit or
+// mixed review. They come back as ONE group of their own, `UNVERIFIED`, labelled as
+// drafts on every sentence. Reviewing one (deleting its `source: 'ai'`) moves it out of
+// here and into its real topic automatically — no list to maintain.
+export const UNVERIFIED = 'unverified'
+
+export function unverifiedExercises() {
+  // Same rules as allSentenceExercises (dedupe, word-count window), and a sentence a
+  // human entry already uses is never repeated here as a "draft".
+  const seen = new Set(allSentenceExercises().map((ex) => ex.hmong.trim().toLowerCase()))
+  const out = []
+  for (const cat of categories) {
+    if (PATH_ONLY_CATEGORIES.has(cat.id)) continue
+    for (const word of cat.words) {
+      const ex = word.exampleSentence
+      if (!ex?.hmong || !ex?.english || ex.source !== 'ai') continue
+      const key = ex.hmong.trim().toLowerCase()
+      if (seen.has(key)) continue
+      seen.add(key)
+      const tokens = tokenizeSentence(ex.hmong)
+      if (tokens.length < MIN_TOKENS || tokens.length > MAX_TOKENS) continue
+      out.push({
+        id: word.id,
+        hmong: ex.hmong,
+        english: ex.english,
+        tokens,
+        word: word.hmongRPA,
+        // Shown under every sentence in the session ("from … · teaches …"), so the
+        // learner is told each time that this one is a draft.
+        categoryTitle: `${cat.title} (unverified draft)`,
+        categoryId: cat.id,
+        unverified: true,
+      })
+    }
+  }
+  return out
+}
+
 // Every usable exercise in the app, in data order.
 //
 // Deduped by sentence: 13 sentences are attached to more than one entry — the
@@ -721,7 +761,44 @@ export function sentenceHasWord(tokens, words) {
   return tokens.some((t) => t.toLowerCase().split(' ').some((w) => words.includes(w)))
 }
 
-export function exercisesInGroup(groupId, { freeOnly = false } = {}) {
+/**
+ * Review across SEVERAL path units — the "mixed review" the hub offers.
+ *
+ * ⚠️ IT EXISTS BECAUSE `MIXED` BROKE THE PROMISE. Mixed practice is every sentence in the
+ * app, which is exactly what the hub stopped doing on 2026-10-19 (the author: "users
+ * cannot have everything at once, gotta progress to move forward"). A review button that
+ * quietly serves sentences from unit 31 to someone on unit 4 is the old screen wearing a
+ * new label.
+ *
+ * ⚠️ THE UNIT IDS COME FROM THE CALLER, not from here. This file is data: it knows what
+ * exercises exist, never what a learner has finished. The hub derives the list from
+ * pathProgress and passes it in — the same split every other surface uses.
+ */
+export const UNLOCKED_MIXED = 'unlocked'
+
+export function exercisesForUnits(unitIds = []) {
+  const seen = new Set()
+  const out = []
+  for (const id of unitIds) {
+    for (const ex of exercisesInGroup(`path-${id}`)) {
+      // One sentence can sit in two units (a word taught twice), and a review that asks
+      // the same sentence twice in five reads as a bug.
+      if (seen.has(ex.id)) continue
+      seen.add(ex.id)
+      out.push(ex)
+    }
+  }
+  return out
+}
+
+export function exercisesInGroup(groupId, { freeOnly = false, unitIds = null } = {}) {
+  // Scoped review: the pool is the caller's unlocked units and nothing else.
+  if (groupId === UNLOCKED_MIXED) return exercisesForUnits(unitIds || [])
+  // The AI drafts, on their own (2026-10-25). Same Pro/free narrowing as a topic group.
+  if (groupId === UNVERIFIED) {
+    const list = unverifiedExercises()
+    return freeOnly ? list.filter((ex) => isCategoryFree(ex.categoryId)) : list
+  }
   if (String(groupId || '').startsWith('path-')) {
     const unitId = groupId.slice('path-'.length)
     const must = getUnit(unitId)?.sentencesMustInclude
@@ -780,12 +857,23 @@ export function isFundamentalsGroup(groupId) {
  * rule sentenceGroups() applies. Otherwise the group is Pro.
  */
 export function groupOpenFor(groupId, isPro) {
+  // ⚠️ SCOPED REVIEW IS ALWAYS OPEN — 2026-10-19. `UNLOCKED_MIXED` pools the learner's
+  // own completed path units, and those were gated on the way in; charging for a review
+  // of content they have already been through would be charging twice.
+  //
+  // It also has to be special-cased rather than left to the count below, which would ask
+  // `exercisesInGroup('unlocked', { freeOnly: true })` — with no `unitIds` that pool is
+  // EMPTY, so a free learner was shown the Pro upgrade card on their own review. Caught
+  // before it shipped; the empty pool is deliberate (see exercisesForUnits) and this is
+  // the one caller that must not read it as "too little content".
+  if (groupId === UNLOCKED_MIXED) return true
   if (isPro || String(groupId || '').startsWith('path-')) return true
   return exercisesInGroup(groupId, { freeOnly: true }).length >= SESSION_LENGTH
 }
 
 export function sentenceGroupTitle(groupId) {
   if (!groupId || groupId === MIXED) return 'Mixed practice'
+  if (groupId === UNVERIFIED) return 'Unverified sentences'
   if (String(groupId).startsWith('path-')) return getUnit(groupId.slice('path-'.length))?.title || 'Sentence builder'
   if (isGrammarGroup(groupId)) {
     return GRAMMAR_PATTERNS.find((p) => p.id === groupId)?.title || 'Sentence builder'

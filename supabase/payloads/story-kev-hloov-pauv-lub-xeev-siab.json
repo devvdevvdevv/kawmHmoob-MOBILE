@@ -1,0 +1,253 @@
+{
+  "id": "story-kev-hloov-pauv-lub-xeev-siab",
+  "version": 1,
+  "status": "published",
+  "min_app_version": "1.0.0",
+  "title": "Kev Hloov Pauv Ntawm Tib Neeg Lub Xeev Siab Thiab Kev Cuam Tshuam Rau Kev Tsim Kho Lub Zej Zog",
+  "english": "Changes in Human Psychological States and Their Impact on Community Development",
+  "blurb": "Human thought and behavior arise from both inborn traits and life experience, raising major questions about individual choice and community responsibility.",
+  "genre": "society",
+  "level": "advanced",
+  "minutes": 7,
+  "tier": "free",
+  "payload": {
+    "paragraphs": [
+      [
+        {
+          "hmong": "Tib neeg lub xeev siab yog ib yam uas nyuaj kawg nkaus rau cov kws tshawb fawb los nkag siab kom tiav, vim nws muaj ntau txheej ntau theem uas sib cuam tshuam loj heev.",
+          "english": "Human psychological state is something that is extremely difficult for researchers to fully understand, because it has many layers and levels that are deeply interconnected."
+        },
+        {
+          "hmong": "Txij li thaum cov kws tshawb fawb pib tshawb txog lub hlwb tib neeg nyob rau xyoo pua 19, lawv tau pom tias tib neeg txoj kev xav, kev coj cwj pwm, thiab kev tawm tswv yim tsis yog los ntawm ib qho xwb.",
+          "english": "Ever since researchers began studying the human brain in the 19th century, they have observed that human thought, behavior, and independent reasoning do not come from only one source."
+        }
+      ],
+      [
+        {
+          "hmong": "Nws yog qhov tshwm sim los ntawm kev sib xyaw ntawm yam uas yug los nrog thiab yam uas ib tus neeg tau ntsib thiab kawm los hauv nws lub neej.",
+          "english": "They are the result of a combination of what a person is born with and what that person encounters and learns during life."
+        },
+        {
+          "hmong": "Qhov no tau ua rau cov kws txawj ntse sib cav hnyav tias puas yog ib tus neeg txoj kev xav thiab nws txoj kev coj ua yog yam uas nws xaiv tau, lossis puas yog nws raug txiav txim los ntawm yam uas nws tsis muaj peev xwm tswj tau.",
+          "english": "This has led intellectuals to debate intensely whether a person’s thoughts and behavior are things they can choose, or whether they are determined by things beyond their ability to control."
+        }
+      ],
+      [
+        {
+          "hmong": "Qhov uas ua rau qhov no tseem ceeb tshaj yog thaum peb los xam txog seb kev hloov pauv lub xeev siab cuam tshuam li cas rau kev tsim kho lub zej zog.",
+          "english": "What makes this especially important is considering how changes in psychological state affect the development of communities."
+        },
+        {
+          "hmong": "Yog tias tib neeg txoj kev coj ua tuaj yeem hloov tau los ntawm kev kawm thiab kev sib cuam tshuam nrog ib puag ncig, ces lub zej zog muaj lub luag haujlwm loj heev los tsim ib lub ib puag ncig uas txhawb nqa txoj kev xav zoo thiab kev coj cwj pwm muaj txiaj ntsig.",
+          "english": "If human behavior can be changed through learning and interaction with the environment, then the community has a great responsibility to create an environment that nurtures positive thinking and beneficial behavior."
+        }
+      ],
+      [
+        {
+          "hmong": "Tiamsis, yog tias feem ntau ntawm tib neeg txoj kev coj ua yog raug txiav txim los ntawm yam nws yug los nrog, ces cov thawj coj hauv zej zog yuav tsum rov xav dua txog lawv txoj hau kev los pab cov neeg uas raug kev nyuaj siab los ntawm lawv tus kheej lub xeev siab.",
+          "english": "However, if most human behavior is determined by what a person is born with, then community leaders must reconsider their approach to helping people who suffer difficulties because of their own psychological state."
+        },
+        {
+          "hmong": "Txoj lus nug no tseem nyob qhib rau kev tshawb fawb ntxiv, tiamsis nws twb tau hloov pauv txoj kev uas peb saib thiab nkag siab txog tib neeg lub neej thiab lub zej zog ib nkag lawm.",
+          "english": "This question remains open for further research, but it has already changed the way we view and understand human life and society as a whole."
+        }
+      ]
+    ],
+    "glossary": [
+      {
+        "hmong": "lub xeev siab",
+        "english": "psychological state; mental condition; emotional disposition"
+      },
+      {
+        "hmong": "kev hloov pauv",
+        "english": "change; transformation; shift from one condition to another"
+      },
+      {
+        "hmong": "kev cuam tshuam",
+        "english": "impact; influence; interaction; effect on something else"
+      },
+      {
+        "hmong": "kev tsim kho",
+        "english": "development; building; improvement"
+      },
+      {
+        "hmong": "zej zog",
+        "english": "community; society; local collective"
+      },
+      {
+        "hmong": "txheej ntau theem",
+        "english": "many layers; multiple levels; complex parts"
+      },
+      {
+        "hmong": "sib cuam tshuam",
+        "english": "to interact; to be interconnected; to affect one another"
+      },
+      {
+        "hmong": "kws tshawb fawb",
+        "english": "researcher; scientist"
+      },
+      {
+        "hmong": "lub hlwb",
+        "english": "brain; mind"
+      },
+      {
+        "hmong": "txoj kev xav",
+        "english": "thought; way of thinking; beliefs"
+      },
+      {
+        "hmong": "kev coj cwj pwm",
+        "english": "behavior; manner of acting; conduct"
+      },
+      {
+        "hmong": "kev tawm tswv yim",
+        "english": "independent reasoning; forming and expressing one’s views or opinions"
+      },
+      {
+        "hmong": "kev sib xyaw",
+        "english": "combination; mixture; blending together"
+      },
+      {
+        "hmong": "yam uas yug los nrog",
+        "english": "what one is born with; inborn traits; nature"
+      },
+      {
+        "hmong": "kws txawj ntse",
+        "english": "intellectuals; learned or knowledgeable people"
+      },
+      {
+        "hmong": "sib cav hnyav",
+        "english": "to debate intensely; to argue seriously"
+      },
+      {
+        "hmong": "txiav txim",
+        "english": "to determine; decide; judge; establish an outcome"
+      },
+      {
+        "hmong": "muaj peev xwm",
+        "english": "to have the ability; to be capable; to have power to do something"
+      },
+      {
+        "hmong": "ib puag ncig",
+        "english": "environment; surroundings; conditions around a person"
+      },
+      {
+        "hmong": "txhawb nqa",
+        "english": "to nurture; support; encourage; uplift"
+      },
+      {
+        "hmong": "muaj txiaj ntsig",
+        "english": "beneficial; valuable; useful; worthwhile"
+      },
+      {
+        "hmong": "thawj coj",
+        "english": "leader; person in charge"
+      },
+      {
+        "hmong": "rov xav dua",
+        "english": "to reconsider; to think again; to reassess"
+      },
+      {
+        "hmong": "txoj hau kev",
+        "english": "approach; method; path; way of doing something"
+      },
+      {
+        "hmong": "raug kev nyuaj siab",
+        "english": "to experience hardship, distress, or difficulty"
+      },
+      {
+        "hmong": "tseem nyob qhib",
+        "english": "still open; not yet settled or answered"
+      },
+      {
+        "hmong": "ib nkag",
+        "english": "as a whole; in its entirety"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q-xeev-siab-1",
+        "prompt": "Vim li cas tib neeg lub xeev siab thiaj nyuaj rau cov kws tshawb fawb nkag siab? — Why is human psychological state difficult for researchers to understand?",
+        "options": [
+          "It has many deeply interconnected layers and levels",
+          "It comes from only one simple source",
+          "It never changes during life",
+          "It only concerns physical strength"
+        ],
+        "answer": "It has many deeply interconnected layers and levels",
+        "because": "Paragraph 1 — “Nws muaj ntau txheej ntau theem uas sib cuam tshuam loj heev.”"
+      },
+      {
+        "id": "q-xeev-siab-2",
+        "prompt": "Cov kws tshawb fawb tau pib tshawb txog lub hlwb tib neeg thaum twg? — When did researchers begin studying the human brain?",
+        "options": [
+          "In the 19th century",
+          "In the 15th century",
+          "In the 21st century",
+          "Only after the year 2000"
+        ],
+        "answer": "In the 19th century",
+        "because": "Paragraph 1 — “Cov kws tshawb fawb pib tshawb txog lub hlwb tib neeg nyob rau xyoo pua 19.”"
+      },
+      {
+        "id": "q-xeev-siab-3",
+        "prompt": "Tib neeg txoj kev xav thiab kev coj cwj pwm yog los ntawm dab tsi? — What do human thought and behavior result from?",
+        "options": [
+          "A combination of inborn traits and life experiences",
+          "Only what a person is born with",
+          "Only one person’s opinions",
+          "Only the place where someone lives"
+        ],
+        "answer": "A combination of inborn traits and life experiences",
+        "because": "Paragraph 2 — “Kev sib xyaw ntawm yam uas yug los nrog thiab yam uas ib tus neeg tau ntsib thiab kawm los hauv nws lub neej.”"
+      },
+      {
+        "id": "q-xeev-siab-4",
+        "prompt": "Cov kws txawj ntse sib cav txog dab tsi? — What do intellectuals debate about?",
+        "options": [
+          "Whether people choose their behavior or whether it is determined beyond their control",
+          "Whether hospitals should be built in forests",
+          "Whether people should stop learning",
+          "Whether communities should have leaders"
+        ],
+        "answer": "Whether people choose their behavior or whether it is determined beyond their control",
+        "because": "Paragraph 2 — “Puas yog ib tus neeg txoj kev xav thiab nws txoj kev coj ua yog yam uas nws xaiv tau, lossis puas yog nws raug txiav txim los ntawm yam uas nws tsis muaj peev xwm tswj tau.”"
+      },
+      {
+        "id": "q-xeev-siab-5",
+        "prompt": "Yog tib neeg txoj kev coj ua hloov tau los ntawm kev kawm, lub zej zog muaj lub luag haujlwm dab tsi? — If behavior can change through learning, what responsibility does the community have?",
+        "options": [
+          "To create an environment that supports positive thinking and beneficial behavior",
+          "To stop people from learning",
+          "To ignore people who need help",
+          "To decide every person’s thoughts for them"
+        ],
+        "answer": "To create an environment that supports positive thinking and beneficial behavior",
+        "because": "Paragraph 3 — “Lub zej zog muaj lub luag haujlwm loj heev los tsim ib lub ib puag ncig uas txhawb nqa txoj kev xav zoo thiab kev coj cwj pwm muaj txiaj ntsig.”"
+      },
+      {
+        "id": "q-xeev-siab-6",
+        "prompt": "Yog kev coj cwj pwm feem ntau raug txiav txim los ntawm yam yug los nrog, cov thawj coj yuav tsum ua dab tsi? — If behavior is mostly determined by inborn traits, what should community leaders do?",
+        "options": [
+          "Reconsider their approach to helping people who are struggling",
+          "Stop supporting the community",
+          "Prevent people from receiving help",
+          "Ignore psychological difficulties"
+        ],
+        "answer": "Reconsider their approach to helping people who are struggling",
+        "because": "Paragraph 4 — “Cov thawj coj hauv zej zog yuav tsum rov xav dua txog lawv txoj hau kev los pab cov neeg uas raug kev nyuaj siab.”"
+      },
+      {
+        "id": "q-xeev-siab-7",
+        "prompt": "Txoj lus nug txog kev xaiv thiab yam yug los nrog puas tau muaj lus teb kawg lawm? — Has the question about choice and inborn traits been fully answered?",
+        "options": [
+          "No, it remains open for further research",
+          "Yes, it was fully answered in the 19th century",
+          "Yes, only community leaders can answer it",
+          "No, because human behavior does not exist"
+        ],
+        "answer": "No, it remains open for further research",
+        "because": "Paragraph 4 — “Txoj lus nug no tseem nyob qhib rau kev tshawb fawb ntxiv.”"
+      }
+    ]
+  }
+}

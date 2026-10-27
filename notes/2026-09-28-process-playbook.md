@@ -22,6 +22,9 @@ Examples: "NO yog before a describing word", "hu alone when asking", "rau is con
 5. **Save to memory any rule that has flipped, or could flip**, e.g.
    `hmong-no-yog-before-adjective`. The yog rule went GPT → softened → restored in one day.
 6. **Log it** in the day's note under its own heading, quoting the author.
+7. **Changelog (section 9)?** Usually NO — a ruling changes what the app teaches, not what
+   a learner can see it do. The exception is a ruling that visibly rewrites content they
+   have already studied.
 
 ## 2. Adding a new path unit
 1. **Set (vocabulary.js).**
@@ -49,6 +52,8 @@ Examples: "NO yog before a describing word", "hu alone when asking", "rau is con
 6. **Counts.** Update the TODO "unreviewed" count to the exact number; check-notes compares it
    to the data.
 7. **Verify.** Run every check (section 8), then `stepAvailability` for the new unit.
+8. **Changelog (section 9)** — only if a learner would notice. A new unit usually counts;
+   a word moved between sets usually does not.
 
 ## 3. GPT sentence batches (the 7-per-unit sentences)
 1. **Write the prompt with every settled rule in it.** Ask for JSON as
@@ -117,3 +122,34 @@ Examples: "NO yog before a describing word", "hu alone when asking", "rau is con
 `check-lesson-audio`, `check-theme`, `check-sense-pins`, `check-notes`, `check-scoring`.
 `check-path` can end on a warning; read its PROBLEMS block. Then rebuild the index with
 `node scripts/build-notes-index.mjs`.
+
+## 9. The changelog (`src/data/changelog.js`)
+The learner-facing history, shown at **About → What's new** (added 2026-10-19). A note is
+for the author; an entry here is for the person using the app.
+
+**The test, and it is the whole of it: WOULD A LEARNER NOTICE?**
+
+| add an entry | do not |
+|---|---|
+| a new unit, module, drill or screen | a word moved between sets |
+| a bug they could have hit (audio dying, a dead tap) | a refactor, a comment, a checker |
+| a price change, or something becoming free | a grammar ruling (section 1) unless it visibly rewrites what they studied |
+| audio or content arriving in bulk | a placeholder lesson replaced by a real one of the same shape |
+
+**How:** one object at the TOP of the newest period's `items` —
+`{ kind: 'new' | 'better' | 'fixed', title, body }`. Nothing else to touch: the screen
+renders whatever is in the array.
+
+⚠️ **PERIODS, NOT VERSION NUMBERS.** The app has carried 1.0.0 since 2026-09-30 while
+content shipped weekly, so only a real release gets a `version` (it renders as a badge).
+Work since then goes in the current period, which says it is in development.
+
+⚠️ **THE TWO RULES IN THAT FILE'S HEADER ARE NOT STYLE:**
+1. **Never claim every word or clip was made by a person.** AI-written example sentences
+   ship before a speaker reviews them (2026-09-21) — which is why that claim was removed
+   from the paywall and About. A changelog is the easiest place for it to creep back.
+2. **No dates for things that have not happened.** "Coming soon" is the sentence a store
+   reviewer holds you to.
+
+⚠️ **KEEP THE FIXES IN.** A changelog of features only reads like marketing; the fixed
+entries are what tell a tester their report went somewhere.

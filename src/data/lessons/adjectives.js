@@ -1,132 +1,351 @@
-// Standalone lesson: describing words (adjectives) in Hmong.
-//
-// ⚠️ REWRITTEN 2026-09-27 for path unit u-adjectives (Describing Words); still also the
-// intro of Colors & Describing. The old placeholder scaffold is kept, commented, at
-// the bottom of this file.
-//   • THE AUTHOR'S RULE: the noun comes first and the adjective after it — neeg zoo is
-//     literally "person good", a good person — with no exceptions in normal use. An
-//     adjective in front is rare and changes the meaning substantially, into a title:
-//     "tus laus neeg" (the elder) vs "neeg laus" (an old person).
-//   • The rest from the GPT pass, checked against the app's rules (tus dev → tus aub):
-//     no yog before an adjective; classifier + noun + adjective + demonstrative; heev /
-//     kawg / kawg nkaus / tiag tiag; dhau (too); dua / tshaj (more / most); doubling;
-//     feelings with siab; tsis / puas before the adjective; common mistakes.
-//   • A person's physical state takes nyob ("kuv nyob kub", the author) — pointed to the
-//     Yog & Nyob lesson.
-// vocab: the new `adjective-grammar` pattern set (was `descriptions`).
+/* Standalone lesson: describing words (adjectives) in Hmong. */
 
 export const adjectives = {
   id: 'grammar-adjectives',
   title: 'Adjectives | Describing Words',
-  // Softened 2026-09-28 (author: yog before a describing word = a statement with emphasis). Was: 'Noun first, then the adjective — neeg zoo, a good person — and no yog in front of it.'
-  // Was (same day): 'Noun first, then the adjective — neeg zoo, a good person. Add yog to make it a statement: tsev yog loj.'
-  summary: 'Noun first, then the adjective — neeg zoo, a good person — and no yog in front of it.',
+  summary: 'Learn how Hmong describes people and things, where adjectives go, and how to say very big, too hot, bigger, and more.',
   vocab: 'adjective-grammar',
+  reference: 'grammar',
   steps: [
     {
       id: 'grammar-adjectives-intro',
       kind: 'intro',
       title: 'Describing things',
       body: [
-        'Adjectives are the describing words: big, small, new, old, good, bad. They work differently in Hmong than in English in two big ways, and both are worth learning before the words themselves.',
-        '## Noun first, then the adjective',
-        'In Hmong the noun always comes first and the adjective after it. Word for word, “neeg zoo” is “person good”, and it means a good person.',
+        'Adjectives are words that describe people, places, and things: big, small, good, bad, young, old, hot, and cold.',
+        'The main difference from English is word order. In a normal descriptive phrase, Hmong puts the noun first and the adjective after it. Adjectives can also work as the main description in a sentence, without a separate word for “is”.',
+        '## 1. Noun first, then the adjective',
+        'English says “a big house”. Hmong puts the thing first, then tells you what it is like.',
         '> neeg zoo — a good person (literally “person good”)',
-        '> tsev loj — a big house',
-        '> Nws yog tus neeg hluas. — He is a young person.',
-        'Very rarely, an adjective comes before the noun, and when it does the meaning changes a lot: it becomes a title.',
-        '> Kuv niamtais yog tus laus neeg. — My grandmother is the elder. (a title)',
-        '> tus neeg laus — an old person (just a description)',
-        // Softened 2026-09-28 (author: yog before a describing word = a statement with emphasis). Was: 
-        // '## The adjective is the verb: no yog',
-        // 'A describing word works as a verb on its own. There is no yog (“is”) in front of it.',
-        '## The adjective is the verb: no yog',  // "no yog" restored 2026-09-28 (author)
-        'A describing word works as a verb on its own. There is no yog (“is”) in front of it: Nws zoo heev, never Nws yog zoo heev.',
-        '> Hnub no kub heev. — It is very hot today. (literally “today hot very”)',
+        '> tsev loj — a big house (literally “house big”)',
+        '> tus neeg hluas — a young person',
+        '> tus neeg laus — an old person',
+        'When a classifier is used, it comes before the noun. The adjective follows the noun:',
+        '> tus aub me — a small dog',
+        '> lub tsev loj — a big house',
+        '> lub tsheb tshiab — a new car',
+        'Learn the order as a phrase instead of translating each English word into the same position.',
+        '## 2. Noun + adjective — no “to be”, no **"yog"**',
+        'A describing word acts as the main verb of the sentence. There is no “to be” in this pattern at all — no **"yog"**, and nothing standing in for English “is”, “am” or “are”. The adjective itself is what the sentence says about the noun.',
+        '> Hnub no kub heev. — It is very hot today.',
         '> Lub tsev no loj. — This house is big.',
         '> Tus aub ntawd me. — That dog is small.',
-        // Added 2026-09-28 (author).
-        // ⚠️ NO YOG BEFORE A DESCRIBING WORD — the author, 2026-09-28 (emphatic): Nws zoo heev ✓, Nws yog zoo heev ✗. This reverses the same-day "through yog" softening. Was:
-        // 'You can also say it through yog: Tsev yog loj, the house is big. It means the same, but as a statement, with more emphasis on the description. Koj yog ib tug neeg zoo, you are a good person. See the Yog lesson.',
-        'Yog only comes in with a noun after it, and the describing word then sits inside that noun: Koj yog ib tug neeg zoo, you are a good person. See the Yog lesson.',
-        // Was: ' … See Yog & Nyob.' — the lessons split 2026-09-28.
-        'For how a PERSON feels physically (hot, cold, sick), use nyob: Kuv nyob kub, I am hot. See the Nyob lesson.',
-        '## In a full phrase: classifier + noun + adjective + no',
-        'The pointing word (no, ko, ntawd) still comes last, after the adjective:',
-        '> lub tsev loj no — this big house',
-        '> tus aub me ntawd — that small dog',
-        '> Kuv nyiam lub tsheb tshiab no. — I like this new car.',
-        '## Stronger: heev, kawg, tiag tiag',
-        'These all go AFTER the adjective. Heev is “very”, kawg is “extremely”, kawg nkaus is stronger still, and tiag tiag is “really, truly”.',
+        'English cannot say “This house big”, so it inserts “is”. Hmong inserts nothing: the noun, then the describing word, and the sentence is complete. Do not reach for **"yog"**, and do not reach for **"nyob"** either — neither belongs in front of a describing word here.',
+        '> ✓ Nws zoo heev. — He, she, or it is very good.',
+        '> ✗ Nws yog zoo heev. — Avoid this pattern for the intended meaning.',
+        '**"Yog"** is still useful when linking a person or thing to a noun or category. For example:',
+        '> Koj yog ib tug neeg zoo. — You are a good person.',
+        'Here, **"yog"** links “koj” to the noun phrase “ib tug neeg zoo”. The adjective **"zoo"** describes the noun **"neeg"**; it does not follow **"yog"** directly.',
+        'For the difference between **"yog"** and other ways of expressing “to be”, see the Yog lesson.',
+        '## 3. An adjective before a noun can change the meaning',
+        'The normal descriptive order is noun + adjective. Some expressions put the describing word before the noun, but do not assume that reversing the order always means the same thing.',
+        '> tus neeg laus — an old person',
+        '> tus laus neeg — the elder (a title in the usage taught here)',
+        'The second expression is not simply the normal phrase with the words swapped. Learn it as a distinct expression, and check the context when you meet this less common order.',
+        // ── ⚠️ SECTION 4 REWRITTEN FROM THE AUTHOR'S TEXT — 2026-10-21 ────────
+        //
+        // Author: *"add this additional part to adjectives, integrate it"*, with a
+        // much fuller treatment of where `no` goes.
+        //
+        // ⚠️ INTEGRATED, NOT APPENDED. The lesson already had this section with
+        // the same two subsections and the same examples, so pasting the new text
+        // in would have taught the contrast twice in a row. The author's
+        // explanation replaces the old one; what the old version had and theirs
+        // did not is folded in:
+        //   · `tus aub me ntawd` — the same pattern with `ntawd`, not just `no`
+        //   · `Kuv nyeem kuv tsev loj no` as the naming phrase INSIDE a sentence
+        //   · the "`no` stands alone" subsection and its `No yog kuv niam`
+        //   · the pointer to the Demonstratives lesson
+        //
+        // ⚠️ THE TWO MARKDOWN TABLES BECAME EXAMPLE PAIRS. IntroBody has no table
+        // renderer (it knows '## ', '### ', '> ' and '---'), so each row is a '> '
+        // line with the "what are you doing?" column written into the gloss. The
+        // side-by-side reading survives; the grid does not.
+        //
+        // ⚠️ "You do not need to add yog" IS THE AUTHOR'S SETTLED RULE (2026-09-28,
+        // and section 2 of this lesson). Kept where their text puts it.
+        '## 4. Where **"no"** goes: naming something or describing it',
+
+        'This is one of the most important contrasts in the lesson, and it is easier than it looks. You only need to ask yourself one question:',
+
+        '**Are you naming something, or are you saying something about it?**',
+
+        '### 1. Adjective + **"no"** = naming the thing',
+
+        'When **"no"** comes AFTER the adjective, you are pointing to a thing and telling someone which one you mean. Think of it as putting a label on something: “this big house.”',
+
+        '> lub tsev loj no — this big house (tsev = house, loj = big, no = this)',
+
+        'You are naming a house. You are not saying what the house is like yet.',
+
+        'More examples:',
+
+        '> lub tsev tshiab no — this new house',
+
+        '> tus aub me no — this small dog',
+
+        '> tus aub me ntawd — that small dog (the same pattern with **"ntawd"**, that)',
+
+        '> kuv tsev loj no — this big house of mine',
+
+        '> Kuv nyiam kuv tsev loj no. — I like this big house of mine. (the naming phrase inside a sentence)',
+
+        '**Remember:** adjective first, then **"no"**. You are pointing out *which thing*.',
+
+        '### 2. **"No"** + adjective = describing the thing',
+
+        'When **"no"** comes BEFORE the adjective, you are saying something about the thing. Think of it as pointing at something and then telling someone about it: “This house is big.”',
+
+        '> Kuv tsev no loj. — This house of mine is big. (kuv tsev = my house, no = this, loj = big)',
+
+        'You have already told us which house you mean: “this house of mine”. Now you tell us about it: it is big.',
+
+        'More examples:',
+
+        '> Lub tsev no loj. — This house is big.',
+
+        '> Tus aub no me. — This dog is small.',
+
+        '> Lub tsheb no tshiab. — This car is new.',
+
+        '**Remember:** noun first, then **"no"**, then the adjective. You are saying *what the thing is like*.',
+
+        '### 3. Put them side by side',
+
+        'Look at these two pairs. The only thing that changes is where **"no"** goes.',
+
+        '> kuv tsev loj no — this big house of mine (naming the house)',
+
+        '> Kuv tsev no loj. — This house of mine is big. (describing the house)',
+
+        '> lub tsev loj no — this big house (naming the house)',
+
+        '> Lub tsev no loj. — This house is big. (describing the house)',
+
+        'Say the difference out loud: adjective + **"no"** answers “Which thing?” — this big house. **"No"** + adjective answers “What about it?” — this house is big.',
+
+        '### 4. A simple way to remember',
+
+        'Imagine you are pointing at a house. If you say “this big house,” you are identifying the house, so **"no"** goes at the end:',
+
+        '> lub tsev loj no',
+
+        'If you say “this house is big,” you are making a statement about the house, so **"no"** goes before the adjective:',
+
+        '> Lub tsev no loj.',
+
+        'You do not need to add **"yog"** between **"no"** and the adjective. In this pattern, the adjective itself tells us what the house is like.',
+
+        '### 5. Quick check',
+
+        'Which one means “this small dog”?',
+
+        '> tus aub me no',
+
+        'Which one means “this dog is small”?',
+
+        '> Tus aub no me.',
+
+        'The first names the dog. The second describes the dog.',
+
+        'One final rule to remember:',
+
+        '> Adjective + **"no"** = “this [describing word] thing.”',
+
+        '> **"No"** + adjective = “this thing is [describing word].”',
+
+        '### When **"no"** stands alone',
+
+        '**"No"** can also mean “this” or “this one” by itself. When it introduces a noun as the identification, **"yog"** can appear:',
+
+        '> No yog kuv niam. — This is my mother.',
+
+        'Here, **"no"** stands for “this”, and **"kuv niam"** is the noun phrase that identifies it.',
+
+        'See the Demonstratives lesson for **"no"**, **"ko"**, **"ntawd"**, and **"qhov no"**.',
+        '## 5. Possessors go before the noun',
+        '**"Kuv"**, **"koj"**, and **"nws"** can identify whose thing you mean. They go before the noun phrase.',
+        '> kuv niam no — this mother of mine',
+        '> kuv tsev loj no — this big house of mine',
+        '> koj tus aub me ntawd — that small dog of yours',
+        'Do not confuse possession with the position of no. The possessor comes first; the noun and adjective follow; the pointing word comes at the end of the noun phrase.',
+        '## 6. Make an adjective stronger: **"Heev"**, **"Kawg"**, and **"Tiag tiag"**',
+        'These expressions come after the adjective. They strengthen the description, but they do not all mean exactly the same thing.',
+        '- **"Heev"** — very',
+        '- **"Kawg"** — extremely; very much, depending on the expression',
+        '- **"Kawg nkaus"** — an especially strong form of “extremely”',
+        '- **"Tiag tiag"** — really, truly',
         '> Lub tsev no loj heev. — This house is very big.',
         '> Lub tsev no loj kawg. — This house is extremely big.',
-        '> Nws zoo tiag tiag. — It is really good.',
-        '## Too: dhau',
-        'Dhau after an adjective means too, more than you want. Heev only makes it stronger; dhau says it is too much.',
+        '> Nws zoo tiag tiag. — He, she, or it is really good.',
+        'The basic pattern is adjective + intensifier. Do not put **"heev"** before the adjective in these examples.',
+        '## 7. Too much: **"dhau"**',
+        '**"Heev"** makes a quality stronger. **"Dhau"** means that the quality goes beyond what is wanted or acceptable: “too”.',
         '> Kas fes kub dhau. — The coffee is too hot.',
         '> Lub hnab no hnyav dhau. — This bag is too heavy.',
-        '## More and most: dua, tshaj',
+        'Compare the meanings:',
+        '> kub heev — very hot',
+        '> kub dhau — too hot',
+        'Something can be very hot without being too hot. **"Dhau"** adds the idea that it is more than is wanted.',
+        '## 8. Comparing things: **"dua"** and **"tshaj"**',
+        'Use **"dua"** for a comparative meaning such as “bigger” or “longer”. Use **"tshaj"** for a superlative meaning such as “biggest” or “longest” in the patterns below.',
         '> Tus noog no loj dua. — This bird is bigger.',
         '> Tus noog no loj dua tus ntawd. — This bird is bigger than that one.',
         '> Tus noog no loj tshaj. — This bird is the biggest.',
-        '## Doubled for extra strength',
-        'Some adjectives can be said twice to make them stronger, but not every adjective does this:',
+        'The comparison can stand without naming the other thing when the context already makes the comparison clear. Add the comparison target when you need to say what something is bigger or better than.',
+        'Do not normally combine **"tshaj"** and **"dua"** in the same superlative expression in this pattern:',
+        '> ✗ Tus noog no loj tshaj dua.',
+        '> ✓ Tus noog no loj tshaj. — This bird is the biggest.',
+        'Learn **"dua"** and **"tshaj"** as different comparison patterns: “more than” versus “the most”.',
+        '## 9. Some adjectives can be repeated',
+        'Some describing words can be doubled for emphasis. This is not a rule that applies to every adjective, so learn the repeated forms you actually hear.',
         '> Lub paj no liab liab. — This flower is very red.',
-        '## Feelings with siab',
-        'Many feeling words are built with siab (heart, literally the liver). Watch the order: it changes the meaning.',
-        '> zoo siab — happy · nyuaj siab — sad, troubled · chim siab — upset, angry',
+        'Here, **"liab"** means “red”. Repeating it strengthens the description.',
+        'Do not automatically double every adjective to make it stronger. Use familiar examples and check unfamiliar ones with a fluent speaker.',
+        '## 10. Feelings with **"siab"**',
+        'Hmong uses **"siab"** in many expressions about feelings and character. The order of the words matters: **"zoo siab"** and **"siab zoo"** do not mean the same thing.',
+        '> zoo siab — happy',
+        '> nyuaj siab — sad, troubled, or distressed',
+        '> chim siab — upset or angry',
+        '> siab zoo — kind, good-hearted',
         '> Kuv zoo siab heev. — I am very happy.',
-        '> siab zoo — kind, good-hearted (siab first!)',
-        '## Not, and asking',
-        'Tsis (not) and puas (the yes/no question word) go right before the adjective:',
+        'In **"zoo siab"**, the phrase describes a feeling. In **"siab zoo"**, the order describes a person’s character. Learn each expression as a phrase rather than moving the words around freely.',
+        '## 11. Hot, cold, and physical states',
+        'Adjectives such as **"kub"** (hot) and **"txias"** (cold) describe temperature. When talking about how a person physically feels, the lesson’s target pattern uses **"nyob"**.',
+        '> Kuv nyob kub. — I am hot.',
+        'This is a useful distinction to compare with the general adjective pattern. For more on how **"nyob"** describes a state or condition, see the Yog & Nyob lesson.',
+        '## 12. Make a description negative or ask about it',
+        '**"Tsis"** makes a description negative. **"Puas"** forms a yes/no question. In these examples, both come before the adjective.',
         '> Lub tsev no tsis loj. — This house is not big.',
+        '> Hnub no tsis kub. — It is not hot today.',
         '> Hnub no puas kub? — Is it hot today?',
+        'Compare the three sentences:',
+        '> Hnub no kub. — It is hot today.',
+        '> Hnub no tsis kub. — It is not hot today.',
+        '> Hnub no puas kub? — Is it hot today?',
+        'The adjective **"kub"** stays in place. **"Tsis"** makes the statement negative; **"puas"** turns it into a question.',
+        'For more about **"tsis"** and negative answers, see the Tsis lesson.',
         '## Common mistakes',
-        // Softened 2026-09-28 (author: yog before a describing word = a statement with emphasis). Was: 
-        // '> ✗ Hnub no yog kub heev. → ✓ Hnub no kub heev. (no yog)',
-        // Restored 2026-09-28 (author).
-        '> ✗ Hnub no yog kub heev. → ✓ Hnub no kub heev. (no yog)',
-        '> ✗ lub tsev no heev loj → ✓ lub tsev loj heev no (adjective, then heev, then no)',
-        '> ✗ Tus noog no loj tshaj dua. → ✓ Tus noog no loj tshaj. (tshaj is already “most”)',
-        '## An easy way to remember',
-        '> noun + adjective → neeg zoo, a good person',
-        '> classifier + noun + adjective + no → lub tsev loj no, this big house',
-        '> adjective + heev / kawg / tiag tiag → very / extremely / really',
-        '> adjective + dhau → too',
-        '> adjective + dua / tshaj → more / most',
-        '> tsis / puas + adjective → not / is it…?',
+        '> ✗ Hnub no yog kub heev.',
+        '> ✓ Hnub no kub heev. — It is very hot today.',
+        'In this lesson’s adjective pattern, do not put **"yog"** — or anything else standing in for “to be” — directly before the adjective.',
+        '> ✗ lub tsev no heev loj',
+        '> ✓ lub tsev no loj heev. — This house is very big.',
+        '**"Heev"** follows the adjective. In a noun phrase ending with **"no"**, the order is adjective + **"no"**: **"lub tsev loj heev no"**, “this very big house”.',
+        '> ✗ Tus noog no loj tshaj dua.',
+        '> ✓ Tus noog no loj tshaj. — This bird is the biggest.',
+        'Do not add **"dua"** to the superlative pattern taught here.',
+        '## Quick reference',
+        '> Noun + adjective → neeg zoo — a good person',
+        '> Classifier + noun + adjective → tus aub me — a small dog',
+        '> Noun + adjective + no → lub tsev loj no — this big house',
+        '> Noun + no + adjective → Lub tsev no loj. — This house is big.',
+        '> Adjective + heev → loj heev — very big',
+        '> Adjective + dhau → kub dhau — too hot',
+        '> Adjective + dua → loj dua — bigger',
+        '> Adjective + tshaj → loj tshaj — biggest',
+        '> Tsis / puas + adjective → tsis loj / puas loj? — not big / is it big?',
+        'Start with the basic order, then practise adding no, an intensifier, or **"tsis"**. Once those patterns feel familiar, comparisons and longer descriptions become easier to build.',
       ],
     },
     {
       id: 'grammar-adjectives-examples',
       kind: 'examples',
       title: 'Opposites',
-      intro: 'Many describing words come in pairs. Read each one aloud.',
+      intro: 'Learn these pairs together. Notice that some English words depend on whether you are describing a person or a thing.',
       items: [
-        { hmong: 'Loj · Me', english: 'big · small' },
+        { hmong: 'Loj · Me', english: 'big · small', note: 'Often also used in age or seniority expressions; context matters.' },
         { hmong: 'Zoo · Phem', english: 'good · bad' },
-        { hmong: 'Tshiab · Qub', english: 'new · old (things)' },
+        { hmong: 'Tshiab · Qub', english: 'new · old (especially things)' },
         { hmong: 'Hluas · Laus', english: 'young · old (people)' },
-        { hmong: 'Kub · Txias', english: 'hot · cool' },
+        { hmong: 'Kub · Txias', english: 'hot · cold or cool, depending on context' },
         { hmong: 'Ntev · Luv', english: 'long · short' },
       ],
     },
     {
-      // New step id (2026-09-27) — no existing progress key is reused.
       id: 'grammar-adjectives-sentences',
       kind: 'examples',
       title: 'Describing in sentences',
-      intro: 'Noun first, then the describing word. Read them aloud.',
+      intro: 'Read each example aloud. Pay attention to the adjective and the words around it.',
       items: [
-        { hmong: 'Nws yog tus neeg hluas.', english: 'He is a young person.', note: 'noun + adjective' },
-        { hmong: 'Lub tsev no loj heev.', english: 'This house is very big.', note: 'heev after the adjective' },
-        { hmong: 'Kuv nyiam lub tsheb tshiab no.', english: 'I like this new car.', note: 'classifier + noun + adjective + no' },
-        { hmong: 'Kas fes kub dhau.', english: 'The coffee is too hot.', note: 'dhau: too' },
-        { hmong: 'Tus noog no loj tshaj.', english: 'This bird is the biggest.', note: 'tshaj: most' },
-        { hmong: 'Kuv zoo siab heev.', english: 'I am very happy.', note: 'a feeling with siab' },
-        { hmong: 'Lub tsev no tsis loj.', english: 'This house is not big.', note: 'tsis before the adjective' },
-        { hmong: 'Kuv niamtais yog tus laus neeg.', english: 'My grandmother is the elder.', note: 'adjective first: a title' },
+        {
+          hmong: 'Nws yog tus neeg hluas.',
+          english: 'He or she is a young person.',
+          note: '**"Yog"** links the subject to a noun phrase; **"hluas"** describes **"neeg"**.'
+        },
+        {
+          hmong: 'Lub tsev no loj heev.',
+          english: 'This house is very big.',
+          note: 'No comes before the predicate adjective; **"heev"** follows **"loj"**.'
+        },
+        {
+          hmong: 'Kuv nyiam lub tsheb tshiab no.',
+          english: 'I like this new car.',
+          note: 'The noun phrase ends with the pointing word no.'
+        },
+        {
+          hmong: 'Kas fes kub dhau.',
+          english: 'The coffee is too hot.',
+          note: '**"Dhau"** means “too” in this pattern.'
+        },
+        {
+          hmong: 'Tus noog no loj tshaj.',
+          english: 'This bird is the biggest.',
+          note: '**"Tshaj"** marks the superlative pattern taught here.'
+        },
+        {
+          hmong: 'Kuv zoo siab heev.',
+          english: 'I am very happy.',
+          note: '**"Zoo siab"** is a feeling expression; **"heev"** strengthens it.'
+        },
+        {
+          hmong: 'Lub tsev no tsis loj.',
+          english: 'This house is not big.',
+          note: '**"Tsis"** comes before the adjective.'
+        },
+        {
+          hmong: 'Kuv niamtais yog tus laus neeg.',
+          english: 'My grandmother is the elder.',
+          // ⚠️ "TODO-VERIFY with a fluent speaker." REMOVED FROM THE NOTE — 2026-10-24
+          // (the author: take the verify-with-a-native-speaker parts out of what the
+          // learner reads). It is still open, it is just not the learner's problem.
+          // TODO-VERIFY with a fluent speaker: the adjective-first-as-title reading.
+          note: 'The adjective-first form is treated here as a title, not the ordinary descriptive order.'
+        },
+        {
+          hmong: 'Kuv nyiam kuv tsev loj no.',
+          english: 'I like this big house of mine.',
+          note: 'No after **"loj"** closes the noun phrase.'
+        },
+        {
+          hmong: 'Kuv tsev no loj.',
+          english: 'This house of mine is big.',
+          note: 'No before **"loj"**: the adjective describes the house in a sentence.'
+        },
+        {
+          hmong: 'No yog kuv niam.',
+          english: 'This is my mother.',
+          note: 'No stands alone as “this”; **"yog"** links it to the noun phrase.'
+        },
+        {
+          hmong: 'Hnub no puas kub?',
+          english: 'Is it hot today?',
+          note: '**"Puas"** comes before the adjective.'
+        },
       ],
+    },
+    {
+      id: 'grammar-adjectives-practice',
+      kind: 'practice',
+      title: 'Phrase or sentence?',
+      prompt: 'Which one means “This house is big” rather than “this big house”?',
+      options: [
+        '**"Lub tsev loj"** no.',
+        '**"Lub tsev"** no **"loj"**.',
+        '**"Lub tsev loj heev"** no.',
+        '**"Lub tsev tshiab"** no.',
+      ],
+      answer: 'Lub tsev no loj.',
     },
     {
       id: 'grammar-adjectives-quiz',
@@ -134,98 +353,4 @@ export const adjectives = {
       title: 'Learn the words',
     },
   ],
-}
-
-// ── THE PREVIOUS VERSION (until 2026-09-27), kept for reference ───────────────
-// // Standalone lesson: describing words in Hmong.
-// //
-// // PLACEHOLDER SCAFFOLD. Structure and word set are real; the teaching prose is
-// // a first pass and every example item is pulled straight from the
-// // `descriptions` vocabulary category (same Hmong, same glosses — nothing
-// // authored here). Audio is pending.
-// //
-// // SCOPE: this lesson maps to the `descriptions` category only. Colors and the
-// // "siab" personality expressions are also adjectives but live in their own
-// // categories, and a lesson can only declare one `vocab:`. They want their own
-// // lessons — see notes/61.
-// //
-// // Everything a native speaker should check is marked TODO-VERIFY.
-// 
-// export const adjectives = {
-//   id: 'grammar-adjectives',
-//   title: 'Adjectives | Cov Lus Piav Qhia',  // TODO-VERIFY: "Cov Lus Piav Qhia" as the term for adjectives
-//   summary: 'Describing words — big, small, good, bad — and why Hmong needs no "to be" in front of them.',
-//   vocab: 'descriptions',
-//   steps: [
-//     {
-//       id: 'grammar-adjectives-intro',
-//       kind: 'intro',
-//       title: 'Describing things',
-//       body: [
-//         'Adjectives are the words that describe — big, small, new, old, good, bad. Hmong puts them in two places English does not expect, so the grammar is worth a minute before the vocabulary.',
-// 
-//         '## No "to be" in front of them',
-//         'This is the rule from the "yog" lesson, seen from the other side. "Yog" links a noun to another noun, and it is NOT used before an adjective. The adjective simply follows the thing it describes, and that is the whole sentence:',
-//         '> Tsev no loj. — This house is big.',
-//         '> Me nyuam no me. — This child is small.',
-//         '> Nws siab heev. — He is very tall.',
-//         'Look at the first one word by word: "tsev" (house), "no" (this), "loj" (big). There is no word for "is" anywhere in it. That absence is the rule — and it trips up English speakers constantly, because the sentence feels unfinished without it.',
-//         'The third adds "heev" (very), which sits AFTER the adjective, not before it.',
-// 
-//         '## They follow the noun',
-//         'Where English puts the adjective first ("the new house"), Hmong puts it last. With a classifier in front, the order runs classifier → noun → adjective:',
-//         '> Lub tsev tshiab. — The new house.',
-//         '> Lub tsev qub. — The old house.',
-//         '> Tus neeg phem. — The bad person.',
-//         '"Lub" and "tus" are the classifiers from the classifiers lesson — the adjective goes on the far end, after the thing it describes.',
-// 
-//         '## Pairs worth learning together',
-//         'A lot of this set is opposites, and they are far easier to hold in pairs than one at a time:',
-//         '> loj / me — big / small',
-//         '> tshiab / qub — new / old',
-//         '> zoo / phem — good / bad',
-//         '> ntev / luv — long / short',
-//         '> nquag / tub nkeeg — diligent / lazy',
-// 
-//         '## Two words for "many"',
-//         '"Ntau" and "coob" both gloss as "many", but they are not interchangeable — "coob" is for animate things, "ntau" for everything else:',
-//         '> Dej ntau. — There is a lot of water.',
-//         '> Neeg coob. — Many people.',
-//         'Water takes "ntau", people take "coob". Using the wrong one is a common beginner tell.', // TODO-VERIFY: whether animacy is the exact rule, or something narrower
-//         'The same care applies to "luv" and "qib taub", which both gloss as "short".', // TODO-VERIFY: difference between luv and qib taub
-// 
-//         '## Describing people',
-//         '"Zoo" (good) combines to describe appearance, and the pair is gendered:',
-//         '> Nws zoo nkauj. — She is pretty.',
-//         '> Nws zoo nraug. — He is handsome.',
-//         'Note that "nws" covers he, she, and it — so the adjective, not the pronoun, is what tells you who is being described.',
-// 
-//         'Study the full set in the word bank, then come back for the quiz.',
-//       ],
-//     },
-//     {
-//       id: 'grammar-adjectives-examples',
-//       kind: 'examples',
-//       title: 'Common describing words',
-//       intro: 'A sample of the set, mostly in opposite pairs. Read each aloud.',
-//       // Hmong + glosses copied verbatim from the `descriptions` category.
-//       items: [
-//         { hmong: 'loj', audio: 'grammar/adjectives/hmong-common-adjectives-loj.mp3', english: 'big, large, older', note: 'Also used for age — an older sibling is the "big" one.' }, // TODO-VERIFY: "loj" for seniority
-//         { hmong: 'me', audio: 'grammar/adjectives/hmong-common-adjectives-me.mp3', english: 'small, young', note: 'The opposite of "loj", and likewise used for age.' },
-//         { hmong: 'zoo', audio: 'grammar/adjectives/hmong-common-adjectives-zoo.mp3', english: 'good', note: 'Very common — it is the "zoo" in "nyob zoo" and "zoo nkauj".' },
-//         { hmong: 'phem', audio: 'grammar/adjectives/hmong-common-adjectives-phem.mp3', english: 'bad', note: 'The opposite of "zoo". Appears in "siab phem" (mean).' },
-//         { hmong: 'tshiab', audio: 'grammar/adjectives/hmong-common-adjectives-tshiab.mp3', english: 'new', note: '' },
-//         { hmong: 'qub', audio: 'grammar/adjectives/hmong-common-adjectives-qub.mp3', english: 'old', note: 'Of things, not of people.' }, // TODO-VERIFY: whether "qub" is things-only
-//         { hmong: 'ntau', audio: 'grammar/adjectives/hmong-common-adjectives-ntau.mp3', english: 'many (objects)', note: 'For inanimate things. Use "coob" for people and animals.' },
-//         { hmong: 'coob', audio: 'grammar/adjectives/hmong-common-adjectives-coob.mp3', english: 'many (animate)', note: 'For people and animals only.' },
-//         { hmong: 'zoo nkauj', audio: 'grammar/adjectives/hmong-common-adjectives-zoo-nkauj.mp3', english: 'pretty', note: 'Literally "good" + "nkauj" — said of women.' }, // TODO-VERIFY: gendered use of zoo nkauj vs zoo nraug
-//         { hmong: 'zoo nraug', audio: 'grammar/adjectives/hmong-common-adjectives-zoo-nraug.mp3', english: 'handsome', note: 'The counterpart of "zoo nkauj" — said of men.' },
-//       ],
-//     },
-//     {
-//       id: 'grammar-adjectives-quiz',
-//       kind: 'quiz',
-//       title: 'Learn the words',
-//     },
-//   ],
-// }
+};

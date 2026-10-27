@@ -24,7 +24,7 @@
       ],
       [
         {
-          "hmong": "Muaj ib tag kis, Ntxawm pom nws pog koob Zaub nyob tom qab vaj.",
+          "hmong": "Muaj ib tagkis, Ntxawm pom nws pog koob Zaub nyob tom qab vaj.",
           "english": "One morning, Ntxawm saw her great-grandmother Zaub behind the garden."
         },
         {
@@ -88,6 +88,14 @@
       ]
     ],
     "glossary": [
+      {
+        "hmong": "tiam sis",
+        "english": "but; however — also spelled \"tiamsis\""
+      },
+      {
+        "hmong": "tab sis",
+        "english": "but; however — a variant of \"tiamsis\""
+      },
       {
         "hmong": "Ntxawm",
         "english": "Ntxawm — the girl in this story"

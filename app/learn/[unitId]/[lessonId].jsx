@@ -8,6 +8,7 @@ import { Link, useLocalSearchParams, useRouter } from 'expo-router'
 // src/components/common/GatedLink.jsx.
 import GatedLink from '../../../src/components/common/GatedLink.jsx'
 import IntroBody from '../../../src/components/learn/IntroBody.jsx'
+import { rich } from '../../../src/components/learn/richText.jsx'
 import { getLesson, getUnit, allStepIds } from '../../../src/data/lessons.js'
 import { getUnit as getPathUnit } from '../../../src/data/path.js'
 import { getCategory } from '../../../src/data/vocabulary.js'
@@ -16,6 +17,8 @@ import { useProgress } from '../../../src/hooks/useProgress.js'
 import Breadcrumbs from '../../../src/components/common/Breadcrumbs.jsx'
 import PaywallGate from '../../../src/components/common/PaywallGate.jsx'
 import AudioButton from '../../../src/components/common/AudioButton.jsx'
+import { useVoicePrefs, pickVoice } from '../../../src/lib/voicePrefs.js'
+import VoiceToggle from '../../../src/components/reference/VoiceToggle.jsx'
 import { useCelebration } from '../../../src/context/CelebrationContext.jsx'
 import Button from '../../../src/components/ui/Button.jsx'
 import TabScreen from '../../../src/components/TabScreen.jsx'
@@ -32,7 +35,9 @@ import TabScreen from '../../../src/components/TabScreen.jsx'
 // curriculum uses: intro, examples, practice, letters, tones, reading,
 // speak-drill, quiz (the study→quiz flow), and mini-quiz.
 export default function Lesson() {
-  const { unitId, lessonId, fromUnit } = useLocalSearchParams()
+  // `step: stepParam` — renamed on destructure because `step` is already the
+  // CURRENT step further down, and shadowing it there would be a silent bug.
+  const { unitId, lessonId, fromUnit, step: stepParam } = useLocalSearchParams()
   const router = useRouter()
   const unit = getUnit(unitId)
   const lesson = getLesson(unitId, lessonId)
@@ -46,7 +51,28 @@ export default function Lesson() {
   const exitLabel = pathUnit ? `Back to ${pathUnit.title}` : 'Back to Learn'
   const { completedSteps, quizScores, markStepComplete } = useProgress()
   const { celebrate } = useCelebration()
-  const [index, setIndex] = useState(0)
+
+  // ── ⚠️ `?step=<stepId>` — OPEN THE LESSON AT ONE STEP, 2026-10-20 ───────────
+  //
+  // Added so the beginner path can send a learner STRAIGHT to the pronoun
+  // practice drill ("within the path please") instead of to the top of a
+  // five-step lesson. Used by the unit screen's "Practise…" link — see
+  // `practiceHref` in src/lib/pathIntro.js.
+  //
+  // ⚠️ VALIDATED AGAINST THIS LESSON'S OWN STEPS, and silently ignored when it
+  // does not match. A stale or mistyped id must open the lesson at the
+  // beginning, never on a blank screen — the same rule Reference's `?tab=`
+  // follows.
+  //
+  // ⚠️ AN INITIAL VALUE, NOT A SYNC. It seeds `index` once; after that the
+  // learner's Continue/Back taps own it, so arriving deep and walking forward
+  // works normally and the URL does not fight them.
+  const startAt = (() => {
+    if (!stepParam || !lesson) return 0
+    const i = lesson.steps.findIndex((s) => s.id === stepParam)
+    return i > -1 ? i : 0
+  })()
+  const [index, setIndex] = useState(startAt)
 
   // Auto-mark a quiz step complete once a score for its quiz exists — even if
   // the user took the quiz on its own page and never clicked "Finish".
@@ -126,9 +152,23 @@ export default function Lesson() {
           {step.kind === 'examples' && <ExamplesStep step={step} lesson={lesson} />}
           {step.kind === 'letters' && <LettersStep step={step} />}
           {step.kind === 'tones' && <TonesStep step={step} />}
-          {step.kind === 'reading' && <ReadingStep step={step} />}
+          {/* ⚠️ `key={step.id}` ON THE STEPS THAT HOLD STATE — 2026-10-15 (author: "for the
+              step questions, they keep automatically marking as wrong, when I move to the
+              seperate question").
+              THE BUG: without a key, React sees the same component type in the same slot
+              and REUSES THE INSTANCE across steps, so its state survives the step change.
+              PracticeStep keeps the tapped option in `picked`, so question 2 opened with
+              question 1's answer already applied — and since that option is not question
+              2's `answer`, it rendered as "Not quite — answer: …" with every option
+              disabled, before the learner had touched anything. ReadingStep had the
+              quieter version: the next passage opened with the English already revealed.
+              A key makes a step change a new instance, which is a fresh `useState`. Same
+              fix, same reason, as `<Flashcard key={word.id}>` in the vocabulary deck.
+              The other step kinds are not keyed because they hold no state: everything
+              they render comes from `step`. */}
+          {step.kind === 'reading' && <ReadingStep key={step.id} step={step} />}
           {step.kind === 'speak-drill' && <SpeakDrillStep step={step} />}
-          {step.kind === 'practice' && <PracticeStep step={step} onAdvance={handleAdvance} />}
+          {step.kind === 'practice' && <PracticeStep key={step.id} step={step} onAdvance={handleAdvance} />}
           {step.kind === 'quiz' && <QuizStep lesson={lesson} unitId={unitId} exitHref={exitHref} />}
           {step.kind === 'mini-quiz' && (
             <MiniQuizStep
@@ -208,7 +248,7 @@ function ExamplesStep({ step, lesson }) {
             <AudioButton audioSrc={it.audio} wordId={`${step.id}-${i}`} />
           </View>
           {(it.note || it.englishSound) && (
-            <Text className="text-xs text-stone-500 mt-1 italic">{it.note || it.englishSound}</Text>
+            <Text className="text-xs text-stone-500 mt-1 italic">{rich(it.note || it.englishSound)}</Text>
           )}
         </View>
       ))}
@@ -224,6 +264,8 @@ function LettersStep({ step }) {
     <View>
       <Text className="font-serif text-2xl text-stone-900 mb-2">{step.title}</Text>
       {step.intro && <Text className="text-sm font-medium text-stone-600 mb-4 italic">{step.intro}</Text>}
+      {/* Male / Female, 2026-10-25 — LetterGrid already plays by voice. */}
+      <VoiceSwitch />
       <LetterGrid items={step.items} />
     </View>
   )
@@ -234,6 +276,8 @@ function TonesStep({ step }) {
     <View>
       <Text className="font-serif text-2xl text-stone-900 mb-2">{step.title}</Text>
       {step.intro && <Text className="text-sm font-medium text-stone-600 mb-4 italic">{step.intro}</Text>}
+      {/* Male / Female, 2026-10-25 — Emily recorded all eight Cim names. */}
+      <VoiceSwitch />
       <ToneRows items={step.items} />
     </View>
   )
@@ -378,7 +422,159 @@ function QuizStep({ lesson, unitId, exitHref }) {
   )
 }
 
+// ⚠️ TWO SHAPES, ONE KIND — 2026-10-20. A `practice` step is normally ONE
+// question (`prompt` + `options` + `answer`); the pronouns lesson introduced a
+// multi-question form (`body` + `questions[]`). The data picks the renderer, so
+// the 16 existing single-question steps are untouched and no new `kind` had to be
+// invented. Without this branch the new step would read `step.options` and throw
+// on undefined.
 function PracticeStep({ step, onAdvance }) {
+  if (Array.isArray(step.questions) && step.questions.length > 0) {
+    return <SituationPractice step={step} onAdvance={onAdvance} />
+  }
+  return <SingleQuestionPractice step={step} onAdvance={onAdvance} />
+}
+
+/**
+ * A run of situation questions, answered one at a time.
+ *
+ * ⚠️ THE RULES ARE THE AUTHOR'S, implemented with state rather than their
+ * `createPronounPractice` factory: that factory keeps `currentIndex` in a
+ * closure, and mutating a closure variable does not re-render a React component —
+ * the screen would sit on question 1 while the object moved on. `useState` is
+ * the same logic where React can see it.
+ *
+ *   · one index, questions in order
+ *   · ONLY a correct answer advances
+ *   · a wrong answer explains why and lets them try again
+ *   · progress is visible throughout
+ */
+function SituationPractice({ step, onAdvance }) {
+  const questions = step.questions
+  const [index, setIndex] = useState(0)
+  const [picked, setPicked] = useState(null)
+  const [wrong, setWrong] = useState([])     // the wrong choices tried on THIS question
+
+  const q = questions[index]
+  const isLast = index === questions.length - 1
+  const correct = picked === q.answer
+
+  const choose = (choice) => {
+    if (correct) return                      // already solved; wait for Continue
+    setPicked(choice)
+    if (choice !== q.answer && !wrong.includes(choice)) setWrong([...wrong, choice])
+  }
+
+  const next = () => {
+    setPicked(null)
+    setWrong([])
+    setIndex(index + 1)
+  }
+
+  return (
+    <View>
+      <Text className="font-serif text-2xl text-stone-900 mb-2">{step.title}</Text>
+
+      {/* The instructions, once, above the first question — they describe the
+          whole run, not this question. */}
+      {index === 0 && Array.isArray(step.body) ? (
+        <View className="mb-5">
+          <IntroBody body={step.body} />
+        </View>
+      ) : null}
+
+      {/* ── ⚠️ STYLED TO MATCH QuizEngine — 2026-10-20 (author: "for choose the
+          right pronoun make the ui match that of the app").
+          The app already has a canonical multiple-choice screen, so this one
+          borrows its parts rather than inventing a second look:
+            · the counter line, `Question n / total`, same type and colour
+            · option rows, `rounded border p-3` with `text-sm text-stone-800`
+            · the feedback banner — one row, message left, button right,
+              rounded-md + shadow-warm, emerald-100 or red-100
+          The only deliberate differences are the progress bar (a 12-question run
+          needs a sense of distance that a counter alone does not give) and the
+          situation panel, which the quiz has no equivalent of. */}
+      <View className="flex-row items-center justify-between gap-3 mb-4">
+        <Text className="text-sm font-medium text-stone-700">
+          Question {index + 1} / {questions.length}
+        </Text>
+        <View className="h-2 w-28 rounded-full bg-cream-200 overflow-hidden">
+          <View
+            className="h-full rounded-full bg-clay-600"
+            style={{ width: `${((index + (correct ? 1 : 0)) / questions.length) * 100}%` }}
+          />
+        </View>
+      </View>
+
+      {/* The situation leads: the whole point is that the answer comes from it,
+          not from the English sentence. cream-100 so it reads as an inset on the
+          cream-50 step card rather than as another card. */}
+      <View className="rounded-md bg-cream-100 p-4 mb-4">
+        <Text className="text-sm font-medium text-stone-700 leading-relaxed">{rich(q.situation)}</Text>
+      </View>
+
+      <Text className="font-serif text-2xl text-stone-900 mb-4">{q.sentence}</Text>
+
+      <View className="gap-2">
+        {q.choices.map((choice) => {
+          const isAnswer = choice === q.answer
+          const wasWrong = wrong.includes(choice)
+          let cls = 'border-cream-300 bg-cream-50'
+          if (correct && isAnswer) cls = 'border-emerald-500 bg-emerald-50'
+          else if (wasWrong) cls = 'border-red-500 bg-red-50 opacity-60'
+          return (
+            <Pressable
+              key={choice}
+              onPress={() => choose(choice)}
+              // ⚠️ ONLY the solved state disables the whole list. A wrong choice
+              // stays marked but the others stay live, because the author's rule
+              // is "let them try again" — greying everything out ends the
+              // question.
+              disabled={correct || wasWrong}
+              className={`rounded border p-3 ${cls}`}
+            >
+              {/* Hmong is set in serif app-wide, and these choices are Hmong —
+                  the SIZE and colour match the quiz's options. */}
+              <Text className="font-serif text-base text-stone-800">{choice}</Text>
+            </Pressable>
+          )
+        })}
+      </View>
+
+      {picked && !correct ? (
+        <View className="mt-4 rounded-md bg-red-100 p-4 shadow-warm">
+          <Text className="font-semibold text-red-900">Not quite — try again</Text>
+          <Text className="text-sm font-medium text-red-900 mt-1 leading-relaxed">
+            {rich(q.explanation)}
+          </Text>
+        </View>
+      ) : null}
+
+      {correct ? (
+        <View className="mt-4 rounded-md bg-emerald-100 p-4 shadow-warm">
+          <View className="flex-row flex-wrap justify-between items-center gap-3">
+            <Text className="font-semibold text-emerald-900">Correct ✓</Text>
+            {isLast ? (
+              <Button onPress={onAdvance} variant="secondary">Finish</Button>
+            ) : (
+              <Button onPress={next} variant="secondary">Next</Button>
+            )}
+          </View>
+          {q.translation ? (
+            <Text className="text-sm font-medium text-emerald-900 mt-2">{q.translation}</Text>
+          ) : null}
+          {q.explanation ? (
+            <Text className="text-sm font-medium text-emerald-900 mt-1 leading-relaxed">
+              {rich(q.explanation)}
+            </Text>
+          ) : null}
+        </View>
+      ) : null}
+    </View>
+  )
+}
+
+function SingleQuestionPractice({ step, onAdvance }) {
   const [picked, setPicked] = useState(null)
   const correct = picked === step.answer
 
@@ -489,12 +685,16 @@ function StudyHandoff({ lesson }) {
 // ── Letters / tones grids (RN versions of the Reference components) ───────────
 
 function LetterGrid({ items }) {
+  // ⚠️ THIS IS A LOCAL GRID, NOT src/components/reference/LetterGrid.jsx — so it did
+  // not inherit that one's voice support, and the switch above it (LettersStep) did
+  // nothing. Found by the 2026-10-25 audit. Was: audioSrc={it.audio}
+  const { voice } = useVoicePrefs()
   return (
     <View className="flex-row flex-wrap gap-3">
       {items.map((it, i) => (
         <View key={`${it.letter}-${i}`} className="rounded-md bg-cream-100 p-3 items-center w-[92px]">
           <View className="self-end">
-            <AudioButton audioSrc={it.audio} wordId={it.letter} />
+            <AudioButton audioSrc={pickVoice(it, voice)} wordId={it.letter} />
           </View>
           <Text className="font-serif text-2xl text-clay-700">{it.letter}</Text>
           {(it.sound || it.englishSound) && (
@@ -506,7 +706,15 @@ function LetterGrid({ items }) {
   )
 }
 
+// The shared voice switch, reading the preference itself so a step needs no props.
+function VoiceSwitch() {
+  const { voice, setVoice } = useVoicePrefs()
+  return <VoiceToggle voice={voice} onChange={setVoice} />
+}
+
 function ToneRows({ items }) {
+  // Emily's Cim names, 2026-10-25. Was: audioSrc={t.audio}
+  const { voice } = useVoicePrefs()
   return (
     <View className="gap-2">
       {items.map((t, i) => (
@@ -516,7 +724,7 @@ function ToneRows({ items }) {
             <Text className="font-semibold text-stone-800">{t.name}</Text>
             {t.description && <Text className="text-sm font-medium text-stone-600">{t.description}</Text>}
           </View>
-          <AudioButton audioSrc={t.audio} wordId={t.name || t.marker} />
+          <AudioButton audioSrc={pickVoice(t, voice)} wordId={t.name || t.marker} />
         </View>
       ))}
     </View>

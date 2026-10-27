@@ -31,7 +31,7 @@ export const tenseMarkers = {
       kind: 'intro',
       title: 'Time without conjugation',
       body: [
-        'English changes the verb itself to move through time: eat, ate, eating, will eat. Hmong never does this. "Noj" is always "noj" — what changes is the small marker word placed around it.',
+        'English changes the verb itself to move through time: eat, ate, eating, will eat. Hmong never does this. "**Noj**" is always "**noj**" — what changes is the small marker word placed around it.',
         'That means there is nothing to memorize verb-by-verb. Learn a handful of little words once, and every verb you know is available in the past, the present and the future.',
         '## Often, no marker at all',
         'A plain sentence already works. A time word like naghmo (yesterday), hnub no (today) or tagkis (tomorrow), or simply the context, tells you when. Markers are added when you want to be exact about it.',

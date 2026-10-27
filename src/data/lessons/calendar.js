@@ -23,11 +23,22 @@ export const calendar = {
       kind: 'intro',
       title: 'Counting the days and the months',
       body: [
-        'English gives every day and every month its own name. Hmong counts them instead, so once you know the numbers you already know most of the calendar.',
+        'English gives every day and every month a name of its own — Monday, Tuesday, January, February — and each one has to be memorised separately. Hmong counts them.',
+
+        'That single difference is what makes the Hmong calendar quick to learn. A day of the week is the word for day plus a number, and a month is the word for month plus a number. If you can count to twelve, the pieces are already in place; what remains is learning where each count begins and what goes around the number.',
+
+        'The days are counted from Monday, so **"hnub ib"** is the first day of the week rather than the first day of the month. The months are counted from January, and the number sits inside a frame: **"lub"** in front and **"hlis ntuj"** after.',
+
+        'Two things the numbers will not give you, and both are taught below: the DATE, which uses **"hnub tim"**, and the word that puts an event in time, **"thaum"**.',
         '## The days of the week: hnub + a number',
         'Hnub means day. Add a number, starting with Monday as day one:',
-        '> Hnub ib — Monday (day one) · Hnub ob — Tuesday · Hnub peb — Wednesday',
-        '> Hnub plaub — Thursday · Hnub tsib — Friday · Hnub rau — Saturday · Hnub xya — Sunday',
+        '> Hnub ib — Monday (day one)',
+        '> Hnub ob — Tuesday',
+        '> Hnub peb — Wednesday',
+        '> Hnub plaub — Thursday',
+        '> Hnub tsib — Friday',
+        '> Hnub rau — Saturday',
+        '> Hnub xya — Sunday',
         '> Hnub no yog hnub ib. — Today is Monday.',
         '## The months: lub + a number + hlis ntuj',
         'Hlis is month. Count the months from January, with lub in front and ntuj after:',
@@ -35,7 +46,8 @@ export const calendar = {
         '> Lub tsib hlis ntuj — May (the fifth month)',
         '> Lub kaum ob hlis ntuj — December (the twelfth month)',
         'In everyday speech the short form drops lub and ntuj:',
-        '> Peb Hlis — March · Cuaj Hlis — September',
+        '> Peb Hlis — March',
+        '> Cuaj Hlis — September',
         '## When: thaum',
         'Thaum sets when something happens. Put it in front of the day or the month:',
         '> Kuv pib kawm ntawv thaum Cuaj Hlis. — I start school in September.',  // TODO-VERIFY (card AI example)

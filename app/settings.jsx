@@ -10,6 +10,7 @@ import { isAdmin } from '../src/lib/admin.js'
 import { useQuizPrefs, DIRECTION_OPTIONS } from '../src/lib/quizPrefs.js'
 import { dialectOptions, DIALECT_NOTE } from '../src/data/dialects.js'
 import { useReadingPrefs, TEXT_SIZES } from '../src/lib/readingPrefs.js'
+import { useVoicePrefs, VOICES } from '../src/lib/voicePrefs.js'
 
 
 // ⚠️ CARD BORDER REMOVED HERE — 2026-08-29. The 1px cream hairline
@@ -29,6 +30,7 @@ export default function Settings() {
   const [audioOn, setAudioOn] = useState(false)
   const { prefs, setPref } = useQuizPrefs()
   const { prefs: readingPrefs, setPref: setReadingPref } = useReadingPrefs()
+  const { voice, setVoice } = useVoicePrefs()
 
   return (
     <TabScreen>
@@ -74,6 +76,16 @@ export default function Settings() {
             onChange={(v) => setReadingPref('textSize', v)}
             options={TEXT_SIZES}
           />
+        </Field>
+
+        {/* 2026-10-25 — the same shared preference as the Voice switch on Reference,
+            the tone and vowel pages, lessons, quizzes and Speak; change it in any one
+            place and every other follows. */}
+        <Field
+          label="Recording voice"
+          hint="Which speaker you hear on letters, tones and syllables, and in Speak. Clips with only one recording play that one."
+        >
+          <Picker value={voice} onChange={setVoice} options={VOICES} />
         </Field>
 
         <Toggle

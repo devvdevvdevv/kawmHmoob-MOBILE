@@ -7,6 +7,7 @@ import {
 } from 'expo-audio'
 import * as FileSystem from 'expo-file-system/legacy'
 import { WAV_OPTIONS } from '../lib/recordingOptions.js' // §7 — asks for linear PCM, not AAC
+import { claimPlayback, releasePlayback, PLAYBACK_INTERRUPTION_MODE } from '../lib/audioOwner.js'
 
 // Record the learner's voice and play it back. Box 1 of the pronunciation
 // pipeline (see learning/pronunciation/voice-record-step-lesson.md).
@@ -62,6 +63,10 @@ export function usePronunciation() {
   // Watchdog for playback — separate from the RECORDING ceiling above. Sharing
   // one ref would let a playback timeout cancel a recording's auto-stop.
   const playTimerRef = useRef(null)
+  // This instance's claim on the speaker — 2026-10-09. An object identity, not a
+  // name: two screens can each be running a recorder, and they must not look
+  // like one owner. See src/lib/audioOwner.js.
+  const speakerRef = useRef({})
   // Latest uri in a ref, so unmount cleanup can delete a take it never rendered.
   const uriRef = useRef(null)
 
@@ -78,6 +83,8 @@ export function usePronunciation() {
       try { playerRef.current.remove() } catch {}
       playerRef.current = null
     }
+    // Hand the speaker back if this instance still holds it — 2026-10-09.
+    releasePlayback(speakerRef.current)
     setPlaying(false)
   }, [])
 
@@ -107,7 +114,8 @@ export function usePronunciation() {
       setUri(null)
 
       // iOS needs the audio session put into recording mode first.
-      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true })
+      // 'doNotMix' while recording too — see the note in app/_layout.jsx.
+      await setAudioModeAsync({ interruptionMode: 'doNotMix', allowsRecording: true, playsInSilentMode: true })
 
       await recorder.prepareToRecordAsync()
       recorder.record()
@@ -123,6 +131,17 @@ export function usePronunciation() {
     } catch (e) {
       console.warn('[record] start failed', e)
       setStatus('idle')
+      // ⚠️ SAME HOLE AS usePcmRecorder's start(), fixed 2026-10-07. The session
+      // was already flipped to allowsRecording:true above; if prepareToRecordAsync
+      // or record() throws we never reach stop(), so without this the session
+      // stays in recording mode and iOS routes every later clip to the earpiece.
+      // The UI shows 'idle', which is why this looked like "audio randomly stops
+      // working" rather than like a failed recording.
+      try {
+        await setAudioModeAsync({ interruptionMode: PLAYBACK_INTERRUPTION_MODE, allowsRecording: false, playsInSilentMode: true })
+      } catch (e2) {
+        console.warn('[record] audio mode restore after failed start failed', e2)
+      }
     }
   }
 
@@ -146,7 +165,7 @@ export function usePronunciation() {
       // so the UI looked perfectly fine. Restoring the session is exactly the
       // kind of work that matters MORE when the thing before it failed.
       try {
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true })
+        await setAudioModeAsync({ interruptionMode: PLAYBACK_INTERRUPTION_MODE, allowsRecording: false, playsInSilentMode: true })
       } catch (e) {
         console.warn('[record] audio mode restore failed', e)
       }
@@ -175,6 +194,9 @@ export function usePronunciation() {
       const player = createAudioPlayer({ uri })
       playerRef.current = player
       setPlaying(true)
+      // Take the speaker: stops a word clip or an A/B compare that is still
+      // sounding, so the take plays alone — 2026-10-09.
+      claimPlayback(speakerRef.current, releasePlayer)
 
       // Armed before play(), so a take that fails instantly still has something
       // waiting to free the button.

@@ -18,6 +18,9 @@ module.exports = [
       'ios/**',
       '.expo/**',
       'patches/**',
+      // The JS/TS course's practice stubs are unfinished on purpose; their
+      // unused-parameter warnings would bury the app's real ones.
+      'js-ts-course/**',
     ],
   },
   {

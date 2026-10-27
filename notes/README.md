@@ -12,7 +12,7 @@ Long-running stories that span many days. Each links out to the dated notes.
 
 - **[Audio, end to end — the whole story](AUDIO-END-TO-END.md)** · 335 lines
 - **[Subscriptions, end to end — Play Console, RevenueCat, and this app](SUBSCRIPTION-SETUP.md)** · 831 lines
-- **[TODO — what is still open](TODO.md)** · 1060 lines
+- **[TODO — what is still open](TODO.md)** · 1214 lines
 - **[WORD REVIEW — the 64 that did not arrive](WORD-REVIEW-REMAINING.md)** · 19 lines
 - **[WORD REVIEW — meanings the app does not know about](WORD-REVIEW.md)** · 489 lines
 - **[Recording checklist](audio-todo.md)** · 260 lines
@@ -21,6 +21,48 @@ Long-running stories that span many days. Each links out to the dated notes.
 
 ## By date
 
+
+### 2026-10
+
+- `2026-10-25` [Home path placement, and page introductions on cards — 2026-10-25](2026-10-25-home-path-and-page-intros.md)
+- `2026-10-25` [Sentence builder — the AI drafts come back, separated; Mixed review to the top — 2026-10-25](2026-10-25-sentence-builder-unverified-group.md)
+- `2026-10-25` [Sib Suab Zauv: the tone-shift key, and a unit right after Muaj (2026-10-25)](2026-10-25-tone-shift-key.md)
+- `2026-10-24` [A second speaker, and a voice switch — double consonants, 2026-10-24](2026-10-24-second-voice-double-consonants.md)
+- `2026-10-23` [Where the app stands, and what I would do next — 2026-10-23](2026-10-23-where-the-app-stands.md)
+- `2026-10-22` [Lessons that could not be reached, and the paste that kept landing in the wrong file — 2026-10-22](2026-10-22-lessons-that-could-not-be-reached.md)
+- `2026-10-21` [Family sets together, relatives below, and tiers that say what they are (2026-10-21)](2026-10-21-family-tiers-and-honest-tier-labels.md)
+- `2026-10-21` [Muaj, the fourth "to be" — and the unit that vanished — 2026-10-21](2026-10-21-muaj-and-the-vanishing-unit.md)
+- `2026-10-20` [`es` in the dictionary, four more verb + noun phrases, and one desync — 2026-10-20](2026-10-20-es-and-verb-noun-additions.md)
+- `2026-10-20` [Lesson prose, marked up: `###` headings and bolded Hmong — 2026-10-20](2026-10-20-lesson-prose-markup.md)
+- `2026-10-20` [Verb definitions read "to …" — 2026-10-20](2026-10-20-verb-definitions-to-prefix.md)
+- `2026-10-20` [A lesson that existed, parsed, and still could not be reached — 2026-10-20](2026-10-20-verb-noun-not-reachable.md)
+- `2026-10-19` [A changelog page, from 221 notes (2026-10-19)](2026-10-19-changelog-page.md)
+- `2026-10-19` [Reading Support regrouped, tense patterns split out, Zong Vang quiz fixed (2026-10-19)](2026-10-19-reading-support-regroup-and-tense-split.md)
+- `2026-10-19` [The sentence builder stops offering everything at once (2026-10-19)](2026-10-19-sentence-builder-gated-hub.md)
+- `2026-10-18` [The vowel × tone matrix exists — 104 clips wired (2026-10-18)](2026-10-18-vowel-tone-audio-wired.md)
+- `2026-10-16` [How a unit is sourced — the chain, and a spike to watch it run (2026-10-16)](2026-10-16-how-a-unit-is-sourced.md)
+- `2026-10-15` [Colors: `kob` stripped, and the unit separated from describing (2026-10-15)](2026-10-15-colors-kob-and-unit-split.md)
+- `2026-10-15` [Colors gets a lesson — and a scan that over-counted by five (2026-10-15)](2026-10-15-colors-lesson-and-the-bad-scan.md)
+- `2026-10-15` [Consonant practice: prev / next arrows replace the "next unpractised" button (2026-10-15)](2026-10-15-consonant-practice-arrows.md)
+- `2026-10-15` [Incident: `doNotMix` set a second time, during an outage (2026-10-15)](2026-10-15-doNotMix-set-again-incident.md)
+- `2026-10-15` [Two bugs with one cause: the instance, not the props (2026-10-15)](2026-10-15-instance-state-and-dead-links.md)
+- `2026-10-15` [The Speak tab's Alphabet section, and the Reference practice rows (2026-10-15)](2026-10-15-speak-alphabet-ui.md)
+- `2026-10-15` ["Tone scoring is experimental" — attached to the score itself (2026-10-15)](2026-10-15-tone-scoring-caveat.md)
+- `2026-10-14` [About rewritten, the paywall's early-access card, and three small fixes (2026-10-14)](2026-10-14-about-paywall-and-small-fixes.md)
+- `2026-10-14` [The audio actually plays — what fixed it, and how it was found (2026-10-14)](2026-10-14-audio-fixed-interruption-mode.md)
+- `2026-10-14` [JS/TS course: destructuring renames, and why big codebases use them (2026-10-14)](2026-10-14-js-ts-course-destructuring-renames.md)
+- `2026-10-14` [Lesson examples: three things on one line became three lines (2026-10-14)](2026-10-14-lesson-examples-structured.md)
+- `2026-10-14` [A collapsible that slides, and text size outside the reader (2026-10-14)](2026-10-14-smooth-collapsible-and-text-size.md)
+- `2026-10-14` [Vowels × tones: a page per tone, a page per vowel (2026-10-14)](2026-10-14-vowel-tone-pages.md)
+- `2026-10-09` [Audio that died until restart — one player, one session, one speaker (2026-10-09)](2026-10-09-audio-one-speaker-fix.md)
+- `2026-10-08` [JS/TS course, Lesson 01 session: `?.`, `const`, AuthContext, and the checklist (2026-10-08)](2026-10-08-js-ts-course-lesson-01-session.md)
+- `2026-10-07` [The author's 22-word list: 16 in, 4 skipped, 2 held (2026-10-07)](2026-10-07-author-word-list-import.md)
+- `2026-10-05` [The senses array that deleted the "Other meanings" links (2026-10-05)](2026-10-05-siab-senses-and-travel-links.md)
+- `2026-10-04` [The JS/TS course, and the first two drills: folders and route brackets (2026-10-04)](2026-10-04-js-ts-course-and-routing-drills.md)
+- `2026-10-04` [Season pass price: $9.99 → $7.99 (2026-10-04)](2026-10-04-season-pass-price.md)
+- `2026-10-02` [The position of *no*: phrase or sentence (2026-10-02)](2026-10-02-adjectives-no-position.md)
+- `2026-10-02` ["Also means" promoted to real entries (2026-10-02)](2026-10-02-also-means-promoted-to-entries.md)
+- `2026-10-02` [Multi-entry dictionary batch: nplooj, kwv, tshaj, tua, tshuab, kiav — and ntsiab corrected (2026-10-02)](2026-10-02-multi-entry-dictionary-batch.md)
 
 ### 2026-09
 
@@ -228,4 +270,4 @@ Long-running stories that span many days. Each links out to the dated notes.
 
 ---
 
-203 notes, 37,111 lines.
+242 notes, 42,695 lines.

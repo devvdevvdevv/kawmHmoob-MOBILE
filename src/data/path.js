@@ -78,7 +78,7 @@ export const UNIT_WORD_CAP = 20
  *               scripts/check-path.mjs — a typo here would silently produce a
  *               shorter unit, never an error.
  *   limit       trim to this many words. See the ⚠️ on limit vs words below.
- *   words       explicit word ids, in teaching order. BEATS `limit`.
+ *   words       explicit word ids, in teaching order. BEATS `limit`.6
  *   free        outside the paywall.
  *   learnUnit   which Learn-tab unit teaches this material, so the Learn hub can
  *               show the unit beside the lessons that explain it (2026-09-23).
@@ -124,17 +124,23 @@ export const UNIT_WORD_CAP = 20
 export const path = [
   {
     id: 'u-greetings',
-    title: 'Greetings',
+    title: 'Everyday Phrases',  // was 'Greetings' until 2026-10-22; the blurb already said this
     // ⚠️ DRAFTED BY CLAUDE 2026-09-25 at the author's request — NOT attested.
     // Source: the greeting itself — vocabulary 'nyob zoo'. Confirm with a fluent speaker; delete this line to go back to English-only.
     hmongTitle: 'Nyob Zoo',
     order: 1,
     learnUnit: 'conversational',  // Greetings & Farewells, Politeness, Introductions
-    introLesson: 'vocab-greetings-farewells',  // "Saying hello and goodbye"
+    // ⚠️ RENAMED 2026-10-19 — was 'vocab-greetings-farewells'. The author
+    // renamed the lesson because it now covers everyday phrases AND greetings.
+    // This pointer is the ONLY functional reference to the lesson id anywhere;
+    // an id that matches nothing is not an error, it is a unit with no intro
+    // (unitIntro() returns null), which is exactly the kind of silent loss
+    // scripts/check-path.mjs now asserts against.
+    introLesson: 'vocab-common-phrases-everyday-greetings',  // "Understanding greetings and farewells"
     categories: ['greetings', 'politeness', 'introductions'],
     free: true,
-    blurb: 'Nyob zoo, ua tsaug — your first real exchange.',
-    why: 'First conversation. Free, so it sets the tone for the whole app.',
+    blurb: 'Nyob zoo, ua tsaug, thov txim! — Everyday Hmong Phrases.',
+    why: 'Learn the everyday Hmong phrases you will use first, and the ones you will hear most.',
   },
   {
     id: 'u-pronouns',
@@ -170,7 +176,10 @@ export const path = [
     // The yog cards only (2026-09-28); the nyob ones are u-nyob's. Same set, split by list.
     words: [
       'yog-to-be-is', 'yog-to-be-i-am', 'yog-to-be-you-are', 'yog-to-be-he-she-is',
-      'yog-to-be-is-not', 'yog-to-be-question', 'yog-pattern-essence', 'yog-pattern-describe', 'yog-pattern-muaj-age',
+      'yog-to-be-is-not', 'yog-to-be-question', 'yog-pattern-essence', 'yog-pattern-describe',
+      // 'yog-pattern-muaj-age' MOVED to u-muaj, 2026-10-21 — the card is the muaj
+      // age pattern and only lived here because muaj had no unit. A word in two
+      // units is a check-path failure, so it is in one place or the other.
       // 'yog-li' moved to u-so-then, 2026-09-28.
       'yog-tias', 'yog-lawm',
       'yog-los-yog',  // or — 2026-09-28 (author: add los yog to yog, stated as "or")
@@ -252,15 +261,48 @@ export const path = [
     // '… (Female Speaker)' in vocabulary.js. Copied, not composed.
     hmongTitle: 'Tsev Neeg',
     order: 30,  // was 29 — u-sentence-structure inserted after Core Verbs, 2026-09-28
-    introLesson: 'placeholder-family',  // PLACEHOLDER lesson, 2026-09-28 — lessons/placeholders.js
+    // ⚠️ REPOINTED 2026-10-22 from 'placeholder-family', which no longer exists:
+    // the author's full family lesson replaced the placeholder. An id matching
+    // nothing is not an error, it is a unit with no introduction.
+    introLesson: 'conversational-family',  // lessons/family-lesson.js
     categories: ['family-male-perspective'],
-    // ⚠️ ONE PERSPECTIVE ONLY. The vocabulary splits family terms by the
-    // speaker's gender (family-male-perspective / family-female-perspective)
-    // because Hmong kinship genuinely does. That split is a SECOND PASS, not a
-    // beginner's problem — teaching both here doubles the unit and teaches the
-    // exception before the rule.
+    // ⚠️ ONE PERSPECTIVE ONLY, AND THE SECOND ONE NOW EXISTS. The vocabulary
+    // splits family terms by the speaker's gender (family-male-perspective /
+    // family-female-perspective) because Hmong kinship genuinely does. Teaching
+    // both in one unit doubles it and teaches the exception before the rule, so
+    // the female-speaker terms are `u-family-female` immediately below — added
+    // 2026-10-22 (author: "create a unique id for the female perspective, add it
+    // so they're close"). This unit keeps the male-speaker set.
     blurb: 'Niam, txiv, kwv tij — and whose they are.',
     why: 'Culturally central, and the payoff for unit 2’s pronouns.',
+  },
+  {
+    id: 'u-family-female',
+    title: 'Family: Female Speaker',
+    // Copied from the category title in vocabulary.js, like its sibling — not
+    // composed here.
+    hmongTitle: 'Tsev Neeg',
+    // ⚠️ FRACTIONAL ON PURPOSE, so it sits immediately after u-family (30)
+    // without renumbering the ten units above it. check-path only asks that
+    // `order` be numeric and unique. Make it 31 and bump the rest when the path
+    // is next renumbered.
+    order: 30.5,
+    // ⚠️ THE SAME LESSON AS u-family. conversational-family teaches both
+    // perspectives — it has a `conversational-family-perspectives` step built
+    // for exactly this — so both units open the same explanation and then drill
+    // their own half of the vocabulary. One lesson, two word sets.
+    introLesson: 'conversational-family',  // lessons/family-lesson.js
+    categories: ['family-female-perspective'],
+    // 14 words, every one with an exampleSentence, so the unit is ready and
+    // stays on /path. No explicit `words` list is needed: the category is under
+    // the 20-word cap.
+    //
+    // ⚠️ NO WORD IS SHARED WITH u-family. The female set has its own ids
+    // (family-f-*), including its own `niam`, `txiv` and grandparent entries, so
+    // the two units never drill the same card — which would be a check-path
+    // failure and would make progress ambiguous.
+    blurb: 'Nus, niam laus, niam hluas — the same family, named by a woman.',
+    why: 'The second pass over kinship: the word changes with who is speaking, not with the relative.',
   },
   {
     id: 'u-classifiers',
@@ -441,10 +483,23 @@ export const path = [
       'tense-markers-progressive', 'tense-markers-future', 'time-context-mam-li',
       'time-context-tabtom-yuav',  'tense-markers-past',   'tense-markers-completed',
       'grammar-already',           'time-context-nyuam-qhuav', 'tense-markers-still',
+      // ── THE 10 TENSE PATTERN CARDS LEFT THIS UNIT 2026-10-18 (author's call).
+      // They were split out of the `tense-markers` set into their own `tense-patterns`
+      // category, and a unit may name at most 3 categories (scripts/check-path.mjs) —
+      // tense-markers + grammar + time-context already fills that. So this unit now
+      // teaches the WORDS that mark tense (9 cards) and the patterns are studied as
+      // their own set in the Words tab. ⚠️ NOTHING LINKS TO IT YET: the intro lesson
+      // `foundations-tense-markers` still has vocab: 'tense-markers', so the patterns
+      // are only reachable by browsing Words.
+      //
+      // ⚠️ TO RESTORE: uncomment the four lines below AND add 'tense-patterns' to
+      // `categories` above — without it check-path rejects every id here as "not in
+      // its categories". That also puts the unit back over the 3-category cap.
+      //
       // Tense patterns, 2026-09-28 (author) — past, present, future, one card per form.
-      'tense-pattern-naghmo', 'tense-pattern-tau-verb', 'tense-pattern-past-continuous',
-      'tense-pattern-present', 'tense-pattern-twb-lawm', 'tense-pattern-tab-tom',
-      'tense-pattern-tagkis', 'tense-pattern-yuav', 'tense-pattern-mam-li', 'tense-pattern-tab-tom-yuav',
+      // 'tense-pattern-naghmo', 'tense-pattern-tau-verb', 'tense-pattern-past-continuous',
+      // 'tense-pattern-present', 'tense-pattern-twb-lawm', 'tense-pattern-tab-tom',
+      // 'tense-pattern-tagkis', 'tense-pattern-yuav', 'tense-pattern-mam-li', 'tense-pattern-tab-tom-yuav',
       // 'grammar-not' (tsis) — moved to u-negation 2026-09-26, so it is not taught twice.
       // 'grammar-very' (heev, "very") — REMOVED 2026-09-26 (author: the unit had
       // "intensifiers that are not supposed to be there"). heev describes; it marks no
@@ -512,6 +567,70 @@ export const path = [
     why: 'Hmong has no word for yes: you answer by putting your answer where the question word was.',
   },
   {
+    id: 'u-muaj',
+    title: 'To Be: Muaj',
+    // The Hmong word itself, so nothing is invented here.
+    hmongTitle: 'Muaj',
+    // ⚠️ A FRACTIONAL ORDER ON PURPOSE — 2026-10-21. It sorts between u-nyob (10)
+    // and u-this-that (11) without renumbering the thirty units above 11, and
+    // check-path only asks that `order` be numeric and unique. The author said
+    // they would "adjust positions accordingly", so this is a placeholder
+    // position: give it 11 and bump the rest when the renumber happens.
+    order: 10.5,
+    learnUnit: 'grammar',
+    introLesson: 'grammar-muaj',  // ⚠️ A PLACEHOLDER LESSON — replace when the real one is written
+    categories: ['yog-to-be'],
+    // ⚠️ ALL THREE HAVE AN exampleSentence, WHICH IS WHAT KEEPS THE UNIT ON
+    // /path. One sentence-less card and `unitReadiness` drops the whole unit out
+    // of livePath() — see notes/2026-10-21-muaj-and-the-vanishing-unit.md.
+    words: [
+      'yog-pattern-muaj-have',   // Kuv muaj ib tug aub — having
+      'yog-pattern-muaj-exist',  // Thaum ub, muaj ib tug tsov — existence
+      'yog-pattern-muaj-age',    // Kuv muaj neesnkaum xyoo — age (moved from u-yog)
+      // added 2026-10-21 so the unit quiz can offer four options per question
+      'yog-pattern-muaj-how-many',  // Koj niam muaj pes tsawg tus menyuam? — asking
+      'yog-pattern-muaj-only',      // Kuv niam muaj ob tug ntxhais xwb — only that many
+      'yog-pattern-muaj-not',       // Kuv tsis muaj — not having any
+    ],
+    // The builder drills only sentences containing muaj, the same lever u-yog
+    // uses for yog. See sentencesMustInclude in sentenceBuilder.js.
+    sentencesMustInclude: ['muaj'],
+    // Kept for the record, like the siblings: the loop at the bottom of this file
+    // overwrites `free` from POSITION (u.order <= FREE_PATH_UNITS, 7), so at order
+    // 10.5 this unit is Pro at runtime — the same as To Be: Yog (8), Hu Ua (9) and
+    // Nyob (10). pathQuizConfig() takes the unit quiz's tier from that runtime
+    // value, so /quiz/path-u-muaj is Pro until the unit sits at position 7 or
+    // above, or FREE_PATH_UNITS changes.
+    free: true,  // overridden by FREE_PATH_UNITS (position decides), kept for the record
+    blurb: 'Kuv muaj ib tug aub, muaj ib tug tsov, kuv muaj neesnkaum xyoo — having, existence, and age.',
+    why: 'The fourth “to be”. English says "I am twenty"; Hmong says you HAVE twenty years, and the same word introduces whatever exists.',
+  },
+  {
+    id: 'u-tone-shifts-numerical',
+    title: 'Tone Shifts: Numbers',
+    // The author's own Hmong name for the subject, from the lesson's heading.
+    hmongTitle: 'Sib Suab Zauv',
+    // ⚠️ ANOTHER FRACTIONAL ORDER, for the reason the one above records — 2026-10-25, the
+    // author: "trigger shifts need to be early, make it so that users learn this after
+    // muaj". Muaj sits at 10.5, This & That at 11, so 10.75 puts this directly after Muaj
+    // without renumbering the thirty-two units above 11. check-path only asks that
+    // `order` be numeric and unique.
+    // ⚠️ WHEN THE RENUMBER FINALLY HAPPENS, this and u-muaj become 11 and 12 and
+    // everything from This & That shifts by two.
+    order: 10.75,
+    learnUnit: 'foundations',
+    introLesson: 'tone-shifts-guidelines-numerical',
+    categories: ['grammar-tone-shifts-guidelines-numerical'],
+    // ⚠️ WHY A UNIT THIS EARLY, which is the author's call and worth recording: the shift
+    // is not an advanced flourish, it is why a learner who has been taught `tus` keeps
+    // meeting `tug` in real sentences. Left until late, they spend thirty units thinking
+    // they have misread something. It needs the tones (free, in Foundations), classifiers
+    // (unit 3) and the numbers 1–5 and 9 — all of which they have by here.
+    free: true,  // overridden by FREE_PATH_UNITS (position decides), kept for the record
+    blurb: 'Ib tug tub, tsib daig ntawv — numbers ending in -b or -j change the next word.',
+    why: 'Explains the tug / daig / nkawg forms a learner keeps seeing. Right after Muaj because that unit is where counting things with classifiers becomes constant.',
+  },
+  {
     id: 'u-this-that',
     title: 'This & That',
     hmongTitle: 'No, Ntawd, Ko',  // the unit's own three headwords
@@ -542,7 +661,13 @@ export const path = [
   },
   {
     id: 'u-adjectives',
-    title: 'Describing Words',
+    // ⚠️ RENAMED 2026-10-15 — was 'Describing Words', which was a near-twin of unit 21's
+    // 'Common Describing Words' two rows below it. Same name, two different things: THIS
+    // unit teaches the PATTERNS (noun + adjective, adjective + heev, tsis + adjective),
+    // unit 21 teaches the WORDS. Separating Colors out of unit 40 made the collision
+    // obvious. The new name follows the path's own convention for a pattern unit — unit 5
+    // is 'How a Sentence Is Built'. ⚠️ The id is unchanged, so no progress moved.
+    title: 'How Describing Works',
     hmongTitle: 'Neeg Zoo',  // the author's own example (a good person — noun + adjective)
     order: 20,  // was 19 — u-sentence-structure inserted after Core Verbs, 2026-09-28
     // Added 2026-09-27 (author: "need a path for adjectives, this one is important"). After
@@ -648,7 +773,7 @@ export const path = [
     // ⚠️ PRO — a topic, not grammar: the Hmong way of naming feelings and
     // character with `siab`. Sits after Family (feelings about people).
     id: 'u-siab',
-    title: 'Feelings & Character',
+    title: 'Feelings: Siab Second',  // was 'Feelings & Character' until the 2026-10-22 split
     // 'lub siab' is attested — reading-body in vocabulary.js.
     hmongTitle: 'Lub Siab',
     order: 39,  // was 38 — u-sentence-structure inserted after Core Verbs, 2026-09-28
@@ -657,15 +782,50 @@ export const path = [
     // (verbs), as an explicit list — kev ntxub ntxaug stays dictionary-only (the 20 cap).
     introLesson: 'placeholder-siab',  // PLACEHOLDER lesson, 2026-09-28 — lessons/placeholders.js
     categories: ['personality-siab', 'reading-emotion', 'verbs'],
+    // ⚠️ FEELINGS ONLY, SINCE 2026-10-22 — the `siab + adjective` character cards
+    // moved to u-siab-character. Was, in one list: zoo-siab, txaus, nyuaj, ntev,
+    // luv, zoo, phem, loj, me, dav, nqaim, dawb, dub, ceev, hnyav, emo-ntxub,
+    // emo-kev-ntxub, emo-ntxub-ntxaug, emo-nciab, verbs-vam.
     words: [
-      'personality-siab-zoo-siab', 'personality-siab-txaus', 'personality-siab-nyuaj', 'personality-siab-ntev',
-      'personality-siab-luv', 'personality-siab-zoo', 'personality-siab-phem', 'personality-siab-loj',
-      'personality-siab-me', 'personality-siab-dav', 'personality-siab-nqaim', 'personality-siab-dawb',
-      'personality-siab-dub', 'personality-siab-ceev', 'personality-siab-hnyav', 'emo-ntxub',
-      'emo-kev-ntxub', 'emo-ntxub-ntxaug', 'emo-nciab', 'verbs-vam',
+      'personality-siab-noun',                                                   // siab itself
+      'personality-siab-zoo-siab', 'personality-siab-txaus', 'personality-siab-nyuaj',  // adjective + siab
+      'emo-ntxub', 'emo-kev-ntxub', 'emo-ntxub-ntxaug', 'emo-nciab', 'verbs-vam',
     ],
-    blurb: 'Zoo siab, siab ntev, nyuaj siab — feelings live in the siab.',
-    why: 'Hmong puts feeling and character in the siab (liver/heart); 15 everyday expressions built on one word.',
+    blurb: 'Zoo siab, nyuaj siab, txaus siab — how you feel, with siab second.',
+    why: 'Hmong puts feeling in the siab (liver/heart). The describing word comes FIRST here — the other order is a character trait, in the next unit.',
+  },
+  {
+    id: 'u-siab-character',
+    title: 'Character: Siab First',
+    // 'siab zoo' is a dictionary headword — copied, not composed.
+    hmongTitle: 'Siab Zoo',
+    // ⚠️ FRACTIONAL, so it lands immediately after u-siab (39) without
+    // renumbering the units above it. check-path only requires `order` to be
+    // numeric and unique; give it 40 and bump the rest at the next renumber.
+    order: 39.5,
+    // ⚠️ THE SAME LESSON AS u-siab, deliberately. Both siab lessons devote their
+    // longest section to this exact contrast ("The order changes the meaning"),
+    // so the two units open the same explanation and then drill one order each.
+    introLesson: 'placeholder-siab',
+    categories: ['personality-siab'],
+    // The twelve `siab + adjective` cards, moved out of u-siab. Every one has an
+    // exampleSentence, so the unit is ready and stays on /path.
+    //
+    // ⚠️ SAME CATEGORY AS u-siab, DIFFERENT WORDS. Both units draw from
+    // `personality-siab` with explicit lists, which is what keeps any one card in
+    // exactly one unit without having to split the category in vocabulary.js —
+    // moving entries between categories would change each card's context tag and
+    // which of its senses show.
+    words: [
+      'personality-siab-zoo', 'personality-siab-phem',    // kind · mean
+      'personality-siab-ntev', 'personality-siab-luv',    // patient · impatient
+      'personality-siab-loj', 'personality-siab-me',      // brave · cowardly
+      'personality-siab-dav', 'personality-siab-nqaim',   // generous · selfish
+      'personality-siab-dawb', 'personality-siab-dub',    // pure-hearted · malicious
+      'personality-siab-ceev', 'personality-siab-hnyav',  // quick-tempered · sluggish
+    ],
+    blurb: 'Siab zoo, siab ntev, siab dav — what someone is like, with siab first.',
+    why: 'The mirror of the unit before it: the same word pairs in the other order describe a person rather than a mood.',
   },
   {
     id: 'u-food',
@@ -674,7 +834,8 @@ export const path = [
     // Source: 'eat and drink' — vocabulary 'noj', 'thiab', 'haus'. Confirm with a fluent speaker; delete this line to go back to English-only.
     hmongTitle: 'Noj thiab Haus',
     order: 31,  // was 30 — u-sentence-structure inserted after Core Verbs, 2026-09-28
-    introLesson: 'placeholder-food',  // PLACEHOLDER lesson, 2026-09-28 — lessons/placeholders.js
+    // ⚠️ REPOINTED 2026-10-22 from 'placeholder-food', which no longer exists.
+    introLesson: 'conversational-food',  // lessons/food-lesson.js
     categories: ['food', 'drinks'],
     limit: UNIT_WORD_CAP, // 38 words in the categories — the worst overflow
     blurb: 'Mov, dej, noj, haus — eating and drinking.',
@@ -682,16 +843,48 @@ export const path = [
   },
   {
     id: 'u-colors',
-    title: 'Colors & Describing',
-    // ⚠️ DRAFTED BY CLAUDE 2026-09-25 at the author's request — NOT attested.
-    // Source: 'cov' + 'xim' — the plural this file says a bare 'xim' lacks. Confirm with a fluent speaker; delete this line to go back to English-only.
-    hmongTitle: 'Cov Xim',
+    // ⚠️ COLOURS ONLY, AND DISTINCT FROM DESCRIBING — 2026-10-15, the author:
+    // "seperate colors, and describing things into two seperate paths, colors it's own
+    // thing, adjectives it's own things. Colors must be distinct."
+    //
+    // The word lists were ALREADY separate: this unit has only `colors`, and the
+    // describing words are units 20 (`adjective-grammar` — the patterns) and 21
+    // (`descriptions` — the vocabulary). Nothing overlapped. What mixed them was all of
+    // this unit's framing, which is what changed:
+    //   title        was 'Colors & Describing'
+    //   blurb        was 'Your first adjectives — and where they sit.'
+    //   why          was 'Teaches noun-then-adjective order, which is backwards from English.'
+    //   introLesson  was 'grammar-adjectives' ("Describing things") — that lesson belongs
+    //                to units 20 and 21, which both still use it. Dropped rather than
+    //                replaced: no Learn lesson teaches colours (nothing has
+    //                `vocab: 'colors'`), and a unit with no introLesson simply starts at
+    //                Flashcards, the way Family and Food do.
+    // ⚠️ Noun-then-adjective order is still taught — by unit 20, whose whole subject it
+    // is. It was never this unit's job; it was this unit's borrowed excuse.
+    title: 'Colors',
+    // ⚠️ `Cov Kob`, NOT `Cov Xim` — the author's call, 2026-10-15.
+    // Both words mean "colour". `kob` is the NATIVE Hmong word; `xim` is a loanword from
+    // Thai/Lao and Chinese. This app's whole argument is preserving the language, so the
+    // native word carries the unit title. The `cov` is the plural this file notes a bare
+    // noun lacks. See the ⚠️ at the head of the `colors` category in vocabulary.js for the
+    // full ruling, and note `xim` keeps its own dictionary entry — it is a real word in
+    // use, just not the one a unit title should lead with.
+    // ⚠️ STILL UNATTESTED as a phrase (drafted here, not sourced); confirm with a fluent
+    // speaker. Delete this line to fall back to the English title alone.
+    hmongTitle: 'Cov Kob',
     order: 40,  // was 39 — u-sentence-structure inserted after Core Verbs, 2026-09-28
-    learnUnit: 'grammar',  // Adjectives, Describing People
-    introLesson: 'grammar-adjectives',  // "Describing things"
+    learnUnit: 'grammar',
+    // ⚠️ ITS OWN LESSON NOW — 2026-10-15 (author: "If there is no path lesson in a path,
+    // create a lesson"). This unit was the only one of the 41 with no lesson at all: it
+    // borrowed `grammar-adjectives` until Colors was separated from Describing, and the
+    // borrowing was dropped rather than replaced. `grammar-colors` is a PLACEHOLDER
+    // (src/data/lessons/colors.js) — it applies the settled noun-then-adjective and
+    // no-yog rules to colours, carries the author's kob/xim ruling, and every Hmong line
+    // in it is copied from this category's own reviewed entries.
+    introLesson: 'grammar-colors',
     categories: ['colors'],
-    blurb: 'Your first adjectives — and where they sit.',
-    why: 'Teaches noun-then-adjective order, which is backwards from English.',
+    blurb: 'Liab, dub, dawb — naming the colors.',
+    why: 'Colours are concrete, visible and easy to drill, and they are what the clothes unit after this one describes (lub tsho liab). Kept separate from the describing units (20, 21): a colour is a thing you can point at, not an opinion about it.',
   },
   {
     id: 'u-wearing',
@@ -782,12 +975,39 @@ export const path = [
     // include it in its own path"). The seven everyday verb + noun pairs from the Action Verbs
     // lesson — none of them were in a unit (Core Verbs' 20 are the single verbs).
     learnUnit: 'grammar',
-    introLesson: 'foundations-action-verbs',
+    introLesson: 'foundations-verb-nouns',
     // The extra categories only let the explicit list reach taug kev and kawm ntawv.
-    categories: ['verbs', 'vehicles-travel', 'reading-motion'],
+    categories: ['verbs', 'vehicles-travel', 'reading-mind'],
+    // ⚠️ EVERY WORD HERE HAS AN exampleSentence, AND THAT IS NOT OPTIONAL.
+    // `unitReadiness` drops a unit out of `livePath()` unless needExample === 0,
+    // and /path renders livePath() — so ONE sentence-less card removes the whole
+    // unit from the Paths screen. That happened on 2026-10-20: ten verb + noun
+    // cards were added for the lesson, six had no sentence yet, and the Verb +
+    // Noun unit vanished. It looks like a deleted page; it is a readiness filter
+    // doing its job. Check with `node scripts/check-path.mjs` before trusting a
+    // new card here.
+    //
+    // ⚠️ THE SIX ADDED LAST GOT SENTENCES FROM THE AUTHOR'S OWN TEMPLATE, not
+    // from a speaker: verb-noun.js drills these as `Kuv <phrase>.`, so the six
+    // that had none were given the same frame (Kuv ua noj. · Kuv thaij duab. …)
+    // and marked `source: 'ai'` + `unreviewed`. A speaker should read them.
+    //
+    // Still not listed, for reasons that are not about sentences:
+    //   politeness-thank-you — `ua tsaug` is drilled in u-greetings, and one word
+    //     in two units is its own check-path failure. The lesson still teaches it.
+    //   phr-ua-si — `ua si` sits in reading-general, which would be a 4th
+    //     category, over the cap of 3.
     words: [
       'vehicle-taug-kev', 'verbs-noj-mov', 'verbs-nyeem-ntawv', 'verbs-sau-ntawv',
       'misc-kawm-ntawv', 'verbs-mloog-lus', 'verbs-hais-lus',
+      // the lesson's remaining expressions, added 2026-10-20 (author: "within the
+      // path, add the cards. those are the verb + noun")
+      'verbs-haus-dej', 'verbs-ua-haujlwm', 'verbs-mloog-nkauj',
+      // 'verbs-saib-tv',  // COMMENTED OUT 2026-10-20 (author). Its dictionary
+      // entry is commented out too — uncomment both together, or this id
+      // resolves to nothing and the unit silently shrinks.
+      'verbs-tham-lus', 'verbs-nug-lus', 'verbs-ntxuav-tais-diav',
+      'verbs-ntxuav-khaub-ncaws', 'verbs-ua-noj', 'verbs-thaij-duab',
     ],
     free: true,
     blurb: 'Noj mov, nyeem ntawv, hais lus — the verb and the noun it almost always brings.',
@@ -998,7 +1218,7 @@ export function unitExampleWords(unit) {
   if (!unit.exampleSets) return unitWords(unit)
   return unit.exampleSets.flatMap((id) => getCategory(id)?.words || [])
 }
-
+   
 export function getUnit(unitId) {
   return path.find((u) => u.id === unitId) || null
 }

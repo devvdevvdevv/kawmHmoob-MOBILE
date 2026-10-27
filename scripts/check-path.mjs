@@ -14,6 +14,7 @@
 //
 // Run: node scripts/check-path.mjs
 
+import { readdirSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -141,6 +142,85 @@ if (nearest) {
     `  closest to ready: ${nearest.unit.title} — ${nearest.needExample} sentence${nearest.needExample === 1 ? '' : 's'} away`
   )
 }
+
+// ── ⚠️ introLesson POINTS AT A LESSON THAT EXISTS — added 2026-10-19 ─────────
+//
+// THE BUG THIS CATCHES: the author renamed a lesson's id
+// ('vocab-greetings-farewells' → 'vocab-common-phrases-everyday-greetings') and
+// `path.js` kept pointing at the old one. Nothing breaks visibly —
+// `unitIntro()` returns null for an unknown id, so the unit simply loses its
+// introduction and the screen looks fine. A silent loss is the worst kind.
+//
+// ⚠️ THE LESSON FILES ARE READ AS TEXT, NOT IMPORTED. src/data/lessons.js omits
+// the `.js` on its imports, so Node cannot load it (Metro can) — the same reason
+// pathIntro.js exists as an app-only module. Scanning the files for `id:` lines
+// is what is available here, and it is enough: a lesson id is always a literal.
+const lessonIds = new Map()   // lesson id → the export name that carries it
+for (const file of readdirSync('src/data/lessons')) {
+  if (!file.endsWith('.js')) continue
+  const src = readFileSync(join('src/data/lessons', file), 'utf8')
+  // The export each lesson object is bound to, so registration can be checked
+  // below: `export const verbNouns = { id: 'foundations-verb-nouns', …`
+  //
+  // ⚠️ ONE FILE CAN HOLD SEVERAL LESSONS. placeholders.js exports six, so the
+  // export name has to be the LAST one declared above the id — taking the
+  // file's first export reported all six placeholder ids as belonging to
+  // `locationPlaceholder`, and five of them looked unregistered.
+  const marks = [...src.matchAll(/^export const (\w+)\s*=/gm)].map((m) => ({ at: m.index, name: m[1] }))
+  // The LESSON's own id is the one at two-space indent; step ids are deeper.
+  for (const m of src.matchAll(/^ {2}id: '([^']+)'/gm)) {
+    const owner = marks.filter((x) => x.at < m.index).pop()
+    lessonIds.set(m[1], owner ? owner.name : null)
+  }
+}
+
+// ⚠️ EXISTING ON DISK IS NOT THE SAME AS REACHABLE — added 2026-10-20.
+//
+// THE BUG THIS CATCHES: the author wrote src/data/lessons/verb-noun.js with the
+// right id, and `u-verb-noun` pointed at it correctly, and this check PASSED —
+// because it only ever asked whether some file contained that id. The lesson was
+// never imported into src/data/lessons.js, so the app could not reach it, and
+// the unit showed no introduction. Exactly the silent loss the check above was
+// written to prevent, one level further out.
+//
+// Registration is read as text for the same reason the files are: lessons.js
+// omits the `.js` on its imports, so Node cannot load it.
+// ⚠️ COMMENTS COME OUT FIRST. Every `lessons: [...]` in this file is annotated
+// one entry per line — `dates,  // Writing Dates, 2026-09-27` — and a comment
+// holding a comma glues the next name onto its tail, so splitting the raw text
+// reported `timeExplained` as unregistered when it is right there. Strip the
+// comments, then read the names.
+const registry = readFileSync('src/data/lessons.js', 'utf8')
+  .replace(/\/\*[\s\S]*?\*\//g, ' ')
+  .replace(/\/\/[^\n]*/g, ' ')
+const arrays = [...registry.matchAll(/lessons:\s*\[([^\]]*)\]/g)]
+  .map((m) => new Set(m[1].split(/[^A-Za-z0-9_]+/).filter(Boolean)))
+const isRegistered = (name) => {
+  if (!name) return false
+  const imported = new RegExp(`import\\s*{[^}]*\\b${name}\\b[^}]*}\\s*from`).test(registry)
+  // Placed in some unit's `lessons: [...]`, not merely imported — an import on
+  // its own leaves the lesson just as unreachable.
+  return imported && arrays.some((set) => set.has(name))
+}
+
+for (const u of path) {
+  if (!u.introLesson) continue   // optional by design — Family and Food have none
+  if (!lessonIds.has(u.introLesson)) {
+    problems.push(
+      `${u.id}: introLesson '${u.introLesson}' matches no lesson — the unit will show NO introduction`
+    )
+    continue
+  }
+  const name = lessonIds.get(u.introLesson)
+  if (!isRegistered(name)) {
+    problems.push(
+      `${u.id}: introLesson '${u.introLesson}' exists on disk but '${name}' is not imported AND placed ` +
+      `in a lessons: [...] array in src/data/lessons.js — the app cannot reach it`
+    )
+  }
+}
+const withIntro = path.filter((u) => u.introLesson).length
+console.log(`\n  intro lessons: ${withIntro} of ${path.length} units point at one, all resolving`)
 
 // ── Hmong unit names ────────────────────────────────────────────────────────
 // A REPORT, NOT A PROBLEM. `hmongTitle` is optional by design (src/data/path.js

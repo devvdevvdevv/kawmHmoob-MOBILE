@@ -45,6 +45,10 @@ import { toneOfSyllable } from './hmongTone.js'
 // `nrog` fall out of the pool.
 // TO FIX PROPERLY: reconcile `consonants` and `doubleConsonants` in
 // reference.js and delete this array.
+// ⚠️ `nk`, `ml` AND `nr` ARE NOW IN reference.js (added 2026-10-24, matching the
+// author's full inventory). They stay here harmlessly — the Set below dedupes
+// them. Only `dl` is still absent from `consonants`, and it is NOT in the
+// author's inventory either, so whether it belongs is an open question.
 const MISSING_FROM_REFERENCE = ['nk', 'ml', 'dl', 'nr']
 
 // Longest-first, and that ordering is load-bearing: `nts` must be tried before
